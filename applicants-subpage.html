@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>신청자관리 - 늘봄학교</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="./assets/css/app.css">
+</head>
+<body data-sidebar-page="applicants">
+  <div id="header" class="topbar">
+    <div class="topbar-inner">
+      <div class="topbar-center">
+        <span class="topbar-title">늘봄학교</span>
+        <span class="caret"></span>
+      </div>
+    </div>
+  </div>
+
+  <div id="container" class="layout">
+    <aside id="left_menu" class="sidebar"></aside>
+
+    <main id="contents_box" class="content">
+      <div id="contents_title" class="page-title">
+        <div class="title-left">
+          <div class="title-main"><i class="fa fa-file-text-o"></i> 신청자관리</div>
+          <div class="title-sub">이천초등학교 늘봄학교</div>
+        </div>
+      </div>
+
+      <div id="contents" class="content-inner module-raw-content">
+        <div class="panel_main panel-default_main">
+          <div class="panel-heading panel-heading-with-actions">
+            <span id="subpage-title">신청자관리 상세</span>
+            <span class="panel-heading-actions">
+              <a href="./applicants.html" class="manual_btn"><i class="fa fa-list"></i> 신청자목록으로</a>
+            </span>
+          </div>
+
+          <div class="panel-search applicants-search-wrap">
+            <form id="sub-search-form" action="./applicants-subpage.html" method="get">
+              <input type="hidden" name="kind" id="kind-input" value="">
+              <ul>
+                <li class="PAD0 select_box_menu_parent">
+                  <span class="main_control_box_module is-open">
+                    <select class="form-control input-sm PAD0 select_box_menu_width">
+                      <option>=강좌구분=</option>
+                      <option>3월</option>
+                      <option>4월</option>
+                      <option>5월</option>
+                    </select>
+                    <select class="form-control input-sm PAD0 select_box_menu_width">
+                      <option>=늘봄과정=</option>
+                      <option>방과후</option>
+                      <option>맞춤형</option>
+                      <option>돌봄</option>
+                    </select>
+                    <select class="form-control input-sm PAD0 select_box_menu_width applicants-lecture-select">
+                      <option>=강좌전체=</option>
+                      <option>[돌봄] 창의미술</option>
+                      <option>[방과후] 영어 A반</option>
+                    </select>
+                    <div class="search-row-2">
+                      <select class="form-control input-sm PAD0"><option>=학년=</option><option>1</option><option>2</option><option>3</option></select>
+                      <select class="form-control input-sm PAD0"><option>=반=</option><option>1</option><option>2</option><option>3</option></select>
+                      <select class="form-control input-sm PAD0" style="width:90px;"><option>이름</option><option>연락처</option></select>
+                      <input type="text" class="form-control input-sm applicants-name-input" placeholder="검색어">
+                      <button type="button" class="btn btn-default btn-sm" id="btn-search">검색</button>
+                      <button type="button" class="btn btn-default btn-sm" id="btn-reset">전체</button>
+                    </div>
+                  </span>
+                </li>
+              </ul>
+            </form>
+          </div>
+
+          <div class="panel-body applicants-actions-row">
+            <ul class="list-inline">
+              <li><a href="./applicants.html" class="btn btn-default btn-sm">신청자목록</a></li>
+              <li class="pull-right PAD0">
+                <button type="button" class="btn btn-success btn-sm" id="btn-primary-action">저장</button>
+                <button type="button" class="btn btn-default btn-sm" id="btn-secondary-action">인쇄</button>
+              </li>
+            </ul>
+          </div>
+
+          <form id="sub-fm-list">
+            <div class="table-responsive" style="background:#fff;">
+              <table class="table AlignCenter table-hover_sm list" style="margin-top:0;">
+                <thead id="sub-thead"></thead>
+                <tbody id="sub-tbody"></tbody>
+              </table>
+            </div>
+
+            <div class="panel-body MAT30" style="text-align:center;">
+              <ul>
+                <li class="PAD0" style="float:left;">
+                  <select class="form-control" id="bulk-action">
+                    <option value="">=== 일괄적용 ===</option>
+                    <option value="del">선택삭제</option>
+                    <option value="status">상태변경</option>
+                  </select>
+                  <button type="button" class="btn btn-default" id="bulk-apply">적용하기</button>
+                </li>
+                <li style="text-align:right;" class="MAlignCenter">
+                  <ul class="pagination">
+                    <li class="active"><a href="#none;">1</a></li>
+                    <li><a href="#none;">2</a></li>
+                    <li class="next"><a href="#none;">다음</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </form>
+        </div>
+
+        <div class="help_box" id="sub-help-box">
+          <ul id="sub-help-list"></ul>
+        </div>
+      </div>
+
+      <div id="footer" class="footer"><span class="muted">DBDB School Clone</span></div>
+    </main>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="./assets/js/app.js"></script>
+  <script>
+    (function () {
+      var params = new URLSearchParams(window.location.search || "");
+      var kind = String(params.get("kind") || "sin").trim();
+      document.getElementById("kind-input").value = kind;
+
+      var defs = {
+        sin: {
+          title: "신청자등록",
+          action1: "등록저장",
+          action2: "등록폼출력",
+          head: "<tr><th width='50'><input type='checkbox'></th><th width='70'>번호</th><th width='100'>이름</th><th width='140'>연락처</th><th width='80'>학년</th><th width='80'>반</th><th>신청강좌</th><th width='120'>등록일</th></tr>",
+          rows: [
+            "<tr><td><input type='checkbox'></td><td>1</td><td>김하늘</td><td>010-1111-2222</td><td>2</td><td>1</td><td class='text-left'>[돌봄] 창의미술 1부</td><td>2026-02-21</td></tr>",
+            "<tr><td><input type='checkbox'></td><td>2</td><td>박윤서</td><td>010-3333-4444</td><td>3</td><td>2</td><td class='text-left'>[방과후] 영어 A반</td><td>2026-02-21</td></tr>"
+          ],
+          help: ["신청자 등록은 학생 기본정보와 신청강좌를 함께 저장합니다.", "중복 신청 여부를 확인 후 등록하세요."]
+        },
+        input: {
+          title: "신청자일괄입력",
+          action1: "양식다운로드",
+          action2: "업로드실행",
+          head: "<tr><th width='50'><input type='checkbox'></th><th width='80'>상태</th><th width='120'>파일명</th><th width='120'>행수</th><th width='140'>등록자</th><th width='150'>처리시각</th><th>메모</th></tr>",
+          rows: [
+            "<tr><td><input type='checkbox'></td><td><span class='label label-success'>완료</span></td><td>input-202602.csv</td><td>42</td><td>admin</td><td>2026-02-21 06:20</td><td class='text-left'>중복 2건 제외</td></tr>"
+          ],
+          help: ["엑셀/CSV 형식만 지원됩니다.", "업로드 전 전화번호 형식을 확인하세요."]
+        },
+        pay: {
+          title: "수강료입력",
+          action1: "일괄저장",
+          action2: "엑셀내보내기",
+          head: "<tr><th width='50'><input type='checkbox'></th><th width='180'>강좌명</th><th width='100'>수강료</th><th width='100'>수용비</th><th width='100'>교재비</th><th width='100'>재료비</th><th width='140'>수정일</th></tr>",
+          rows: [
+            "<tr><td><input type='checkbox'></td><td class='text-left'>[방과후] 영어 A반</td><td><input class='form-control input-sm' value='30000'></td><td><input class='form-control input-sm' value='0'></td><td><input class='form-control input-sm' value='10000'></td><td><input class='form-control input-sm' value='5000'></td><td>2026-02-21</td></tr>",
+            "<tr><td><input type='checkbox'></td><td class='text-left'>[돌봄] 창의미술</td><td><input class='form-control input-sm' value='25000'></td><td><input class='form-control input-sm' value='0'></td><td><input class='form-control input-sm' value='8000'></td><td><input class='form-control input-sm' value='3000'></td><td>2026-02-21</td></tr>"
+          ],
+          help: ["수강료 저장 후 신청목록 화면에 즉시 반영됩니다."]
+        },
+        copy: {
+          title: "신청자복사",
+          action1: "복사실행",
+          action2: "복사이력",
+          head: "<tr><th width='50'><input type='checkbox'></th><th width='120'>원본구분</th><th width='120'>대상구분</th><th width='100'>복사건수</th><th width='140'>처리자</th><th width='160'>처리시각</th><th>결과</th></tr>",
+          rows: [
+            "<tr><td><input type='checkbox'></td><td>3월</td><td>4월</td><td>31</td><td>admin</td><td>2026-02-20 17:12</td><td class='text-left'>정상 처리</td></tr>"
+          ],
+          help: ["동일 학생 중복 생성 시 기존 데이터가 우선됩니다."]
+        },
+        com: {
+          title: "추가/취소자조회",
+          action1: "조회갱신",
+          action2: "출력",
+          head: "<tr><th width='50'><input type='checkbox'></th><th width='110'>처리일</th><th width='90'>구분</th><th width='90'>이름</th><th width='140'>연락처</th><th>강좌명</th><th width='120'>처리자</th></tr>",
+          rows: [
+            "<tr><td><input type='checkbox'></td><td>2026-02-19</td><td><span class='label label-primary'>추가</span></td><td>김민준</td><td>010-1234-1234</td><td class='text-left'>[방과후] 코딩 B반</td><td>admin</td></tr>",
+            "<tr><td><input type='checkbox'></td><td>2026-02-20</td><td><span class='label label-danger'>취소</span></td><td>이다온</td><td>010-4321-4321</td><td class='text-left'>[돌봄] 창의미술 1부</td><td>admin</td></tr>"
+          ],
+          help: ["추가/취소 이력은 수강료 정산 데이터와 연동됩니다."]
+        },
+        list1: {
+          title: "미신청자목록",
+          action1: "문자발송",
+          action2: "엑셀출력",
+          head: "<tr><th width='50'><input type='checkbox'></th><th width='80'>학년</th><th width='80'>반</th><th width='80'>번호</th><th width='110'>이름</th><th width='150'>연락처</th><th>비고</th></tr>",
+          rows: [
+            "<tr><td><input type='checkbox'></td><td>3</td><td>2</td><td>7</td><td>오지환</td><td>010-8888-2222</td><td class='text-left'>신청기간 미접속</td></tr>",
+            "<tr><td><input type='checkbox'></td><td>4</td><td>1</td><td>12</td><td>문서윤</td><td>010-6666-7777</td><td class='text-left'>학적정보 확인 필요</td></tr>"
+          ],
+          help: ["미신청자에게 안내 문자를 발송할 수 있습니다."]
+        },
+        pdf: {
+          title: "수강신청서출력",
+          action1: "선택인쇄",
+          action2: "전체인쇄",
+          head: "<tr><th width='50'><input type='checkbox'></th><th width='80'>번호</th><th width='100'>이름</th><th width='130'>학년/반</th><th>신청강좌</th><th width='140'>출력상태</th></tr>",
+          rows: [
+            "<tr><td><input type='checkbox'></td><td>1201</td><td>김예준</td><td>2학년 3반</td><td class='text-left'>[방과후] 영어 A반, [돌봄] 창의미술</td><td>미출력</td></tr>"
+          ],
+          help: ["인쇄 옵션에서 여백/정렬을 설정 후 출력하세요."]
+        },
+        pdf1: {
+          title: "고지서출력",
+          action1: "고지서인쇄",
+          action2: "고지서엑셀",
+          head: "<tr><th width='50'><input type='checkbox'></th><th width='80'>번호</th><th width='100'>이름</th><th width='120'>수강료</th><th width='120'>수용비</th><th width='120'>총액</th><th width='140'>출력상태</th></tr>",
+          rows: [
+            "<tr><td><input type='checkbox'></td><td>1201</td><td>김예준</td><td>30,000</td><td>0</td><td>30,000</td><td>미출력</td></tr>",
+            "<tr><td><input type='checkbox'></td><td>1202</td><td>이하린</td><td>25,000</td><td>0</td><td>25,000</td><td>미출력</td></tr>"
+          ],
+          help: ["고지서 출력 시 학년/반 정렬을 먼저 확인하세요."]
+        },
+        pdf2: {
+          title: "시간표출력",
+          action1: "시간표인쇄",
+          action2: "시간표PDF",
+          head: "<tr><th width='50'><input type='checkbox'></th><th width='100'>이름</th><th width='120'>학년/반</th><th width='140'>요일</th><th>강좌명</th><th width='120'>시간</th></tr>",
+          rows: [
+            "<tr><td><input type='checkbox'></td><td>김예준</td><td>2학년 3반</td><td>월/수</td><td class='text-left'>[방과후] 영어 A반</td><td>14:00~14:50</td></tr>",
+            "<tr><td><input type='checkbox'></td><td>이하린</td><td>3학년 1반</td><td>화/목</td><td class='text-left'>[돌봄] 창의미술</td><td>15:00~15:50</td></tr>"
+          ],
+          help: ["시간표는 같은 학생 기준으로 자동 묶음 출력됩니다."]
+        }
+      };
+
+      var def = defs[kind] || defs.sin;
+      document.title = def.title + " - 신청자관리 - 늘봄학교";
+      document.getElementById("subpage-title").textContent = def.title;
+      document.getElementById("btn-primary-action").textContent = def.action1;
+      document.getElementById("btn-secondary-action").textContent = def.action2;
+      document.getElementById("sub-thead").innerHTML = def.head;
+      document.getElementById("sub-tbody").innerHTML = def.rows.join("");
+      document.getElementById("sub-help-list").innerHTML = def.help.map(function (x) {
+        return "<li>" + x + "</li>";
+      }).join("");
+
+      document.getElementById("btn-search").addEventListener("click", function () {
+        if (window.notify) window.notify("검색 조건으로 목록을 갱신했습니다.");
+      });
+      document.getElementById("btn-reset").addEventListener("click", function () {
+        var inputs = document.querySelectorAll("#sub-search-form input[type='text']");
+        for (var i = 0; i < inputs.length; i += 1) inputs[i].value = "";
+        if (window.notify) window.notify("검색 조건을 초기화했습니다.");
+      });
+      document.getElementById("btn-primary-action").addEventListener("click", function () {
+        if (window.notify) window.notify(def.action1 + " 처리를 완료했습니다.");
+      });
+      document.getElementById("btn-secondary-action").addEventListener("click", function () {
+        if (window.notify) window.notify(def.action2 + "을(를) 실행했습니다.");
+      });
+      document.getElementById("bulk-apply").addEventListener("click", function () {
+        var value = document.getElementById("bulk-action").value;
+        if (!value) {
+          if (window.notify) window.notify("일괄적용 항목을 선택해 주세요.");
+          return;
+        }
+        if (window.notify) window.notify("선택 항목에 일괄 적용했습니다.");
+      });
+    })();
+  </script>
+</body>
+</html>

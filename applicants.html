@@ -1,0 +1,2100 @@
+﻿<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>신청목록 - 신청자관리 - 늘봄학교</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="./assets/css/app.css">
+</head>
+<body data-sidebar-page="applicants">
+  <div id="header" class="topbar">
+    <div class="topbar-inner">
+      <div class="topbar-center">
+        <span class="topbar-title">늘봄학교</span>
+        <span class="caret"></span>
+      </div>
+    </div>
+  </div>
+
+  <div id="container" class="layout">
+    <aside id="left_menu" class="sidebar"></aside>
+
+    <main id="contents_box" class="content">
+      <div id="contents_title" class="page-title">
+        <div class="title-left">
+          <div class="title-main"><i class="fa fa-file-text-o"></i> 신청자관리</div>
+          <div class="title-sub">이천초등학교 늘봄학교</div>
+        </div>
+      </div>
+      <div id="contents" class="content-inner module-raw-content">
+<div class="panel_main panel-default_main">
+        <div class="panel-heading panel-heading-with-actions">
+      신청목록
+      <span class="panel-heading-actions">
+        <a href="https://www.dbdbschool.kr/af/ad_faq/main/sn/2848" class="manual_btn"><i class="fa fa-file-text-o"></i> 매뉴얼</a>
+        <a href="https://www.dbdbschool.kr/af/ad_app/sin/p/1/sn/2848" class="manual_btn"><i class="fa fa-download"></i> 신청자 등록</a>
+        <a href="https://www.dbdbschool.kr/help/go_data/num/76/data/link1" class="manual_btn"><i class="fa fa-youtube-play"></i> 수강신청 테스트</a>
+        <a href="https://s3-ap-northeast-2.amazonaws.com/www.dbdbschool.kr/doc/faq/after/%EC%9A%B4%EC%98%81%EC%A0%88%EC%B0%A8_12_%EC%8B%A0%EC%B2%AD%EA%B2%B0%EA%B3%BC%20%EC%A1%B0%ED%9A%8C.hwp" class="manual_btn"><i class="fa fa-download"></i> 신청결과 조회</a>
+        <a href="https://www.dbdbschool.kr/help/go_data/num/84/data/link1" class="manual_btn"><i class="fa fa-youtube-play"></i> 스쿨뱅킹 파일 다운로드</a>
+      </span>
+    </div>
+	<div class="panel-search applicants-search-wrap">
+<form action="https://www.dbdbschool.kr/af/ad_app/lists/sn/2848" name="fm_list_search" id="fm_list_search1" method="get" accept-charset="utf-8">
+		<ul>
+			<li class="PAD0 select_box_menu_parent">
+				<span class="main_control_box_module is-open" id="main_control_box_search">
+					<select name="sld" class="form-control input-sm PAD0 select_box_menu_width">
+						<option value="all">=강좌구분=</option>
+						<option value="1">3월</option>
+						<option value="2">4월</option>
+						<option value="3">5월</option>
+						<option value="4">6월</option>
+						<option value="5">7월</option>
+						<option value="6">8월</option>
+						<option value="7">9월</option>
+						<option value="8">10월</option>
+						<option value="9">11월</option>
+						<option value="10">12월</option>
+						<option value="11">1월</option>
+						<option value="12">2월</option>
+					</select>
+					<select name="slp" class="form-control input-sm PAD0 select_box_menu_width">
+						<option value="all">=늘봄과정=</option>
+						<option value="1">방과후</option>
+						<option value="2">맞춤형</option>
+						<option value="3">돌봄</option>
+					</select>
+					<select id="sel_lec_num" name="sln" class="form-control input-sm PAD0 select_box_menu_width applicants-lecture-select">
+						<option value="">=강좌전체=</option>
+					</select>
+					<div class="search-row-2">
+						<select name="ssg" id="ssg" class="form-control input-sm PAD0"><option value="">=학년=</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option></select>
+						<select name="scl" id="scl" class="form-control input-sm PAD0"><option value="">=반=</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select>
+						<input type="hidden" name="st" value="app_mem_name">
+						<input type="text" name="sw" id="s_word" value="" maxlength="20" class="form-control input-sm applicants-name-input" placeholder="이름">
+						<input type="submit" value="검색" class="btn btn-default btn-sm">
+						<input type="button" value="전체" class="btn btn-default btn-sm" onclick="location.href='https://www.dbdbschool.kr/af/ad_app/lists/sn/2848/sld/all/slp/all';">
+						<a href="https://www.dbdbschool.kr/af/ad_app/listse/p/1/sn/2848" class="btn btn-success btn-sm" onclick="return chk_excel();">검색결과출력</a>
+					</div>
+				</span>
+			</li>
+		</ul>
+</form>			
+	</div>
+	<div class="panel-body applicants-actions-row">
+		<ul class="list-inline">
+			<li><a href="https://www.dbdbschool.kr/af/ad_wait/lists/p/1/sn/2848" class="btn btn-default btn-sm ">대기자목록</a></li>
+			<li class="pull-right PAD0" style="position:relative;">
+				<input type="button" value="신청자등록" class="btn btn-primary btn-sm" style="text-align:right;" onclick="location.href='https://www.dbdbschool.kr/af/ad_app/sin/p/1/sn/2848'"> 
+				<a href="https://www.dbdbschool.kr/af/ad_app/input/p/1/sn/2848" class="btn btn-warning btn-sm ">신청자일괄입력</a>
+				<a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848" class="btn btn-warning btn-sm ">수강료입력</a>
+				<a href="https://www.dbdbschool.kr/af/ad_app/copy/p/1/sn/2848" class="btn btn-info btn-sm ">신청자복사</a>
+				<a href="https://www.dbdbschool.kr/af/ad_app/com/p/1/sn/2848" class="btn btn-default btn-sm ">추가/취소자조회</a>
+				<a href="https://www.dbdbschool.kr/af/ad_app/list1/p/1/sn/2848" class="btn btn-default btn-sm ">미신청자목록</a> 
+				<a href="https://www.dbdbschool.kr/af/ad_app/excel/p/1/sn/2848" class="btn btn-success btn-sm ">신청결과엑셀출력</a>
+				<a href="https://www.dbdbschool.kr/af/ad_app/pdf/p/1/sn/2848" class="btn btn-success btn-sm ">수강신청서출력</a>
+				<a href="https://www.dbdbschool.kr/af/ad_app/pdf1/p/1/sn/2848" class="btn btn-success btn-sm ">고지서출력</a>
+				<a href="https://www.dbdbschool.kr/af/ad_app/pdf2/p/1/sn/2848" class="btn btn-success btn-sm ">시간표출력</a>
+			</li>
+		</ul>
+	</div>
+<form action="https://www.dbdbschool.kr/af/ad_app/lists/sn/2848" name="fm_list" id="fm_list" method="post" onsubmit="return fm_list_check(this);" accept-charset="utf-8">
+<input type="hidden" name="csrf_test_name" value="e7949d7748f475e6b7014456deae3d9b">        
+<input type="hidden" name="form_open_date_use_chk_csrf" value="2026-02-20 23:15:48">
+		
+<input type="hidden" name="lec_num" value="">
+	<div class="table-responsive" style="background:#fff;">
+		<table class="table AlignCenter table-hover_sm list" style="margin-top:0px;">
+			<tbody><tr>
+				<th width="40"><input type="checkbox" name="check_all" id="check_all" value="" onclick="chk_all(this);" title="전체선택/취소" style="float:none;"></th>
+				<th width="60">번호</th>
+				<th width="90">구분<br>(늘봄과정)</th>
+				<th>강좌명</th>
+				<th width="50">학년</th>
+				<th width="50">반</th>
+				<th width="60"><a href="https://www.dbdbschool.kr/af/ad_app/lists/p/1/sn/2848/sot/desc/sof/sbh" class="link_type">번호</a></th>
+				<th width="80">이름</th>
+				<th width="170">연락처</th>
+				<th width="70">수강료</th>
+				<th width="70">수용비</th>
+				<th width="70">강사료</th>
+				<th width="70">교재비</th>
+				<th width="70">재료비</th>
+				<th width="90"><a href="https://www.dbdbschool.kr/af/ad_app/lists/p/1/sn/2848/sot/desc/sof/created" class="link_type">신청일</a></th>
+				<th width="45">삭제</th>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="data_checked[]" value="17874247"></td>
+				<td>13504</td>
+					
+				<td>
+					2??				<br><span class="lec_pro_type3">?뚮큵</span>
+					
+				</td>
+				
+				<td class="text-left">
+					[?뚮큵] ?좏깮???뚮큵 3遺(??11:00~11:50)	
+				</td>
+				<td>2</td>
+			
+				<td>2</td>
+				<td>4</td>
+				<td style="position:relative;">
+					<a href="https://www.dbdbschool.kr/af/ad_app/sin/p/1/sn/2848/mem_num/4025827" class="link_type">源?뺥샇</a>
+					<a href="#none;" id="stu_hp_17874247" style="position:absolute; right:4px; top:0px;" onclick="open_stu_schedule(4025827, 1299686);"><i class="fa fa-list-alt" title="?쒓컙??蹂닿린"></i></a>
+	
+	
+	
+				</td>
+	
+				<td style="position:relative;"><span class="stu_hp_4025827">010-8512-3714<br>010-8512-3714(?먮?寃?</span>&nbsp;<a href="#none;" id="stu_hp_17874247" style="position:absolute; right:4px; top:0px;" onclick="show_stu_hp(17874247, 4025827 ); return false;"><i class="fa fa-pencil-square " title="?곕씫泥??섏젙"></i></a>
+					<input type="hidden" name="stu_hp_info_17874247" id="stu_hp_info_17874247" class="stu_hp_info_4025827" value="010-8512-3714^?먮?寃?010-8512-3714">
+				</td>
+					
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299686#lec_pay_17874247" class="link_type">0</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299686#lec_use_cost_17874247" class="link_type">0</a></td>
+				<td>0</td>
+				
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299686#lec_pay_book_17874247" class="link_type">0</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299686#lec_pay_item_17874247" class="link_type">0</a></td>		
+							
+				<td>2026-01-21<br>11:06:40</td>
+				<td><a href="#none;" onclick="chk_cancel(17874247); return false;"><i class="fa fa-trash-o icon_btn" title="??젣"></i></a></td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="data_checked[]" value="17870547"></td>
+				<td>13503</td>
+					
+				<td>
+					2??				<br><span class="lec_pro_type3">?뚮큵</span>
+					
+				</td>
+				
+				<td class="text-left">
+					[?뚮큵] ?좏깮???뚮큵 3遺(??11:00~11:50)	
+				</td>
+				<td>2</td>
+			
+				<td>3</td>
+				<td>15</td>
+				<td style="position:relative;">
+					<a href="https://www.dbdbschool.kr/af/ad_app/sin/p/1/sn/2848/mem_num/4025856" class="link_type">?댁???/a>
+					<a href="#none;" id="stu_hp_17870547" style="position:absolute; right:4px; top:0px;" onclick="open_stu_schedule(4025856, 1299689);"><i class="fa fa-list-alt" title="?쒓컙??蹂닿린"></i></a>
+	
+	
+	
+				</td>
+	
+				<td style="position:relative;"><span class="stu_hp_4025856">010-4705-8406<br>010-4705-8406(蹂댄샇??</span>&nbsp;<a href="#none;" id="stu_hp_17870547" style="position:absolute; right:4px; top:0px;" onclick="show_stu_hp(17870547, 4025856 ); return false;"><i class="fa fa-pencil-square " title="?곕씫泥??섏젙"></i></a>
+					<input type="hidden" name="stu_hp_info_17870547" id="stu_hp_info_17870547" class="stu_hp_info_4025856" value="010-4705-8406^^010-4705-8406">
+				</td>
+					
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299689#lec_pay_17870547" class="link_type">0</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299689#lec_use_cost_17870547" class="link_type">0</a></td>
+				<td>0</td>
+				
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299689#lec_pay_book_17870547" class="link_type">0</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299689#lec_pay_item_17870547" class="link_type">0</a></td>		
+							
+				<td>2026-01-21<br>09:40:16</td>
+				<td><a href="#none;" onclick="chk_cancel(17870547); return false;"><i class="fa fa-trash-o icon_btn" title="??젣"></i></a></td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="data_checked[]" value="17870546"></td>
+				<td>13502</td>
+					
+				<td>
+					2??				<br><span class="lec_pro_type3">?뚮큵</span>
+					
+				</td>
+				
+				<td class="text-left">
+					[?뚮큵] ?좏깮???뚮큵 2遺(??10:00~10:50)	
+				</td>
+				<td>2</td>
+			
+				<td>3</td>
+				<td>15</td>
+				<td style="position:relative;">
+					<a href="https://www.dbdbschool.kr/af/ad_app/sin/p/1/sn/2848/mem_num/4025856" class="link_type">?댁???/a>
+					<a href="#none;" id="stu_hp_17870546" style="position:absolute; right:4px; top:0px;" onclick="open_stu_schedule(4025856, 1299690);"><i class="fa fa-list-alt" title="?쒓컙??蹂닿린"></i></a>
+	
+	
+	
+				</td>
+	
+				<td style="position:relative;"><span class="stu_hp_4025856">010-4705-8406<br>010-4705-8406(蹂댄샇??</span>&nbsp;<a href="#none;" id="stu_hp_17870546" style="position:absolute; right:4px; top:0px;" onclick="show_stu_hp(17870546, 4025856 ); return false;"><i class="fa fa-pencil-square " title="?곕씫泥??섏젙"></i></a>
+					<input type="hidden" name="stu_hp_info_17870546" id="stu_hp_info_17870546" class="stu_hp_info_4025856" value="010-4705-8406^^010-4705-8406">
+				</td>
+					
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299690#lec_pay_17870546" class="link_type">0</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299690#lec_use_cost_17870546" class="link_type">0</a></td>
+				<td>0</td>
+				
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299690#lec_pay_book_17870546" class="link_type">0</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299690#lec_pay_item_17870546" class="link_type">0</a></td>		
+							
+				<td>2026-01-21<br>09:40:12</td>
+				<td><a href="#none;" onclick="chk_cancel(17870546); return false;"><i class="fa fa-trash-o icon_btn" title="??젣"></i></a></td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="data_checked[]" value="17870545"></td>
+				<td>13501</td>
+					
+				<td>
+					2??				<br><span class="lec_pro_type3">?뚮큵</span>
+					
+				</td>
+				
+				<td class="text-left">
+					[?뚮큵] ?좏깮???뚮큵 1遺(??09:00~09:50)	
+				</td>
+				<td>2</td>
+			
+				<td>3</td>
+				<td>15</td>
+				<td style="position:relative;">
+					<a href="https://www.dbdbschool.kr/af/ad_app/sin/p/1/sn/2848/mem_num/4025856" class="link_type">?댁???/a>
+					<a href="#none;" id="stu_hp_17870545" style="position:absolute; right:4px; top:0px;" onclick="open_stu_schedule(4025856, 1299691);"><i class="fa fa-list-alt" title="?쒓컙??蹂닿린"></i></a>
+	
+	
+	
+				</td>
+	
+				<td style="position:relative;"><span class="stu_hp_4025856">010-4705-8406<br>010-4705-8406(蹂댄샇??</span>&nbsp;<a href="#none;" id="stu_hp_17870545" style="position:absolute; right:4px; top:0px;" onclick="show_stu_hp(17870545, 4025856 ); return false;"><i class="fa fa-pencil-square " title="?곕씫泥??섏젙"></i></a>
+					<input type="hidden" name="stu_hp_info_17870545" id="stu_hp_info_17870545" class="stu_hp_info_4025856" value="010-4705-8406^^010-4705-8406">
+				</td>
+					
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299691#lec_pay_17870545" class="link_type">0</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299691#lec_use_cost_17870545" class="link_type">0</a></td>
+				<td>0</td>
+				
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299691#lec_pay_book_17870545" class="link_type">0</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299691#lec_pay_item_17870545" class="link_type">0</a></td>		
+							
+				<td>2026-01-21<br>09:40:07</td>
+				<td><a href="#none;" onclick="chk_cancel(17870545); return false;"><i class="fa fa-trash-o icon_btn" title="??젣"></i></a></td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="data_checked[]" value="17870543"></td>
+				<td>13500</td>
+					
+				<td>
+					2??				<br><span class="lec_pro_type3">?뚮큵</span>
+					
+				</td>
+				
+				<td class="text-left">
+					[?뚮큵] ?좏깮???뚮큵 2遺(紐?10:00~10:50)	
+				</td>
+				<td>2</td>
+			
+				<td>3</td>
+				<td>15</td>
+				<td style="position:relative;">
+					<a href="https://www.dbdbschool.kr/af/ad_app/sin/p/1/sn/2848/mem_num/4025856" class="link_type">?댁???/a>
+					<a href="#none;" id="stu_hp_17870543" style="position:absolute; right:4px; top:0px;" onclick="open_stu_schedule(4025856, 1299684);"><i class="fa fa-list-alt" title="?쒓컙??蹂닿린"></i></a>
+	
+	
+	
+				</td>
+	
+				<td style="position:relative;"><span class="stu_hp_4025856">010-4705-8406<br>010-4705-8406(蹂댄샇??</span>&nbsp;<a href="#none;" id="stu_hp_17870543" style="position:absolute; right:4px; top:0px;" onclick="show_stu_hp(17870543, 4025856 ); return false;"><i class="fa fa-pencil-square " title="?곕씫泥??섏젙"></i></a>
+					<input type="hidden" name="stu_hp_info_17870543" id="stu_hp_info_17870543" class="stu_hp_info_4025856" value="010-4705-8406^^010-4705-8406">
+				</td>
+					
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299684#lec_pay_17870543" class="link_type">0</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299684#lec_use_cost_17870543" class="link_type">0</a></td>
+				<td>0</td>
+				
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299684#lec_pay_book_17870543" class="link_type">0</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299684#lec_pay_item_17870543" class="link_type">0</a></td>		
+							
+				<td>2026-01-21<br>09:40:01</td>
+				<td><a href="#none;" onclick="chk_cancel(17870543); return false;"><i class="fa fa-trash-o icon_btn" title="??젣"></i></a></td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="data_checked[]" value="17870542"></td>
+				<td>13499</td>
+					
+				<td>
+					2??				<br><span class="lec_pro_type3">?뚮큵</span>
+					
+				</td>
+				
+				<td class="text-left">
+					[?뚮큵] ?좏깮???뚮큵 1遺(紐?09:00~09:50)	
+				</td>
+				<td>2</td>
+			
+				<td>3</td>
+				<td>15</td>
+				<td style="position:relative;">
+					<a href="https://www.dbdbschool.kr/af/ad_app/sin/p/1/sn/2848/mem_num/4025856" class="link_type">?댁???/a>
+					<a href="#none;" id="stu_hp_17870542" style="position:absolute; right:4px; top:0px;" onclick="open_stu_schedule(4025856, 1299685);"><i class="fa fa-list-alt" title="?쒓컙??蹂닿린"></i></a>
+	
+	
+	
+				</td>
+	
+				<td style="position:relative;"><span class="stu_hp_4025856">010-4705-8406<br>010-4705-8406(蹂댄샇??</span>&nbsp;<a href="#none;" id="stu_hp_17870542" style="position:absolute; right:4px; top:0px;" onclick="show_stu_hp(17870542, 4025856 ); return false;"><i class="fa fa-pencil-square " title="?곕씫泥??섏젙"></i></a>
+					<input type="hidden" name="stu_hp_info_17870542" id="stu_hp_info_17870542" class="stu_hp_info_4025856" value="010-4705-8406^^010-4705-8406">
+				</td>
+					
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299685#lec_pay_17870542" class="link_type">0</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299685#lec_use_cost_17870542" class="link_type">0</a></td>
+				<td>0</td>
+				
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299685#lec_pay_book_17870542" class="link_type">0</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299685#lec_pay_item_17870542" class="link_type">0</a></td>		
+							
+				<td>2026-01-21<br>09:39:56</td>
+				<td><a href="#none;" onclick="chk_cancel(17870542); return false;"><i class="fa fa-trash-o icon_btn" title="??젣"></i></a></td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="data_checked[]" value="17870541"></td>
+				<td>13498</td>
+					
+				<td>
+					2??				<br><span class="lec_pro_type3">?뚮큵</span>
+					
+				</td>
+				
+				<td class="text-left">
+					[?뚮큵] ?좏깮???뚮큵 3遺(紐?11:00~11:50)	
+				</td>
+				<td>1</td>
+			
+				<td>1</td>
+				<td>1</td>
+				<td style="position:relative;">
+					<a href="https://www.dbdbschool.kr/af/ad_app/sin/p/1/sn/2848/mem_num/4025714" class="link_type">源誘쇱?</a>
+					<a href="#none;" id="stu_hp_17870541" style="position:absolute; right:4px; top:0px;" onclick="open_stu_schedule(4025714, 1299683);"><i class="fa fa-list-alt" title="?쒓컙??蹂닿린"></i></a>
+	
+	
+	
+				</td>
+	
+				<td style="position:relative;"><span class="stu_hp_4025714">010-4130-6379<br>010-4130-6379(源???</span>&nbsp;<a href="#none;" id="stu_hp_17870541" style="position:absolute; right:4px; top:0px;" onclick="show_stu_hp(17870541, 4025714 ); return false;"><i class="fa fa-pencil-square " title="?곕씫泥??섏젙"></i></a>
+					<input type="hidden" name="stu_hp_info_17870541" id="stu_hp_info_17870541" class="stu_hp_info_4025714" value="010-4130-6379^源???010-4130-6379">
+				</td>
+					
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299683#lec_pay_17870541" class="link_type">0</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299683#lec_use_cost_17870541" class="link_type">0</a></td>
+				<td>0</td>
+				
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299683#lec_pay_book_17870541" class="link_type">0</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299683#lec_pay_item_17870541" class="link_type">0</a></td>		
+							
+				<td>2026-01-21<br>09:39:20</td>
+				<td><a href="#none;" onclick="chk_cancel(17870541); return false;"><i class="fa fa-trash-o icon_btn" title="??젣"></i></a></td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="data_checked[]" value="17870539"></td>
+				<td>13497</td>
+					
+				<td>
+					2??				<br><span class="lec_pro_type3">?뚮큵</span>
+					
+				</td>
+				
+				<td class="text-left">
+					[?뚮큵] ?좏깮???뚮큵 3遺(紐?11:00~11:50)	
+				</td>
+				<td>2</td>
+			
+				<td>3</td>
+				<td>10</td>
+				<td style="position:relative;">
+					<a href="https://www.dbdbschool.kr/af/ad_app/sin/p/1/sn/2848/mem_num/4025851" class="link_type">?ㅼ???/a>
+					<a href="#none;" id="stu_hp_17870539" style="position:absolute; right:4px; top:0px;" onclick="open_stu_schedule(4025851, 1299683);"><i class="fa fa-list-alt" title="?쒓컙??蹂닿린"></i></a>
+	
+	
+	
+				</td>
+	
+				<td style="position:relative;"><span class="stu_hp_4025851">010-6730-0436<br>010-6730-0436(蹂댄샇??</span>&nbsp;<a href="#none;" id="stu_hp_17870539" style="position:absolute; right:4px; top:0px;" onclick="show_stu_hp(17870539, 4025851 ); return false;"><i class="fa fa-pencil-square " title="?곕씫泥??섏젙"></i></a>
+					<input type="hidden" name="stu_hp_info_17870539" id="stu_hp_info_17870539" class="stu_hp_info_4025851" value="010-6730-0436^^010-6730-0436">
+				</td>
+					
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299683#lec_pay_17870539" class="link_type">0</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299683#lec_use_cost_17870539" class="link_type">0</a></td>
+				<td>0</td>
+				
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299683#lec_pay_book_17870539" class="link_type">0</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299683#lec_pay_item_17870539" class="link_type">0</a></td>		
+							
+				<td>2026-01-21<br>09:38:42</td>
+				<td><a href="#none;" onclick="chk_cancel(17870539); return false;"><i class="fa fa-trash-o icon_btn" title="??젣"></i></a></td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="data_checked[]" value="17867615"></td>
+				<td>13496</td>
+					
+				<td>
+					1??				<br><span class="lec_pro_type1">諛⑷낵??/span>
+					
+				</td>
+				
+				<td class="text-left">
+					[?좏깮?? ?꾩쟾 寃쎌젣????湲?11:00~12:30)	
+				</td>
+				<td>3</td>
+			
+				<td>1</td>
+				<td>3</td>
+				<td style="position:relative;">
+					<a href="https://www.dbdbschool.kr/af/ad_app/sin/p/1/sn/2848/mem_num/4025883" class="link_type">源湲곗쑄</a>
+					<a href="#none;" id="stu_hp_17867615" style="position:absolute; right:4px; top:0px;" onclick="open_stu_schedule(4025883, 1271287);"><i class="fa fa-list-alt" title="?쒓컙??蹂닿린"></i></a>
+	
+	
+	
+				</td>
+	
+				<td style="position:relative;"><span class="stu_hp_4025883">010-8029-3214<br>010-8029-3214(蹂댄샇??</span>&nbsp;<a href="#none;" id="stu_hp_17867615" style="position:absolute; right:4px; top:0px;" onclick="show_stu_hp(17867615, 4025883 ); return false;"><i class="fa fa-pencil-square " title="?곕씫泥??섏젙"></i></a>
+					<input type="hidden" name="stu_hp_info_17867615" id="stu_hp_info_17867615" class="stu_hp_info_4025883" value="010-8029-3214^^010-8029-3214">
+				</td>
+					
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/11/sln/1271287#lec_pay_17867615" class="link_type">0</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/11/sln/1271287#lec_use_cost_17867615" class="link_type">0</a></td>
+				<td>0</td>
+				
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/11/sln/1271287#lec_pay_book_17867615" class="link_type">0</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/11/sln/1271287#lec_pay_item_17867615" class="link_type">0</a></td>		
+							
+				<td>2026-01-20<br>14:36:01</td>
+				<td><a href="#none;" onclick="chk_cancel(17867615); return false;"><i class="fa fa-trash-o icon_btn" title="??젣"></i></a></td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="data_checked[]" value="17866254"></td>
+				<td>13495</td>
+					
+				<td>
+					2??				<br><span class="lec_pro_type1">諛⑷낵??/span>
+					
+				</td>
+				
+				<td class="text-left">
+					[?좏깮?? 而댄벂??2遺(湲?10:50~12:30)	
+				</td>
+				<td>6</td>
+			
+				<td>4</td>
+				<td>4</td>
+				<td style="position:relative;">
+					<a href="https://www.dbdbschool.kr/af/ad_app/sin/p/1/sn/2848/mem_num/4026259" class="link_type">源誘쇱젙</a>
+					<a href="#none;" id="stu_hp_17866254" style="position:absolute; right:4px; top:0px;" onclick="open_stu_schedule(4026259, 1299643);"><i class="fa fa-list-alt" title="?쒓컙??蹂닿린"></i></a>
+	
+	
+	
+				</td>
+	
+				<td style="position:relative;"><span class="stu_hp_4026259">010-8391-9009(蹂댄샇??</span>&nbsp;<a href="#none;" id="stu_hp_17866254" style="position:absolute; right:4px; top:0px;" onclick="show_stu_hp(17866254, 4026259 ); return false;"><i class="fa fa-pencil-square " title="?곕씫泥??섏젙"></i></a>
+					<input type="hidden" name="stu_hp_info_17866254" id="stu_hp_info_17866254" class="stu_hp_info_4026259" value="^^010-8391-9009">
+				</td>
+					
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299643#lec_pay_17866254" class="link_type">31,000</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299643#lec_use_cost_17866254" class="link_type">0</a></td>
+				<td>31,000</td>
+				
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299643#lec_pay_book_17866254" class="link_type">0</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299643#lec_pay_item_17866254" class="link_type">0</a></td>		
+							
+				<td>2026-01-20<br>11:14:22</td>
+				<td><a href="#none;" onclick="chk_cancel(17866254); return false;"><i class="fa fa-trash-o icon_btn" title="??젣"></i></a></td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="data_checked[]" value="17866252"></td>
+				<td>13494</td>
+					
+				<td>
+					2??				<br><span class="lec_pro_type1">諛⑷낵??/span>
+					
+				</td>
+				
+				<td class="text-left">
+					[?좏깮?? 而댄벂??3遺(??紐?11:00~11:50)	
+				</td>
+				<td>6</td>
+			
+				<td>4</td>
+				<td>4</td>
+				<td style="position:relative;">
+					<a href="https://www.dbdbschool.kr/af/ad_app/sin/p/1/sn/2848/mem_num/4026259" class="link_type">源誘쇱젙</a>
+					<a href="#none;" id="stu_hp_17866252" style="position:absolute; right:4px; top:0px;" onclick="open_stu_schedule(4026259, 1299645);"><i class="fa fa-list-alt" title="?쒓컙??蹂닿린"></i></a>
+	
+	
+	
+				</td>
+	
+				<td style="position:relative;"><span class="stu_hp_4026259">010-8391-9009(蹂댄샇??</span>&nbsp;<a href="#none;" id="stu_hp_17866252" style="position:absolute; right:4px; top:0px;" onclick="show_stu_hp(17866252, 4026259 ); return false;"><i class="fa fa-pencil-square " title="?곕씫泥??섏젙"></i></a>
+					<input type="hidden" name="stu_hp_info_17866252" id="stu_hp_info_17866252" class="stu_hp_info_4026259" value="^^010-8391-9009">
+				</td>
+					
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299645#lec_pay_17866252" class="link_type">31,000</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299645#lec_use_cost_17866252" class="link_type">0</a></td>
+				<td>31,000</td>
+				
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299645#lec_pay_book_17866252" class="link_type">0</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299645#lec_pay_item_17866252" class="link_type">0</a></td>		
+							
+				<td>2026-01-20<br>11:14:14</td>
+				<td><a href="#none;" onclick="chk_cancel(17866252); return false;"><i class="fa fa-trash-o icon_btn" title="??젣"></i></a></td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="data_checked[]" value="17864110"></td>
+				<td>13493</td>
+					
+				<td>
+					2??				<br><span class="lec_pro_type2">留욎땄??/span>
+					
+				</td>
+				
+				<td class="text-left">
+					[留욎땄?? 蹂대뱶寃뚯엫 2遺(??10:00~10:50)	
+				</td>
+				<td>1</td>
+			
+				<td>5</td>
+				<td>6</td>
+				<td style="position:relative;">
+					<a href="https://www.dbdbschool.kr/af/ad_app/sin/p/1/sn/2848/mem_num/4025790" class="link_type">諛섎?以</a>
+					<a href="#none;" id="stu_hp_17864110" style="position:absolute; right:4px; top:0px;" onclick="open_stu_schedule(4025790, 1299639);"><i class="fa fa-list-alt" title="?쒓컙??蹂닿린"></i></a>
+	
+	
+	
+				</td>
+	
+				<td style="position:relative;"><span class="stu_hp_4025790">010-6633-4811<br>010-6633-4811(?댁깫蹂?</span>&nbsp;<a href="#none;" id="stu_hp_17864110" style="position:absolute; right:4px; top:0px;" onclick="show_stu_hp(17864110, 4025790 ); return false;"><i class="fa fa-pencil-square " title="?곕씫泥??섏젙"></i></a>
+					<input type="hidden" name="stu_hp_info_17864110" id="stu_hp_info_17864110" class="stu_hp_info_4025790" value="010-6633-4811^?댁깫蹂?010-6633-4811">
+				</td>
+					
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299639#lec_pay_17864110" class="link_type">0</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299639#lec_use_cost_17864110" class="link_type">0</a></td>
+				<td>0</td>
+				
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299639#lec_pay_book_17864110" class="link_type">0</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299639#lec_pay_item_17864110" class="link_type">0</a></td>		
+							
+				<td>2026-01-20<br>10:37:35</td>
+				<td><a href="#none;" onclick="chk_cancel(17864110); return false;"><i class="fa fa-trash-o icon_btn" title="??젣"></i></a></td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="data_checked[]" value="17862046"></td>
+				<td>13492</td>
+					
+				<td>
+					2??				<br><span class="lec_pro_type1">諛⑷낵??/span>
+					
+				</td>
+				
+				<td class="text-left">
+					[?좏깮?? 諛붾몣 2遺(??紐?10:00~10:50)	
+				</td>
+				<td>5</td>
+			
+				<td>3</td>
+				<td>15</td>
+				<td style="position:relative;">
+					<a href="https://www.dbdbschool.kr/af/ad_app/sin/p/1/sn/2848/mem_num/4026140" class="link_type">?댁갔??/a>
+					<a href="#none;" id="stu_hp_17862046" style="position:absolute; right:4px; top:0px;" onclick="open_stu_schedule(4026140, 1299660);"><i class="fa fa-list-alt" title="?쒓컙??蹂닿린"></i></a>
+	
+	
+	
+				</td>
+	
+				<td style="position:relative;"><span class="stu_hp_4026140">010-9207-4560</span>&nbsp;<a href="#none;" id="stu_hp_17862046" style="position:absolute; right:4px; top:0px;" onclick="show_stu_hp(17862046, 4026140 ); return false;"><i class="fa fa-pencil-square " title="?곕씫泥??섏젙"></i></a>
+					<input type="hidden" name="stu_hp_info_17862046" id="stu_hp_info_17862046" class="stu_hp_info_4026140" value="010-9207-4560^^">
+				</td>
+					
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299660#lec_pay_17862046" class="link_type">32,400</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299660#lec_use_cost_17862046" class="link_type">1,000</a></td>
+				<td>31,400</td>
+				
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299660#lec_pay_book_17862046" class="link_type">0</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299660#lec_pay_item_17862046" class="link_type">0</a></td>		
+							
+				<td>2026-01-19<br>21:53:12</td>
+				<td><a href="#none;" onclick="chk_cancel(17862046); return false;"><i class="fa fa-trash-o icon_btn" title="??젣"></i></a></td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="data_checked[]" value="17861993"></td>
+				<td>13491</td>
+					
+				<td>
+					2??				<br><span class="lec_pro_type1">諛⑷낵??/span>
+					
+				</td>
+				
+				<td class="text-left">
+					[?좏깮?? 而댄벂??2遺(湲?10:50~12:30)	
+				</td>
+				<td>1</td>
+			
+				<td>2</td>
+				<td>8</td>
+				<td style="position:relative;">
+					<a href="https://www.dbdbschool.kr/af/ad_app/sin/p/1/sn/2848/mem_num/4025738" class="link_type">?좎???/a>
+					<a href="#none;" id="stu_hp_17861993" style="position:absolute; right:4px; top:0px;" onclick="open_stu_schedule(4025738, 1299643);"><i class="fa fa-list-alt" title="?쒓컙??蹂닿린"></i></a>
+	
+	
+	
+				</td>
+	
+				<td style="position:relative;"><span class="stu_hp_4025738">010-6490-0769<br>010-6490-0769(?뺣떎??</span>&nbsp;<a href="#none;" id="stu_hp_17861993" style="position:absolute; right:4px; top:0px;" onclick="show_stu_hp(17861993, 4025738 ); return false;"><i class="fa fa-pencil-square " title="?곕씫泥??섏젙"></i></a>
+					<input type="hidden" name="stu_hp_info_17861993" id="stu_hp_info_17861993" class="stu_hp_info_4025738" value="010-6490-0769^?뺣떎??010-6490-0769">
+				</td>
+					
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299643#lec_pay_17861993" class="link_type">31,000</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299643#lec_use_cost_17861993" class="link_type">0</a></td>
+				<td>31,000</td>
+				
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299643#lec_pay_book_17861993" class="link_type">0</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299643#lec_pay_item_17861993" class="link_type">0</a></td>		
+							
+				<td>2026-01-19<br>21:40:15</td>
+				<td><a href="#none;" onclick="chk_cancel(17861993); return false;"><i class="fa fa-trash-o icon_btn" title="??젣"></i></a></td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="data_checked[]" value="17861763"></td>
+				<td>13490</td>
+					
+				<td>
+					2??				<br><span class="lec_pro_type1">諛⑷낵??/span>
+					
+				</td>
+				
+				<td class="text-left">
+					[?좏깮?? 而댄벂??1遺(湲?09:00~10:40)	
+				</td>
+				<td>4</td>
+			
+				<td>4</td>
+				<td>11</td>
+				<td style="position:relative;">
+					<a href="https://www.dbdbschool.kr/af/ad_app/sin/p/1/sn/2848/mem_num/4026052" class="link_type">諛깆쑄吏?/a>
+					<a href="#none;" id="stu_hp_17861763" style="position:absolute; right:4px; top:0px;" onclick="open_stu_schedule(4026052, 1299644);"><i class="fa fa-list-alt" title="?쒓컙??蹂닿린"></i></a>
+	
+	
+	
+				</td>
+	
+				<td style="position:relative;"><span class="stu_hp_4026052">010-3896-0405<br>010-6436-8178(諛뺥쁽??</span>&nbsp;<a href="#none;" id="stu_hp_17861763" style="position:absolute; right:4px; top:0px;" onclick="show_stu_hp(17861763, 4026052 ); return false;"><i class="fa fa-pencil-square " title="?곕씫泥??섏젙"></i></a>
+					<input type="hidden" name="stu_hp_info_17861763" id="stu_hp_info_17861763" class="stu_hp_info_4026052" value="010-3896-0405^諛뺥쁽??010-6436-8178">
+				</td>
+					
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299644#lec_pay_17861763" class="link_type">31,000</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299644#lec_use_cost_17861763" class="link_type">0</a></td>
+				<td>31,000</td>
+				
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299644#lec_pay_book_17861763" class="link_type">0</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299644#lec_pay_item_17861763" class="link_type">0</a></td>		
+							
+				<td>2026-01-19<br>20:05:58</td>
+				<td><a href="#none;" onclick="chk_cancel(17861763); return false;"><i class="fa fa-trash-o icon_btn" title="??젣"></i></a></td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="data_checked[]" value="17851961"></td>
+				<td>13489</td>
+					
+				<td>
+					2??				<br><span class="lec_pro_type1">諛⑷낵??/span>
+					
+				</td>
+				
+				<td class="text-left">
+					[?좏깮?? ?댁뒪?ъ툩 2遺(??紐?11:00~11:50)	
+				</td>
+				<td>2</td>
+			
+				<td>3</td>
+				<td>16</td>
+				<td style="position:relative;">
+					<a href="https://www.dbdbschool.kr/af/ad_app/sin/p/1/sn/2848/mem_num/4025857" class="link_type">?댄깭??/a>
+					<a href="#none;" id="stu_hp_17851961" style="position:absolute; right:4px; top:0px;" onclick="open_stu_schedule(4025857, 1299658);"><i class="fa fa-list-alt" title="?쒓컙??蹂닿린"></i></a>
+	
+	
+	
+				</td>
+	
+				<td style="position:relative;"><span class="stu_hp_4025857">010-5899-3252<br>010-7171-3252(源?吏)</span>&nbsp;<a href="#none;" id="stu_hp_17851961" style="position:absolute; right:4px; top:0px;" onclick="show_stu_hp(17851961, 4025857 ); return false;"><i class="fa fa-pencil-square " title="?곕씫泥??섏젙"></i></a>
+					<input type="hidden" name="stu_hp_info_17851961" id="stu_hp_info_17851961" class="stu_hp_info_4025857" value="010-5899-3252^源?吏^010-7171-3252">
+				</td>
+					
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299658#lec_pay_17851961" class="link_type">32,400</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299658#lec_use_cost_17851961" class="link_type">1,000</a></td>
+				<td>31,400</td>
+				
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299658#lec_pay_book_17851961" class="link_type">0</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299658#lec_pay_item_17851961" class="link_type">0</a></td>		
+							
+				<td>2026-01-19<br>11:30:18</td>
+				<td><a href="#none;" onclick="chk_cancel(17851961); return false;"><i class="fa fa-trash-o icon_btn" title="??젣"></i></a></td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="data_checked[]" value="17851197"></td>
+				<td>13488</td>
+					
+				<td>
+					2??				<br><span class="lec_pro_type2">留욎땄??/span>
+					
+				</td>
+				
+				<td class="text-left">
+					[留욎땄?? ?곗엥?먮젅 2遺(紐?10:00~10:50)	
+				</td>
+				<td>1</td>
+			
+				<td>1</td>
+				<td>1</td>
+				<td style="position:relative;">
+					<a href="https://www.dbdbschool.kr/af/ad_app/sin/p/1/sn/2848/mem_num/4025714" class="link_type">源誘쇱?</a>
+					<a href="#none;" id="stu_hp_17851197" style="position:absolute; right:4px; top:0px;" onclick="open_stu_schedule(4025714, 1299637);"><i class="fa fa-list-alt" title="?쒓컙??蹂닿린"></i></a>
+	
+	
+	
+				</td>
+	
+				<td style="position:relative;"><span class="stu_hp_4025714">010-4130-6379<br>010-4130-6379(源???</span>&nbsp;<a href="#none;" id="stu_hp_17851197" style="position:absolute; right:4px; top:0px;" onclick="show_stu_hp(17851197, 4025714 ); return false;"><i class="fa fa-pencil-square " title="?곕씫泥??섏젙"></i></a>
+					<input type="hidden" name="stu_hp_info_17851197" id="stu_hp_info_17851197" class="stu_hp_info_4025714" value="010-4130-6379^源???010-4130-6379">
+				</td>
+					
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299637#lec_pay_17851197" class="link_type">0</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299637#lec_use_cost_17851197" class="link_type">0</a></td>
+				<td>0</td>
+				
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299637#lec_pay_book_17851197" class="link_type">0</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299637#lec_pay_item_17851197" class="link_type">0</a></td>		
+							
+				<td>2026-01-19<br>10:58:39</td>
+				<td><a href="#none;" onclick="chk_cancel(17851197); return false;"><i class="fa fa-trash-o icon_btn" title="??젣"></i></a></td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="data_checked[]" value="17851189"></td>
+				<td>13487</td>
+					
+				<td>
+					2??				<br><span class="lec_pro_type1">諛⑷낵??/span>
+					
+				</td>
+				
+				<td class="text-left">
+					[?좏깮?? 荑좏궎?대젅??2遺(湲?10:50~12:30)	
+				</td>
+				<td>1</td>
+			
+				<td>2</td>
+				<td>4</td>
+				<td style="position:relative;">
+					<a href="https://www.dbdbschool.kr/af/ad_app/sin/p/1/sn/2848/mem_num/4025734" class="link_type">?≪쑄??/a>
+					<a href="#none;" id="stu_hp_17851189" style="position:absolute; right:4px; top:0px;" onclick="open_stu_schedule(4025734, 1299656);"><i class="fa fa-list-alt" title="?쒓컙??蹂닿린"></i></a>
+	
+	
+	
+				</td>
+	
+				<td style="position:relative;"><span class="stu_hp_4025734">010-4907-2133<br>010-4907-2133(媛뺤???</span>&nbsp;<a href="#none;" id="stu_hp_17851189" style="position:absolute; right:4px; top:0px;" onclick="show_stu_hp(17851189, 4025734 ); return false;"><i class="fa fa-pencil-square " title="?곕씫泥??섏젙"></i></a>
+					<input type="hidden" name="stu_hp_info_17851189" id="stu_hp_info_17851189" class="stu_hp_info_4025734" value="010-4907-2133^媛뺤???010-4907-2133">
+				</td>
+					
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299656#lec_pay_17851189" class="link_type">32,400</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299656#lec_use_cost_17851189" class="link_type">1,000</a></td>
+				<td>31,400</td>
+				
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299656#lec_pay_book_17851189" class="link_type">0</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299656#lec_pay_item_17851189" class="link_type">10,000</a></td>		
+							
+				<td>2026-01-19<br>10:57:29</td>
+				<td><a href="#none;" onclick="chk_cancel(17851189); return false;"><i class="fa fa-trash-o icon_btn" title="??젣"></i></a></td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="data_checked[]" value="17851015"></td>
+				<td>13486</td>
+					
+				<td>
+					2??				<br><span class="lec_pro_type1">諛⑷낵??/span>
+					
+				</td>
+				
+				<td class="text-left">
+					[?좏깮?? 諛붿씠?щ┛ 2遺(??紐?10:00~10:50)	
+				</td>
+				<td>2</td>
+			
+				<td>2</td>
+				<td>10</td>
+				<td style="position:relative;">
+					<a href="https://www.dbdbschool.kr/af/ad_app/sin/p/1/sn/2848/mem_num/4025833" class="link_type">諛뺤콈??/a>
+					<a href="#none;" id="stu_hp_17851015" style="position:absolute; right:4px; top:0px;" onclick="open_stu_schedule(4025833, 1299666);"><i class="fa fa-list-alt" title="?쒓컙??蹂닿린"></i></a>
+	
+	
+	
+				</td>
+	
+				<td style="position:relative;"><span class="stu_hp_4025833">010-2710-4012</span>&nbsp;<a href="#none;" id="stu_hp_17851015" style="position:absolute; right:4px; top:0px;" onclick="show_stu_hp(17851015, 4025833 ); return false;"><i class="fa fa-pencil-square " title="?곕씫泥??섏젙"></i></a>
+					<input type="hidden" name="stu_hp_info_17851015" id="stu_hp_info_17851015" class="stu_hp_info_4025833" value="010-2710-4012^^">
+				</td>
+					
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299666#lec_pay_17851015" class="link_type">35,680</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299666#lec_use_cost_17851015" class="link_type">1,000</a></td>
+				<td>34,680</td>
+				
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299666#lec_pay_book_17851015" class="link_type">0</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299666#lec_pay_item_17851015" class="link_type">0</a></td>		
+							
+				<td>2026-01-19<br>10:25:41</td>
+				<td><a href="#none;" onclick="chk_cancel(17851015); return false;"><i class="fa fa-trash-o icon_btn" title="??젣"></i></a></td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="data_checked[]" value="17850302"></td>
+				<td>13485</td>
+					
+				<td>
+					2??				<br><span class="lec_pro_type1">諛⑷낵??/span>
+					
+				</td>
+				
+				<td class="text-left">
+					[?좏깮?? 誘몄닠 1遺(????09:00~09:50)	
+				</td>
+				<td>5</td>
+			
+				<td>1</td>
+				<td>9</td>
+				<td style="position:relative;">
+					<a href="https://www.dbdbschool.kr/af/ad_app/sin/p/1/sn/2848/mem_num/4026091" class="link_type">?묒젙??/a>
+					<a href="#none;" id="stu_hp_17850302" style="position:absolute; right:4px; top:0px;" onclick="open_stu_schedule(4026091, 1299673);"><i class="fa fa-list-alt" title="?쒓컙??蹂닿린"></i></a>
+	
+	
+	
+				</td>
+	
+				<td style="position:relative;"><span class="stu_hp_4026091">010-3970-6184<br>010-6601-6201(諛뺤쑀由?</span>&nbsp;<a href="#none;" id="stu_hp_17850302" style="position:absolute; right:4px; top:0px;" onclick="show_stu_hp(17850302, 4026091 ); return false;"><i class="fa fa-pencil-square " title="?곕씫泥??섏젙"></i></a>
+					<input type="hidden" name="stu_hp_info_17850302" id="stu_hp_info_17850302" class="stu_hp_info_4026091" value="010-3970-6184^諛뺤쑀由?010-6601-6201">
+				</td>
+					
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299673#lec_pay_17850302" class="link_type">32,400</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299673#lec_use_cost_17850302" class="link_type">1,000</a></td>
+				<td>31,400</td>
+				
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299673#lec_pay_book_17850302" class="link_type">0</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299673#lec_pay_item_17850302" class="link_type">4,300</a></td>		
+							
+				<td>2026-01-19<br>09:41:25</td>
+				<td><a href="#none;" onclick="chk_cancel(17850302); return false;"><i class="fa fa-trash-o icon_btn" title="??젣"></i></a></td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="data_checked[]" value="17850281"></td>
+				<td>13484</td>
+					
+				<td>
+					2??				<br><span class="lec_pro_type1">諛⑷낵??/span>
+					
+				</td>
+				
+				<td class="text-left">
+					[?좏깮?? ?쒕Ц 1遺(????09:00~09:50)	
+				</td>
+				<td>3</td>
+			
+				<td>1</td>
+				<td>14</td>
+				<td style="position:relative;">
+					<a href="https://www.dbdbschool.kr/af/ad_app/sin/p/1/sn/2848/mem_num/4025894" class="link_type">?쒖?</a>
+					<a href="#none;" id="stu_hp_17850281" style="position:absolute; right:4px; top:0px;" onclick="open_stu_schedule(4025894, 1299675);"><i class="fa fa-list-alt" title="?쒓컙??蹂닿린"></i></a>
+	
+	
+	
+				</td>
+	
+				<td style="position:relative;"><span class="stu_hp_4025894">010-8603-3985<br>010-8603-3985(?묐?寃?</span>&nbsp;<a href="#none;" id="stu_hp_17850281" style="position:absolute; right:4px; top:0px;" onclick="show_stu_hp(17850281, 4025894 ); return false;"><i class="fa fa-pencil-square " title="?곕씫泥??섏젙"></i></a>
+					<input type="hidden" name="stu_hp_info_17850281" id="stu_hp_info_17850281" class="stu_hp_info_4025894" value="010-8603-3985^?묐?寃?010-8603-3985">
+				</td>
+					
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299675#lec_pay_17850281" class="link_type">32,400</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299675#lec_use_cost_17850281" class="link_type">1,000</a></td>
+				<td>31,400</td>
+				
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299675#lec_pay_book_17850281" class="link_type">0</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299675#lec_pay_item_17850281" class="link_type">0</a></td>		
+							
+				<td>2026-01-19<br>09:38:20</td>
+				<td><a href="#none;" onclick="chk_cancel(17850281); return false;"><i class="fa fa-trash-o icon_btn" title="??젣"></i></a></td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="data_checked[]" value="17849453"></td>
+				<td>13483</td>
+					
+				<td>
+					2??				<br><span class="lec_pro_type1">諛⑷낵??/span>
+					
+				</td>
+				
+				<td class="text-left">
+					[?좏깮?? 而댄벂??1遺(????09:00~09:50)	
+				</td>
+				<td>1</td>
+			
+				<td>3</td>
+				<td>8</td>
+				<td style="position:relative;">
+					<a href="https://www.dbdbschool.kr/af/ad_app/sin/p/1/sn/2848/mem_num/4025756" class="link_type">諛뺤떆??/a>
+					<a href="#none;" id="stu_hp_17849453" style="position:absolute; right:4px; top:0px;" onclick="open_stu_schedule(4025756, 1299650);"><i class="fa fa-list-alt" title="?쒓컙??蹂닿린"></i></a>
+	
+	
+	
+				</td>
+	
+				<td style="position:relative;"><span class="stu_hp_4025756">010-3165-5761<br>010-3165-5761(蹂댄샇??</span>&nbsp;<a href="#none;" id="stu_hp_17849453" style="position:absolute; right:4px; top:0px;" onclick="show_stu_hp(17849453, 4025756 ); return false;"><i class="fa fa-pencil-square " title="?곕씫泥??섏젙"></i></a>
+					<input type="hidden" name="stu_hp_info_17849453" id="stu_hp_info_17849453" class="stu_hp_info_4025756" value="010-3165-5761^^010-3165-5761">
+				</td>
+					
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299650#lec_pay_17849453" class="link_type">31,000</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299650#lec_use_cost_17849453" class="link_type">0</a></td>
+				<td>31,000</td>
+				
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299650#lec_pay_book_17849453" class="link_type">0</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299650#lec_pay_item_17849453" class="link_type">0</a></td>		
+							
+				<td>2026-01-19<br>09:10:13</td>
+				<td><a href="#none;" onclick="chk_cancel(17849453); return false;"><i class="fa fa-trash-o icon_btn" title="??젣"></i></a></td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="data_checked[]" value="17848411"></td>
+				<td>13482</td>
+					
+				<td>
+					2??				<br><span class="lec_pro_type1">諛⑷낵??/span>
+					
+				</td>
+				
+				<td class="text-left">
+					[?좏깮?? 而댄벂??1遺(??紐?09:00~09:50)	
+				</td>
+				<td>3</td>
+			
+				<td>3</td>
+				<td>14</td>
+				<td style="position:relative;">
+					<a href="https://www.dbdbschool.kr/af/ad_app/sin/p/1/sn/2848/mem_num/4025934" class="link_type">?대떎??/a>
+					<a href="#none;" id="stu_hp_17848411" style="position:absolute; right:4px; top:0px;" onclick="open_stu_schedule(4025934, 1299647);"><i class="fa fa-list-alt" title="?쒓컙??蹂닿린"></i></a>
+	
+	
+	
+				</td>
+	
+				<td style="position:relative;"><span class="stu_hp_4025934">010-6313-0474<br>010-6313-0474(蹂댄샇??</span>&nbsp;<a href="#none;" id="stu_hp_17848411" style="position:absolute; right:4px; top:0px;" onclick="show_stu_hp(17848411, 4025934 ); return false;"><i class="fa fa-pencil-square " title="?곕씫泥??섏젙"></i></a>
+					<input type="hidden" name="stu_hp_info_17848411" id="stu_hp_info_17848411" class="stu_hp_info_4025934" value="010-6313-0474^^010-6313-0474">
+				</td>
+					
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299647#lec_pay_17848411" class="link_type">31,000</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299647#lec_use_cost_17848411" class="link_type">0</a></td>
+				<td>31,000</td>
+				
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299647#lec_pay_book_17848411" class="link_type">0</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299647#lec_pay_item_17848411" class="link_type">0</a></td>		
+							
+				<td>2026-01-19<br>08:12:42</td>
+				<td><a href="#none;" onclick="chk_cancel(17848411); return false;"><i class="fa fa-trash-o icon_btn" title="??젣"></i></a></td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="data_checked[]" value="17848406"></td>
+				<td>13481</td>
+					
+				<td>
+					2??				<br><span class="lec_pro_type1">諛⑷낵??/span>
+					
+				</td>
+				
+				<td class="text-left">
+					[?좏깮?? 諛붾몣 1遺(??紐?09:00~09:50)	
+				</td>
+				<td>2</td>
+			
+				<td>1</td>
+				<td>10</td>
+				<td style="position:relative;">
+					<a href="https://www.dbdbschool.kr/af/ad_app/sin/p/1/sn/2848/mem_num/4025813" class="link_type">?덇꼍紐?/a>
+					<a href="#none;" id="stu_hp_17848406" style="position:absolute; right:4px; top:0px;" onclick="open_stu_schedule(4025813, 1299661);"><i class="fa fa-list-alt" title="?쒓컙??蹂닿린"></i></a>
+	
+	
+	
+				</td>
+	
+				<td style="position:relative;"><span class="stu_hp_4025813">010-8010-0503<br>010-8010-0503(蹂댄샇??</span>&nbsp;<a href="#none;" id="stu_hp_17848406" style="position:absolute; right:4px; top:0px;" onclick="show_stu_hp(17848406, 4025813 ); return false;"><i class="fa fa-pencil-square " title="?곕씫泥??섏젙"></i></a>
+					<input type="hidden" name="stu_hp_info_17848406" id="stu_hp_info_17848406" class="stu_hp_info_4025813" value="010-8010-0503^^010-8010-0503">
+				</td>
+					
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299661#lec_pay_17848406" class="link_type">0</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299661#lec_use_cost_17848406" class="link_type">0</a></td>
+				<td>0</td>
+				
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299661#lec_pay_book_17848406" class="link_type">13,000</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299661#lec_pay_item_17848406" class="link_type">0</a></td>		
+							
+				<td>2026-01-19<br>06:49:51</td>
+				<td><a href="#none;" onclick="chk_cancel(17848406); return false;"><i class="fa fa-trash-o icon_btn" title="??젣"></i></a></td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="data_checked[]" value="17848381"></td>
+				<td>13480</td>
+					
+				<td>
+					2??				<br><span class="lec_pro_type1">諛⑷낵??/span>
+					
+				</td>
+				
+				<td class="text-left">
+					[?좏깮?? 誘몄닠 2遺(????10:00~10:50)	
+				</td>
+				<td>4</td>
+			
+				<td>2</td>
+				<td>10</td>
+				<td style="position:relative;">
+					<a href="https://www.dbdbschool.kr/af/ad_app/sin/p/1/sn/2848/mem_num/4026008" class="link_type">?댁냼鍮?/a>
+					<a href="#none;" id="stu_hp_17848381" style="position:absolute; right:4px; top:0px;" onclick="open_stu_schedule(4026008, 1299672);"><i class="fa fa-list-alt" title="?쒓컙??蹂닿린"></i></a>
+	
+	
+	
+				</td>
+	
+				<td style="position:relative;"><span class="stu_hp_4026008">010-3611-7781</span>&nbsp;<a href="#none;" id="stu_hp_17848381" style="position:absolute; right:4px; top:0px;" onclick="show_stu_hp(17848381, 4026008 ); return false;"><i class="fa fa-pencil-square " title="?곕씫泥??섏젙"></i></a>
+					<input type="hidden" name="stu_hp_info_17848381" id="stu_hp_info_17848381" class="stu_hp_info_4026008" value="010-3611-7781^^">
+				</td>
+					
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299672#lec_pay_17848381" class="link_type">32,400</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299672#lec_use_cost_17848381" class="link_type">1,000</a></td>
+				<td>31,400</td>
+				
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299672#lec_pay_book_17848381" class="link_type">0</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299672#lec_pay_item_17848381" class="link_type">4,300</a></td>		
+							
+				<td>2026-01-18<br>22:24:38</td>
+				<td><a href="#none;" onclick="chk_cancel(17848381); return false;"><i class="fa fa-trash-o icon_btn" title="??젣"></i></a></td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="data_checked[]" value="17848380"></td>
+				<td>13479</td>
+					
+				<td>
+					2??				<br><span class="lec_pro_type1">諛⑷낵??/span>
+					
+				</td>
+				
+				<td class="text-left">
+					[?좏깮?? 誘몄닠 2遺(????10:00~10:50)	
+				</td>
+				<td>3</td>
+			
+				<td>3</td>
+				<td>10</td>
+				<td style="position:relative;">
+					<a href="https://www.dbdbschool.kr/af/ad_app/sin/p/1/sn/2848/mem_num/4025930" class="link_type">諛뺣씪?</a>
+					<a href="#none;" id="stu_hp_17848380" style="position:absolute; right:4px; top:0px;" onclick="open_stu_schedule(4025930, 1299672);"><i class="fa fa-list-alt" title="?쒓컙??蹂닿린"></i></a>
+	
+	
+	
+				</td>
+	
+				<td style="position:relative;"><span class="stu_hp_4025930">010-8606-8739</span>&nbsp;<a href="#none;" id="stu_hp_17848380" style="position:absolute; right:4px; top:0px;" onclick="show_stu_hp(17848380, 4025930 ); return false;"><i class="fa fa-pencil-square " title="?곕씫泥??섏젙"></i></a>
+					<input type="hidden" name="stu_hp_info_17848380" id="stu_hp_info_17848380" class="stu_hp_info_4025930" value="010-8606-8739^^">
+				</td>
+					
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299672#lec_pay_17848380" class="link_type">32,400</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299672#lec_use_cost_17848380" class="link_type">1,000</a></td>
+				<td>31,400</td>
+				
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299672#lec_pay_book_17848380" class="link_type">0</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299672#lec_pay_item_17848380" class="link_type">4,300</a></td>		
+							
+				<td>2026-01-18<br>22:24:05</td>
+				<td><a href="#none;" onclick="chk_cancel(17848380); return false;"><i class="fa fa-trash-o icon_btn" title="??젣"></i></a></td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="data_checked[]" value="17848378"></td>
+				<td>13478</td>
+					
+				<td>
+					2??				<br><span class="lec_pro_type1">諛⑷낵??/span>
+					
+				</td>
+				
+				<td class="text-left">
+					[?좏깮?? 誘몄닠 1遺(????09:00~09:50)	
+				</td>
+				<td>2</td>
+			
+				<td>1</td>
+				<td>6</td>
+				<td style="position:relative;">
+					<a href="https://www.dbdbschool.kr/af/ad_app/sin/p/1/sn/2848/mem_num/4025809" class="link_type">諛뺤뿬??/a>
+					<a href="#none;" id="stu_hp_17848378" style="position:absolute; right:4px; top:0px;" onclick="open_stu_schedule(4025809, 1299673);"><i class="fa fa-list-alt" title="?쒓컙??蹂닿린"></i></a>
+	
+	
+	
+				</td>
+	
+				<td style="position:relative;"><span class="stu_hp_4025809">010-3845-2000<br>010-3845-2000(諛뺤???</span>&nbsp;<a href="#none;" id="stu_hp_17848378" style="position:absolute; right:4px; top:0px;" onclick="show_stu_hp(17848378, 4025809 ); return false;"><i class="fa fa-pencil-square " title="?곕씫泥??섏젙"></i></a>
+					<input type="hidden" name="stu_hp_info_17848378" id="stu_hp_info_17848378" class="stu_hp_info_4025809" value="010-3845-2000^諛뺤???010-3845-2000">
+				</td>
+					
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299673#lec_pay_17848378" class="link_type">32,400</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299673#lec_use_cost_17848378" class="link_type">1,000</a></td>
+				<td>31,400</td>
+				
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299673#lec_pay_book_17848378" class="link_type">0</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299673#lec_pay_item_17848378" class="link_type">4,300</a></td>		
+							
+				<td>2026-01-18<br>22:16:56</td>
+				<td><a href="#none;" onclick="chk_cancel(17848378); return false;"><i class="fa fa-trash-o icon_btn" title="??젣"></i></a></td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="data_checked[]" value="17847437"></td>
+				<td>13477</td>
+					
+				<td>
+					2??				<br><span class="lec_pro_type3">?뚮큵</span>
+					
+				</td>
+				
+				<td class="text-left">
+					[?뚮큵] ?좏깮???뚮큵 1遺(紐?09:00~09:50)	
+				</td>
+				<td>1</td>
+			
+				<td>1</td>
+				<td>8</td>
+				<td style="position:relative;">
+					<a href="https://www.dbdbschool.kr/af/ad_app/sin/p/1/sn/2848/mem_num/4025721" class="link_type">?덉떆??/a>
+					<a href="#none;" id="stu_hp_17847437" style="position:absolute; right:4px; top:0px;" onclick="open_stu_schedule(4025721, 1299685);"><i class="fa fa-list-alt" title="?쒓컙??蹂닿린"></i></a>
+	
+	
+	
+				</td>
+	
+				<td style="position:relative;"><span class="stu_hp_4025721">010-4006-5728<br>010-4006-5728(源紐낆젙)</span>&nbsp;<a href="#none;" id="stu_hp_17847437" style="position:absolute; right:4px; top:0px;" onclick="show_stu_hp(17847437, 4025721 ); return false;"><i class="fa fa-pencil-square " title="?곕씫泥??섏젙"></i></a>
+					<input type="hidden" name="stu_hp_info_17847437" id="stu_hp_info_17847437" class="stu_hp_info_4025721" value="010-4006-5728^源紐낆젙^010-4006-5728">
+				</td>
+					
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299685#lec_pay_17847437" class="link_type">0</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299685#lec_use_cost_17847437" class="link_type">0</a></td>
+				<td>0</td>
+				
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299685#lec_pay_book_17847437" class="link_type">0</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299685#lec_pay_item_17847437" class="link_type">0</a></td>		
+							
+				<td>2026-01-18<br>14:53:28</td>
+				<td><a href="#none;" onclick="chk_cancel(17847437); return false;"><i class="fa fa-trash-o icon_btn" title="??젣"></i></a></td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="data_checked[]" value="17847436"></td>
+				<td>13476</td>
+					
+				<td>
+					2??				<br><span class="lec_pro_type3">?뚮큵</span>
+					
+				</td>
+				
+				<td class="text-left">
+					[?뚮큵] ?좏깮???뚮큵 2遺(??10:00~10:50)	
+				</td>
+				<td>1</td>
+			
+				<td>1</td>
+				<td>8</td>
+				<td style="position:relative;">
+					<a href="https://www.dbdbschool.kr/af/ad_app/sin/p/1/sn/2848/mem_num/4025721" class="link_type">?덉떆??/a>
+					<a href="#none;" id="stu_hp_17847436" style="position:absolute; right:4px; top:0px;" onclick="open_stu_schedule(4025721, 1299687);"><i class="fa fa-list-alt" title="?쒓컙??蹂닿린"></i></a>
+	
+	
+	
+				</td>
+	
+				<td style="position:relative;"><span class="stu_hp_4025721">010-4006-5728<br>010-4006-5728(源紐낆젙)</span>&nbsp;<a href="#none;" id="stu_hp_17847436" style="position:absolute; right:4px; top:0px;" onclick="show_stu_hp(17847436, 4025721 ); return false;"><i class="fa fa-pencil-square " title="?곕씫泥??섏젙"></i></a>
+					<input type="hidden" name="stu_hp_info_17847436" id="stu_hp_info_17847436" class="stu_hp_info_4025721" value="010-4006-5728^源紐낆젙^010-4006-5728">
+				</td>
+					
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299687#lec_pay_17847436" class="link_type">0</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299687#lec_use_cost_17847436" class="link_type">0</a></td>
+				<td>0</td>
+				
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299687#lec_pay_book_17847436" class="link_type">0</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299687#lec_pay_item_17847436" class="link_type">0</a></td>		
+							
+				<td>2026-01-18<br>14:52:45</td>
+				<td><a href="#none;" onclick="chk_cancel(17847436); return false;"><i class="fa fa-trash-o icon_btn" title="??젣"></i></a></td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="data_checked[]" value="17847435"></td>
+				<td>13475</td>
+					
+				<td>
+					2??				<br><span class="lec_pro_type3">?뚮큵</span>
+					
+				</td>
+				
+				<td class="text-left">
+					[?뚮큵] ?좏깮???뚮큵 2遺(??10:00~10:50)	
+				</td>
+				<td>1</td>
+			
+				<td>1</td>
+				<td>8</td>
+				<td style="position:relative;">
+					<a href="https://www.dbdbschool.kr/af/ad_app/sin/p/1/sn/2848/mem_num/4025721" class="link_type">?덉떆??/a>
+					<a href="#none;" id="stu_hp_17847435" style="position:absolute; right:4px; top:0px;" onclick="open_stu_schedule(4025721, 1299693);"><i class="fa fa-list-alt" title="?쒓컙??蹂닿린"></i></a>
+	
+	
+	
+				</td>
+	
+				<td style="position:relative;"><span class="stu_hp_4025721">010-4006-5728<br>010-4006-5728(源紐낆젙)</span>&nbsp;<a href="#none;" id="stu_hp_17847435" style="position:absolute; right:4px; top:0px;" onclick="show_stu_hp(17847435, 4025721 ); return false;"><i class="fa fa-pencil-square " title="?곕씫泥??섏젙"></i></a>
+					<input type="hidden" name="stu_hp_info_17847435" id="stu_hp_info_17847435" class="stu_hp_info_4025721" value="010-4006-5728^源紐낆젙^010-4006-5728">
+				</td>
+					
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299693#lec_pay_17847435" class="link_type">0</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299693#lec_use_cost_17847435" class="link_type">0</a></td>
+				<td>0</td>
+				
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299693#lec_pay_book_17847435" class="link_type">0</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299693#lec_pay_item_17847435" class="link_type">0</a></td>		
+							
+				<td>2026-01-18<br>14:52:41</td>
+				<td><a href="#none;" onclick="chk_cancel(17847435); return false;"><i class="fa fa-trash-o icon_btn" title="??젣"></i></a></td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="data_checked[]" value="17846863"></td>
+				<td>13474</td>
+					
+				<td>
+					2??				<br><span class="lec_pro_type1">諛⑷낵??/span>
+					
+				</td>
+				
+				<td class="text-left">
+					[?좏깮?? 而댄벂??1遺(??紐?09:00~09:50)	
+				</td>
+				<td>3</td>
+			
+				<td>5</td>
+				<td>8</td>
+				<td style="position:relative;">
+					<a href="https://www.dbdbschool.kr/af/ad_app/sin/p/1/sn/2848/mem_num/4025966" class="link_type">?먯쑄吏</a>
+					<a href="#none;" id="stu_hp_17846863" style="position:absolute; right:4px; top:0px;" onclick="open_stu_schedule(4025966, 1299647);"><i class="fa fa-list-alt" title="?쒓컙??蹂닿린"></i></a>
+	
+	
+	
+				</td>
+	
+				<td style="position:relative;"><span class="stu_hp_4025966">010-5085-4275<br>010-8578-4275(?뺤닔遺?</span>&nbsp;<a href="#none;" id="stu_hp_17846863" style="position:absolute; right:4px; top:0px;" onclick="show_stu_hp(17846863, 4025966 ); return false;"><i class="fa fa-pencil-square " title="?곕씫泥??섏젙"></i></a>
+					<input type="hidden" name="stu_hp_info_17846863" id="stu_hp_info_17846863" class="stu_hp_info_4025966" value="010-5085-4275^?뺤닔遺?010-8578-4275">
+				</td>
+					
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299647#lec_pay_17846863" class="link_type">31,000</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299647#lec_use_cost_17846863" class="link_type">0</a></td>
+				<td>31,000</td>
+				
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299647#lec_pay_book_17846863" class="link_type">0</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299647#lec_pay_item_17846863" class="link_type">0</a></td>		
+							
+				<td>2026-01-17<br>12:05:04</td>
+				<td><a href="#none;" onclick="chk_cancel(17846863); return false;"><i class="fa fa-trash-o icon_btn" title="??젣"></i></a></td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="data_checked[]" value="17846859"></td>
+				<td>13473</td>
+					
+				<td>
+					2??				<br><span class="lec_pro_type1">諛⑷낵??/span>
+					
+				</td>
+				
+				<td class="text-left">
+					[?좏깮?? 而댄벂??3遺(??紐?11:00~11:50)	
+				</td>
+				<td>5</td>
+			
+				<td>5</td>
+				<td>5</td>
+				<td style="position:relative;">
+					<a href="https://www.dbdbschool.kr/af/ad_app/sin/p/1/sn/2848/mem_num/4026172" class="link_type">源?밴린</a>
+					<a href="#none;" id="stu_hp_17846859" style="position:absolute; right:4px; top:0px;" onclick="open_stu_schedule(4026172, 1299645);"><i class="fa fa-list-alt" title="?쒓컙??蹂닿린"></i></a>
+	
+	
+	
+				</td>
+	
+				<td style="position:relative;"><span class="stu_hp_4026172">010-4569-4146<br>010-4569-4146(源?좊?)</span>&nbsp;<a href="#none;" id="stu_hp_17846859" style="position:absolute; right:4px; top:0px;" onclick="show_stu_hp(17846859, 4026172 ); return false;"><i class="fa fa-pencil-square " title="?곕씫泥??섏젙"></i></a>
+					<input type="hidden" name="stu_hp_info_17846859" id="stu_hp_info_17846859" class="stu_hp_info_4026172" value="010-4569-4146^源?좊?^010-4569-4146">
+				</td>
+					
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299645#lec_pay_17846859" class="link_type">31,000</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299645#lec_use_cost_17846859" class="link_type">0</a></td>
+				<td>31,000</td>
+				
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299645#lec_pay_book_17846859" class="link_type">0</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299645#lec_pay_item_17846859" class="link_type">0</a></td>		
+							
+				<td>2026-01-17<br>11:19:40</td>
+				<td><a href="#none;" onclick="chk_cancel(17846859); return false;"><i class="fa fa-trash-o icon_btn" title="??젣"></i></a></td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="data_checked[]" value="17846858"></td>
+				<td>13472</td>
+					
+				<td>
+					2??				<br><span class="lec_pro_type1">諛⑷낵??/span>
+					
+				</td>
+				
+				<td class="text-left">
+					[?좏깮?? 而댄벂??3遺(????11:00~11:50)	
+				</td>
+				<td>5</td>
+			
+				<td>5</td>
+				<td>5</td>
+				<td style="position:relative;">
+					<a href="https://www.dbdbschool.kr/af/ad_app/sin/p/1/sn/2848/mem_num/4026172" class="link_type">源?밴린</a>
+					<a href="#none;" id="stu_hp_17846858" style="position:absolute; right:4px; top:0px;" onclick="open_stu_schedule(4026172, 1299648);"><i class="fa fa-list-alt" title="?쒓컙??蹂닿린"></i></a>
+	
+	
+	
+				</td>
+	
+				<td style="position:relative;"><span class="stu_hp_4026172">010-4569-4146<br>010-4569-4146(源?좊?)</span>&nbsp;<a href="#none;" id="stu_hp_17846858" style="position:absolute; right:4px; top:0px;" onclick="show_stu_hp(17846858, 4026172 ); return false;"><i class="fa fa-pencil-square " title="?곕씫泥??섏젙"></i></a>
+					<input type="hidden" name="stu_hp_info_17846858" id="stu_hp_info_17846858" class="stu_hp_info_4026172" value="010-4569-4146^源?좊?^010-4569-4146">
+				</td>
+					
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299648#lec_pay_17846858" class="link_type">31,000</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299648#lec_use_cost_17846858" class="link_type">0</a></td>
+				<td>31,000</td>
+				
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299648#lec_pay_book_17846858" class="link_type">0</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299648#lec_pay_item_17846858" class="link_type">0</a></td>		
+							
+				<td>2026-01-17<br>11:19:40</td>
+				<td><a href="#none;" onclick="chk_cancel(17846858); return false;"><i class="fa fa-trash-o icon_btn" title="??젣"></i></a></td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="data_checked[]" value="17846850"></td>
+				<td>13471</td>
+					
+				<td>
+					2??				<br><span class="lec_pro_type2">留욎땄??/span>
+					
+				</td>
+				
+				<td class="text-left">
+					[留욎땄?? 蹂대뱶寃뚯엫 2遺(??10:00~10:50)	
+				</td>
+				<td>1</td>
+			
+				<td>1</td>
+				<td>17</td>
+				<td style="position:relative;">
+					<a href="https://www.dbdbschool.kr/af/ad_app/sin/p/1/sn/2848/mem_num/4025730" class="link_type">?띿쑀二?/a>
+					<a href="#none;" id="stu_hp_17846850" style="position:absolute; right:4px; top:0px;" onclick="open_stu_schedule(4025730, 1299639);"><i class="fa fa-list-alt" title="?쒓컙??蹂닿린"></i></a>
+	
+	
+	
+				</td>
+	
+				<td style="position:relative;"><span class="stu_hp_4025730">010-3224-6206<br>010-3224-6206(蹂댄샇??</span>&nbsp;<a href="#none;" id="stu_hp_17846850" style="position:absolute; right:4px; top:0px;" onclick="show_stu_hp(17846850, 4025730 ); return false;"><i class="fa fa-pencil-square " title="?곕씫泥??섏젙"></i></a>
+					<input type="hidden" name="stu_hp_info_17846850" id="stu_hp_info_17846850" class="stu_hp_info_4025730" value="010-3224-6206^^010-3224-6206">
+				</td>
+					
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299639#lec_pay_17846850" class="link_type">0</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299639#lec_use_cost_17846850" class="link_type">0</a></td>
+				<td>0</td>
+				
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299639#lec_pay_book_17846850" class="link_type">0</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299639#lec_pay_item_17846850" class="link_type">0</a></td>		
+							
+				<td>2026-01-17<br>10:26:42</td>
+				<td><a href="#none;" onclick="chk_cancel(17846850); return false;"><i class="fa fa-trash-o icon_btn" title="??젣"></i></a></td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="data_checked[]" value="17846829"></td>
+				<td>13470</td>
+					
+				<td>
+					2??				<br><span class="lec_pro_type1">諛⑷낵??/span>
+					
+				</td>
+				
+				<td class="text-left">
+					[?좏깮?? 諛⑹넚?꾩뒪 1遺(湲?09:00~09:50)	
+				</td>
+				<td>2</td>
+			
+				<td>4</td>
+				<td>13</td>
+				<td style="position:relative;">
+					<a href="https://www.dbdbschool.kr/af/ad_app/sin/p/1/sn/2848/mem_num/4025875" class="link_type">?뺤꽌??/a>
+					<a href="#none;" id="stu_hp_17846829" style="position:absolute; right:4px; top:0px;" onclick="open_stu_schedule(4025875, 1299653);"><i class="fa fa-list-alt" title="?쒓컙??蹂닿린"></i></a>
+	
+	
+	
+				</td>
+	
+				<td style="position:relative;"><span class="stu_hp_4025875">010-3209-3020<br>010-3209-3020(蹂댄샇??</span>&nbsp;<a href="#none;" id="stu_hp_17846829" style="position:absolute; right:4px; top:0px;" onclick="show_stu_hp(17846829, 4025875 ); return false;"><i class="fa fa-pencil-square " title="?곕씫泥??섏젙"></i></a>
+					<input type="hidden" name="stu_hp_info_17846829" id="stu_hp_info_17846829" class="stu_hp_info_4025875" value="010-3209-3020^^010-3209-3020">
+				</td>
+					
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299653#lec_pay_17846829" class="link_type">22,680</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299653#lec_use_cost_17846829" class="link_type">1,000</a></td>
+				<td>21,680</td>
+				
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299653#lec_pay_book_17846829" class="link_type">0</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299653#lec_pay_item_17846829" class="link_type">0</a></td>		
+							
+				<td>2026-01-16<br>22:39:00</td>
+				<td><a href="#none;" onclick="chk_cancel(17846829); return false;"><i class="fa fa-trash-o icon_btn" title="??젣"></i></a></td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="data_checked[]" value="17846827"></td>
+				<td>13469</td>
+					
+				<td>
+					2??				<br><span class="lec_pro_type2">留욎땄??/span>
+					
+				</td>
+				
+				<td class="text-left">
+					[留욎땄?? 醫낆씠?묎린 2遺(????10:00~10:50)	
+				</td>
+				<td>2</td>
+			
+				<td>4</td>
+				<td>13</td>
+				<td style="position:relative;">
+					<a href="https://www.dbdbschool.kr/af/ad_app/sin/p/1/sn/2848/mem_num/4025875" class="link_type">?뺤꽌??/a>
+					<a href="#none;" id="stu_hp_17846827" style="position:absolute; right:4px; top:0px;" onclick="open_stu_schedule(4025875, 1299641);"><i class="fa fa-list-alt" title="?쒓컙??蹂닿린"></i></a>
+	
+	
+	
+				</td>
+	
+				<td style="position:relative;"><span class="stu_hp_4025875">010-3209-3020<br>010-3209-3020(蹂댄샇??</span>&nbsp;<a href="#none;" id="stu_hp_17846827" style="position:absolute; right:4px; top:0px;" onclick="show_stu_hp(17846827, 4025875 ); return false;"><i class="fa fa-pencil-square " title="?곕씫泥??섏젙"></i></a>
+					<input type="hidden" name="stu_hp_info_17846827" id="stu_hp_info_17846827" class="stu_hp_info_4025875" value="010-3209-3020^^010-3209-3020">
+				</td>
+					
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299641#lec_pay_17846827" class="link_type">0</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299641#lec_use_cost_17846827" class="link_type">0</a></td>
+				<td>0</td>
+				
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299641#lec_pay_book_17846827" class="link_type">0</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299641#lec_pay_item_17846827" class="link_type">0</a></td>		
+							
+				<td>2026-01-16<br>22:30:14</td>
+				<td><a href="#none;" onclick="chk_cancel(17846827); return false;"><i class="fa fa-trash-o icon_btn" title="??젣"></i></a></td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="data_checked[]" value="17846826"></td>
+				<td>13468</td>
+					
+				<td>
+					2??				<br><span class="lec_pro_type1">諛⑷낵??/span>
+					
+				</td>
+				
+				<td class="text-left">
+					[?좏깮?? 荑좏궎?대젅??2遺(湲?10:50~12:30)	
+				</td>
+				<td>2</td>
+			
+				<td>4</td>
+				<td>6</td>
+				<td style="position:relative;">
+					<a href="https://www.dbdbschool.kr/af/ad_app/sin/p/1/sn/2848/mem_num/4025868" class="link_type">源?쒖?</a>
+					<a href="#none;" id="stu_hp_17846826" style="position:absolute; right:4px; top:0px;" onclick="open_stu_schedule(4025868, 1299656);"><i class="fa fa-list-alt" title="?쒓컙??蹂닿린"></i></a>
+	
+	
+	
+				</td>
+	
+				<td style="position:relative;"><span class="stu_hp_4025868">010-2090-0764<br>010-2090-0764(蹂댄샇??</span>&nbsp;<a href="#none;" id="stu_hp_17846826" style="position:absolute; right:4px; top:0px;" onclick="show_stu_hp(17846826, 4025868 ); return false;"><i class="fa fa-pencil-square " title="?곕씫泥??섏젙"></i></a>
+					<input type="hidden" name="stu_hp_info_17846826" id="stu_hp_info_17846826" class="stu_hp_info_4025868" value="010-2090-0764^^010-2090-0764">
+				</td>
+					
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299656#lec_pay_17846826" class="link_type">32,400</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299656#lec_use_cost_17846826" class="link_type">1,000</a></td>
+				<td>31,400</td>
+				
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299656#lec_pay_book_17846826" class="link_type">0</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299656#lec_pay_item_17846826" class="link_type">10,000</a></td>		
+							
+				<td>2026-01-16<br>22:22:05</td>
+				<td><a href="#none;" onclick="chk_cancel(17846826); return false;"><i class="fa fa-trash-o icon_btn" title="??젣"></i></a></td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="data_checked[]" value="17846789"></td>
+				<td>13467</td>
+					
+				<td>
+					2??				<br><span class="lec_pro_type2">留욎땄??/span>
+					
+				</td>
+				
+				<td class="text-left">
+					[留욎땄?? 由ъ궗?댄겢留???댄꽣 1遺(湲?09:00~10:50)	
+				</td>
+				<td>2</td>
+			
+				<td>1</td>
+				<td>14</td>
+				<td style="position:relative;">
+					<a href="https://www.dbdbschool.kr/af/ad_app/sin/p/1/sn/2848/mem_num/4025817" class="link_type">?댁콈?</a>
+					<a href="#none;" id="stu_hp_17846789" style="position:absolute; right:4px; top:0px;" onclick="open_stu_schedule(4025817, 1299636);"><i class="fa fa-list-alt" title="?쒓컙??蹂닿린"></i></a>
+	
+	
+	
+				</td>
+	
+				<td style="position:relative;"><span class="stu_hp_4025817">010-5130-7942<br>010-5130-7942(源誘쇱꽌)</span>&nbsp;<a href="#none;" id="stu_hp_17846789" style="position:absolute; right:4px; top:0px;" onclick="show_stu_hp(17846789, 4025817 ); return false;"><i class="fa fa-pencil-square " title="?곕씫泥??섏젙"></i></a>
+					<input type="hidden" name="stu_hp_info_17846789" id="stu_hp_info_17846789" class="stu_hp_info_4025817" value="010-5130-7942^源誘쇱꽌^010-5130-7942">
+				</td>
+					
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299636#lec_pay_17846789" class="link_type">0</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299636#lec_use_cost_17846789" class="link_type">0</a></td>
+				<td>0</td>
+				
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299636#lec_pay_book_17846789" class="link_type">0</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299636#lec_pay_item_17846789" class="link_type">0</a></td>		
+							
+				<td>2026-01-16<br>21:14:39</td>
+				<td><a href="#none;" onclick="chk_cancel(17846789); return false;"><i class="fa fa-trash-o icon_btn" title="??젣"></i></a></td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="data_checked[]" value="17846785"></td>
+				<td>13466</td>
+					
+				<td>
+					2??				<br><span class="lec_pro_type1">諛⑷낵??/span>
+					
+				</td>
+				
+				<td class="text-left">
+					[?좏깮?? 荑좏궎?대젅??1遺(湲?09:00~10:40)	
+				</td>
+				<td>3</td>
+			
+				<td>5</td>
+				<td>13</td>
+				<td style="position:relative;">
+					<a href="https://www.dbdbschool.kr/af/ad_app/sin/p/1/sn/2848/mem_num/4025971" class="link_type">?댁냼?</a>
+					<a href="#none;" id="stu_hp_17846785" style="position:absolute; right:4px; top:0px;" onclick="open_stu_schedule(4025971, 1299657);"><i class="fa fa-list-alt" title="?쒓컙??蹂닿린"></i></a>
+	
+	
+	
+				</td>
+	
+				<td style="position:relative;"><span class="stu_hp_4025971">010-3074-1015</span>&nbsp;<a href="#none;" id="stu_hp_17846785" style="position:absolute; right:4px; top:0px;" onclick="show_stu_hp(17846785, 4025971 ); return false;"><i class="fa fa-pencil-square " title="?곕씫泥??섏젙"></i></a>
+					<input type="hidden" name="stu_hp_info_17846785" id="stu_hp_info_17846785" class="stu_hp_info_4025971" value="010-3074-1015^^">
+				</td>
+					
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299657#lec_pay_17846785" class="link_type">32,400</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299657#lec_use_cost_17846785" class="link_type">1,000</a></td>
+				<td>31,400</td>
+				
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299657#lec_pay_book_17846785" class="link_type">0</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299657#lec_pay_item_17846785" class="link_type">10,000</a></td>		
+							
+				<td>2026-01-16<br>21:05:47</td>
+				<td><a href="#none;" onclick="chk_cancel(17846785); return false;"><i class="fa fa-trash-o icon_btn" title="??젣"></i></a></td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="data_checked[]" value="17846784"></td>
+				<td>13465</td>
+					
+				<td>
+					2??				<br><span class="lec_pro_type1">諛⑷낵??/span>
+					
+				</td>
+				
+				<td class="text-left">
+					[?좏깮?? ?뚯븙以꾨꽆湲?2遺(????10:00~10:50)	
+				</td>
+				<td>1</td>
+			
+				<td>5</td>
+				<td>18</td>
+				<td style="position:relative;">
+					<a href="https://www.dbdbschool.kr/af/ad_app/sin/p/1/sn/2848/mem_num/4025802" class="link_type">理쒖뿰??/a>
+					<a href="#none;" id="stu_hp_17846784" style="position:absolute; right:4px; top:0px;" onclick="open_stu_schedule(4025802, 1299668);"><i class="fa fa-list-alt" title="?쒓컙??蹂닿린"></i></a>
+	
+	
+	
+				</td>
+	
+				<td style="position:relative;"><span class="stu_hp_4025802">010-3371-6271<br>010-3371-6271(理쒕???</span>&nbsp;<a href="#none;" id="stu_hp_17846784" style="position:absolute; right:4px; top:0px;" onclick="show_stu_hp(17846784, 4025802 ); return false;"><i class="fa fa-pencil-square " title="?곕씫泥??섏젙"></i></a>
+					<input type="hidden" name="stu_hp_info_17846784" id="stu_hp_info_17846784" class="stu_hp_info_4025802" value="010-3371-6271^理쒕???010-3371-6271">
+				</td>
+					
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299668#lec_pay_17846784" class="link_type">32,400</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299668#lec_use_cost_17846784" class="link_type">1,000</a></td>
+				<td>31,400</td>
+				
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299668#lec_pay_book_17846784" class="link_type">0</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299668#lec_pay_item_17846784" class="link_type">0</a></td>		
+							
+				<td>2026-01-16<br>21:04:47</td>
+				<td><a href="#none;" onclick="chk_cancel(17846784); return false;"><i class="fa fa-trash-o icon_btn" title="??젣"></i></a></td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="data_checked[]" value="17846782"></td>
+				<td>13464</td>
+					
+				<td>
+					2??				<br><span class="lec_pro_type1">諛⑷낵??/span>
+					
+				</td>
+				
+				<td class="text-left">
+					[?좏깮?? ?댁뒪?ъ툩 1遺(??紐?10:00~10:50)	
+				</td>
+				<td>1</td>
+			
+				<td>5</td>
+				<td>4</td>
+				<td style="position:relative;">
+					<a href="https://www.dbdbschool.kr/af/ad_app/sin/p/1/sn/2848/mem_num/4025788" class="link_type">諛뺤쑀李?/a>
+					<a href="#none;" id="stu_hp_17846782" style="position:absolute; right:4px; top:0px;" onclick="open_stu_schedule(4025788, 1299659);"><i class="fa fa-list-alt" title="?쒓컙??蹂닿린"></i></a>
+	
+	
+	
+				</td>
+	
+				<td style="position:relative;"><span class="stu_hp_4025788">010-3546-5695<br>010-3546-5695(理쒖젙?)</span>&nbsp;<a href="#none;" id="stu_hp_17846782" style="position:absolute; right:4px; top:0px;" onclick="show_stu_hp(17846782, 4025788 ); return false;"><i class="fa fa-pencil-square " title="?곕씫泥??섏젙"></i></a>
+					<input type="hidden" name="stu_hp_info_17846782" id="stu_hp_info_17846782" class="stu_hp_info_4025788" value="010-3546-5695^理쒖젙?^010-3546-5695">
+				</td>
+					
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299659#lec_pay_17846782" class="link_type">32,400</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299659#lec_use_cost_17846782" class="link_type">1,000</a></td>
+				<td>31,400</td>
+				
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299659#lec_pay_book_17846782" class="link_type">0</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299659#lec_pay_item_17846782" class="link_type">0</a></td>		
+							
+				<td>2026-01-16<br>21:01:55</td>
+				<td><a href="#none;" onclick="chk_cancel(17846782); return false;"><i class="fa fa-trash-o icon_btn" title="??젣"></i></a></td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="data_checked[]" value="17846781"></td>
+				<td>13463</td>
+					
+				<td>
+					2??				<br><span class="lec_pro_type2">留욎땄??/span>
+					
+				</td>
+				
+				<td class="text-left">
+					[留욎땄?? 醫낆씠?묎린 2遺(????10:00~10:50)	
+				</td>
+				<td>1</td>
+			
+				<td>3</td>
+				<td>9</td>
+				<td style="position:relative;">
+					<a href="https://www.dbdbschool.kr/af/ad_app/sin/p/1/sn/2848/mem_num/4025757" class="link_type">?덉삁??/a>
+					<a href="#none;" id="stu_hp_17846781" style="position:absolute; right:4px; top:0px;" onclick="open_stu_schedule(4025757, 1299641);"><i class="fa fa-list-alt" title="?쒓컙??蹂닿린"></i></a>
+	
+	
+	
+				</td>
+	
+				<td style="position:relative;"><span class="stu_hp_4025757">010-3376-1032</span>&nbsp;<a href="#none;" id="stu_hp_17846781" style="position:absolute; right:4px; top:0px;" onclick="show_stu_hp(17846781, 4025757 ); return false;"><i class="fa fa-pencil-square " title="?곕씫泥??섏젙"></i></a>
+					<input type="hidden" name="stu_hp_info_17846781" id="stu_hp_info_17846781" class="stu_hp_info_4025757" value="010-3376-1032^^">
+				</td>
+					
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299641#lec_pay_17846781" class="link_type">0</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299641#lec_use_cost_17846781" class="link_type">0</a></td>
+				<td>0</td>
+				
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299641#lec_pay_book_17846781" class="link_type">0</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299641#lec_pay_item_17846781" class="link_type">0</a></td>		
+							
+				<td>2026-01-16<br>21:00:56</td>
+				<td><a href="#none;" onclick="chk_cancel(17846781); return false;"><i class="fa fa-trash-o icon_btn" title="??젣"></i></a></td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="data_checked[]" value="17846780"></td>
+				<td>13462</td>
+					
+				<td>
+					2??				<br><span class="lec_pro_type1">諛⑷낵??/span>
+					
+				</td>
+				
+				<td class="text-left">
+					[?좏깮?? ?쒕Ц 2遺(????10:00~10:50)	
+				</td>
+				<td>3</td>
+			
+				<td>4</td>
+				<td>12</td>
+				<td style="position:relative;">
+					<a href="https://www.dbdbschool.kr/af/ad_app/sin/p/1/sn/2848/mem_num/4025952" class="link_type">?ㅽ븯誘?/a>
+					<a href="#none;" id="stu_hp_17846780" style="position:absolute; right:4px; top:0px;" onclick="open_stu_schedule(4025952, 1299674);"><i class="fa fa-list-alt" title="?쒓컙??蹂닿린"></i></a>
+	
+	
+	
+				</td>
+	
+				<td style="position:relative;"><span class="stu_hp_4025952">010-7554-0979</span>&nbsp;<a href="#none;" id="stu_hp_17846780" style="position:absolute; right:4px; top:0px;" onclick="show_stu_hp(17846780, 4025952 ); return false;"><i class="fa fa-pencil-square " title="?곕씫泥??섏젙"></i></a>
+					<input type="hidden" name="stu_hp_info_17846780" id="stu_hp_info_17846780" class="stu_hp_info_4025952" value="010-7554-0979^^">
+				</td>
+					
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299674#lec_pay_17846780" class="link_type">32,400</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299674#lec_use_cost_17846780" class="link_type">1,000</a></td>
+				<td>31,400</td>
+				
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299674#lec_pay_book_17846780" class="link_type">0</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299674#lec_pay_item_17846780" class="link_type">0</a></td>		
+							
+				<td>2026-01-16<br>21:00:48</td>
+				<td><a href="#none;" onclick="chk_cancel(17846780); return false;"><i class="fa fa-trash-o icon_btn" title="??젣"></i></a></td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="data_checked[]" value="17846779"></td>
+				<td>13461</td>
+					
+				<td>
+					2??				<br><span class="lec_pro_type1">諛⑷낵??/span>
+					
+				</td>
+				
+				<td class="text-left">
+					[?좏깮?? ?뚯븙以꾨꽆湲?1遺(????09:00~09:50)	
+				</td>
+				<td>1</td>
+			
+				<td>3</td>
+				<td>9</td>
+				<td style="position:relative;">
+					<a href="https://www.dbdbschool.kr/af/ad_app/sin/p/1/sn/2848/mem_num/4025757" class="link_type">?덉삁??/a>
+					<a href="#none;" id="stu_hp_17846779" style="position:absolute; right:4px; top:0px;" onclick="open_stu_schedule(4025757, 1299669);"><i class="fa fa-list-alt" title="?쒓컙??蹂닿린"></i></a>
+	
+	
+	
+				</td>
+	
+				<td style="position:relative;"><span class="stu_hp_4025757">010-3376-1032</span>&nbsp;<a href="#none;" id="stu_hp_17846779" style="position:absolute; right:4px; top:0px;" onclick="show_stu_hp(17846779, 4025757 ); return false;"><i class="fa fa-pencil-square " title="?곕씫泥??섏젙"></i></a>
+					<input type="hidden" name="stu_hp_info_17846779" id="stu_hp_info_17846779" class="stu_hp_info_4025757" value="010-3376-1032^^">
+				</td>
+					
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299669#lec_pay_17846779" class="link_type">32,400</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299669#lec_use_cost_17846779" class="link_type">1,000</a></td>
+				<td>31,400</td>
+				
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299669#lec_pay_book_17846779" class="link_type">0</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299669#lec_pay_item_17846779" class="link_type">0</a></td>		
+							
+				<td>2026-01-16<br>21:00:43</td>
+				<td><a href="#none;" onclick="chk_cancel(17846779); return false;"><i class="fa fa-trash-o icon_btn" title="??젣"></i></a></td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="data_checked[]" value="17846778"></td>
+				<td>13460</td>
+					
+				<td>
+					2??				<br><span class="lec_pro_type1">諛⑷낵??/span>
+					
+				</td>
+				
+				<td class="text-left">
+					[?좏깮?? 荑좏궎?대젅??1遺(湲?09:00~10:40)	
+				</td>
+				<td>1</td>
+			
+				<td>5</td>
+				<td>18</td>
+				<td style="position:relative;">
+					<a href="https://www.dbdbschool.kr/af/ad_app/sin/p/1/sn/2848/mem_num/4025802" class="link_type">理쒖뿰??/a>
+					<a href="#none;" id="stu_hp_17846778" style="position:absolute; right:4px; top:0px;" onclick="open_stu_schedule(4025802, 1299657);"><i class="fa fa-list-alt" title="?쒓컙??蹂닿린"></i></a>
+	
+	
+	
+				</td>
+	
+				<td style="position:relative;"><span class="stu_hp_4025802">010-3371-6271<br>010-3371-6271(理쒕???</span>&nbsp;<a href="#none;" id="stu_hp_17846778" style="position:absolute; right:4px; top:0px;" onclick="show_stu_hp(17846778, 4025802 ); return false;"><i class="fa fa-pencil-square " title="?곕씫泥??섏젙"></i></a>
+					<input type="hidden" name="stu_hp_info_17846778" id="stu_hp_info_17846778" class="stu_hp_info_4025802" value="010-3371-6271^理쒕???010-3371-6271">
+				</td>
+					
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299657#lec_pay_17846778" class="link_type">32,400</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299657#lec_use_cost_17846778" class="link_type">1,000</a></td>
+				<td>31,400</td>
+				
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299657#lec_pay_book_17846778" class="link_type">0</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299657#lec_pay_item_17846778" class="link_type">10,000</a></td>		
+							
+				<td>2026-01-16<br>21:00:35</td>
+				<td><a href="#none;" onclick="chk_cancel(17846778); return false;"><i class="fa fa-trash-o icon_btn" title="??젣"></i></a></td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="data_checked[]" value="17846777"></td>
+				<td>13459</td>
+					
+				<td>
+					2??				<br><span class="lec_pro_type1">諛⑷낵??/span>
+					
+				</td>
+				
+				<td class="text-left">
+					[?좏깮?? 諛⑹넚?꾩뒪 3遺(湲?11:00~11:50)	
+				</td>
+				<td>1</td>
+			
+				<td>3</td>
+				<td>9</td>
+				<td style="position:relative;">
+					<a href="https://www.dbdbschool.kr/af/ad_app/sin/p/1/sn/2848/mem_num/4025757" class="link_type">?덉삁??/a>
+					<a href="#none;" id="stu_hp_17846777" style="position:absolute; right:4px; top:0px;" onclick="open_stu_schedule(4025757, 1299651);"><i class="fa fa-list-alt" title="?쒓컙??蹂닿린"></i></a>
+	
+	
+	
+				</td>
+	
+				<td style="position:relative;"><span class="stu_hp_4025757">010-3376-1032</span>&nbsp;<a href="#none;" id="stu_hp_17846777" style="position:absolute; right:4px; top:0px;" onclick="show_stu_hp(17846777, 4025757 ); return false;"><i class="fa fa-pencil-square " title="?곕씫泥??섏젙"></i></a>
+					<input type="hidden" name="stu_hp_info_17846777" id="stu_hp_info_17846777" class="stu_hp_info_4025757" value="010-3376-1032^^">
+				</td>
+					
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299651#lec_pay_17846777" class="link_type">22,680</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299651#lec_use_cost_17846777" class="link_type">1,000</a></td>
+				<td>21,680</td>
+				
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299651#lec_pay_book_17846777" class="link_type">0</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299651#lec_pay_item_17846777" class="link_type">0</a></td>		
+							
+				<td>2026-01-16<br>21:00:22</td>
+				<td><a href="#none;" onclick="chk_cancel(17846777); return false;"><i class="fa fa-trash-o icon_btn" title="??젣"></i></a></td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="data_checked[]" value="17846775"></td>
+				<td>13458</td>
+					
+				<td>
+					2??				<br><span class="lec_pro_type1">諛⑷낵??/span>
+					
+				</td>
+				
+				<td class="text-left">
+					[?좏깮?? 二쇱궛?붿궛 1遺(??紐?09:00~09:50)	
+				</td>
+				<td>4</td>
+			
+				<td>5</td>
+				<td>1</td>
+				<td style="position:relative;">
+					<a href="https://www.dbdbschool.kr/af/ad_app/sin/p/1/sn/2848/mem_num/4026063" class="link_type">源誘쇱꽌</a>
+					<a href="#none;" id="stu_hp_17846775" style="position:absolute; right:4px; top:0px;" onclick="open_stu_schedule(4026063, 1299665);"><i class="fa fa-list-alt" title="?쒓컙??蹂닿린"></i></a>
+	
+	
+	
+				</td>
+	
+				<td style="position:relative;"><span class="stu_hp_4026063">010-9900-8653<br>010-9900-8653(蹂댄샇??</span>&nbsp;<a href="#none;" id="stu_hp_17846775" style="position:absolute; right:4px; top:0px;" onclick="show_stu_hp(17846775, 4026063 ); return false;"><i class="fa fa-pencil-square " title="?곕씫泥??섏젙"></i></a>
+					<input type="hidden" name="stu_hp_info_17846775" id="stu_hp_info_17846775" class="stu_hp_info_4026063" value="010-9900-8653^^010-9900-8653">
+				</td>
+					
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299665#lec_pay_17846775" class="link_type">32,400</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299665#lec_use_cost_17846775" class="link_type">1,000</a></td>
+				<td>31,400</td>
+				
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299665#lec_pay_book_17846775" class="link_type">0</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299665#lec_pay_item_17846775" class="link_type">0</a></td>		
+							
+				<td>2026-01-16<br>21:00:09</td>
+				<td><a href="#none;" onclick="chk_cancel(17846775); return false;"><i class="fa fa-trash-o icon_btn" title="??젣"></i></a></td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="data_checked[]" value="17846774"></td>
+				<td>13457</td>
+					
+				<td>
+					2??				<br><span class="lec_pro_type1">諛⑷낵??/span>
+					
+				</td>
+				
+				<td class="text-left">
+					[?좏깮?? ?낆꽌?쇱닠 2遺(????10:00~10:50)	
+				</td>
+				<td>4</td>
+			
+				<td>5</td>
+				<td>5</td>
+				<td style="position:relative;">
+					<a href="https://www.dbdbschool.kr/af/ad_app/sin/p/1/sn/2848/mem_num/4026067" class="link_type">源吏??/a>
+					<a href="#none;" id="stu_hp_17846774" style="position:absolute; right:4px; top:0px;" onclick="open_stu_schedule(4026067, 1299670);"><i class="fa fa-list-alt" title="?쒓컙??蹂닿린"></i></a>
+	
+	
+	
+				</td>
+	
+				<td style="position:relative;"><span class="stu_hp_4026067">010-4111-9955<br>010-4111-9955(源誘몄닚)</span>&nbsp;<a href="#none;" id="stu_hp_17846774" style="position:absolute; right:4px; top:0px;" onclick="show_stu_hp(17846774, 4026067 ); return false;"><i class="fa fa-pencil-square " title="?곕씫泥??섏젙"></i></a>
+					<input type="hidden" name="stu_hp_info_17846774" id="stu_hp_info_17846774" class="stu_hp_info_4026067" value="010-4111-9955^源誘몄닚^010-4111-9955">
+				</td>
+					
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299670#lec_pay_17846774" class="link_type">32,400</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299670#lec_use_cost_17846774" class="link_type">1,000</a></td>
+				<td>31,400</td>
+				
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299670#lec_pay_book_17846774" class="link_type">0</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299670#lec_pay_item_17846774" class="link_type">0</a></td>		
+							
+				<td>2026-01-16<br>21:00:07</td>
+				<td><a href="#none;" onclick="chk_cancel(17846774); return false;"><i class="fa fa-trash-o icon_btn" title="??젣"></i></a></td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="data_checked[]" value="17846700"></td>
+				<td>13456</td>
+					
+				<td>
+					2??				<br><span class="lec_pro_type1">諛⑷낵??/span>
+					
+				</td>
+				
+				<td class="text-left">
+					[?좏깮?? 而댄벂??2遺(????10:00~10:50)	
+				</td>
+				<td>1</td>
+			
+				<td>1</td>
+				<td>2</td>
+				<td style="position:relative;">
+					<a href="https://www.dbdbschool.kr/af/ad_app/sin/p/1/sn/2848/mem_num/4025715" class="link_type">源?쒖뿰</a>
+					<a href="#none;" id="stu_hp_17846700" style="position:absolute; right:4px; top:0px;" onclick="open_stu_schedule(4025715, 1299649);"><i class="fa fa-list-alt" title="?쒓컙??蹂닿린"></i></a>
+	
+	
+	
+				</td>
+	
+				<td style="position:relative;"><span class="stu_hp_4025715">010-9080-9859<br>010-9080-9859(蹂댄샇??</span>&nbsp;<a href="#none;" id="stu_hp_17846700" style="position:absolute; right:4px; top:0px;" onclick="show_stu_hp(17846700, 4025715 ); return false;"><i class="fa fa-pencil-square " title="?곕씫泥??섏젙"></i></a>
+					<input type="hidden" name="stu_hp_info_17846700" id="stu_hp_info_17846700" class="stu_hp_info_4025715" value="010-9080-9859^^010-9080-9859">
+				</td>
+					
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299649#lec_pay_17846700" class="link_type">31,000</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299649#lec_use_cost_17846700" class="link_type">0</a></td>
+				<td>31,000</td>
+				
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299649#lec_pay_book_17846700" class="link_type">0</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299649#lec_pay_item_17846700" class="link_type">0</a></td>		
+							
+				<td>2026-01-16<br>17:02:48</td>
+				<td><a href="#none;" onclick="chk_cancel(17846700); return false;"><i class="fa fa-trash-o icon_btn" title="??젣"></i></a></td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="data_checked[]" value="17846604"></td>
+				<td>13455</td>
+					
+				<td>
+					2??				<br><span class="lec_pro_type1">諛⑷낵??/span>
+					
+				</td>
+				
+				<td class="text-left">
+					[?좏깮?? 而댄벂??2遺(????10:00~10:50)	
+				</td>
+				<td>4</td>
+			
+				<td>3</td>
+				<td>15</td>
+				<td style="position:relative;">
+					<a href="https://www.dbdbschool.kr/af/ad_app/sin/p/1/sn/2848/mem_num/4026033" class="link_type">諛뺤감誘?/a>
+					<a href="#none;" id="stu_hp_17846604" style="position:absolute; right:4px; top:0px;" onclick="open_stu_schedule(4026033, 1299649);"><i class="fa fa-list-alt" title="?쒓컙??蹂닿린"></i></a>
+	
+	
+	
+				</td>
+	
+				<td style="position:relative;"><span class="stu_hp_4026033">010-8006-2370<br>010-2384-2370(?〓???</span>&nbsp;<a href="#none;" id="stu_hp_17846604" style="position:absolute; right:4px; top:0px;" onclick="show_stu_hp(17846604, 4026033 ); return false;"><i class="fa fa-pencil-square " title="?곕씫泥??섏젙"></i></a>
+					<input type="hidden" name="stu_hp_info_17846604" id="stu_hp_info_17846604" class="stu_hp_info_4026033" value="010-8006-2370^?〓???010-2384-2370">
+				</td>
+					
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299649#lec_pay_17846604" class="link_type">31,000</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299649#lec_use_cost_17846604" class="link_type">0</a></td>
+				<td>31,000</td>
+				
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299649#lec_pay_book_17846604" class="link_type">0</a></td>
+				<td><a href="https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848/sld/12/sln/1299649#lec_pay_item_17846604" class="link_type">0</a></td>		
+							
+				<td>2026-01-16<br>15:54:10</td>
+				<td><a href="#none;" onclick="chk_cancel(17846604); return false;"><i class="fa fa-trash-o icon_btn" title="??젣"></i></a></td>
+			</tr>
+		</tbody></table>
+	</div>
+	<div class="panel-body MAT30" style="text-align:center;">
+		<ul>
+			<li class="PAD0" style="float:left;">
+				<select name="update_type" class="form-control">
+					<option value="">==== 일괄적용 ====</option>
+					
+					<option value="move">신청자 이동</option>				
+					<option value="">-------------------------</option>	
+					<option value="del">신청자 삭제</option>
+				</select>
+				<input type="submit" class="btn btn-default" value="적용하기">
+			</li>
+			<li style="text-align:right;" class="MAlignCenter">
+				<ul class="pagination"><li class="active"><a href="#none;">1</a></li><li><a href="https://www.dbdbschool.kr/af/ad_app/lists/sn/2848/p/2" data-ci-pagination-page="2">2</a></li><li class="next"><a href="https://www.dbdbschool.kr/af/ad_app/lists/sn/2848/p/2" data-ci-pagination-page="2" rel="next">?ㅼ쓬</a></li><li class="last"><a href="https://www.dbdbschool.kr/af/ad_app/lists/sn/2848/p/271" data-ci-pagination-page="271">留덉?留?/a></li></ul>			</li>
+		</ul>
+	</div>
+	</form>	
+</div>
+
+<form action="https://www.dbdbschool.kr/af/ad_app/cancel/p/1/sn/2848" name="fm_lec_cancel" id="fm_lec_cancel" method="post" accept-charset="utf-8">
+<input type="hidden" name="csrf_test_name" value="e7949d7748f475e6b7014456deae3d9b">                                                                                                              
+<input type="hidden" name="form_open_date_use_chk_csrf" value="2026-02-20 23:15:48">
+	<input type="hidden" name="num" id="cancel_num" value="">
+</form>
+
+<form action="https://www.dbdbschool.kr/af/ad_app/stu_hp/p/1/sn/2848" name="fm_stu_hp" id="fm_stu_hp" method="post" accept-charset="utf-8">
+                    <input type="hidden" name="csrf_test_name" value="e7949d7748f475e6b7014456deae3d9b">
+<input type="hidden" name="form_open_date_use_chk_csrf" value="2026-02-20 23:15:48">
+	<input type="hidden" name="num" id="stu_hp_num" value="">
+	
+	<input type="hidden" name="mem_hp" id="update_stu_hp" value="">
+	
+	<input type="hidden" name="mem_pa_name" id="update_pa_name" value="">
+	
+	<input type="hidden" name="mem_pa_tel" id="update_pa_tel" value="">
+	
+</form>
+
+<div class="help_box">
+  <ul>
+    <li>출력되는 학적 정보와 신청 당시 학생 정보 기준이 다를 수 있습니다.</li>
+    <li>신청 제한(강의시간, 운영기간): 운영기간과 강의시간이 중복되는 강좌는 1개만 신청 가능합니다.</li>
+    <li>신청 제한(중복제한그룹): 같은 중복제한그룹의 강좌는 환경설정에서 지정한 개수까지만 신청 가능합니다.</li>
+  </ul>
+</div>
+
+      </div>
+      <div id="footer" class="footer"><span class="muted">DBDB School Clone</span></div>
+    </main>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="./assets/js/app.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

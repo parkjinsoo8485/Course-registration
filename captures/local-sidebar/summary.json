@@ -1,0 +1,134 @@
+[
+  {
+    "href": "manual.html",
+    "text": "매뉴얼",
+    "ok": true,
+    "title": "안내 & FAQ - 매뉴얼 - 늘봄학교"
+  },
+  {
+    "href": "qanda.html",
+    "text": "고객지원 게시판",
+    "ok": true,
+    "title": "목록 - 고객지원 게시판 - 늘봄학교"
+  },
+  {
+    "href": "school.html",
+    "text": "학교관리",
+    "ok": true,
+    "title": "목록 - 서비스목록 - 학교관리"
+  },
+  {
+    "href": "index.html",
+    "text": "강좌관리",
+    "ok": true,
+    "title": "목록 - 강좌관리 - 늘봄학교"
+  },
+  {
+    "href": "applicants.html",
+    "text": "신청자관리",
+    "ok": true,
+    "title": "신청목록 - 신청자관리 - 늘봄학교"
+  },
+  {
+    "href": "waitlist.html",
+    "text": "대기자관리",
+    "ok": true,
+    "title": "대기자 목록 - 대기자관리 - 늘봄학교"
+  },
+  {
+    "href": "refund.html",
+    "text": "환불/취소관리",
+    "ok": true,
+    "title": "신청목록 - 환불/취소관리 - 늘봄학교"
+  },
+  {
+    "href": "fund-targets.html",
+    "text": "지원금관리",
+    "ok": true,
+    "title": "목록 - 지원금관리 > 대상자관리 - 늘봄학교"
+  },
+  {
+    "href": "fund-apps.html",
+    "text": "수강자관리",
+    "ok": true,
+    "title": "목록 - 지원금관리 > 수강자관리 - 늘봄학교"
+  },
+  {
+    "href": "fund-config.html",
+    "text": "지원금설정",
+    "ok": true,
+    "title": "지원금설정 - 지원금관리 - 늘봄학교"
+  },
+  {
+    "href": "fund-rank.html",
+    "text": "순위구분설정",
+    "ok": true,
+    "title": "자유수강권 > 순위구분설정 - 지원금관리 - 늘봄학교"
+  },
+  {
+    "href": "teacher.html",
+    "text": "강사관리",
+    "ok": true,
+    "title": "목록 - 강사관리 - 늘봄학교"
+  },
+  {
+    "href": "survey.html",
+    "text": "설문",
+    "ok": true,
+    "title": "목록 - 설문 - 늘봄학교"
+  },
+  {
+    "href": "survey-sample.html",
+    "text": "샘플설문",
+    "ok": true,
+    "title": "목록 - 샘플설문 - 늘봄학교"
+  },
+  {
+    "href": "cfg-basic.html",
+    "text": "기본설정",
+    "ok": true,
+    "title": "기본설정 - 환경설정 - 늘봄학교"
+  },
+  {
+    "href": "cfg-period.html",
+    "text": "신청기간",
+    "ok": true,
+    "title": "신청기간 > 목록 - 환경설정 - 늘봄학교"
+  },
+  {
+    "href": "cfg-lecture-time.html",
+    "text": "강의시간",
+    "ok": true,
+    "title": "강의시간 설정 - 환경설정 - 늘봄학교"
+  },
+  {
+    "href": "cfg-division.html",
+    "text": "강좌구분",
+    "ok": true,
+    "title": "강좌구분 설정 - 환경설정 - 늘봄학교"
+  },
+  {
+    "href": "cfg-group.html",
+    "text": "중복제한그룹",
+    "ok": true,
+    "title": "중복제한그룹 설정 - 환경설정 - 늘봄학교"
+  },
+  {
+    "href": "cfg-verify.html",
+    "text": "학적검증",
+    "ok": true,
+    "title": "학적검증 - 환경설정 - 늘봄학교"
+  },
+  {
+    "href": "cfg-neis.html",
+    "text": "나이스/에듀파인 설정",
+    "ok": true,
+    "title": "강사 목록 - 나이스/에듀파인 설정 - 늘봄학교"
+  },
+  {
+    "href": "notification.html",
+    "text": "알림관리",
+    "ok": true,
+    "title": "알림목록 - 알림관리 - 늘봄학교"
+  }
+]

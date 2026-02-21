@@ -1,0 +1,41 @@
+{
+  "generatedAt": "2026-02-20T20:25:50.544Z",
+  "index": {
+    "checkAll": true,
+    "maxWait": true,
+    "excelDownload": true,
+    "attendancePage": true,
+    "attendanceDivWithRows": "2월",
+    "attendanceConfirmShown": true,
+    "attendanceConfirmMessage": "출력하시겠습니까?\n\n(데이터가 많은 경우 처리되는 시간이 다소 지연될 수 있습니다.)",
+    "attendanceDownload": true,
+    "attendanceHeaderOk": true,
+    "attendanceRowCount": 3,
+    "attendanceNoSelectAlert": "강좌 : 선택해 주세요.",
+    "attendanceNoSelectDownload": false
+  },
+  "bulkInput": {
+    "templateDownload": true,
+    "noFileAlert": "엑셀 또는 CSV 파일(.xlsx, .xls, .csv)을 선택해 주세요.",
+    "withFileAlert": "일괄 등록 완료: 1건"
+  },
+  "bulkModify": {
+    "templateDownload": true,
+    "noFileAlert": "수정할 엑셀 또는 CSV 파일(.xlsx, .xls, .csv)을 선택해 주세요.",
+    "withFileAlert": "일괄 수정 완료: 1건"
+  },
+  "copy": {
+    "alert": "일괄 복사 완료: 3건"
+  },
+  "stats": {
+    "download": true
+  },
+  "write": {
+    "alert": "강좌 등록이 완료되었습니다."
+  },
+  "manual": {
+    "linkHref": "https://www.dbdbschool.kr/help/go_data/num/239/data/link2",
+    "linkHasHttp": true,
+    "popupOpened": true
+  }
+}

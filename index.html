@@ -1,0 +1,329 @@
+﻿<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>목록 - 강좌관리 - 늘봄학교</title>
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="./assets/css/app.css">
+</head>
+<body data-sidebar-page="lecture">
+  <div id="header" class="topbar">
+    <div class="topbar-inner">
+      <div class="topbar-center">
+        <span class="topbar-title">늘봄학교</span>
+        <span class="caret"></span>
+      </div>
+    </div>
+  </div>
+
+  <div id="container" class="layout">
+    <aside id="left_menu" class="sidebar">
+      <div class="sidebar-school">운천초등학교</div>
+
+      <div class="sidebar-user">
+        <div class="avatar"><i class="fa fa-user"></i></div>
+        <div class="user-meta">
+          <div class="user-name-row">
+            <span class="user-name">박진선님</span>
+            <span class="user-bell"><i class="fa fa-bell"></i><span class="badge badge-red">24</span></span>
+          </div>
+          <div class="user-role">[로그아웃] <span class="muted">[정보수정]</span></div>
+        </div>
+      </div>
+
+      <div class="sidebar-actions">
+        <a href="./index.html" class="btn btn-success btn-sm">홈으로</a>
+        <a href="./lec_write.html" class="btn btn-danger btn-sm">강좌등록</a>
+      </div>
+
+      <ul class="nav side-nav">
+        <li><a href="./manual.html"><i class="fa fa-download"></i> 매뉴얼</a></li>
+        <li><a href="./qanda.html"><i class="fa fa-phone"></i> 고객지원 게시판</a></li>
+        <li><a href="#"><i class="fa fa-cog icon-red"></i> 학교관리</a></li>
+        <li class="active"><a href="index.html"><i class="fa fa-globe icon-blue"></i> 강좌관리</a></li>
+        <li><a href="#"><i class="fa fa-user"></i> 신청자관리</a></li>
+        <li><a href="#"><i class="fa fa-user"></i> 대기자관리</a></li>
+        <li><a href="#"><i class="fa fa-user"></i> 환불/취소관리</a></li>
+
+        <li class="nav-section">
+          <a data-toggle="collapse" href="#menu-funding"><i class="fa fa-building"></i> 지원금관리 <span class="caret"></span></a>
+          <ul id="menu-funding" class="collapse in">
+            <li><a href="#">대상자관리</a></li>
+            <li><a href="#">수강자관리</a></li>
+            <li><a href="#">지원금설정</a></li>
+            <li><a href="#">순위구분설정</a></li>
+          </ul>
+        </li>
+
+        <li><a href="#"><i class="fa fa-briefcase"></i> 강사관리</a></li>
+
+        <li class="nav-section">
+          <a data-toggle="collapse" href="#menu-survey"><i class="fa fa-pie-chart"></i> 설문관리 <span class="caret"></span></a>
+          <ul id="menu-survey" class="collapse in">
+            <li><a href="#">설문</a></li>
+            <li><a href="#">샘플설문</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-section">
+          <a data-toggle="collapse" href="#menu-settings"><i class="fa fa-cog"></i> 환경설정 <span class="caret"></span></a>
+          <ul id="menu-settings" class="collapse in">
+            <li><a href="#">기본설정</a></li>
+            <li><a href="#">신청기간</a></li>
+            <li><a href="#">강의시간</a></li>
+            <li><a href="#">강좌구분</a></li>
+            <li><a href="#">중복제한그룹</a></li>
+            <li><a href="#">학적검증</a></li>
+            <li><a href="#">나이스/에듀파인 설정</a></li>
+            <li><a href="#">안내문설정</a></li>
+            <li><a href="#">초기화</a></li>
+          </ul>
+        </li>
+
+        <li><a href="#">담당자정보</a></li>
+        <li><a href="#"><i class="fa fa-volume-up"></i> 알림관리</a></li>
+        <li><a href="#"><i class="fa fa-bell"></i> 푸시알림관리</a></li>
+        <li><a href="#" class="has-badge"><i class="fa fa-calendar"></i> 연장신청 <span class="badge badge-grey">373일 남음</span></a></li>
+        <li><a href="#"><i class="fa fa-pie-chart"></i> 설문참여</a></li>
+      </ul>
+    </aside>
+
+    <main id="contents_box" class="content">
+      <div id="contents_title" class="page-title">
+        <div class="title-left">
+          <div class="title-main"><i class="fa fa-file-text-o"></i> 강좌관리</div>
+          <div class="title-sub">운천초등학교 늘봄학교</div>
+        </div>
+      </div>
+
+      <div id="contents" class="content-inner">
+        <div class="notice-box">
+          <div class="notice-line"><span class="notice-dot"><i class="fa fa-info-circle"></i></span>수강신청 시작 전에 반드시 신청기간을 미리 설정해 주세요.</div>
+          <div class="notice-line"><span class="notice-dot"><i class="fa fa-info-circle"></i></span>자주 묻는 질문은 매뉴얼과 고객지원 게시판에서 확인할 수 있습니다.</div>
+        </div>
+
+        <form id="fm_list_search" class="filter-bar" action="#" method="get">
+          <div class="filter-row" style="margin-bottom:6px;">
+            <a href="#none;" id="main_control_box_btn01" class="btn btn-default btn-sm">상세검색 열기</a>
+            <a href="#none;" id="main_control_box_btn02" class="btn btn-default btn-sm">추가기능..</a>
+          </div>
+
+          <div class="filter-row">
+            <select name="sld" class="form-control input-sm filter-select">
+              <option value="">=구분=</option>
+              <option>3월</option><option>4월</option><option>5월</option><option>6월</option>
+              <option>7월</option><option>8월</option><option>9월</option><option>10월</option>
+              <option>11월</option><option>12월</option><option>1월</option><option>2월</option>
+            </select>
+
+            <select name="slp" class="form-control input-sm filter-select">
+              <option value="">=늘봄과정=</option>
+              <option value="1">방과후</option>
+              <option value="2">맞춤형</option>
+              <option value="3">돌봄</option>
+            </select>
+
+            <select name="sls" class="form-control input-sm filter-select">
+              <option value="">=상태전체=</option>
+              <option value="1">출력</option>
+              <option value="0">대기</option>
+              <option value="2">종료</option>
+            </select>
+
+            <select name="s_grade" class="form-control input-sm filter-select">
+              <option value="">=학년=</option>
+              <option>1</option><option>2</option><option>3</option>
+              <option>4</option><option>5</option><option>6</option>
+            </select>
+
+            <select name="st" class="form-control input-sm filter-select">
+              <option value="lec_name">강좌명</option>
+              <option value="tea_id">강사ID</option>
+            </select>
+
+            <input name="sw" class="form-control input-sm filter-input" placeholder="검색어" />
+            <button type="submit" class="btn btn-default btn-sm">검색</button>
+            <button type="button" class="btn btn-default btn-sm" id="btn-reset">전체</button>
+            <button type="button" class="btn btn-default btn-sm" id="btn-excel">검색결과엑셀출력</button>
+          </div>
+
+          <div id="detail-search-box" class="filter-row" style="display:none; margin-top:8px;">
+            <input type="text" id="s_date_start" class="form-control input-sm filter-select" placeholder="시작일(YYYY-MM-DD)">
+            <input type="text" id="s_date_end" class="form-control input-sm filter-select" placeholder="종료일(YYYY-MM-DD)">
+            <label style="font-weight:400; margin:0 6px;"><input type="checkbox" id="s_only_open"> 출력만 보기</label>
+          </div>
+
+          <div id="bulk-action-box" class="filter-row" style="display:none; margin-top:8px;">
+            <select id="update_type" name="update_type" class="form-control input-sm filter-select">
+              <option value="">=변경유형=</option>
+              <option value="status_1">선택강좌 상태: 출력</option>
+              <option value="status_0">선택강좌 상태: 대기</option>
+              <option value="status_2">선택강좌 상태: 종료</option>
+              <option value="delete_selected">선택강좌 삭제</option>
+            </select>
+            <button type="button" id="btn-apply-bulk" class="btn btn-default btn-sm">적용하기</button>
+          </div>
+        </form>
+
+        <div class="toolbar">
+          <div class="toolbar-left">
+            <button type="button" class="btn btn-success btn-sm" id="btn-attendance">출석부 출력</button>
+          </div>
+          <div class="toolbar-right">
+            <a class="btn btn-primary btn-sm" href="./lec_write.html">강좌 등록</a>
+            <a class="btn btn-warning btn-sm" href="./lec_bulk_input.html">강좌 일괄입력</a>
+            <a class="btn btn-info btn-sm" href="./lec_bulk_modify.html">강좌 일괄수정</a>
+            <a class="btn btn-primary btn-sm" href="./lec_copy.html">강좌 일괄복사</a>
+            <a class="btn btn-default btn-sm" href="./lec_stats.html">강좌 통계</a>
+          </div>
+        </div>
+
+        <div class="table-wrap">
+          <table class="table table-bordered table-hover table-condensed align-center lecture-table">
+            <thead>
+              <tr>
+                <th style="width:30px;"><input type="checkbox" id="check_all"></th>
+                <th style="width:60px;">연번</th>
+                <th style="width:55px;">수정</th>
+                <th style="width:80px;">구분<br>(늘봄과정)</th>
+                <th>강좌명</th>
+                <th style="width:90px;">강사ID</th>
+                <th style="width:90px;">신청<br>/정원</th>
+                <th style="width:90px;">대기자<br>/정원</th>
+                <th style="width:90px;">학년</th>
+                <th style="width:150px;">운영기간</th>
+                <th style="width:160px;">강의시간</th>
+                <th style="width:80px;">수강료</th>
+                <th style="width:90px;">수강료<br>출력</th>
+                <th style="width:90px;">강사<br>마감</th>
+                <th style="width:90px;">환불<br>마감</th>
+                <th style="width:90px;">상태</th>
+                <th style="width:50px;">삭제</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr data-num="745">
+                <td><input type="checkbox" class="chk-row"></td>
+                <td>745</td>
+                <td><button class="btn btn-default btn-xs"><i class="fa fa-cog"></i></button></td>
+                <td><span class="label label-default">2월</span><br><span class="label label-default">돌봄</span></td>
+                <td class="text-left">아침늘봄</td>
+                <td>미정</td>
+                <td class="cell-relative"><span class="count">3</span> / <a href="#" class="max-sin-link" data-max="20">20</a></td>
+                <td>0 / <a href="#" class="max-wait-link" data-max="0">0</a></td>
+                <td>1,2,3,4,5,6</td>
+                <td>2026-02-02~<br>2026-02-24</td>
+                <td class="text-left">월 07:50~08:40<br>화 07:50~08:40<br>수 07:50~08:40<br>목 07:50~08:40<br>금 07:50~08:40</td>
+                <td>0</td>
+                <td>Y</td>
+                <td>-</td>
+                <td>-</td>
+                <td>
+                  <div class="isu_wrap">
+                    <div class="btn-group btn-group-xs isu_check_box">
+                      <button type="button" class="btn btn-danger isu_status_sm" id="view_lec_status_745">출력</button>
+                      <button type="button" class="btn btn-default isu_toggle"><i class="fa fa-angle-down"></i></button>
+                    </div>
+                    <ul class="isu_choice">
+                      <li><a href="#" class="isu-option" data-status="1" data-label="출력">출력</a></li>
+                      <li><a href="#" class="isu-option" data-status="0" data-label="대기">대기</a></li>
+                      <li><a href="#" class="isu-option" data-status="2" data-label="종료">종료</a></li>
+                    </ul>
+                  </div>
+                </td>
+                <td><a href="#" class="del-link"><i class="fa fa-trash"></i></a></td>
+              </tr>
+
+              <tr data-num="744">
+                <td><input type="checkbox" class="chk-row"></td>
+                <td>744</td>
+                <td><button class="btn btn-default btn-xs"><i class="fa fa-cog"></i></button></td>
+                <td><span class="label label-default">2월</span><br><span class="label label-default">돌봄</span></td>
+                <td class="text-left">[돌봄] 선택형 돌봄 1부 (09:00~09:50)</td>
+                <td>돌봄전담반</td>
+                <td class="cell-relative"><span class="count">11</span> / <a href="#" class="max-sin-link" data-max="40">40</a></td>
+                <td>0 / <a href="#" class="max-wait-link" data-max="5">5</a></td>
+                <td>1,2,3,4,5,6</td>
+                <td>2026-02-02~<br>2026-02-24</td>
+                <td class="text-left">월 09:00~09:50</td>
+                <td>0</td>
+                <td>Y</td>
+                <td>-</td>
+                <td>-</td>
+                <td>
+                  <div class="isu_wrap">
+                    <div class="btn-group btn-group-xs isu_check_box">
+                      <button type="button" class="btn btn-danger isu_status_sm" id="view_lec_status_744">출력</button>
+                      <button type="button" class="btn btn-default isu_toggle"><i class="fa fa-angle-down"></i></button>
+                    </div>
+                    <ul class="isu_choice">
+                      <li><a href="#" class="isu-option" data-status="1" data-label="출력">출력</a></li>
+                      <li><a href="#" class="isu-option" data-status="0" data-label="대기">대기</a></li>
+                      <li><a href="#" class="isu-option" data-status="2" data-label="종료">종료</a></li>
+                    </ul>
+                  </div>
+                </td>
+                <td><a href="#" class="del-link"><i class="fa fa-trash"></i></a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <nav class="text-center">
+          <ul class="pagination pagination-sm">
+            <li class="disabled"><a href="#">&laquo;</a></li>
+            <li class="active"><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">&raquo;</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div id="footer" class="footer">
+        <span class="muted">DBDB School Clone</span>
+      </div>
+    </main>
+  </div>
+
+  <form id="fm_lec_status" style="display:none;" method="post" action="/af/ad_lec/status">
+    <input type="hidden" name="num" id="lec_status_num" value="">
+    <input type="hidden" name="lec_status" id="lec_status_val" value="">
+    <input type="hidden" name="csrf_test_name" id="csrf_status" value="CSRF_PLACEHOLDER">
+  </form>
+
+  <form id="fm_max_sin" style="display:none;" method="post" action="/af/ad_lec/max_sin">
+    <input type="hidden" name="num" id="max_sin_num" value="">
+    <input type="hidden" name="max_sin" id="max_sin_val" value="">
+    <input type="hidden" name="csrf_test_name" id="csrf_max" value="CSRF_PLACEHOLDER">
+  </form>
+
+  <form id="fm_del" style="display:none;" method="post" action="/af/ad_lec/del">
+    <input type="hidden" name="num" id="del_num" value="">
+    <input type="hidden" name="csrf_test_name" id="csrf_del" value="CSRF_PLACEHOLDER">
+  </form>
+
+  <div id="modal-login" style="display:none;">
+    <button type="button" class="close" aria-label="닫기">×</button>
+    <form id="fm_login_inline" action="#" method="post">
+      <input type="text" id="login_id" name="login_id" class="form-control" placeholder="아이디">
+      <input type="password" id="login_passwd" name="login_passwd" class="form-control" placeholder="비밀번호">
+      <input type="submit" class="go_btn" value="로그인">
+    </form>
+  </div>
+
+  <div id="modal-confirm" style="display:none;">
+    <button type="button" class="close" aria-label="닫기">×</button>
+    <a href="#none;" class="btn btn-primary">확인</a>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="./assets/js/app.js"></script>
+</body>
+</html>

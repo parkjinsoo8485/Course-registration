@@ -1,0 +1,28 @@
+﻿<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <title>강의시간 선택</title>
+  <style>
+    body{font-family:system-ui, sans-serif; padding:12px;}
+    button{display:block; width:100%; padding:10px; margin:8px 0; cursor:pointer;}
+  </style>
+</head>
+<body>
+  <h3>강의시간 선택</h3>
+
+  <!-- TODO: 나중에 시간표 UI로 확장 가능 -->
+  <button onclick="pick('월 3-4교시', 'MON_3_4')">월 3-4교시</button>
+  <button onclick="pick('수 5-6교시', 'WED_5_6')">수 5-6교시</button>
+  <button onclick="pick('금 1-2교시', 'FRI_1_2')">금 1-2교시</button>
+
+  <script>
+    function pick(text, raw) {
+      if (window.opener && window.opener.applyLectureTime) {
+        window.opener.applyLectureTime(text, raw);
+      }
+      window.close();
+    }
+  </script>
+</body>
+</html>

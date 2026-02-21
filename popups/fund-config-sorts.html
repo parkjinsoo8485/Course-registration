@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>지원금 차감 순서 변경</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css">
+  <style>
+    body {
+      margin: 0;
+      background: #eef1f4;
+      font-family: "Noto Sans KR", sans-serif;
+      color: #38495a;
+    }
+    .wrap {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 12px;
+    }
+    .panel {
+      border: 1px solid #cfd6dd;
+      box-shadow: none;
+      margin-bottom: 10px;
+    }
+    .panel-heading {
+      background: #f3f5f7 !important;
+      border-bottom: 1px solid #d5dbe2 !important;
+      font-weight: 700;
+      color: #33475b !important;
+    }
+    .table {
+      margin-bottom: 0;
+      background: #fff;
+    }
+    .table th,
+    .table td {
+      border-color: #d6dde5 !important;
+      vertical-align: middle !important;
+      text-align: center;
+      font-size: 12px;
+    }
+    .table td.name {
+      text-align: left;
+      font-weight: 600;
+      color: #2f4f75;
+    }
+    .btn-row {
+      margin-top: 10px;
+      text-align: right;
+    }
+    .btn-row .btn {
+      min-width: 72px;
+    }
+    .muted {
+      color: #76889a;
+      font-size: 12px;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="panel panel-default">
+      <div class="panel-heading">지원금 차감 순서 변경</div>
+      <div class="panel-body">
+        <p class="muted">위에서 아래 순서대로 먼저 차감됩니다.</p>
+        <table class="table table-bordered" id="sort_table">
+          <thead>
+            <tr>
+              <th width="80">순서</th>
+              <th>지원금명</th>
+              <th width="150">이동</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+        <div class="btn-row">
+          <button type="button" class="btn btn-default" id="btn_cancel">닫기</button>
+          <button type="button" class="btn btn-primary" id="btn_apply">적용</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      "use strict";
+      var ORDER_KEY = "dbdb_module_fund_cfg_sort_order";
+      var ITEMS_KEY = "dbdb_module_fund_cfg_sort_items";
+      var tbody = document.querySelector("#sort_table tbody");
+      if (!tbody) return;
+
+      function loadJson(key, fallbackValue) {
+        try {
+          var raw = localStorage.getItem(key);
+          if (!raw) return fallbackValue;
+          return JSON.parse(raw);
+        } catch (e) {
+          return fallbackValue;
+        }
+      }
+
+      function saveJson(key, value) {
+        try {
+          localStorage.setItem(key, JSON.stringify(value));
+          return true;
+        } catch (e) {
+          return false;
+        }
+      }
+
+      function renderRows() {
+        var items = loadJson(ITEMS_KEY, []);
+        if (!Array.isArray(items) || !items.length) {
+          items = [
+            { id: "1", title: "자유수강권" },
+            { id: "2", title: "1학년(무상)" },
+            { id: "3", title: "지원금3" },
+            { id: "4", title: "지원금4" }
+          ];
+        }
+
+        var order = loadJson(ORDER_KEY, []);
+        if (Array.isArray(order) && order.length) {
+          var byId = {};
+          items.forEach(function (x) {
+            byId[String(x.id)] = x;
+          });
+          var sorted = [];
+          order.forEach(function (id) {
+            var key = String(id || "");
+            if (byId[key]) {
+              sorted.push(byId[key]);
+              delete byId[key];
+            }
+          });
+          Object.keys(byId).forEach(function (k) {
+            sorted.push(byId[k]);
+          });
+          items = sorted;
+        }
+
+        tbody.innerHTML = "";
+        items.forEach(function (item, idx) {
+          var tr = document.createElement("tr");
+          tr.setAttribute("data-id", String(item.id));
+          tr.innerHTML =
+            '<td class="order">' + (idx + 1) + '</td>' +
+            '<td class="name"></td>' +
+            '<td><button type="button" class="btn btn-default btn-xs up">▲</button> <button type="button" class="btn btn-default btn-xs down">▽</button></td>';
+          tr.querySelector(".name").textContent = String(item.title || ("지원금" + item.id));
+          tbody.appendChild(tr);
+        });
+      }
+
+      function refreshOrder() {
+        var rows = tbody.querySelectorAll("tr");
+        for (var i = 0; i < rows.length; i += 1) {
+          var order = rows[i].querySelector(".order");
+          if (order) order.textContent = String(i + 1);
+        }
+      }
+
+      function currentOrder() {
+        var rows = tbody.querySelectorAll("tr[data-id]");
+        var out = [];
+        for (var i = 0; i < rows.length; i += 1) {
+          out.push(String(rows[i].getAttribute("data-id") || ""));
+        }
+        return out.filter(function (x) { return !!x; });
+      }
+
+      renderRows();
+      refreshOrder();
+
+      tbody.addEventListener("click", function (e) {
+        var t = e.target;
+        if (!(t instanceof HTMLElement)) return;
+        var row = t.closest("tr");
+        if (!row) return;
+
+        if (t.classList.contains("up")) {
+          var prev = row.previousElementSibling;
+          if (prev) tbody.insertBefore(row, prev);
+          refreshOrder();
+        } else if (t.classList.contains("down")) {
+          var next = row.nextElementSibling;
+          if (next) tbody.insertBefore(next, row);
+          refreshOrder();
+        }
+      });
+
+      document.getElementById("btn_cancel").addEventListener("click", function () {
+        window.close();
+      });
+
+      document.getElementById("btn_apply").addEventListener("click", function () {
+        saveJson(ORDER_KEY, currentOrder());
+        window.alert("차감 순서가 적용되었습니다.");
+        window.close();
+      });
+    })();
+  </script>
+</body>
+</html>

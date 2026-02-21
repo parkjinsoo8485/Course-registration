@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>직위명 설정 - 교직원관리 - 학교관리</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="./assets/css/app.css">
+</head>
+<body class="school-admin-page">
+  <div id="header" class="topbar">
+    <div class="topbar-inner">
+      <div class="topbar-center"><span class="topbar-title">학교관리</span></div>
+    </div>
+  </div>
+  <div id="container" class="layout">
+    
+    <aside id="left_menu" class="sidebar school-sidebar">
+      <div class="sidebar-user">
+        <div class="avatar"><i class="fa fa-user"></i></div>
+        <div class="user-meta">
+          <div class="user-name-row"><span class="user-name">박진수님</span></div>
+          <div class="user-role"><a href="#">로그아웃</a> <span class="muted">정보수정</span></div>
+        </div>
+      </div>
+      <ul class="nav side-nav">
+        <li><a href="./index.html"><i class="fa fa-tachometer"></i> 늘봄학교 보기</a></li>
+        <li><a href="./school.html"><i class="fa fa-sitemap"></i> 서비스목록</a></li>
+        <li class="nav-section active">
+          <a data-toggle="collapse" href="#school-teacher"><i class="fa fa-user"></i> 교직원관리 <span class="caret"></span></a>
+          <ul id="school-teacher" class="collapse in">
+            <li><a href="./school-teacher.html">교직원관리</a></li>
+            <li><a href="./school-teacher-field.html">인원필드설정</a></li>
+            <li class="active"><a href="./school-teacher-level.html">직위명설정</a></li>
+            <li><a href="./school-teacher-clear.html">초기화</a></li>
+          </ul>
+        </li>
+        <li class="nav-section active">
+          <a data-toggle="collapse" href="#school-student"><i class="fa fa-user"></i> 학생관리 <span class="caret"></span></a>
+          <ul id="school-student" class="collapse in">
+            <li><a href="./school-student.html">학생관리</a></li>
+            <li><a href="./school-student-main.html">기본설정</a></li>
+            <li><a href="./school-student-field.html">인원필드설정</a></li>
+            <li><a href="./school-student-course.html">입학/졸업</a></li>
+            <li><a href="./school-student-clear.html">초기화</a></li>
+          </ul>
+        </li>
+        <li class="nav-section active">
+          <a data-toggle="collapse" href="#school-sms"><i class="fa fa-comment"></i> 문자관리 <span class="caret"></span></a>
+          <ul id="school-sms" class="collapse in">
+            <li><a href="./school-sms-tel.html">발신번호관리</a></li>
+            <li><a href="./school-sms-sin.html">충전신청</a></li>
+            <li><a href="./school-sms-charge.html">충전내역</a></li>
+            <li><a href="./school-sms-report.html">발송통계</a></li>
+          </ul>
+        </li>
+      </ul>
+    </aside>
+  
+    <main id="contents_box" class="content">
+      <div id="contents_title" class="page-title">
+        <div class="title-left">
+          <div class="title-main"><i class="fa fa-file-text-o"></i> 직위명설정</div>
+          <div class="title-sub">운천초등학교 학교관리</div>
+        </div>
+      </div>
+      <div id="contents" class="content-inner school-raw-content">
+<div class="panel_main panel-default_main">
+	<div class="panel-heading">직위명 설정</div>
+<form action="https://www.dbdbschool.kr/sczigi/teacher/level/sn/2848" name="fm_edit" id="fm_edit" onsubmit="return fm_edit_check(this);" method="post" accept-charset="utf-8">
+<input type="hidden" name="csrf_test_name" value="f4620a2e4d8a4ea7407701a68786c16a">                                                                        
+<input type="hidden" name="form_open_date_use_chk_csrf" value="2026-02-21 04:22:39">
+	<input type="hidden" name="number" value="">
+	<input type="hidden" name="mode1" value="">
+	<table class="table table-bordered AlignCenter table-hover list MAT30">
+	<tbody><tr>
+		<th class="mobile_none">연번</th>
+		<th>사용</th>
+		<th>코드명</th>
+		<th>적용</th>
+		<th colspan="2" class="mobile_none">출력순서</th>
+		<th>삭제</th>
+	</tr>
+	
+	<tr>
+		<td class="mobile_none">5</td>
+		<td><input id="use_status_19764" name="use_status_19764" value="Y" type="checkbox" title="사용" checked="checked">
+			<div class="error_msg error_use_status_19764"></div>
+		</td>
+		<td><input id="div_name_19764" name="div_name_19764" value="교장" type="text" title="코드명" class="form-control size100" style="width:60%" maxlength="15">
+			<div class="error_msg error_div_name_19764"></div>
+		</td>
+		<td><a href="#none;" onclick="chkModify(19764); return false;"><i class="fa fa-pencil-square-o icon_btn" title="적용"></i></a></td>
+		<td class="mobile_none"><a href="#none;" onclick="chkSortUp(19764); return false;">▲</a>
+		<input type="hidden" name="sort_num_list[]" value="1">
+		<input type="hidden" name="code_num_list[]" value="19764">
+	</td>
+		<td class="mobile_none"><a href="#none;" onclick="chkSortDown(19764); return false;">▽</a></td>
+		<td class="mobile_right_none"><a href="#none;" onclick="chkDel(19764); return false;"><i class="fa fa-trash-o icon_btn" title="삭제"></i></a></td>
+		</tr>
+	
+	<tr>
+		<td class="mobile_none">4</td>
+		<td><input id="use_status_19765" name="use_status_19765" value="Y" type="checkbox" title="사용" checked="checked">
+			<div class="error_msg error_use_status_19765"></div>
+		</td>
+		<td><input id="div_name_19765" name="div_name_19765" value="교감" type="text" title="코드명" class="form-control size100" style="width:60%" maxlength="15">
+			<div class="error_msg error_div_name_19765"></div>
+		</td>
+		<td><a href="#none;" onclick="chkModify(19765); return false;"><i class="fa fa-pencil-square-o icon_btn" title="적용"></i></a></td>
+		<td class="mobile_none"><a href="#none;" onclick="chkSortUp(19765); return false;">▲</a>
+		<input type="hidden" name="sort_num_list[]" value="2">
+		<input type="hidden" name="code_num_list[]" value="19765">
+	</td>
+		<td class="mobile_none"><a href="#none;" onclick="chkSortDown(19765); return false;">▽</a></td>
+		<td class="mobile_right_none"><a href="#none;" onclick="chkDel(19765); return false;"><i class="fa fa-trash-o icon_btn" title="삭제"></i></a></td>
+		</tr>
+	
+	<tr>
+		<td class="mobile_none">3</td>
+		<td><input id="use_status_19766" name="use_status_19766" value="Y" type="checkbox" title="사용" checked="checked">
+			<div class="error_msg error_use_status_19766"></div>
+		</td>
+		<td><input id="div_name_19766" name="div_name_19766" value="수석교사" type="text" title="코드명" class="form-control size100" style="width:60%" maxlength="15">
+			<div class="error_msg error_div_name_19766"></div>
+		</td>
+		<td><a href="#none;" onclick="chkModify(19766); return false;"><i class="fa fa-pencil-square-o icon_btn" title="적용"></i></a></td>
+		<td class="mobile_none"><a href="#none;" onclick="chkSortUp(19766); return false;">▲</a>
+		<input type="hidden" name="sort_num_list[]" value="3">
+		<input type="hidden" name="code_num_list[]" value="19766">
+	</td>
+		<td class="mobile_none"><a href="#none;" onclick="chkSortDown(19766); return false;">▽</a></td>
+		<td class="mobile_right_none"><a href="#none;" onclick="chkDel(19766); return false;"><i class="fa fa-trash-o icon_btn" title="삭제"></i></a></td>
+		</tr>
+	
+	<tr>
+		<td class="mobile_none">2</td>
+		<td><input id="use_status_19767" name="use_status_19767" value="Y" type="checkbox" title="사용" checked="checked">
+			<div class="error_msg error_use_status_19767"></div>
+		</td>
+		<td><input id="div_name_19767" name="div_name_19767" value="교사" type="text" title="코드명" class="form-control size100" style="width:60%" maxlength="15">
+			<div class="error_msg error_div_name_19767"></div>
+		</td>
+		<td><a href="#none;" onclick="chkModify(19767); return false;"><i class="fa fa-pencil-square-o icon_btn" title="적용"></i></a></td>
+		<td class="mobile_none"><a href="#none;" onclick="chkSortUp(19767); return false;">▲</a>
+		<input type="hidden" name="sort_num_list[]" value="4">
+		<input type="hidden" name="code_num_list[]" value="19767">
+	</td>
+		<td class="mobile_none"><a href="#none;" onclick="chkSortDown(19767); return false;">▽</a></td>
+		<td class="mobile_right_none"><a href="#none;" onclick="chkDel(19767); return false;"><i class="fa fa-trash-o icon_btn" title="삭제"></i></a></td>
+		</tr>
+	
+	<tr>
+		<td class="mobile_none">1</td>
+		<td><input id="use_status_19768" name="use_status_19768" value="Y" type="checkbox" title="사용" checked="checked">
+			<div class="error_msg error_use_status_19768"></div>
+		</td>
+		<td><input id="div_name_19768" name="div_name_19768" value="교직원" type="text" title="코드명" class="form-control size100" style="width:60%" maxlength="15">
+			<div class="error_msg error_div_name_19768"></div>
+		</td>
+		<td><a href="#none;" onclick="chkModify(19768); return false;"><i class="fa fa-pencil-square-o icon_btn" title="적용"></i></a></td>
+		<td class="mobile_none"><a href="#none;" onclick="chkSortUp(19768); return false;">▲</a>
+		<input type="hidden" name="sort_num_list[]" value="5">
+		<input type="hidden" name="code_num_list[]" value="19768">
+	</td>
+		<td class="mobile_none"><a href="#none;" onclick="chkSortDown(19768); return false;">▽</a></td>
+		<td class="mobile_right_none"><a href="#none;" onclick="chkDel(19768); return false;"><i class="fa fa-trash-o icon_btn" title="삭제"></i></a></td>
+		</tr>
+		<tr>
+		<td class="mobile_none">&nbsp;</td>
+		<td><input id="use_status_add1" name="use_status_add1" value="Y" type="checkbox" checked="checked" title="사용">
+			<div class="error_msg error_use_status_add1"></div>
+		</td>
+		<td><input id="div_name_add1" name="div_name_add1" value="" type="text" title="코드명" class="form-control size100" style="width:60%;" maxlength="15">
+			<div class="error_msg error_div_name_add1"></div>
+		</td>
+		<td><a href="#none;" onclick="chkAdd(); return false;" class="border_dot">추가</a></td>
+		<td class="mobile_none" colspan="2">
+			<a href="#none;" class="search_btn" onclick="openSortWin('https://www.dbdbschool.kr/sczigi/teacher/sorts/code/level/p/1/sn/2848','700', '600');">일괄 변경</a>
+		</td>
+		<td class="mobile_right_none">&nbsp;</td>
+	</tr>
+	</tbody></table>
+</form>
+</div>
+<div class="help_box">
+	<ul>
+		<li> "사용"에 check 되어 있는 경우에만 등록 화면에 출력됩니다.</li>
+		<li> 코드를 삭제하는 경우 <span class="text-danger">기존에 등록된 데이터의 출력에 영향을 끼칠 수 있으므로 되도록 "사용" 여부를 조정</span>하여 사용하시기 바랍니다.</li>
+		<li> 코드명을 수정하는 경우 <span class="text-danger">기존에 등록된 데이터의 자료도 수정</span>되므로 유의하시기 바랍니다.</li>
+	</ul>
+</div>
+
+			</div>
+      </div>
+      <div id="footer" class="footer"><span class="muted">DBDB School Clone</span></div>
+    </main>
+  </div>
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="./assets/js/app.js"></script>
+</body>
+</html>

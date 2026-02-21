@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>목록 - 문자관리 > 발신번호관리 - 학교관리</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="./assets/css/app.css">
+</head>
+<body class="school-admin-page">
+  <div id="header" class="topbar">
+    <div class="topbar-inner">
+      <div class="topbar-center"><span class="topbar-title">학교관리</span></div>
+    </div>
+  </div>
+  <div id="container" class="layout">
+    
+    <aside id="left_menu" class="sidebar school-sidebar">
+      <div class="sidebar-user">
+        <div class="avatar"><i class="fa fa-user"></i></div>
+        <div class="user-meta">
+          <div class="user-name-row"><span class="user-name">박진수님</span></div>
+          <div class="user-role"><a href="#">로그아웃</a> <span class="muted">정보수정</span></div>
+        </div>
+      </div>
+      <ul class="nav side-nav">
+        <li><a href="./index.html"><i class="fa fa-tachometer"></i> 늘봄학교 보기</a></li>
+        <li><a href="./school.html"><i class="fa fa-sitemap"></i> 서비스목록</a></li>
+        <li class="nav-section active">
+          <a data-toggle="collapse" href="#school-teacher"><i class="fa fa-user"></i> 교직원관리 <span class="caret"></span></a>
+          <ul id="school-teacher" class="collapse in">
+            <li><a href="./school-teacher.html">교직원관리</a></li>
+            <li><a href="./school-teacher-field.html">인원필드설정</a></li>
+            <li><a href="./school-teacher-level.html">직위명설정</a></li>
+            <li><a href="./school-teacher-clear.html">초기화</a></li>
+          </ul>
+        </li>
+        <li class="nav-section active">
+          <a data-toggle="collapse" href="#school-student"><i class="fa fa-user"></i> 학생관리 <span class="caret"></span></a>
+          <ul id="school-student" class="collapse in">
+            <li><a href="./school-student.html">학생관리</a></li>
+            <li><a href="./school-student-main.html">기본설정</a></li>
+            <li><a href="./school-student-field.html">인원필드설정</a></li>
+            <li><a href="./school-student-course.html">입학/졸업</a></li>
+            <li><a href="./school-student-clear.html">초기화</a></li>
+          </ul>
+        </li>
+        <li class="nav-section active">
+          <a data-toggle="collapse" href="#school-sms"><i class="fa fa-comment"></i> 문자관리 <span class="caret"></span></a>
+          <ul id="school-sms" class="collapse in">
+            <li class="active"><a href="./school-sms-tel.html">발신번호관리</a></li>
+            <li><a href="./school-sms-sin.html">충전신청</a></li>
+            <li><a href="./school-sms-charge.html">충전내역</a></li>
+            <li><a href="./school-sms-report.html">발송통계</a></li>
+          </ul>
+        </li>
+      </ul>
+    </aside>
+  
+    <main id="contents_box" class="content">
+      <div id="contents_title" class="page-title">
+        <div class="title-left">
+          <div class="title-main"><i class="fa fa-file-text-o"></i> 발신번호관리</div>
+          <div class="title-sub">운천초등학교 학교관리</div>
+        </div>
+      </div>
+      <div id="contents" class="content-inner school-raw-content">
+<div class="panel_main panel-default_main ">
+	<div class="panel-heading">목록</div>
+	<div class="panel-body PAD0 MAT20">
+		<ul>
+			<li style="float:left;">
+				<input type="button" class="btn btn-success btn-sm font-12" value="발신번호등록" onclick="location.href='https://www.dbdbschool.kr/sczigi/sms_tel/help/p/1/sn/2848';">
+	
+			</li>
+			<li style="text-align:right;">
+<form action="https://www.dbdbschool.kr/sczigi/sms_tel/lists//sn/2848" name="fm_list_search" id="fm_list_search" method="get" onsubmit="return fm_list_search_check(this);" accept-charset="utf-8">
+		
+				<select name="ast" onchange="this.form.submit();" class="form-control input-sm PAD0">
+					<option value="all" selected="selected">=처리상태=</option>
+					<option value="1">접수</option>
+<option value="2">심사중</option>
+<option value="3">승인완료</option>
+				</select>							
+				<input type="hidden" name="st" value="tel_num">							
+				<input type="text" name="sw" id="s_word" value="" title="발신번호" placeholder="발신번호" size="15" class="form-control input-sm " style="width:9%;">
+				<input type="submit" value="검색" class="btn btn-primary btn-sm">
+				<input type="button" value="전체" class="btn btn-default  btn-sm" onclick="location.href='https://www.dbdbschool.kr/sczigi/sms_tel/lists//sn/2848';">
+</form>
+			</li>
+		</ul>
+	</div>
+
+	<div class="panel-body table-responsive-container" style="background:#FFF;">	
+	<table class="table table-bordered table-hover AlignCenter MAT5" style="margin:0px; min-width:980px; width:100%; ">
+		<tbody><tr>
+			<th width="60">연번</th>
+			<th width="50">수정</th>
+			<th width="100">발신번호</th>			
+			<th width="110">발신번호명의</th>		
+			<th width="80">인증방식</th>		
+			<th>발신번호 구분<br>(비고)</th>		
+			<th width="80">처리상태</th>	
+			<th width="100">승인일자</th>	
+			<th width="50">취소</th>		
+		</tr> 
+		<tr>
+			<td colspan="9">검색된 발신번호가 없습니다.</td>
+		</tr>
+	</tbody></table>
+	</div>
+
+	<div class="panel-body MAT30" style="text-align:center;">
+			</div>
+</div>
+<div class="help_box MAT30">
+	<ul>
+		<li><span class="text-danger">등록</span>은 <span class="text-danger">최대 10개</span> 까지만 가능합니다.</li>
+		<li><span class="text-danger">수정</span>은 접수 상태에서만 가능합니다.</li>
+		<li><span class="text-danger">승인</span>된 발신번호만 사용할 수 있습니다.</li>
+	</ul>
+</div>
+
+<!-- { del form -->
+
+<form action="https://www.dbdbschool.kr/sczigi/sms_tel/cancel/p/1/sn/2848" name="fm_cancel" id="fm_cancel" method="post" accept-charset="utf-8">
+<input type="hidden" name="csrf_test_name" value="f4620a2e4d8a4ea7407701a68786c16a">                                                                                                                        
+<input type="hidden" name="form_open_date_use_chk_csrf" value="2026-02-21 04:22:54">
+	<input type="hidden" name="num" id="cancel_num" value="">
+ </form>
+<!-- } -->
+
+			</div>
+      </div>
+      <div id="footer" class="footer"><span class="muted">DBDB School Clone</span></div>
+    </main>
+  </div>
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="./assets/js/app.js"></script>
+</body>
+</html>

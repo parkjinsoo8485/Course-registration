@@ -1,0 +1,38 @@
+﻿{
+  "generatedAt": "2026-02-21T04:43:01.778Z",
+  "sidebar": {
+    "found": true,
+    "navigated": true,
+    "title": "지원금설정 - 지원금관리 - 늘봄학교"
+  },
+  "checkAll": {
+    "available": true,
+    "allUnchecked": true,
+    "allChecked": true,
+    "total": 12
+  },
+  "moneyFormat": {
+    "available": true,
+    "value": "12345",
+    "numericOnly": true
+  },
+  "applySubmit": {
+    "available": true,
+    "stayedOnPage": true
+  },
+  "sortPopup": {
+    "available": true,
+    "popupOpened": true,
+    "popupUrl": "file:///C:/Users/jinso/Downloads/dbdb-clone/popups/fund-config-sorts.html"
+  },
+  "sortPersistence": {
+    "available": true,
+    "formCount": 9,
+    "titleCount": 9,
+    "before": "자유수강권",
+    "after": "1학년(무상)",
+    "afterReload": "1학년(무상)",
+    "changed": true,
+    "persisted": true
+  }
+}

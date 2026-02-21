@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>서브페이지 - 늘봄학교</title>
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="./assets/css/app.css">
+</head>
+<body>
+  <div id="header" class="topbar">
+    <div class="topbar-inner">
+      <div class="topbar-center">
+        <span class="topbar-title">늘봄학교</span>
+        <span class="caret"></span>
+      </div>
+    </div>
+  </div>
+
+  <div id="container" class="layout">
+    <aside id="left_menu" class="sidebar">
+      <div class="sidebar-school">운천초등학교</div>
+      <div class="sidebar-actions">
+        <a href="./index.html" class="btn btn-success btn-sm">홈으로</a>
+        <a href="./lec_write.html" class="btn btn-danger btn-sm">강좌등록</a>
+      </div>
+      <ul class="nav side-nav">
+        <li><a href="./manual.html"><i class="fa fa-download"></i> 매뉴얼</a></li>
+        <li><a href="./index.html"><i class="fa fa-globe"></i> 강좌관리</a></li>
+      </ul>
+    </aside>
+
+    <main id="contents_box" class="content">
+      <div id="contents_title" class="page-title">
+        <div class="title-left">
+          <div class="title-main"><i class="fa fa-folder-open-o"></i> <span id="page-title">서브페이지</span></div>
+          <div class="title-sub">원본 사이트 메뉴 구조를 반영한 연결 페이지</div>
+        </div>
+      </div>
+
+      <div id="contents" class="content-inner">
+        <div class="notice-box">
+          <div class="notice-line">
+            <span class="notice-dot"><i class="fa fa-info-circle"></i></span>
+            이 페이지는 원본의 메뉴 링크를 모두 동작시키기 위한 연결 서브페이지입니다.
+          </div>
+        </div>
+
+        <div class="table-wrap" style="padding:16px;">
+          <h4 style="margin-top:0;" id="section-title">기능 준비중</h4>
+          <p class="text-muted" id="from-path"></p>
+          <p>요청한 링크는 정상 연결되었고, 이 위치에서 실제 기능을 계속 확장할 수 있습니다.</p>
+          <div class="btn-group">
+            <a href="./index.html" class="btn btn-primary btn-sm">강좌관리로 돌아가기</a>
+            <a href="./manual.html" class="btn btn-default btn-sm">매뉴얼 보기</a>
+          </div>
+        </div>
+      </div>
+
+      <div id="footer" class="footer">
+        <span class="muted">DBDB School Clone</span>
+      </div>
+    </main>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="./assets/js/app.js"></script>
+  <script>
+    (function () {
+      var q = new URLSearchParams(location.search);
+      var title = q.get("title") || "서브페이지";
+      var from = q.get("from") || "";
+      document.title = title + " - 늘봄학교";
+      document.getElementById("page-title").textContent = title;
+      document.getElementById("section-title").textContent = title;
+      document.getElementById("from-path").textContent = from ? ("진입 경로: " + from) : "";
+    })();
+  </script>
+</body>
+</html>
+

@@ -1,0 +1,92 @@
+[
+  {
+    "href": "index.html",
+    "text": "늘봄학교 보기",
+    "ok": true,
+    "title": "목록 - 강좌관리 - 늘봄학교"
+  },
+  {
+    "href": "school.html",
+    "text": "서비스목록",
+    "ok": true,
+    "title": "목록 - 서비스목록 - 학교관리"
+  },
+  {
+    "href": "school-teacher.html",
+    "text": "교직원관리",
+    "ok": true,
+    "title": "목록 - 교직원관리 - 학교관리"
+  },
+  {
+    "href": "school-teacher-field.html",
+    "text": "인원필드설정",
+    "ok": true,
+    "title": "회원필드설정 - 교직원관리 - 학교관리"
+  },
+  {
+    "href": "school-teacher-level.html",
+    "text": "직위명설정",
+    "ok": true,
+    "title": "직위명 설정 - 교직원관리 - 학교관리"
+  },
+  {
+    "href": "school-teacher-clear.html",
+    "text": "초기화",
+    "ok": true,
+    "title": "초기화 - 교직원관리 - 학교관리"
+  },
+  {
+    "href": "school-student.html",
+    "text": "학생관리",
+    "ok": true,
+    "title": "목록 - 학생관리 - 학교관리"
+  },
+  {
+    "href": "school-student-main.html",
+    "text": "기본설정",
+    "ok": true,
+    "title": "기본설정 - 학생관리 - 학교관리"
+  },
+  {
+    "href": "school-student-field.html",
+    "text": "인원필드설정",
+    "ok": true,
+    "title": "회원필드설정 - 학생관리 - 학교관리"
+  },
+  {
+    "href": "school-student-course.html",
+    "text": "입학/졸업",
+    "ok": true,
+    "title": "학과 설정 - 학생관리 - 학교관리"
+  },
+  {
+    "href": "school-student-clear.html",
+    "text": "초기화",
+    "ok": true,
+    "title": "초기화 - 학생관리 - 학교관리"
+  },
+  {
+    "href": "school-sms-tel.html",
+    "text": "발신번호관리",
+    "ok": true,
+    "title": "목록 - 문자관리 > 발신번호관리 - 학교관리"
+  },
+  {
+    "href": "school-sms-sin.html",
+    "text": "충전신청",
+    "ok": true,
+    "title": "목록 - 문자관리 > 충전신청 - 학교관리"
+  },
+  {
+    "href": "school-sms-charge.html",
+    "text": "충전내역",
+    "ok": true,
+    "title": "목록 - 문자관리 > 충전내역 - 학교관리"
+  },
+  {
+    "href": "school-sms-report.html",
+    "text": "발송통계",
+    "ok": true,
+    "title": "목록 - 문자관리 > 발송통계 - 학교관리"
+  }
+]

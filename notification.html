@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>알림목록 - 알림관리 - 늘봄학교</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="./assets/css/app.css">
+</head>
+<body data-sidebar-page="notification">
+  <div id="header" class="topbar">
+    <div class="topbar-inner">
+      <div class="topbar-center">
+        <span class="topbar-title">늘봄학교</span>
+        <span class="caret"></span>
+      </div>
+    </div>
+  </div>
+
+  <div id="container" class="layout">
+    <aside id="left_menu" class="sidebar"></aside>
+
+    <main id="contents_box" class="content">
+      <div id="contents_title" class="page-title">
+        <div class="title-left">
+          <div class="title-main"><i class="fa fa-file-text-o"></i> 알림관리</div>
+          <div class="title-sub">운천초등학교 늘봄학교</div>
+        </div>
+      </div>
+      <div id="contents" class="content-inner module-raw-content">
+<div class="panel_main panel-default_main">
+	<div class="new_help_manualbox hm_loca1">
+    		<p class="hm_title"><i class="fa fa-file-text-o" aria-hidden="true"></i>매뉴얼</p>
+		<ul>
+			<li><a href="https://s3-ap-northeast-2.amazonaws.com/www.dbdbschool.kr/doc/faq/common/세부기능_알림관리.hwp" target="_blank" class="manual_btn"><i class="fa fa-download"></i> 알림 관리</a></li>
+		</ul>
+	</div>
+	
+	<div class="panel-heading">알림목록</div>
+	<div class="panel-search ">
+<form action="https://www.dbdbschool.kr/af/notification/lists/sn/2848" name="fm_list_search" id="fm_list_search" method="get" onsubmit="return fm_list_search_check(this);" accept-charset="utf-8">
+		<ul>
+			<li class="PAD0" style="text-align:center;">
+				<select name="ng" onchange="this.form.submit();" class="form-control input-sm PAD0">
+					<option value="all">=알림구분=</option>
+					<option value="0">서비스</option>
+					<option value="1">학교알림</option>
+				</select>			
+				
+				<select name="vg" onchange="this.form.submit();" class="form-control input-sm PAD0">
+					<option value="all">=대상구분=</option>
+					<option value="99">관리자</option>					
+				<option value="1">담임</option>
+				<option value="2">학생</option>
+				<option value="4">강사</option>
+					
+				</select>
+				
+				<select name="st" class="form-control input-sm PAD0 mobile_none">
+					<option value="subject" selected="selected">제목</option>					
+					<option value="sub_con">제목 + 내용</option>
+					<option value="contents">내용</option>
+				</select>
+				<input type="text" name="sw" id="s_word" value="" size="15" class="form-control input-sm " style="width:18%; ime-mode:active;">
+				<input type="submit" value="검색" class="btn btn-default btn-sm">
+				<input type="button" value="전체" class="btn btn-default btn-sm" onclick="location.href='https://www.dbdbschool.kr/af/notification/lists/sn/2848';">
+			</li><li>
+		</li></ul>
+</form>		
+	</div>
+		<div class="panel-body">
+			<ul class="list-inline">
+				<li class="pull-right PAD0">
+					<input type="button" value="등록" class="btn btn-primary btn-sm" onclick="location.href='https://www.dbdbschool.kr/af/notification/write/p/1/sn/2848'">
+				</li>
+			</ul>
+		</div>
+		
+		<table class="table AlignCenter table-hover_sm list" style="margin-top:0px">
+			<tbody><tr>
+				<th class="mobile_none" width="60">연번</th>
+				<th width="90">알림구분</th>
+					
+				<th width="90">대상구분</th>
+				
+				<th>제목</th>
+				<th width="110">등록일자</th>
+			</tr>
+			<tr>
+				<td class="mobile_none">167</td>
+				<td>서비스</td>	
+					
+				<td>관리자</td>
+								
+				<td align="left" class="noti_title"><a href="https://www.dbdbschool.kr/af/notification/view/num/737/p/1/sn/2848" class="link_type">임시 비밀번호 사용 시 일부 휴대폰 접속 오류 안내</a>
+				
+					&nbsp;<span class="label label-danger">읽지않음</span>
+						
+				</td>
+				<td>2026-02-11</td>
+		</tr>
+			<tr>
+				<td class="mobile_none">166</td>
+				<td>서비스</td>	
+					
+				<td>관리자</td>
+								
+				<td align="left" class="noti_title"><a href="https://www.dbdbschool.kr/af/notification/view/num/733/p/1/sn/2848" class="link_type">학생 개인별 시간표 일괄 출력 기능이 업그레이드 되었습니다.</a>
+				
+					&nbsp;<span class="label label-danger">읽지않음</span>
+						
+				</td>
+				<td>2026-02-11</td>
+		</tr>
+			<tr>
+				<td class="mobile_none">165</td>
+				<td>서비스</td>	
+					
+				<td>관리자</td>
+								
+				<td align="left" class="noti_title"><a href="https://www.dbdbschool.kr/af/notification/view/num/731/p/1/sn/2848" class="link_type">방과후, 맞춤형, 돌봄 프로그램 이용 현황 통계 작성을 위한 엑셀 프로그램입니다.</a>
+				
+					&nbsp;<span class="label label-danger">읽지않음</span>
+						
+				</td>
+				<td>2026-02-06</td>
+		</tr>
+			<tr>
+				<td class="mobile_none">164</td>
+				<td>서비스</td>	
+					
+				<td>관리자</td>
+								
+				<td align="left" class="noti_title"><a href="https://www.dbdbschool.kr/af/notification/view/num/729/p/1/sn/2848" class="link_type">강좌상태 “출력, 종료, 대기” 이해하기</a>
+				
+					&nbsp;<span class="label label-danger">읽지않음</span>
+						
+				</td>
+				<td>2026-02-05</td>
+		</tr>
+			<tr>
+				<td class="mobile_none">163</td>
+				<td>서비스</td>	
+					
+				<td>관리자</td>
+								
+				<td align="left" class="noti_title"><a href="https://www.dbdbschool.kr/af/notification/view/num/728/p/1/sn/2848" class="link_type">1차 추첨 완료 후 2차 추가 접수는 "선착순"으로 접수하는 방법입니다.</a>
+				
+					&nbsp;<span class="label label-danger">읽지않음</span>
+						
+				</td>
+				<td>2026-02-04</td>
+		</tr>
+			<tr>
+				<td class="mobile_none">162</td>
+				<td>서비스</td>	
+					
+				<td>관리자</td>
+								
+				<td align="left" class="noti_title"><a href="https://www.dbdbschool.kr/af/notification/view/num/727/p/1/sn/2848" class="link_type">1차 추첨 완료 후 2차 추가 접수도 "추첨"하는 경우 처리 방법입니다.</a>
+				
+					&nbsp;<span class="label label-danger">읽지않음</span>
+						
+				</td>
+				<td>2026-02-04</td>
+		</tr>
+			<tr>
+				<td class="mobile_none">161</td>
+				<td>서비스</td>	
+					
+				<td>관리자</td>
+								
+				<td align="left" class="noti_title"><a href="https://www.dbdbschool.kr/af/notification/view/num/726/p/1/sn/2848" class="link_type">방과후학교 최신 매뉴얼 다운로드 안내입니다.</a>
+				
+					&nbsp;<span class="label label-danger">읽지않음</span>
+						
+				</td>
+				<td>2026-02-02</td>
+		</tr>
+			<tr>
+				<td class="mobile_none">160</td>
+				<td>서비스</td>	
+					
+				<td>관리자</td>
+								
+				<td align="left" class="noti_title"><a href="https://www.dbdbschool.kr/af/notification/view/num/725/p/1/sn/2848" class="link_type">늘봄/방과후학교 프로그램 줌교육 자료입니다.</a>
+				
+					&nbsp;<span class="label label-danger">읽지않음</span>
+						
+				</td>
+				<td>2026-02-02</td>
+		</tr>
+			<tr>
+				<td class="mobile_none">159</td>
+				<td>서비스</td>	
+					
+				<td>관리자</td>
+								
+				<td align="left" class="noti_title"><a href="https://www.dbdbschool.kr/af/notification/view/num/724/p/1/sn/2848" class="link_type">강좌 요일별로 출력하는 방법입니다.</a>
+				
+					&nbsp;<span class="label label-danger">읽지않음</span>
+						
+				</td>
+				<td>2026-02-02</td>
+		</tr>
+			<tr>
+				<td class="mobile_none">158</td>
+				<td>서비스</td>	
+					
+				<td>관리자</td>
+								
+				<td align="left" class="noti_title"><a href="https://www.dbdbschool.kr/af/notification/view/num/723/p/1/sn/2848" class="link_type">[광주] 2026학년도 늘봄학교 늘봄과정 본 수요조사 안내 (1~5학년) 샘플 설문에 등록해 드렸습니다.</a>
+				
+					&nbsp;<span class="label label-danger">읽지않음</span>
+						
+				</td>
+				<td>2026-02-02</td>
+		</tr>
+		</tbody></table>
+	<div class="panel-body MAT30" style="text-align:center;">
+		<ul class="pagination"><li class="active"><a href="#none;">1</a></li><li><a href="https://www.dbdbschool.kr/af/notification/lists/sn/2848/p/2" data-ci-pagination-page="2">2</a></li><li class="next"><a href="https://www.dbdbschool.kr/af/notification/lists/sn/2848/p/2" data-ci-pagination-page="2" rel="next">다음</a></li><li class="last"><a href="https://www.dbdbschool.kr/af/notification/lists/sn/2848/p/17" data-ci-pagination-page="17">마지막</a></li></ul>	</div>
+</div>
+
+			</div>
+      </div>
+      <div id="footer" class="footer"><span class="muted">DBDB School Clone</span></div>
+    </main>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="./assets/js/app.js"></script>
+</body>
+</html>

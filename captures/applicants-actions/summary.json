@@ -1,0 +1,82 @@
+[
+  {
+    "key": "to-waitlist",
+    "label": "대기자목록",
+    "ok": true,
+    "title": "대기자 목록 - 대기자관리 - 늘봄학교",
+    "url": "file:///C:/Users/jinso/Downloads/dbdb-clone/waitlist.html",
+    "error": ""
+  },
+  {
+    "key": "sin",
+    "label": "신청자등록",
+    "ok": true,
+    "title": "신청자등록 - 신청자관리 - 늘봄학교",
+    "url": "file:///C:/Users/jinso/Downloads/dbdb-clone/applicants-subpage.html?kind=sin",
+    "error": ""
+  },
+  {
+    "key": "input",
+    "label": "신청자일괄입력",
+    "ok": true,
+    "title": "신청자일괄입력 - 신청자관리 - 늘봄학교",
+    "url": "file:///C:/Users/jinso/Downloads/dbdb-clone/applicants-subpage.html?kind=input",
+    "error": ""
+  },
+  {
+    "key": "pay",
+    "label": "수강료입력",
+    "ok": true,
+    "title": "수강료입력 - 신청자관리 - 늘봄학교",
+    "url": "file:///C:/Users/jinso/Downloads/dbdb-clone/applicants-subpage.html?kind=pay",
+    "error": ""
+  },
+  {
+    "key": "copy",
+    "label": "신청자복사",
+    "ok": true,
+    "title": "신청자복사 - 신청자관리 - 늘봄학교",
+    "url": "file:///C:/Users/jinso/Downloads/dbdb-clone/applicants-subpage.html?kind=copy",
+    "error": ""
+  },
+  {
+    "key": "com",
+    "label": "추가/취소자조회",
+    "ok": true,
+    "title": "추가/취소자조회 - 신청자관리 - 늘봄학교",
+    "url": "file:///C:/Users/jinso/Downloads/dbdb-clone/applicants-subpage.html?kind=com",
+    "error": ""
+  },
+  {
+    "key": "list1",
+    "label": "미신청자목록",
+    "ok": true,
+    "title": "미신청자목록 - 신청자관리 - 늘봄학교",
+    "url": "file:///C:/Users/jinso/Downloads/dbdb-clone/applicants-subpage.html?kind=list1",
+    "error": ""
+  },
+  {
+    "key": "pdf",
+    "label": "수강신청서출력",
+    "ok": true,
+    "title": "수강신청서출력 - 신청자관리 - 늘봄학교",
+    "url": "file:///C:/Users/jinso/Downloads/dbdb-clone/applicants-subpage.html?kind=pdf",
+    "error": ""
+  },
+  {
+    "key": "pdf1",
+    "label": "고지서출력",
+    "ok": true,
+    "title": "고지서출력 - 신청자관리 - 늘봄학교",
+    "url": "file:///C:/Users/jinso/Downloads/dbdb-clone/applicants-subpage.html?kind=pdf1",
+    "error": ""
+  },
+  {
+    "key": "pdf2",
+    "label": "시간표출력",
+    "ok": true,
+    "title": "시간표출력 - 신청자관리 - 늘봄학교",
+    "url": "file:///C:/Users/jinso/Downloads/dbdb-clone/applicants-subpage.html?kind=pdf2",
+    "error": ""
+  }
+]

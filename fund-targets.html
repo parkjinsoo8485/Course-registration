@@ -1,0 +1,1446 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>목록 - 지원금관리 > 대상자관리 - 늘봄학교</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="./assets/css/app.css">
+</head>
+<body data-sidebar-page="fund-target">
+  <div id="header" class="topbar">
+    <div class="topbar-inner">
+      <div class="topbar-center">
+        <span class="topbar-title">늘봄학교</span>
+        <span class="caret"></span>
+      </div>
+    </div>
+  </div>
+
+  <div id="container" class="layout">
+    <aside id="left_menu" class="sidebar"></aside>
+
+    <main id="contents_box" class="content">
+      <div id="contents_title" class="page-title">
+        <div class="title-left">
+          <div class="title-main"><i class="fa fa-file-text-o"></i> 지원금관리 &gt; 대상자관리</div>
+          <div class="title-sub">운천초등학교 늘봄학교</div>
+        </div>
+      </div>
+      <div id="contents" class="content-inner module-raw-content">
+<div class="panel_main panel-default_main">
+	
+	<div class="panel-heading panel-heading-with-actions">
+    <span>목록</span>
+    <span class="panel-heading-actions">
+      <a href="https://www.dbdbschool.kr/help/go_data/num/255/data/link2" class="manual_btn"><i class="fa fa-file-text-o"></i> 매뉴얼</a>
+      <a href="https://www.dbdbschool.kr/help/go_data/num/255/data/link2" class="manual_btn"><i class="fa fa-download"></i> 지원금 관리</a>
+    </span>
+  </div>
+	<div class="panel-search fund-target-searchbox">
+<form action="https://www.dbdbschool.kr/af/ad_free2_stu/lists/sn/2848" name="fm_list_search" id="fm_list_search" method="get" onsubmit="return fm_list_search_check(this);" accept-charset="utf-8">
+    <ul>
+      <li class="PAD0 select_box_menu_parent">
+        <span class="main_control_box_module is-open" id="main_control_box_search">
+          <select name="sfn" id="sfn" class="form-control input-sm PAD0" onchange="chk_free_num(this.form);">
+            <option value="">=지원금전체=</option>
+            <option value="1">자유수강권</option>
+            <option value="2">1학년(무상)</option>
+          </select>
+          <select name="sfl" id="sfl" class="form-control input-sm PAD0" onchange="chk_free_level(this.form);">
+            <option value="">=순위전체=</option>
+            <option value="1">1순위</option>
+            <option value="2">2순위</option>
+            <option value="3">3순위</option>
+            <option value="4">4순위</option>
+            <option value="99">기타</option>
+          </select>
+          <select name="sfg" id="sfg" class="form-control input-sm PAD0" onchange="this.form.submit();">
+            <option value="">=순위구분전체=</option>
+          </select>
+          <select name="sgr" id="sgr" class="form-control input-sm PAD0" onchange="this.form.submit();">
+            <option value="">=학년=</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+          </select>
+          <select name="scl" id="scl" class="form-control input-sm PAD0" onchange="this.form.submit();">
+            <option value="">=반=</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select>
+          <input type="hidden" name="st" value="free_mem_name">
+          <input type="text" name="sw" id="s_word" value="" size="15" maxlength="15" class="form-control input-sm size30" placeholder="이름">
+          <input type="submit" value="검색" class="btn btn-default btn-sm">
+          <input type="button" value="전체" class="btn btn-default btn-sm" onclick="location.href='https://www.dbdbschool.kr/af/ad_free2_stu/lists/sn/2848';">
+        </span>
+      </li>
+    </ul>
+</form>
+	</div>
+
+	<div class="panel-body fund-target-actions-row">
+		<ul class="list-inline">
+			<li class="pull-right PAD0" style="position:relative;">
+				<input type="button" value="대상자등록" class="btn btn-primary btn-sm" onclick="location.href='https://www.dbdbschool.kr/af/ad_free2_stu/write/p/1/sn/2848'">
+				<a href="https://www.dbdbschool.kr/af/ad_free2_stu/input/p/1/sn/2848" class="btn btn-warning btn-sm">대상자일괄입력</a>
+				<a href="https://www.dbdbschool.kr/af/ad_free2_stu/listse/p/1/sn/2848" class="btn btn-success btn-sm">검색결과출력</a>
+				<a href="https://www.dbdbschool.kr/af/ad_free2_stu/listse1/sn/2848" class="btn btn-success btn-sm">전교생기준대상자출력</a>
+			</li>
+		</ul>
+	</div>
+<form action="https://www.dbdbschool.kr/af/ad_free2_stu/lists/sn/2848" name="fm_list" id="fm_list" method="post" onsubmit="return fm_list_check(this);" accept-charset="utf-8">
+                                                                                                     <input type="hidden" name="csrf_test_name" value="255479fb49dadebfce5096885da588c8">
+<input type="hidden" name="form_open_date_use_chk_csrf" value="2026-02-21 12:51:53">
+		
+	<div class="panel-body table-responsive-container" style="background:#FFF;">
+		<table class="table AlignCenter table-hover_sm list" style="margin:0px; min-width:1570px; width:100%; ">
+		<tbody><tr>
+			<th width="50" rowspan="2"><input type="checkbox" name="check_all" id="check_all" value="" onclick="chk_all(this);" title="전체선택/취소" style="float:none;"></th>
+			<th width="50" rowspan="2">연번</th>
+			<th width="50" rowspan="2">수정</th>
+			<th width="50" rowspan="2">학년</th>
+				
+			<th width="50" rowspan="2">반</th>
+			<th width="50" rowspan="2">번호</th>
+			<th width="80" rowspan="2">이름</th>
+		
+			<th colspan="7">자유수강권</th>
+		
+			<th colspan="4">1학년(무상)</th>
+				
+			<th width="80" rowspan="2">총액<br>합계</th>
+			<th width="80" rowspan="2">사용액<br>합계</th>
+				
+			<th width="50" rowspan="2">삭제</th>
+		</tr>
+		<tr>
+			<th width="80">순위</th>
+			<th style="min-width:110px;">순위구분</th>		
+			<th width="70">선지정<br>대상자</th>	
+			<th width="70">총액</th>				
+			<th width="70">사용액</th>
+			<th width="70">잔액</th>
+			<th width="150">지원기간</th>		
+			<th width="70">총액</th>				
+			<th width="70">사용액</th>
+			<th width="70">잔액</th>
+			<th width="150">지원기간</th>		
+		</tr>			
+		<tr>
+			<td><input type="checkbox" name="data_checked[]" value="44882"></td>
+			<td>125</td>
+			<td><a href="https://www.dbdbschool.kr/af/ad_free2_stu/modify/num/44882/p/1/sn/2848"><i class="fa fa-cog icon_btn" title="수정"></i></a></td>
+			<td>1</td>
+				
+			<td>1</td>
+			<td>1</td>
+			<td>김민준</td>
+			<td>기타</td>
+			<td class="text-left">1학년(무상)</td>		
+			<td width="60"></td>					
+			<td class="text-right" width="60">0</td>		
+			<td class="text-right" width="70">0</td>		
+			<td class="text-right" width="60">0</td>
+			<td></td>			
+			<td class="text-right" width="60">720,000</td>		
+			<td class="text-right" width="70">720,000</td>		
+			<td class="text-right" width="60">0</td>
+			<td>전체</td>			
+			<td class="text-right">720,000</td>
+			<td class="text-right">720,000</td>	
+			
+			<td><a href="#none;" onclick="chk_del(44882); return false;"><i class="fa fa-trash-o icon_btn" title="삭제"></i></a></td>
+		</tr>
+		<tr>
+			<td><input type="checkbox" name="data_checked[]" value="44883"></td>
+			<td>124</td>
+			<td><a href="https://www.dbdbschool.kr/af/ad_free2_stu/modify/num/44883/p/1/sn/2848"><i class="fa fa-cog icon_btn" title="수정"></i></a></td>
+			<td>1</td>
+				
+			<td>1</td>
+			<td>2</td>
+			<td>김서연</td>
+			<td>기타</td>
+			<td class="text-left">1학년(무상)</td>		
+			<td width="60"></td>					
+			<td class="text-right" width="60">0</td>		
+			<td class="text-right" width="70">0</td>		
+			<td class="text-right" width="60">0</td>
+			<td></td>			
+			<td class="text-right" width="60">720,000</td>		
+			<td class="text-right" width="70">720,000</td>		
+			<td class="text-right" width="60">0</td>
+			<td>전체</td>			
+			<td class="text-right">720,000</td>
+			<td class="text-right">720,000</td>	
+			
+			<td><a href="#none;" onclick="chk_del(44883); return false;"><i class="fa fa-trash-o icon_btn" title="삭제"></i></a></td>
+		</tr>
+		<tr>
+			<td><input type="checkbox" name="data_checked[]" value="44884"></td>
+			<td>123</td>
+			<td><a href="https://www.dbdbschool.kr/af/ad_free2_stu/modify/num/44884/p/1/sn/2848"><i class="fa fa-cog icon_btn" title="수정"></i></a></td>
+			<td>1</td>
+				
+			<td>1</td>
+			<td>3</td>
+			<td>김승욱</td>
+			<td></td>
+			<td class="text-left"></td>		
+			<td width="60"></td>					
+			<td class="text-right" width="60">0</td>		
+			<td class="text-right" width="70">0</td>		
+			<td class="text-right" width="60">0</td>
+			<td></td>			
+			<td class="text-right" width="60">720,000</td>		
+			<td class="text-right" width="70">720,000</td>		
+			<td class="text-right" width="60">0</td>
+			<td>전체</td>			
+			<td class="text-right">720,000</td>
+			<td class="text-right">720,000</td>	
+			
+			<td><a href="#none;" onclick="chk_del(44884); return false;"><i class="fa fa-trash-o icon_btn" title="삭제"></i></a></td>
+		</tr>
+		<tr>
+			<td><input type="checkbox" name="data_checked[]" value="44885"></td>
+			<td>122</td>
+			<td><a href="https://www.dbdbschool.kr/af/ad_free2_stu/modify/num/44885/p/1/sn/2848"><i class="fa fa-cog icon_btn" title="수정"></i></a></td>
+			<td>1</td>
+				
+			<td>1</td>
+			<td>4</td>
+			<td>김우진</td>
+			<td></td>
+			<td class="text-left"></td>		
+			<td width="60"></td>					
+			<td class="text-right" width="60">0</td>		
+			<td class="text-right" width="70">0</td>		
+			<td class="text-right" width="60">0</td>
+			<td></td>			
+			<td class="text-right" width="60">720,000</td>		
+			<td class="text-right" width="70">720,000</td>		
+			<td class="text-right" width="60">0</td>
+			<td>전체</td>			
+			<td class="text-right">720,000</td>
+			<td class="text-right">720,000</td>	
+			
+			<td><a href="#none;" onclick="chk_del(44885); return false;"><i class="fa fa-trash-o icon_btn" title="삭제"></i></a></td>
+		</tr>
+		<tr>
+			<td><input type="checkbox" name="data_checked[]" value="44886"></td>
+			<td>121</td>
+			<td><a href="https://www.dbdbschool.kr/af/ad_free2_stu/modify/num/44886/p/1/sn/2848"><i class="fa fa-cog icon_btn" title="수정"></i></a></td>
+			<td>1</td>
+				
+			<td>1</td>
+			<td>5</td>
+			<td>노우찬</td>
+			<td></td>
+			<td class="text-left"></td>		
+			<td width="60"></td>					
+			<td class="text-right" width="60">0</td>		
+			<td class="text-right" width="70">0</td>		
+			<td class="text-right" width="60">0</td>
+			<td></td>			
+			<td class="text-right" width="60">720,000</td>		
+			<td class="text-right" width="70">720,000</td>		
+			<td class="text-right" width="60">0</td>
+			<td>전체</td>			
+			<td class="text-right">720,000</td>
+			<td class="text-right">720,000</td>	
+			
+			<td><a href="#none;" onclick="chk_del(44886); return false;"><i class="fa fa-trash-o icon_btn" title="삭제"></i></a></td>
+		</tr>
+		<tr>
+			<td><input type="checkbox" name="data_checked[]" value="44887"></td>
+			<td>120</td>
+			<td><a href="https://www.dbdbschool.kr/af/ad_free2_stu/modify/num/44887/p/1/sn/2848"><i class="fa fa-cog icon_btn" title="수정"></i></a></td>
+			<td>1</td>
+				
+			<td>1</td>
+			<td>6</td>
+			<td>류한결</td>
+			<td></td>
+			<td class="text-left"></td>		
+			<td width="60"></td>					
+			<td class="text-right" width="60">0</td>		
+			<td class="text-right" width="70">0</td>		
+			<td class="text-right" width="60">0</td>
+			<td></td>			
+			<td class="text-right" width="60">720,000</td>		
+			<td class="text-right" width="70">720,000</td>		
+			<td class="text-right" width="60">0</td>
+			<td>전체</td>			
+			<td class="text-right">720,000</td>
+			<td class="text-right">720,000</td>	
+			
+			<td><a href="#none;" onclick="chk_del(44887); return false;"><i class="fa fa-trash-o icon_btn" title="삭제"></i></a></td>
+		</tr>
+		<tr>
+			<td><input type="checkbox" name="data_checked[]" value="44888"></td>
+			<td>119</td>
+			<td><a href="https://www.dbdbschool.kr/af/ad_free2_stu/modify/num/44888/p/1/sn/2848"><i class="fa fa-cog icon_btn" title="수정"></i></a></td>
+			<td>1</td>
+				
+			<td>1</td>
+			<td>7</td>
+			<td>박승재</td>
+			<td></td>
+			<td class="text-left"></td>		
+			<td width="60"></td>					
+			<td class="text-right" width="60">0</td>		
+			<td class="text-right" width="70">0</td>		
+			<td class="text-right" width="60">0</td>
+			<td></td>			
+			<td class="text-right" width="60">720,000</td>		
+			<td class="text-right" width="70">720,000</td>		
+			<td class="text-right" width="60">0</td>
+			<td>전체</td>			
+			<td class="text-right">720,000</td>
+			<td class="text-right">720,000</td>	
+			
+			<td><a href="#none;" onclick="chk_del(44888); return false;"><i class="fa fa-trash-o icon_btn" title="삭제"></i></a></td>
+		</tr>
+		<tr>
+			<td><input type="checkbox" name="data_checked[]" value="44889"></td>
+			<td>118</td>
+			<td><a href="https://www.dbdbschool.kr/af/ad_free2_stu/modify/num/44889/p/1/sn/2848"><i class="fa fa-cog icon_btn" title="수정"></i></a></td>
+			<td>1</td>
+				
+			<td>1</td>
+			<td>8</td>
+			<td>안시안</td>
+			<td></td>
+			<td class="text-left"></td>		
+			<td width="60"></td>					
+			<td class="text-right" width="60">0</td>		
+			<td class="text-right" width="70">0</td>		
+			<td class="text-right" width="60">0</td>
+			<td></td>			
+			<td class="text-right" width="60">720,000</td>		
+			<td class="text-right" width="70">616,200</td>		
+			<td class="text-right" width="60">103,800</td>
+			<td>전체</td>			
+			<td class="text-right">720,000</td>
+			<td class="text-right">616,200</td>	
+			
+			<td><a href="#none;" onclick="chk_del(44889); return false;"><i class="fa fa-trash-o icon_btn" title="삭제"></i></a></td>
+		</tr>
+		<tr>
+			<td><input type="checkbox" name="data_checked[]" value="44890"></td>
+			<td>117</td>
+			<td><a href="https://www.dbdbschool.kr/af/ad_free2_stu/modify/num/44890/p/1/sn/2848"><i class="fa fa-cog icon_btn" title="수정"></i></a></td>
+			<td>1</td>
+				
+			<td>1</td>
+			<td>9</td>
+			<td>양휘원</td>
+			<td></td>
+			<td class="text-left"></td>		
+			<td width="60"></td>					
+			<td class="text-right" width="60">0</td>		
+			<td class="text-right" width="70">0</td>		
+			<td class="text-right" width="60">0</td>
+			<td></td>			
+			<td class="text-right" width="60">720,000</td>		
+			<td class="text-right" width="70">720,000</td>		
+			<td class="text-right" width="60">0</td>
+			<td>전체</td>			
+			<td class="text-right">720,000</td>
+			<td class="text-right">720,000</td>	
+			
+			<td><a href="#none;" onclick="chk_del(44890); return false;"><i class="fa fa-trash-o icon_btn" title="삭제"></i></a></td>
+		</tr>
+		<tr>
+			<td><input type="checkbox" name="data_checked[]" value="44891"></td>
+			<td>116</td>
+			<td><a href="https://www.dbdbschool.kr/af/ad_free2_stu/modify/num/44891/p/1/sn/2848"><i class="fa fa-cog icon_btn" title="수정"></i></a></td>
+			<td>1</td>
+				
+			<td>1</td>
+			<td>10</td>
+			<td>염지아</td>
+			<td></td>
+			<td class="text-left"></td>		
+			<td width="60"></td>					
+			<td class="text-right" width="60">0</td>		
+			<td class="text-right" width="70">0</td>		
+			<td class="text-right" width="60">0</td>
+			<td></td>			
+			<td class="text-right" width="60">720,000</td>		
+			<td class="text-right" width="70">584,260</td>		
+			<td class="text-right" width="60">135,740</td>
+			<td>전체</td>			
+			<td class="text-right">720,000</td>
+			<td class="text-right">584,260</td>	
+			
+			<td><a href="#none;" onclick="chk_del(44891); return false;"><i class="fa fa-trash-o icon_btn" title="삭제"></i></a></td>
+		</tr>
+		<tr>
+			<td><input type="checkbox" name="data_checked[]" value="44892"></td>
+			<td>115</td>
+			<td><a href="https://www.dbdbschool.kr/af/ad_free2_stu/modify/num/44892/p/1/sn/2848"><i class="fa fa-cog icon_btn" title="수정"></i></a></td>
+			<td>1</td>
+				
+			<td>1</td>
+			<td>11</td>
+			<td>이가은</td>
+			<td></td>
+			<td class="text-left"></td>		
+			<td width="60"></td>					
+			<td class="text-right" width="60">0</td>		
+			<td class="text-right" width="70">0</td>		
+			<td class="text-right" width="60">0</td>
+			<td></td>			
+			<td class="text-right" width="60">720,000</td>		
+			<td class="text-right" width="70">720,000</td>		
+			<td class="text-right" width="60">0</td>
+			<td>전체</td>			
+			<td class="text-right">720,000</td>
+			<td class="text-right">720,000</td>	
+			
+			<td><a href="#none;" onclick="chk_del(44892); return false;"><i class="fa fa-trash-o icon_btn" title="삭제"></i></a></td>
+		</tr>
+		<tr>
+			<td><input type="checkbox" name="data_checked[]" value="44893"></td>
+			<td>114</td>
+			<td><a href="https://www.dbdbschool.kr/af/ad_free2_stu/modify/num/44893/p/1/sn/2848"><i class="fa fa-cog icon_btn" title="수정"></i></a></td>
+			<td>1</td>
+				
+			<td>1</td>
+			<td>12</td>
+			<td>이민혁</td>
+			<td></td>
+			<td class="text-left"></td>		
+			<td width="60"></td>					
+			<td class="text-right" width="60">0</td>		
+			<td class="text-right" width="70">0</td>		
+			<td class="text-right" width="60">0</td>
+			<td></td>			
+			<td class="text-right" width="60">720,000</td>		
+			<td class="text-right" width="70">720,000</td>		
+			<td class="text-right" width="60">0</td>
+			<td>전체</td>			
+			<td class="text-right">720,000</td>
+			<td class="text-right">720,000</td>	
+			
+			<td><a href="#none;" onclick="chk_del(44893); return false;"><i class="fa fa-trash-o icon_btn" title="삭제"></i></a></td>
+		</tr>
+		<tr>
+			<td><input type="checkbox" name="data_checked[]" value="44894"></td>
+			<td>113</td>
+			<td><a href="https://www.dbdbschool.kr/af/ad_free2_stu/modify/num/44894/p/1/sn/2848"><i class="fa fa-cog icon_btn" title="수정"></i></a></td>
+			<td>1</td>
+				
+			<td>1</td>
+			<td>13</td>
+			<td>임소은</td>
+			<td></td>
+			<td class="text-left"></td>		
+			<td width="60"></td>					
+			<td class="text-right" width="60">0</td>		
+			<td class="text-right" width="70">0</td>		
+			<td class="text-right" width="60">0</td>
+			<td></td>			
+			<td class="text-right" width="60">720,000</td>		
+			<td class="text-right" width="70">670,800</td>		
+			<td class="text-right" width="60">49,200</td>
+			<td>전체</td>			
+			<td class="text-right">720,000</td>
+			<td class="text-right">670,800</td>	
+			
+			<td><a href="#none;" onclick="chk_del(44894); return false;"><i class="fa fa-trash-o icon_btn" title="삭제"></i></a></td>
+		</tr>
+		<tr>
+			<td><input type="checkbox" name="data_checked[]" value="44895"></td>
+			<td>112</td>
+			<td><a href="https://www.dbdbschool.kr/af/ad_free2_stu/modify/num/44895/p/1/sn/2848"><i class="fa fa-cog icon_btn" title="수정"></i></a></td>
+			<td>1</td>
+				
+			<td>1</td>
+			<td>14</td>
+			<td>조혜강</td>
+			<td></td>
+			<td class="text-left"></td>		
+			<td width="60"></td>					
+			<td class="text-right" width="60">0</td>		
+			<td class="text-right" width="70">0</td>		
+			<td class="text-right" width="60">0</td>
+			<td></td>			
+			<td class="text-right" width="60">720,000</td>		
+			<td class="text-right" width="70">452,820</td>		
+			<td class="text-right" width="60">267,180</td>
+			<td>전체</td>			
+			<td class="text-right">720,000</td>
+			<td class="text-right">452,820</td>	
+			
+			<td><a href="#none;" onclick="chk_del(44895); return false;"><i class="fa fa-trash-o icon_btn" title="삭제"></i></a></td>
+		</tr>
+		<tr>
+			<td><input type="checkbox" name="data_checked[]" value="44896"></td>
+			<td>111</td>
+			<td><a href="https://www.dbdbschool.kr/af/ad_free2_stu/modify/num/44896/p/1/sn/2848"><i class="fa fa-cog icon_btn" title="수정"></i></a></td>
+			<td>1</td>
+				
+			<td>1</td>
+			<td>15</td>
+			<td>지수민</td>
+			<td></td>
+			<td class="text-left"></td>		
+			<td width="60"></td>					
+			<td class="text-right" width="60">0</td>		
+			<td class="text-right" width="70">0</td>		
+			<td class="text-right" width="60">0</td>
+			<td></td>			
+			<td class="text-right" width="60">720,000</td>		
+			<td class="text-right" width="70">549,520</td>		
+			<td class="text-right" width="60">170,480</td>
+			<td>전체</td>			
+			<td class="text-right">720,000</td>
+			<td class="text-right">549,520</td>	
+			
+			<td><a href="#none;" onclick="chk_del(44896); return false;"><i class="fa fa-trash-o icon_btn" title="삭제"></i></a></td>
+		</tr>
+		<tr>
+			<td><input type="checkbox" name="data_checked[]" value="44897"></td>
+			<td>110</td>
+			<td><a href="https://www.dbdbschool.kr/af/ad_free2_stu/modify/num/44897/p/1/sn/2848"><i class="fa fa-cog icon_btn" title="수정"></i></a></td>
+			<td>1</td>
+				
+			<td>1</td>
+			<td>16</td>
+			<td>최정인</td>
+			<td></td>
+			<td class="text-left"></td>		
+			<td width="60"></td>					
+			<td class="text-right" width="60">0</td>		
+			<td class="text-right" width="70">0</td>		
+			<td class="text-right" width="60">0</td>
+			<td></td>			
+			<td class="text-right" width="60">720,000</td>		
+			<td class="text-right" width="70">720,000</td>		
+			<td class="text-right" width="60">0</td>
+			<td>전체</td>			
+			<td class="text-right">720,000</td>
+			<td class="text-right">720,000</td>	
+			
+			<td><a href="#none;" onclick="chk_del(44897); return false;"><i class="fa fa-trash-o icon_btn" title="삭제"></i></a></td>
+		</tr>
+		<tr>
+			<td><input type="checkbox" name="data_checked[]" value="44898"></td>
+			<td>109</td>
+			<td><a href="https://www.dbdbschool.kr/af/ad_free2_stu/modify/num/44898/p/1/sn/2848"><i class="fa fa-cog icon_btn" title="수정"></i></a></td>
+			<td>1</td>
+				
+			<td>1</td>
+			<td>17</td>
+			<td>홍유주</td>
+			<td></td>
+			<td class="text-left"></td>		
+			<td width="60"></td>					
+			<td class="text-right" width="60">0</td>		
+			<td class="text-right" width="70">0</td>		
+			<td class="text-right" width="60">0</td>
+			<td></td>			
+			<td class="text-right" width="60">720,000</td>		
+			<td class="text-right" width="70">630,820</td>		
+			<td class="text-right" width="60">89,180</td>
+			<td>전체</td>			
+			<td class="text-right">720,000</td>
+			<td class="text-right">630,820</td>	
+			
+			<td><a href="#none;" onclick="chk_del(44898); return false;"><i class="fa fa-trash-o icon_btn" title="삭제"></i></a></td>
+		</tr>
+		<tr>
+			<td><input type="checkbox" name="data_checked[]" value="44899"></td>
+			<td>108</td>
+			<td><a href="https://www.dbdbschool.kr/af/ad_free2_stu/modify/num/44899/p/1/sn/2848"><i class="fa fa-cog icon_btn" title="수정"></i></a></td>
+			<td>1</td>
+				
+			<td>1</td>
+			<td>18</td>
+			<td>이세아</td>
+			<td></td>
+			<td class="text-left"></td>		
+			<td width="60"></td>					
+			<td class="text-right" width="60">0</td>		
+			<td class="text-right" width="70">0</td>		
+			<td class="text-right" width="60">0</td>
+			<td></td>			
+			<td class="text-right" width="60">720,000</td>		
+			<td class="text-right" width="70">494,230</td>		
+			<td class="text-right" width="60">225,770</td>
+			<td>전체</td>			
+			<td class="text-right">720,000</td>
+			<td class="text-right">494,230</td>	
+			
+			<td><a href="#none;" onclick="chk_del(44899); return false;"><i class="fa fa-trash-o icon_btn" title="삭제"></i></a></td>
+		</tr>
+		<tr>
+			<td><input type="checkbox" name="data_checked[]" value="44900"></td>
+			<td>107</td>
+			<td><a href="https://www.dbdbschool.kr/af/ad_free2_stu/modify/num/44900/p/1/sn/2848"><i class="fa fa-cog icon_btn" title="수정"></i></a></td>
+			<td>1</td>
+				
+			<td>2</td>
+			<td>1</td>
+			<td>김조운</td>
+			<td></td>
+			<td class="text-left"></td>		
+			<td width="60"></td>					
+			<td class="text-right" width="60">0</td>		
+			<td class="text-right" width="70">0</td>		
+			<td class="text-right" width="60">0</td>
+			<td></td>			
+			<td class="text-right" width="60">720,000</td>		
+			<td class="text-right" width="70">720,000</td>		
+			<td class="text-right" width="60">0</td>
+			<td>전체</td>			
+			<td class="text-right">720,000</td>
+			<td class="text-right">720,000</td>	
+			
+			<td><a href="#none;" onclick="chk_del(44900); return false;"><i class="fa fa-trash-o icon_btn" title="삭제"></i></a></td>
+		</tr>
+		<tr>
+			<td><input type="checkbox" name="data_checked[]" value="44901"></td>
+			<td>106</td>
+			<td><a href="https://www.dbdbschool.kr/af/ad_free2_stu/modify/num/44901/p/1/sn/2848"><i class="fa fa-cog icon_btn" title="수정"></i></a></td>
+			<td>1</td>
+				
+			<td>2</td>
+			<td>2</td>
+			<td>김태은</td>
+			<td></td>
+			<td class="text-left"></td>		
+			<td width="60"></td>					
+			<td class="text-right" width="60">0</td>		
+			<td class="text-right" width="70">0</td>		
+			<td class="text-right" width="60">0</td>
+			<td></td>			
+			<td class="text-right" width="60">720,000</td>		
+			<td class="text-right" width="70">720,000</td>		
+			<td class="text-right" width="60">0</td>
+			<td>전체</td>			
+			<td class="text-right">720,000</td>
+			<td class="text-right">720,000</td>	
+			
+			<td><a href="#none;" onclick="chk_del(44901); return false;"><i class="fa fa-trash-o icon_btn" title="삭제"></i></a></td>
+		</tr>
+		<tr>
+			<td><input type="checkbox" name="data_checked[]" value="44902"></td>
+			<td>105</td>
+			<td><a href="https://www.dbdbschool.kr/af/ad_free2_stu/modify/num/44902/p/1/sn/2848"><i class="fa fa-cog icon_btn" title="수정"></i></a></td>
+			<td>1</td>
+				
+			<td>2</td>
+			<td>3</td>
+			<td>백로유</td>
+			<td></td>
+			<td class="text-left"></td>		
+			<td width="60"></td>					
+			<td class="text-right" width="60">0</td>		
+			<td class="text-right" width="70">0</td>		
+			<td class="text-right" width="60">0</td>
+			<td></td>			
+			<td class="text-right" width="60">720,000</td>		
+			<td class="text-right" width="70">720,000</td>		
+			<td class="text-right" width="60">0</td>
+			<td>전체</td>			
+			<td class="text-right">720,000</td>
+			<td class="text-right">720,000</td>	
+			
+			<td><a href="#none;" onclick="chk_del(44902); return false;"><i class="fa fa-trash-o icon_btn" title="삭제"></i></a></td>
+		</tr>
+		<tr>
+			<td><input type="checkbox" name="data_checked[]" value="44903"></td>
+			<td>104</td>
+			<td><a href="https://www.dbdbschool.kr/af/ad_free2_stu/modify/num/44903/p/1/sn/2848"><i class="fa fa-cog icon_btn" title="수정"></i></a></td>
+			<td>1</td>
+				
+			<td>2</td>
+			<td>4</td>
+			<td>송윤아</td>
+			<td></td>
+			<td class="text-left"></td>		
+			<td width="60"></td>					
+			<td class="text-right" width="60">0</td>		
+			<td class="text-right" width="70">0</td>		
+			<td class="text-right" width="60">0</td>
+			<td></td>			
+			<td class="text-right" width="60">720,000</td>		
+			<td class="text-right" width="70">720,000</td>		
+			<td class="text-right" width="60">0</td>
+			<td>전체</td>			
+			<td class="text-right">720,000</td>
+			<td class="text-right">720,000</td>	
+			
+			<td><a href="#none;" onclick="chk_del(44903); return false;"><i class="fa fa-trash-o icon_btn" title="삭제"></i></a></td>
+		</tr>
+		<tr>
+			<td><input type="checkbox" name="data_checked[]" value="44904"></td>
+			<td>103</td>
+			<td><a href="https://www.dbdbschool.kr/af/ad_free2_stu/modify/num/44904/p/1/sn/2848"><i class="fa fa-cog icon_btn" title="수정"></i></a></td>
+			<td>1</td>
+				
+			<td>2</td>
+			<td>5</td>
+			<td>송하준</td>
+			<td></td>
+			<td class="text-left"></td>		
+			<td width="60"></td>					
+			<td class="text-right" width="60">0</td>		
+			<td class="text-right" width="70">0</td>		
+			<td class="text-right" width="60">0</td>
+			<td></td>			
+			<td class="text-right" width="60">720,000</td>		
+			<td class="text-right" width="70">720,000</td>		
+			<td class="text-right" width="60">0</td>
+			<td>전체</td>			
+			<td class="text-right">720,000</td>
+			<td class="text-right">720,000</td>	
+			
+			<td><a href="#none;" onclick="chk_del(44904); return false;"><i class="fa fa-trash-o icon_btn" title="삭제"></i></a></td>
+		</tr>
+		<tr>
+			<td><input type="checkbox" name="data_checked[]" value="44905"></td>
+			<td>102</td>
+			<td><a href="https://www.dbdbschool.kr/af/ad_free2_stu/modify/num/44905/p/1/sn/2848"><i class="fa fa-cog icon_btn" title="수정"></i></a></td>
+			<td>1</td>
+				
+			<td>2</td>
+			<td>6</td>
+			<td>양우주</td>
+			<td></td>
+			<td class="text-left"></td>		
+			<td width="60"></td>					
+			<td class="text-right" width="60">0</td>		
+			<td class="text-right" width="70">0</td>		
+			<td class="text-right" width="60">0</td>
+			<td></td>			
+			<td class="text-right" width="60">720,000</td>		
+			<td class="text-right" width="70">720,000</td>		
+			<td class="text-right" width="60">0</td>
+			<td>전체</td>			
+			<td class="text-right">720,000</td>
+			<td class="text-right">720,000</td>	
+			
+			<td><a href="#none;" onclick="chk_del(44905); return false;"><i class="fa fa-trash-o icon_btn" title="삭제"></i></a></td>
+		</tr>
+		<tr>
+			<td><input type="checkbox" name="data_checked[]" value="44906"></td>
+			<td>101</td>
+			<td><a href="https://www.dbdbschool.kr/af/ad_free2_stu/modify/num/44906/p/1/sn/2848"><i class="fa fa-cog icon_btn" title="수정"></i></a></td>
+			<td>1</td>
+				
+			<td>2</td>
+			<td>7</td>
+			<td>오 션</td>
+			<td></td>
+			<td class="text-left"></td>		
+			<td width="60"></td>					
+			<td class="text-right" width="60">0</td>		
+			<td class="text-right" width="70">0</td>		
+			<td class="text-right" width="60">0</td>
+			<td></td>			
+			<td class="text-right" width="60">720,000</td>		
+			<td class="text-right" width="70">720,000</td>		
+			<td class="text-right" width="60">0</td>
+			<td>전체</td>			
+			<td class="text-right">720,000</td>
+			<td class="text-right">720,000</td>	
+			
+			<td><a href="#none;" onclick="chk_del(44906); return false;"><i class="fa fa-trash-o icon_btn" title="삭제"></i></a></td>
+		</tr>
+		<tr>
+			<td><input type="checkbox" name="data_checked[]" value="44907"></td>
+			<td>100</td>
+			<td><a href="https://www.dbdbschool.kr/af/ad_free2_stu/modify/num/44907/p/1/sn/2848"><i class="fa fa-cog icon_btn" title="수정"></i></a></td>
+			<td>1</td>
+				
+			<td>2</td>
+			<td>8</td>
+			<td>유지안</td>
+			<td></td>
+			<td class="text-left"></td>		
+			<td width="60"></td>					
+			<td class="text-right" width="60">0</td>		
+			<td class="text-right" width="70">0</td>		
+			<td class="text-right" width="60">0</td>
+			<td></td>			
+			<td class="text-right" width="60">720,000</td>		
+			<td class="text-right" width="70">557,400</td>		
+			<td class="text-right" width="60">162,600</td>
+			<td>전체</td>			
+			<td class="text-right">720,000</td>
+			<td class="text-right">557,400</td>	
+			
+			<td><a href="#none;" onclick="chk_del(44907); return false;"><i class="fa fa-trash-o icon_btn" title="삭제"></i></a></td>
+		</tr>
+		<tr>
+			<td><input type="checkbox" name="data_checked[]" value="44908"></td>
+			<td>99</td>
+			<td><a href="https://www.dbdbschool.kr/af/ad_free2_stu/modify/num/44908/p/1/sn/2848"><i class="fa fa-cog icon_btn" title="수정"></i></a></td>
+			<td>1</td>
+				
+			<td>2</td>
+			<td>9</td>
+			<td>이가현</td>
+			<td></td>
+			<td class="text-left"></td>		
+			<td width="60"></td>					
+			<td class="text-right" width="60">0</td>		
+			<td class="text-right" width="70">0</td>		
+			<td class="text-right" width="60">0</td>
+			<td></td>			
+			<td class="text-right" width="60">720,000</td>		
+			<td class="text-right" width="70">720,000</td>		
+			<td class="text-right" width="60">0</td>
+			<td>전체</td>			
+			<td class="text-right">720,000</td>
+			<td class="text-right">720,000</td>	
+			
+			<td><a href="#none;" onclick="chk_del(44908); return false;"><i class="fa fa-trash-o icon_btn" title="삭제"></i></a></td>
+		</tr>
+		<tr>
+			<td><input type="checkbox" name="data_checked[]" value="44909"></td>
+			<td>98</td>
+			<td><a href="https://www.dbdbschool.kr/af/ad_free2_stu/modify/num/44909/p/1/sn/2848"><i class="fa fa-cog icon_btn" title="수정"></i></a></td>
+			<td>1</td>
+				
+			<td>2</td>
+			<td>10</td>
+			<td>이다희</td>
+			<td></td>
+			<td class="text-left"></td>		
+			<td width="60"></td>					
+			<td class="text-right" width="60">0</td>		
+			<td class="text-right" width="70">0</td>		
+			<td class="text-right" width="60">0</td>
+			<td></td>			
+			<td class="text-right" width="60">720,000</td>		
+			<td class="text-right" width="70">56,000</td>		
+			<td class="text-right" width="60">664,000</td>
+			<td>전체</td>			
+			<td class="text-right">720,000</td>
+			<td class="text-right">56,000</td>	
+			
+			<td><a href="#none;" onclick="chk_del(44909); return false;"><i class="fa fa-trash-o icon_btn" title="삭제"></i></a></td>
+		</tr>
+		<tr>
+			<td><input type="checkbox" name="data_checked[]" value="44910"></td>
+			<td>97</td>
+			<td><a href="https://www.dbdbschool.kr/af/ad_free2_stu/modify/num/44910/p/1/sn/2848"><i class="fa fa-cog icon_btn" title="수정"></i></a></td>
+			<td>1</td>
+				
+			<td>2</td>
+			<td>11</td>
+			<td>이지유</td>
+			<td></td>
+			<td class="text-left"></td>		
+			<td width="60"></td>					
+			<td class="text-right" width="60">0</td>		
+			<td class="text-right" width="70">0</td>		
+			<td class="text-right" width="60">0</td>
+			<td></td>			
+			<td class="text-right" width="60">720,000</td>		
+			<td class="text-right" width="70">720,000</td>		
+			<td class="text-right" width="60">0</td>
+			<td>전체</td>			
+			<td class="text-right">720,000</td>
+			<td class="text-right">720,000</td>	
+			
+			<td><a href="#none;" onclick="chk_del(44910); return false;"><i class="fa fa-trash-o icon_btn" title="삭제"></i></a></td>
+		</tr>
+		<tr>
+			<td><input type="checkbox" name="data_checked[]" value="44911"></td>
+			<td>96</td>
+			<td><a href="https://www.dbdbschool.kr/af/ad_free2_stu/modify/num/44911/p/1/sn/2848"><i class="fa fa-cog icon_btn" title="수정"></i></a></td>
+			<td>1</td>
+				
+			<td>2</td>
+			<td>12</td>
+			<td>임재윤</td>
+			<td></td>
+			<td class="text-left"></td>		
+			<td width="60"></td>					
+			<td class="text-right" width="60">0</td>		
+			<td class="text-right" width="70">0</td>		
+			<td class="text-right" width="60">0</td>
+			<td></td>			
+			<td class="text-right" width="60">720,000</td>		
+			<td class="text-right" width="70">720,000</td>		
+			<td class="text-right" width="60">0</td>
+			<td>전체</td>			
+			<td class="text-right">720,000</td>
+			<td class="text-right">720,000</td>	
+			
+			<td><a href="#none;" onclick="chk_del(44911); return false;"><i class="fa fa-trash-o icon_btn" title="삭제"></i></a></td>
+		</tr>
+		<tr>
+			<td><input type="checkbox" name="data_checked[]" value="44912"></td>
+			<td>95</td>
+			<td><a href="https://www.dbdbschool.kr/af/ad_free2_stu/modify/num/44912/p/1/sn/2848"><i class="fa fa-cog icon_btn" title="수정"></i></a></td>
+			<td>1</td>
+				
+			<td>2</td>
+			<td>13</td>
+			<td>정라호</td>
+			<td></td>
+			<td class="text-left"></td>		
+			<td width="60"></td>					
+			<td class="text-right" width="60">0</td>		
+			<td class="text-right" width="70">0</td>		
+			<td class="text-right" width="60">0</td>
+			<td></td>			
+			<td class="text-right" width="60">720,000</td>		
+			<td class="text-right" width="70">720,000</td>		
+			<td class="text-right" width="60">0</td>
+			<td>전체</td>			
+			<td class="text-right">720,000</td>
+			<td class="text-right">720,000</td>	
+			
+			<td><a href="#none;" onclick="chk_del(44912); return false;"><i class="fa fa-trash-o icon_btn" title="삭제"></i></a></td>
+		</tr>
+		<tr>
+			<td><input type="checkbox" name="data_checked[]" value="44913"></td>
+			<td>94</td>
+			<td><a href="https://www.dbdbschool.kr/af/ad_free2_stu/modify/num/44913/p/1/sn/2848"><i class="fa fa-cog icon_btn" title="수정"></i></a></td>
+			<td>1</td>
+				
+			<td>2</td>
+			<td>14</td>
+			<td>최민호</td>
+			<td></td>
+			<td class="text-left"></td>		
+			<td width="60"></td>					
+			<td class="text-right" width="60">0</td>		
+			<td class="text-right" width="70">0</td>		
+			<td class="text-right" width="60">0</td>
+			<td></td>			
+			<td class="text-right" width="60">720,000</td>		
+			<td class="text-right" width="70">720,000</td>		
+			<td class="text-right" width="60">0</td>
+			<td>전체</td>			
+			<td class="text-right">720,000</td>
+			<td class="text-right">720,000</td>	
+			
+			<td><a href="#none;" onclick="chk_del(44913); return false;"><i class="fa fa-trash-o icon_btn" title="삭제"></i></a></td>
+		</tr>
+		<tr>
+			<td><input type="checkbox" name="data_checked[]" value="44914"></td>
+			<td>93</td>
+			<td><a href="https://www.dbdbschool.kr/af/ad_free2_stu/modify/num/44914/p/1/sn/2848"><i class="fa fa-cog icon_btn" title="수정"></i></a></td>
+			<td>1</td>
+				
+			<td>2</td>
+			<td>15</td>
+			<td>최서우</td>
+			<td></td>
+			<td class="text-left"></td>		
+			<td width="60"></td>					
+			<td class="text-right" width="60">0</td>		
+			<td class="text-right" width="70">0</td>		
+			<td class="text-right" width="60">0</td>
+			<td></td>			
+			<td class="text-right" width="60">720,000</td>		
+			<td class="text-right" width="70">720,000</td>		
+			<td class="text-right" width="60">0</td>
+			<td>전체</td>			
+			<td class="text-right">720,000</td>
+			<td class="text-right">720,000</td>	
+			
+			<td><a href="#none;" onclick="chk_del(44914); return false;"><i class="fa fa-trash-o icon_btn" title="삭제"></i></a></td>
+		</tr>
+		<tr>
+			<td><input type="checkbox" name="data_checked[]" value="44915"></td>
+			<td>92</td>
+			<td><a href="https://www.dbdbschool.kr/af/ad_free2_stu/modify/num/44915/p/1/sn/2848"><i class="fa fa-cog icon_btn" title="수정"></i></a></td>
+			<td>1</td>
+				
+			<td>2</td>
+			<td>16</td>
+			<td>최서윤</td>
+			<td></td>
+			<td class="text-left"></td>		
+			<td width="60"></td>					
+			<td class="text-right" width="60">0</td>		
+			<td class="text-right" width="70">0</td>		
+			<td class="text-right" width="60">0</td>
+			<td></td>			
+			<td class="text-right" width="60">720,000</td>		
+			<td class="text-right" width="70">720,000</td>		
+			<td class="text-right" width="60">0</td>
+			<td>전체</td>			
+			<td class="text-right">720,000</td>
+			<td class="text-right">720,000</td>	
+			
+			<td><a href="#none;" onclick="chk_del(44915); return false;"><i class="fa fa-trash-o icon_btn" title="삭제"></i></a></td>
+		</tr>
+		<tr>
+			<td><input type="checkbox" name="data_checked[]" value="44916"></td>
+			<td>91</td>
+			<td><a href="https://www.dbdbschool.kr/af/ad_free2_stu/modify/num/44916/p/1/sn/2848"><i class="fa fa-cog icon_btn" title="수정"></i></a></td>
+			<td>1</td>
+				
+			<td>2</td>
+			<td>17</td>
+			<td>최주원</td>
+			<td></td>
+			<td class="text-left"></td>		
+			<td width="60"></td>					
+			<td class="text-right" width="60">0</td>		
+			<td class="text-right" width="70">0</td>		
+			<td class="text-right" width="60">0</td>
+			<td></td>			
+			<td class="text-right" width="60">720,000</td>		
+			<td class="text-right" width="70">0</td>		
+			<td class="text-right" width="60">720,000</td>
+			<td>전체</td>			
+			<td class="text-right">720,000</td>
+			<td class="text-right">0</td>	
+			
+			<td><a href="#none;" onclick="chk_del(44916); return false;"><i class="fa fa-trash-o icon_btn" title="삭제"></i></a></td>
+		</tr>
+		<tr>
+			<td><input type="checkbox" name="data_checked[]" value="44917"></td>
+			<td>90</td>
+			<td><a href="https://www.dbdbschool.kr/af/ad_free2_stu/modify/num/44917/p/1/sn/2848"><i class="fa fa-cog icon_btn" title="수정"></i></a></td>
+			<td>1</td>
+				
+			<td>2</td>
+			<td>18</td>
+			<td>최하선</td>
+			<td></td>
+			<td class="text-left"></td>		
+			<td width="60"></td>					
+			<td class="text-right" width="60">0</td>		
+			<td class="text-right" width="70">0</td>		
+			<td class="text-right" width="60">0</td>
+			<td></td>			
+			<td class="text-right" width="60">720,000</td>		
+			<td class="text-right" width="70">720,000</td>		
+			<td class="text-right" width="60">0</td>
+			<td>전체</td>			
+			<td class="text-right">720,000</td>
+			<td class="text-right">720,000</td>	
+			
+			<td><a href="#none;" onclick="chk_del(44917); return false;"><i class="fa fa-trash-o icon_btn" title="삭제"></i></a></td>
+		</tr>
+		<tr>
+			<td><input type="checkbox" name="data_checked[]" value="44918"></td>
+			<td>89</td>
+			<td><a href="https://www.dbdbschool.kr/af/ad_free2_stu/modify/num/44918/p/1/sn/2848"><i class="fa fa-cog icon_btn" title="수정"></i></a></td>
+			<td>1</td>
+				
+			<td>3</td>
+			<td>1</td>
+			<td>고가원</td>
+			<td></td>
+			<td class="text-left"></td>		
+			<td width="60"></td>					
+			<td class="text-right" width="60">0</td>		
+			<td class="text-right" width="70">0</td>		
+			<td class="text-right" width="60">0</td>
+			<td></td>			
+			<td class="text-right" width="60">720,000</td>		
+			<td class="text-right" width="70">720,000</td>		
+			<td class="text-right" width="60">0</td>
+			<td>전체</td>			
+			<td class="text-right">720,000</td>
+			<td class="text-right">720,000</td>	
+			
+			<td><a href="#none;" onclick="chk_del(44918); return false;"><i class="fa fa-trash-o icon_btn" title="삭제"></i></a></td>
+		</tr>
+		<tr>
+			<td><input type="checkbox" name="data_checked[]" value="44919"></td>
+			<td>88</td>
+			<td><a href="https://www.dbdbschool.kr/af/ad_free2_stu/modify/num/44919/p/1/sn/2848"><i class="fa fa-cog icon_btn" title="수정"></i></a></td>
+			<td>1</td>
+				
+			<td>3</td>
+			<td>2</td>
+			<td>김민찬</td>
+			<td></td>
+			<td class="text-left"></td>		
+			<td width="60"></td>					
+			<td class="text-right" width="60">0</td>		
+			<td class="text-right" width="70">0</td>		
+			<td class="text-right" width="60">0</td>
+			<td></td>			
+			<td class="text-right" width="60">720,000</td>		
+			<td class="text-right" width="70">720,000</td>		
+			<td class="text-right" width="60">0</td>
+			<td>전체</td>			
+			<td class="text-right">720,000</td>
+			<td class="text-right">720,000</td>	
+			
+			<td><a href="#none;" onclick="chk_del(44919); return false;"><i class="fa fa-trash-o icon_btn" title="삭제"></i></a></td>
+		</tr>
+		<tr>
+			<td><input type="checkbox" name="data_checked[]" value="44920"></td>
+			<td>87</td>
+			<td><a href="https://www.dbdbschool.kr/af/ad_free2_stu/modify/num/44920/p/1/sn/2848"><i class="fa fa-cog icon_btn" title="수정"></i></a></td>
+			<td>1</td>
+				
+			<td>3</td>
+			<td>4</td>
+			<td>김이음</td>
+			<td></td>
+			<td class="text-left"></td>		
+			<td width="60"></td>					
+			<td class="text-right" width="60">0</td>		
+			<td class="text-right" width="70">0</td>		
+			<td class="text-right" width="60">0</td>
+			<td></td>			
+			<td class="text-right" width="60">720,000</td>		
+			<td class="text-right" width="70">720,000</td>		
+			<td class="text-right" width="60">0</td>
+			<td>전체</td>			
+			<td class="text-right">720,000</td>
+			<td class="text-right">720,000</td>	
+			
+			<td><a href="#none;" onclick="chk_del(44920); return false;"><i class="fa fa-trash-o icon_btn" title="삭제"></i></a></td>
+		</tr>
+		<tr>
+			<td><input type="checkbox" name="data_checked[]" value="44921"></td>
+			<td>86</td>
+			<td><a href="https://www.dbdbschool.kr/af/ad_free2_stu/modify/num/44921/p/1/sn/2848"><i class="fa fa-cog icon_btn" title="수정"></i></a></td>
+			<td>1</td>
+				
+			<td>3</td>
+			<td>5</td>
+			<td>김하윤</td>
+			<td></td>
+			<td class="text-left"></td>		
+			<td width="60"></td>					
+			<td class="text-right" width="60">0</td>		
+			<td class="text-right" width="70">0</td>		
+			<td class="text-right" width="60">0</td>
+			<td></td>			
+			<td class="text-right" width="60">720,000</td>		
+			<td class="text-right" width="70">720,000</td>		
+			<td class="text-right" width="60">0</td>
+			<td>전체</td>			
+			<td class="text-right">720,000</td>
+			<td class="text-right">720,000</td>	
+			
+			<td><a href="#none;" onclick="chk_del(44921); return false;"><i class="fa fa-trash-o icon_btn" title="삭제"></i></a></td>
+		</tr>
+		<tr>
+			<td><input type="checkbox" name="data_checked[]" value="44922"></td>
+			<td>85</td>
+			<td><a href="https://www.dbdbschool.kr/af/ad_free2_stu/modify/num/44922/p/1/sn/2848"><i class="fa fa-cog icon_btn" title="수정"></i></a></td>
+			<td>1</td>
+				
+			<td>3</td>
+			<td>6</td>
+			<td>김하준</td>
+			<td></td>
+			<td class="text-left"></td>		
+			<td width="60"></td>					
+			<td class="text-right" width="60">0</td>		
+			<td class="text-right" width="70">0</td>		
+			<td class="text-right" width="60">0</td>
+			<td></td>			
+			<td class="text-right" width="60">720,000</td>		
+			<td class="text-right" width="70">720,000</td>		
+			<td class="text-right" width="60">0</td>
+			<td>전체</td>			
+			<td class="text-right">720,000</td>
+			<td class="text-right">720,000</td>	
+			
+			<td><a href="#none;" onclick="chk_del(44922); return false;"><i class="fa fa-trash-o icon_btn" title="삭제"></i></a></td>
+		</tr>
+		<tr>
+			<td><input type="checkbox" name="data_checked[]" value="44923"></td>
+			<td>84</td>
+			<td><a href="https://www.dbdbschool.kr/af/ad_free2_stu/modify/num/44923/p/1/sn/2848"><i class="fa fa-cog icon_btn" title="수정"></i></a></td>
+			<td>1</td>
+				
+			<td>3</td>
+			<td>7</td>
+			<td>박건우</td>
+			<td></td>
+			<td class="text-left"></td>		
+			<td width="60"></td>					
+			<td class="text-right" width="60">0</td>		
+			<td class="text-right" width="70">0</td>		
+			<td class="text-right" width="60">0</td>
+			<td></td>			
+			<td class="text-right" width="60">720,000</td>		
+			<td class="text-right" width="70">720,000</td>		
+			<td class="text-right" width="60">0</td>
+			<td>전체</td>			
+			<td class="text-right">720,000</td>
+			<td class="text-right">720,000</td>	
+			
+			<td><a href="#none;" onclick="chk_del(44923); return false;"><i class="fa fa-trash-o icon_btn" title="삭제"></i></a></td>
+		</tr>
+		<tr>
+			<td><input type="checkbox" name="data_checked[]" value="44924"></td>
+			<td>83</td>
+			<td><a href="https://www.dbdbschool.kr/af/ad_free2_stu/modify/num/44924/p/1/sn/2848"><i class="fa fa-cog icon_btn" title="수정"></i></a></td>
+			<td>1</td>
+				
+			<td>3</td>
+			<td>8</td>
+			<td>박시우</td>
+			<td></td>
+			<td class="text-left"></td>		
+			<td width="60"></td>					
+			<td class="text-right" width="60">0</td>		
+			<td class="text-right" width="70">0</td>		
+			<td class="text-right" width="60">0</td>
+			<td></td>			
+			<td class="text-right" width="60">720,000</td>		
+			<td class="text-right" width="70">720,000</td>		
+			<td class="text-right" width="60">0</td>
+			<td>전체</td>			
+			<td class="text-right">720,000</td>
+			<td class="text-right">720,000</td>	
+			
+			<td><a href="#none;" onclick="chk_del(44924); return false;"><i class="fa fa-trash-o icon_btn" title="삭제"></i></a></td>
+		</tr>
+		<tr>
+			<td><input type="checkbox" name="data_checked[]" value="44925"></td>
+			<td>82</td>
+			<td><a href="https://www.dbdbschool.kr/af/ad_free2_stu/modify/num/44925/p/1/sn/2848"><i class="fa fa-cog icon_btn" title="수정"></i></a></td>
+			<td>1</td>
+				
+			<td>3</td>
+			<td>9</td>
+			<td>안예슬</td>
+			<td></td>
+			<td class="text-left"></td>		
+			<td width="60"></td>					
+			<td class="text-right" width="60">0</td>		
+			<td class="text-right" width="70">0</td>		
+			<td class="text-right" width="60">0</td>
+			<td></td>			
+			<td class="text-right" width="60">720,000</td>		
+			<td class="text-right" width="70">720,000</td>		
+			<td class="text-right" width="60">0</td>
+			<td>전체</td>			
+			<td class="text-right">720,000</td>
+			<td class="text-right">720,000</td>	
+			
+			<td><a href="#none;" onclick="chk_del(44925); return false;"><i class="fa fa-trash-o icon_btn" title="삭제"></i></a></td>
+		</tr>
+		<tr>
+			<td><input type="checkbox" name="data_checked[]" value="44926"></td>
+			<td>81</td>
+			<td><a href="https://www.dbdbschool.kr/af/ad_free2_stu/modify/num/44926/p/1/sn/2848"><i class="fa fa-cog icon_btn" title="수정"></i></a></td>
+			<td>1</td>
+				
+			<td>3</td>
+			<td>10</td>
+			<td>양다연</td>
+			<td></td>
+			<td class="text-left"></td>		
+			<td width="60"></td>					
+			<td class="text-right" width="60">0</td>		
+			<td class="text-right" width="70">0</td>		
+			<td class="text-right" width="60">0</td>
+			<td></td>			
+			<td class="text-right" width="60">720,000</td>		
+			<td class="text-right" width="70">720,000</td>		
+			<td class="text-right" width="60">0</td>
+			<td>전체</td>			
+			<td class="text-right">720,000</td>
+			<td class="text-right">720,000</td>	
+			
+			<td><a href="#none;" onclick="chk_del(44926); return false;"><i class="fa fa-trash-o icon_btn" title="삭제"></i></a></td>
+		</tr>
+		<tr>
+			<td><input type="checkbox" name="data_checked[]" value="44927"></td>
+			<td>80</td>
+			<td><a href="https://www.dbdbschool.kr/af/ad_free2_stu/modify/num/44927/p/1/sn/2848"><i class="fa fa-cog icon_btn" title="수정"></i></a></td>
+			<td>1</td>
+				
+			<td>3</td>
+			<td>11</td>
+			<td>유가흔</td>
+			<td></td>
+			<td class="text-left"></td>		
+			<td width="60"></td>					
+			<td class="text-right" width="60">0</td>		
+			<td class="text-right" width="70">0</td>		
+			<td class="text-right" width="60">0</td>
+			<td></td>			
+			<td class="text-right" width="60">720,000</td>		
+			<td class="text-right" width="70">720,000</td>		
+			<td class="text-right" width="60">0</td>
+			<td>전체</td>			
+			<td class="text-right">720,000</td>
+			<td class="text-right">720,000</td>	
+			
+			<td><a href="#none;" onclick="chk_del(44927); return false;"><i class="fa fa-trash-o icon_btn" title="삭제"></i></a></td>
+		</tr>
+		<tr>
+			<td><input type="checkbox" name="data_checked[]" value="44928"></td>
+			<td>79</td>
+			<td><a href="https://www.dbdbschool.kr/af/ad_free2_stu/modify/num/44928/p/1/sn/2848"><i class="fa fa-cog icon_btn" title="수정"></i></a></td>
+			<td>1</td>
+				
+			<td>3</td>
+			<td>12</td>
+			<td>이세은</td>
+			<td></td>
+			<td class="text-left"></td>		
+			<td width="60"></td>					
+			<td class="text-right" width="60">0</td>		
+			<td class="text-right" width="70">0</td>		
+			<td class="text-right" width="60">0</td>
+			<td></td>			
+			<td class="text-right" width="60">720,000</td>		
+			<td class="text-right" width="70">260,820</td>		
+			<td class="text-right" width="60">459,180</td>
+			<td>전체</td>			
+			<td class="text-right">720,000</td>
+			<td class="text-right">260,820</td>	
+			
+			<td><a href="#none;" onclick="chk_del(44928); return false;"><i class="fa fa-trash-o icon_btn" title="삭제"></i></a></td>
+		</tr>
+		<tr>
+			<td><input type="checkbox" name="data_checked[]" value="44929"></td>
+			<td>78</td>
+			<td><a href="https://www.dbdbschool.kr/af/ad_free2_stu/modify/num/44929/p/1/sn/2848"><i class="fa fa-cog icon_btn" title="수정"></i></a></td>
+			<td>1</td>
+				
+			<td>3</td>
+			<td>13</td>
+			<td>이지은</td>
+			<td></td>
+			<td class="text-left"></td>		
+			<td width="60"></td>					
+			<td class="text-right" width="60">0</td>		
+			<td class="text-right" width="70">0</td>		
+			<td class="text-right" width="60">0</td>
+			<td></td>			
+			<td class="text-right" width="60">720,000</td>		
+			<td class="text-right" width="70">720,000</td>		
+			<td class="text-right" width="60">0</td>
+			<td>전체</td>			
+			<td class="text-right">720,000</td>
+			<td class="text-right">720,000</td>	
+			
+			<td><a href="#none;" onclick="chk_del(44929); return false;"><i class="fa fa-trash-o icon_btn" title="삭제"></i></a></td>
+		</tr>
+		<tr>
+			<td><input type="checkbox" name="data_checked[]" value="44930"></td>
+			<td>77</td>
+			<td><a href="https://www.dbdbschool.kr/af/ad_free2_stu/modify/num/44930/p/1/sn/2848"><i class="fa fa-cog icon_btn" title="수정"></i></a></td>
+			<td>1</td>
+				
+			<td>3</td>
+			<td>14</td>
+			<td>임랑이</td>
+			<td></td>
+			<td class="text-left"></td>		
+			<td width="60"></td>					
+			<td class="text-right" width="60">0</td>		
+			<td class="text-right" width="70">0</td>		
+			<td class="text-right" width="60">0</td>
+			<td></td>			
+			<td class="text-right" width="60">720,000</td>		
+			<td class="text-right" width="70">660,900</td>		
+			<td class="text-right" width="60">59,100</td>
+			<td>전체</td>			
+			<td class="text-right">720,000</td>
+			<td class="text-right">660,900</td>	
+			
+			<td><a href="#none;" onclick="chk_del(44930); return false;"><i class="fa fa-trash-o icon_btn" title="삭제"></i></a></td>
+		</tr>
+		<tr>
+			<td><input type="checkbox" name="data_checked[]" value="44931"></td>
+			<td>76</td>
+			<td><a href="https://www.dbdbschool.kr/af/ad_free2_stu/modify/num/44931/p/1/sn/2848"><i class="fa fa-cog icon_btn" title="수정"></i></a></td>
+			<td>1</td>
+				
+			<td>3</td>
+			<td>15</td>
+			<td>임서윤</td>
+			<td></td>
+			<td class="text-left"></td>		
+			<td width="60"></td>					
+			<td class="text-right" width="60">0</td>		
+			<td class="text-right" width="70">0</td>		
+			<td class="text-right" width="60">0</td>
+			<td></td>			
+			<td class="text-right" width="60">720,000</td>		
+			<td class="text-right" width="70">591,210</td>		
+			<td class="text-right" width="60">128,790</td>
+			<td>전체</td>			
+			<td class="text-right">720,000</td>
+			<td class="text-right">591,210</td>	
+			
+			<td><a href="#none;" onclick="chk_del(44931); return false;"><i class="fa fa-trash-o icon_btn" title="삭제"></i></a></td>
+		</tr>
+		</tbody></table>
+	</div>
+
+	<div class="panel-body MAT30" style="text-align:center;">
+		<ul>
+			<li class="PAD0 " style="float:left;">
+				<select name="update_type" class="form-control">
+					<option value="">=== 일괄적용 ===</option>
+					<option value="del">삭제</option>
+				</select>
+				<input type="submit" class="btn btn-default" value="적용하기">
+			</li>
+			<li style="text-align:right;" class="MAlignCenter">
+				<ul class="pagination"><li class="active"><a href="#none;">1</a></li><li><a href="https://www.dbdbschool.kr/af/ad_free2_stu/lists/sn/2848/p/2" data-ci-pagination-page="2">2</a></li><li class="next"><a href="https://www.dbdbschool.kr/af/ad_free2_stu/lists/sn/2848/p/2" data-ci-pagination-page="2" rel="next">다음</a></li><li class="last"><a href="https://www.dbdbschool.kr/af/ad_free2_stu/lists/sn/2848/p/3" data-ci-pagination-page="3">마지막</a></li></ul>			</li>
+		</ul>
+	</div>
+	</form>
+</div>
+
+<div class="help_box">
+	<ul>
+		<li>대상학생을 삭제하는 경우 이전에 등록된 수강자 데이터도 함께 삭제됩니다.</li>
+	</ul>
+</div>
+
+<!-- { del form -->
+<form action="https://www.dbdbschool.kr/af/ad_free2_stu/del/p/1/sn/2848" name="fm_del" id="fm_del" method="post" accept-charset="utf-8">
+<input type="hidden" name="csrf_test_name" value="255479fb49dadebfce5096885da588c8">                                                                                                                   
+<input type="hidden" name="form_open_date_use_chk_csrf" value="2026-02-21 12:51:53">
+	<input type="hidden" name="num" id="del_num" value="">
+ </form>
+<!-- } -->
+
+<!-- { 문자 발송 -->
+<div id="smsSendModal" style="display: none;"></div>
+<!-- } -->
+
+
+
+
+
+
+			</div>
+      </div>
+      <div id="footer" class="footer"><span class="muted">DBDB School Clone</span></div>
+    </main>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="./assets/js/app.js"></script>
+</body>
+</html>

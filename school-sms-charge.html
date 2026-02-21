@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>목록 - 문자관리 > 충전내역 - 학교관리</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="./assets/css/app.css">
+</head>
+<body class="school-admin-page">
+  <div id="header" class="topbar">
+    <div class="topbar-inner">
+      <div class="topbar-center"><span class="topbar-title">학교관리</span></div>
+    </div>
+  </div>
+  <div id="container" class="layout">
+    
+    <aside id="left_menu" class="sidebar school-sidebar">
+      <div class="sidebar-user">
+        <div class="avatar"><i class="fa fa-user"></i></div>
+        <div class="user-meta">
+          <div class="user-name-row"><span class="user-name">박진수님</span></div>
+          <div class="user-role"><a href="#">로그아웃</a> <span class="muted">정보수정</span></div>
+        </div>
+      </div>
+      <ul class="nav side-nav">
+        <li><a href="./index.html"><i class="fa fa-tachometer"></i> 늘봄학교 보기</a></li>
+        <li><a href="./school.html"><i class="fa fa-sitemap"></i> 서비스목록</a></li>
+        <li class="nav-section active">
+          <a data-toggle="collapse" href="#school-teacher"><i class="fa fa-user"></i> 교직원관리 <span class="caret"></span></a>
+          <ul id="school-teacher" class="collapse in">
+            <li><a href="./school-teacher.html">교직원관리</a></li>
+            <li><a href="./school-teacher-field.html">인원필드설정</a></li>
+            <li><a href="./school-teacher-level.html">직위명설정</a></li>
+            <li><a href="./school-teacher-clear.html">초기화</a></li>
+          </ul>
+        </li>
+        <li class="nav-section active">
+          <a data-toggle="collapse" href="#school-student"><i class="fa fa-user"></i> 학생관리 <span class="caret"></span></a>
+          <ul id="school-student" class="collapse in">
+            <li><a href="./school-student.html">학생관리</a></li>
+            <li><a href="./school-student-main.html">기본설정</a></li>
+            <li><a href="./school-student-field.html">인원필드설정</a></li>
+            <li><a href="./school-student-course.html">입학/졸업</a></li>
+            <li><a href="./school-student-clear.html">초기화</a></li>
+          </ul>
+        </li>
+        <li class="nav-section active">
+          <a data-toggle="collapse" href="#school-sms"><i class="fa fa-comment"></i> 문자관리 <span class="caret"></span></a>
+          <ul id="school-sms" class="collapse in">
+            <li><a href="./school-sms-tel.html">발신번호관리</a></li>
+            <li><a href="./school-sms-sin.html">충전신청</a></li>
+            <li class="active"><a href="./school-sms-charge.html">충전내역</a></li>
+            <li><a href="./school-sms-report.html">발송통계</a></li>
+          </ul>
+        </li>
+      </ul>
+    </aside>
+  
+    <main id="contents_box" class="content">
+      <div id="contents_title" class="page-title">
+        <div class="title-left">
+          <div class="title-main"><i class="fa fa-file-text-o"></i> 충전내역</div>
+          <div class="title-sub">운천초등학교 학교관리</div>
+        </div>
+      </div>
+      <div id="contents" class="content-inner school-raw-content">
+<div class="panel_main panel-default_main">
+	<div class="panel-heading">목록</div>				
+		<div class="panel-body font-12">									
+			<div class="MAT10">
+				<ul class="">
+					<li class="pull-left PAD0 MAT10">
+						<span style="padding-right:10px;" class="text-danger"><b><i class="fa fa-check"></i> 잔여 충전 건수 : 0건</b></span>
+					</li>		
+				</ul>
+			</div>			
+		</div>		
+		<table class="table AlignCenter list " style="margin-top:0px;">
+		<tbody><tr>			
+			<th width="60">연번</th>
+			<th width="100">충전건수(건)</th>
+			<th width="100">충전구분</th>			
+			<th>비고</th>
+			<th width="100">처리구분</th>
+			<th width="160">처리일자</th>
+		</tr>
+		<tr>
+			<td colspan="6">등록된 데이터가 없습니다.</td>
+		</tr>
+		</tbody></table>
+		<div class="panel-body MAT30" style="text-align:center;">
+					</div>		
+</div>
+
+<div class="help_box MAT30">
+	<ul>
+		<li>처리구분(충전) : 충전(+) 처리</li>
+		<li>처리구분(차감) : 환불 또는 착오(오류)로 인한 충전 건수 차감(-) 처리</li>
+		<li>문자 이용 기간 : 충전된 문자는 기간의 제한 없이 서비스 이용 중에 계속 사용하실 수 있습니다.</li>
+		<li>문자 환불 : 환불 요청 시, 건별단가 * 유료 잔여건수 * 환불수수료 10%를 제외 후 환불됩니다.</li>
+	</ul>
+</div>			</div>
+      </div>
+      <div id="footer" class="footer"><span class="muted">DBDB School Clone</span></div>
+    </main>
+  </div>
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="./assets/js/app.js"></script>
+</body>
+</html>

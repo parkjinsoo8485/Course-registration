@@ -1,0 +1,19 @@
+{
+  "name": "dbdb-clone",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "analyze:playwright": "node tools/playwright-analyze.js",
+    "smoke:playwright": "node tools/playwright-smoke-all.js",
+    "deep:playwright": "node tools/playwright-deep-check.js",
+    "interaction:playwright": "node tools/playwright-interaction-check.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "playwright": "^1.58.2"
+  }
+}

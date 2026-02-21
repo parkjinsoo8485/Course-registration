@@ -1,0 +1,1016 @@
+{
+  "generatedAt": "2026-02-20T13:51:18.237Z",
+  "realUrl": "https://www.dbdbschool.kr/af/ad_lec/lists/sn/2848",
+  "localUrl": "file:///C:/Users/jinso/Downloads/dbdb-clone/index.html",
+  "realTitle": "목록 - 강좌관리 - 늘봄학교",
+  "localTitle": "목록 - 강좌관리 - 늘봄학교",
+  "counts": {
+    "realButtons": 16,
+    "localButtons": 24,
+    "realLinks": 260,
+    "localLinks": 58,
+    "realInputs": 54,
+    "localInputs": 24,
+    "realRows": 21,
+    "localRows": 2
+  },
+  "missingInLocal": {
+    "buttonTexts": [],
+    "linkTexts": [
+      "0 /",
+      "0/0",
+      "0/5",
+      "15",
+      "22",
+      "23",
+      "24",
+      "[로그아웃]",
+      "[서비스]1차 추첨 완료 후 2차 추가 접수는 \"선착순\"으로 접수하는 방법입니다.",
+      "[서비스]1차 추첨 완료 후 2차 추가 접수도 \"추첨\"하는 경우 처리 방법입니다.",
+      "[서비스]강좌상태 “출력, 종료, 대기” 이해하기",
+      "[서비스]방과후, 맞춤형, 돌봄 프로그램 이용 현황 통계 작성을 위한 엑셀 프로그램입니다.",
+      "[서비스]임시 비밀번호 사용 시 일부 휴대폰 접속 오류 안내",
+      "[서비스]학생 개인별 시간표 일괄 출력 기능이 업그레이드 되었습니다.",
+      "[오늘 하루 열지 않기]",
+      "[일주일 동안 열지 않기]",
+      "[정보수정]",
+      "xmecca.com",
+      "강사ID",
+      "강사마감",
+      "강좌명",
+      "늘봄학교",
+      "다음",
+      "대기자",
+      "마지막",
+      "상태",
+      "수강료출력",
+      "수강신청 기간을 미리 설정",
+      "신청",
+      "안내글설정",
+      "연번",
+      "연장신청373일 남음",
+      "오늘 하루 열지 않기[닫기]",
+      "운영기간",
+      "운천초등학교",
+      "월마감 & 다음달 준비절차",
+      "정원",
+      "학년",
+      "환불마감"
+    ],
+    "tableHeaders": []
+  },
+  "samples": {
+    "realButtons": [
+      {
+        "tag": "a",
+        "id": "main_control_box_btn01",
+        "cls": "main_control_box_btn btn btn-default btn-sm",
+        "text": "상세검색 열기",
+        "href": "#none;",
+        "type": ""
+      },
+      {
+        "tag": "input",
+        "id": "",
+        "cls": "btn btn-default input-sm ",
+        "text": "검색",
+        "href": "",
+        "type": "submit"
+      },
+      {
+        "tag": "input",
+        "id": "",
+        "cls": "btn btn-default input-sm",
+        "text": "전체",
+        "href": "",
+        "type": "button"
+      },
+      {
+        "tag": "input",
+        "id": "",
+        "cls": "btn btn-default input-sm",
+        "text": "검색결과엑셀출력",
+        "href": "",
+        "type": "button"
+      },
+      {
+        "tag": "input",
+        "id": "",
+        "cls": "btn btn-success btn-sm",
+        "text": "출석부 출력",
+        "href": "",
+        "type": "button"
+      },
+      {
+        "tag": "input",
+        "id": "",
+        "cls": "btn btn-primary btn-sm",
+        "text": "강좌 등록",
+        "href": "",
+        "type": "button"
+      },
+      {
+        "tag": "a",
+        "id": "main_control_box_btn02",
+        "cls": "main_control_box_btn btn btn-default btn-sm",
+        "text": "추가기능..",
+        "href": "#none;",
+        "type": ""
+      },
+      {
+        "tag": "a",
+        "id": "",
+        "cls": "btn btn-warning btn-sm ",
+        "text": "강좌 일괄입력",
+        "href": "https://www.dbdbschool.kr/af/ad_lec/input/p/1/sn/2848/sof/num/sot/desc",
+        "type": ""
+      },
+      {
+        "tag": "a",
+        "id": "",
+        "cls": "btn btn-info btn-sm ",
+        "text": "강좌 일괄수정",
+        "href": "https://www.dbdbschool.kr/af/ad_lec/modifyField/p/1/sn/2848/sof/num/sot/desc",
+        "type": ""
+      },
+      {
+        "tag": "a",
+        "id": "",
+        "cls": "btn btn-info btn-sm ",
+        "text": "강좌 일괄복사",
+        "href": "https://www.dbdbschool.kr/af/ad_lec/copy/p/1/sn/2848/sof/num/sot/desc",
+        "type": ""
+      },
+      {
+        "tag": "input",
+        "id": "",
+        "cls": "btn btn-default btn-sm btn-sm_new ",
+        "text": "강좌 통계",
+        "href": "",
+        "type": "button"
+      },
+      {
+        "tag": "input",
+        "id": "",
+        "cls": "btn btn-default",
+        "text": "적용하기",
+        "href": "",
+        "type": "submit"
+      },
+      {
+        "tag": "input",
+        "id": "",
+        "cls": "go_btn",
+        "text": "로그인",
+        "href": "",
+        "type": "submit"
+      },
+      {
+        "tag": "button",
+        "id": "",
+        "cls": "close",
+        "text": "×",
+        "href": "",
+        "type": "button"
+      },
+      {
+        "tag": "a",
+        "id": "",
+        "cls": "btn btn-primary",
+        "text": "확인",
+        "href": "#none;",
+        "type": ""
+      },
+      {
+        "tag": "button",
+        "id": "",
+        "cls": "close",
+        "text": "×",
+        "href": "",
+        "type": "button"
+      }
+    ],
+    "localButtons": [
+      {
+        "tag": "a",
+        "id": "",
+        "cls": "btn btn-success btn-sm",
+        "text": "홈으로",
+        "href": "./index.html",
+        "type": ""
+      },
+      {
+        "tag": "a",
+        "id": "",
+        "cls": "btn btn-danger btn-sm",
+        "text": "강좌등록",
+        "href": "./lec_write.html",
+        "type": ""
+      },
+      {
+        "tag": "a",
+        "id": "main_control_box_btn01",
+        "cls": "btn btn-default btn-sm",
+        "text": "상세검색 열기",
+        "href": "#none;",
+        "type": ""
+      },
+      {
+        "tag": "a",
+        "id": "main_control_box_btn02",
+        "cls": "btn btn-default btn-sm",
+        "text": "추가기능..",
+        "href": "#none;",
+        "type": ""
+      },
+      {
+        "tag": "button",
+        "id": "",
+        "cls": "btn btn-default btn-sm",
+        "text": "검색",
+        "href": "",
+        "type": "submit"
+      },
+      {
+        "tag": "button",
+        "id": "btn-reset",
+        "cls": "btn btn-default btn-sm",
+        "text": "전체",
+        "href": "",
+        "type": "button"
+      },
+      {
+        "tag": "button",
+        "id": "btn-excel",
+        "cls": "btn btn-default btn-sm",
+        "text": "검색결과엑셀출력",
+        "href": "",
+        "type": "button"
+      },
+      {
+        "tag": "button",
+        "id": "btn-apply-bulk",
+        "cls": "btn btn-default btn-sm",
+        "text": "적용하기",
+        "href": "",
+        "type": "button"
+      },
+      {
+        "tag": "button",
+        "id": "btn-attendance",
+        "cls": "btn btn-success btn-sm",
+        "text": "출석부 출력",
+        "href": "",
+        "type": "button"
+      },
+      {
+        "tag": "a",
+        "id": "",
+        "cls": "btn btn-primary btn-sm",
+        "text": "강좌 등록",
+        "href": "./lec_write.html",
+        "type": ""
+      },
+      {
+        "tag": "a",
+        "id": "",
+        "cls": "btn btn-warning btn-sm",
+        "text": "강좌 일괄입력",
+        "href": "./lec_bulk_input.html",
+        "type": ""
+      },
+      {
+        "tag": "a",
+        "id": "",
+        "cls": "btn btn-info btn-sm",
+        "text": "강좌 일괄수정",
+        "href": "./lec_bulk_modify.html",
+        "type": ""
+      },
+      {
+        "tag": "a",
+        "id": "",
+        "cls": "btn btn-primary btn-sm",
+        "text": "강좌 일괄복사",
+        "href": "./lec_copy.html",
+        "type": ""
+      },
+      {
+        "tag": "a",
+        "id": "",
+        "cls": "btn btn-default btn-sm",
+        "text": "강좌 통계",
+        "href": "./lec_stats.html",
+        "type": ""
+      },
+      {
+        "tag": "button",
+        "id": "",
+        "cls": "btn btn-default btn-xs",
+        "text": "",
+        "href": "",
+        "type": ""
+      },
+      {
+        "tag": "button",
+        "id": "view_lec_status_745",
+        "cls": "btn btn-primary isu_status_sm",
+        "text": "종료",
+        "href": "",
+        "type": "button"
+      },
+      {
+        "tag": "button",
+        "id": "",
+        "cls": "btn btn-default isu_toggle",
+        "text": "",
+        "href": "",
+        "type": "button"
+      },
+      {
+        "tag": "button",
+        "id": "",
+        "cls": "btn btn-default btn-xs",
+        "text": "",
+        "href": "",
+        "type": ""
+      },
+      {
+        "tag": "button",
+        "id": "view_lec_status_744",
+        "cls": "btn btn-primary isu_status_sm",
+        "text": "종료",
+        "href": "",
+        "type": "button"
+      },
+      {
+        "tag": "button",
+        "id": "",
+        "cls": "btn btn-default isu_toggle",
+        "text": "",
+        "href": "",
+        "type": "button"
+      },
+      {
+        "tag": "button",
+        "id": "",
+        "cls": "close",
+        "text": "×",
+        "href": "",
+        "type": "button"
+      },
+      {
+        "tag": "input",
+        "id": "",
+        "cls": "go_btn",
+        "text": "로그인",
+        "href": "",
+        "type": "submit"
+      },
+      {
+        "tag": "button",
+        "id": "",
+        "cls": "close",
+        "text": "×",
+        "href": "",
+        "type": "button"
+      },
+      {
+        "tag": "a",
+        "id": "",
+        "cls": "btn btn-primary",
+        "text": "확인",
+        "href": "#none;",
+        "type": ""
+      }
+    ],
+    "realInputs": [
+      {
+        "tag": "select",
+        "type": "",
+        "id": "sel_led_div",
+        "name": "sld",
+        "cls": "form-control input-sm PAD0 select_box_menu_width",
+        "placeholder": ""
+      },
+      {
+        "tag": "select",
+        "type": "",
+        "id": "s_lec_pro_type",
+        "name": "slp",
+        "cls": "form-control input-sm PAD0 select_box_menu_width",
+        "placeholder": ""
+      },
+      {
+        "tag": "select",
+        "type": "",
+        "id": "",
+        "name": "sls",
+        "cls": "form-control input-sm PAD0",
+        "placeholder": ""
+      },
+      {
+        "tag": "select",
+        "type": "",
+        "id": "s_grade",
+        "name": "s_grade",
+        "cls": "form-control input-sm PAD0",
+        "placeholder": ""
+      },
+      {
+        "tag": "select",
+        "type": "",
+        "id": "st",
+        "name": "st",
+        "cls": "form-control input-sm PAD0",
+        "placeholder": ""
+      },
+      {
+        "tag": "input",
+        "type": "text",
+        "id": "s_word",
+        "name": "sw",
+        "cls": "form-control input-sm size25",
+        "placeholder": "검색어"
+      },
+      {
+        "tag": "input",
+        "type": "submit",
+        "id": "",
+        "name": "",
+        "cls": "btn btn-default input-sm ",
+        "placeholder": ""
+      },
+      {
+        "tag": "input",
+        "type": "button",
+        "id": "",
+        "name": "",
+        "cls": "btn btn-default input-sm",
+        "placeholder": ""
+      },
+      {
+        "tag": "input",
+        "type": "button",
+        "id": "",
+        "name": "",
+        "cls": "btn btn-default input-sm",
+        "placeholder": ""
+      },
+      {
+        "tag": "input",
+        "type": "hidden",
+        "id": "",
+        "name": "csrf_test_name",
+        "cls": "",
+        "placeholder": ""
+      },
+      {
+        "tag": "input",
+        "type": "hidden",
+        "id": "",
+        "name": "form_open_date_use_chk_csrf",
+        "cls": "",
+        "placeholder": ""
+      },
+      {
+        "tag": "input",
+        "type": "button",
+        "id": "",
+        "name": "",
+        "cls": "btn btn-success btn-sm",
+        "placeholder": ""
+      },
+      {
+        "tag": "input",
+        "type": "button",
+        "id": "",
+        "name": "",
+        "cls": "btn btn-primary btn-sm",
+        "placeholder": ""
+      },
+      {
+        "tag": "input",
+        "type": "button",
+        "id": "",
+        "name": "",
+        "cls": "btn btn-default btn-sm btn-sm_new ",
+        "placeholder": ""
+      },
+      {
+        "tag": "input",
+        "type": "checkbox",
+        "id": "check_all",
+        "name": "check_all",
+        "cls": "",
+        "placeholder": ""
+      },
+      {
+        "tag": "input",
+        "type": "checkbox",
+        "id": "data_checked_1341104",
+        "name": "data_checked[]",
+        "cls": "",
+        "placeholder": ""
+      },
+      {
+        "tag": "input",
+        "type": "checkbox",
+        "id": "data_checked_1341060",
+        "name": "data_checked[]",
+        "cls": "",
+        "placeholder": ""
+      },
+      {
+        "tag": "input",
+        "type": "checkbox",
+        "id": "data_checked_1339843",
+        "name": "data_checked[]",
+        "cls": "",
+        "placeholder": ""
+      },
+      {
+        "tag": "input",
+        "type": "checkbox",
+        "id": "data_checked_1339842",
+        "name": "data_checked[]",
+        "cls": "",
+        "placeholder": ""
+      },
+      {
+        "tag": "input",
+        "type": "checkbox",
+        "id": "data_checked_1339841",
+        "name": "data_checked[]",
+        "cls": "",
+        "placeholder": ""
+      },
+      {
+        "tag": "input",
+        "type": "checkbox",
+        "id": "data_checked_1339840",
+        "name": "data_checked[]",
+        "cls": "",
+        "placeholder": ""
+      },
+      {
+        "tag": "input",
+        "type": "checkbox",
+        "id": "data_checked_1339839",
+        "name": "data_checked[]",
+        "cls": "",
+        "placeholder": ""
+      },
+      {
+        "tag": "input",
+        "type": "checkbox",
+        "id": "data_checked_1339838",
+        "name": "data_checked[]",
+        "cls": "",
+        "placeholder": ""
+      },
+      {
+        "tag": "input",
+        "type": "checkbox",
+        "id": "data_checked_1339837",
+        "name": "data_checked[]",
+        "cls": "",
+        "placeholder": ""
+      },
+      {
+        "tag": "input",
+        "type": "checkbox",
+        "id": "data_checked_1339836",
+        "name": "data_checked[]",
+        "cls": "",
+        "placeholder": ""
+      },
+      {
+        "tag": "input",
+        "type": "checkbox",
+        "id": "data_checked_1339835",
+        "name": "data_checked[]",
+        "cls": "",
+        "placeholder": ""
+      },
+      {
+        "tag": "input",
+        "type": "checkbox",
+        "id": "data_checked_1339834",
+        "name": "data_checked[]",
+        "cls": "",
+        "placeholder": ""
+      },
+      {
+        "tag": "input",
+        "type": "checkbox",
+        "id": "data_checked_1339833",
+        "name": "data_checked[]",
+        "cls": "",
+        "placeholder": ""
+      },
+      {
+        "tag": "input",
+        "type": "checkbox",
+        "id": "data_checked_1339832",
+        "name": "data_checked[]",
+        "cls": "",
+        "placeholder": ""
+      },
+      {
+        "tag": "input",
+        "type": "checkbox",
+        "id": "data_checked_1339831",
+        "name": "data_checked[]",
+        "cls": "",
+        "placeholder": ""
+      },
+      {
+        "tag": "input",
+        "type": "checkbox",
+        "id": "data_checked_1339830",
+        "name": "data_checked[]",
+        "cls": "",
+        "placeholder": ""
+      },
+      {
+        "tag": "input",
+        "type": "checkbox",
+        "id": "data_checked_1339829",
+        "name": "data_checked[]",
+        "cls": "",
+        "placeholder": ""
+      },
+      {
+        "tag": "input",
+        "type": "checkbox",
+        "id": "data_checked_1339828",
+        "name": "data_checked[]",
+        "cls": "",
+        "placeholder": ""
+      },
+      {
+        "tag": "input",
+        "type": "checkbox",
+        "id": "data_checked_1339827",
+        "name": "data_checked[]",
+        "cls": "",
+        "placeholder": ""
+      },
+      {
+        "tag": "input",
+        "type": "checkbox",
+        "id": "data_checked_1339826",
+        "name": "data_checked[]",
+        "cls": "",
+        "placeholder": ""
+      },
+      {
+        "tag": "select",
+        "type": "",
+        "id": "update_type",
+        "name": "update_type",
+        "cls": "form-control",
+        "placeholder": ""
+      },
+      {
+        "tag": "input",
+        "type": "submit",
+        "id": "",
+        "name": "",
+        "cls": "btn btn-default",
+        "placeholder": ""
+      },
+      {
+        "tag": "input",
+        "type": "hidden",
+        "id": "",
+        "name": "csrf_test_name",
+        "cls": "",
+        "placeholder": ""
+      },
+      {
+        "tag": "input",
+        "type": "hidden",
+        "id": "",
+        "name": "form_open_date_use_chk_csrf",
+        "cls": "",
+        "placeholder": ""
+      },
+      {
+        "tag": "input",
+        "type": "hidden",
+        "id": "lec_status_num",
+        "name": "num",
+        "cls": "",
+        "placeholder": ""
+      },
+      {
+        "tag": "input",
+        "type": "hidden",
+        "id": "lec_status",
+        "name": "lec_status",
+        "cls": "",
+        "placeholder": ""
+      },
+      {
+        "tag": "input",
+        "type": "hidden",
+        "id": "mem_obj_id",
+        "name": "mem_obj_id",
+        "cls": "",
+        "placeholder": ""
+      },
+      {
+        "tag": "input",
+        "type": "hidden",
+        "id": "",
+        "name": "csrf_test_name",
+        "cls": "",
+        "placeholder": ""
+      },
+      {
+        "tag": "input",
+        "type": "hidden",
+        "id": "",
+        "name": "form_open_date_use_chk_csrf",
+        "cls": "",
+        "placeholder": ""
+      },
+      {
+        "tag": "input",
+        "type": "hidden",
+        "id": "max_sin_num",
+        "name": "num",
+        "cls": "",
+        "placeholder": ""
+      },
+      {
+        "tag": "input",
+        "type": "hidden",
+        "id": "update_max_sin",
+        "name": "max_sin",
+        "cls": "",
+        "placeholder": ""
+      },
+      {
+        "tag": "input",
+        "type": "hidden",
+        "id": "",
+        "name": "csrf_test_name",
+        "cls": "",
+        "placeholder": ""
+      },
+      {
+        "tag": "input",
+        "type": "hidden",
+        "id": "",
+        "name": "form_open_date_use_chk_csrf",
+        "cls": "",
+        "placeholder": ""
+      },
+      {
+        "tag": "input",
+        "type": "hidden",
+        "id": "del_num",
+        "name": "num",
+        "cls": "",
+        "placeholder": ""
+      },
+      {
+        "tag": "input",
+        "type": "hidden",
+        "id": "",
+        "name": "csrf_test_name",
+        "cls": "",
+        "placeholder": ""
+      },
+      {
+        "tag": "input",
+        "type": "hidden",
+        "id": "",
+        "name": "form_open_date_use_chk_csrf",
+        "cls": "",
+        "placeholder": ""
+      },
+      {
+        "tag": "input",
+        "type": "text",
+        "id": "login_id",
+        "name": "login_id",
+        "cls": "form-control msg_popover",
+        "placeholder": "아이디"
+      },
+      {
+        "tag": "input",
+        "type": "password",
+        "id": "login_passwd",
+        "name": "login_passwd",
+        "cls": "form-control msg_popover",
+        "placeholder": "비밀번호"
+      },
+      {
+        "tag": "input",
+        "type": "submit",
+        "id": "",
+        "name": "submit",
+        "cls": "go_btn",
+        "placeholder": ""
+      }
+    ],
+    "localInputs": [
+      {
+        "tag": "select",
+        "type": "",
+        "id": "",
+        "name": "sld",
+        "cls": "form-control input-sm filter-select",
+        "placeholder": ""
+      },
+      {
+        "tag": "select",
+        "type": "",
+        "id": "",
+        "name": "slp",
+        "cls": "form-control input-sm filter-select",
+        "placeholder": ""
+      },
+      {
+        "tag": "select",
+        "type": "",
+        "id": "",
+        "name": "sls",
+        "cls": "form-control input-sm filter-select",
+        "placeholder": ""
+      },
+      {
+        "tag": "select",
+        "type": "",
+        "id": "",
+        "name": "s_grade",
+        "cls": "form-control input-sm filter-select",
+        "placeholder": ""
+      },
+      {
+        "tag": "select",
+        "type": "",
+        "id": "",
+        "name": "st",
+        "cls": "form-control input-sm filter-select",
+        "placeholder": ""
+      },
+      {
+        "tag": "input",
+        "type": "",
+        "id": "",
+        "name": "sw",
+        "cls": "form-control input-sm filter-input",
+        "placeholder": "검색어"
+      },
+      {
+        "tag": "input",
+        "type": "text",
+        "id": "s_date_start",
+        "name": "",
+        "cls": "form-control input-sm filter-select",
+        "placeholder": "시작일(YYYY-MM-DD)"
+      },
+      {
+        "tag": "input",
+        "type": "text",
+        "id": "s_date_end",
+        "name": "",
+        "cls": "form-control input-sm filter-select",
+        "placeholder": "종료일(YYYY-MM-DD)"
+      },
+      {
+        "tag": "input",
+        "type": "checkbox",
+        "id": "s_only_open",
+        "name": "",
+        "cls": "",
+        "placeholder": ""
+      },
+      {
+        "tag": "select",
+        "type": "",
+        "id": "update_type",
+        "name": "update_type",
+        "cls": "form-control input-sm filter-select",
+        "placeholder": ""
+      },
+      {
+        "tag": "input",
+        "type": "checkbox",
+        "id": "check_all",
+        "name": "",
+        "cls": "",
+        "placeholder": ""
+      },
+      {
+        "tag": "input",
+        "type": "checkbox",
+        "id": "",
+        "name": "",
+        "cls": "chk-row",
+        "placeholder": ""
+      },
+      {
+        "tag": "input",
+        "type": "checkbox",
+        "id": "",
+        "name": "",
+        "cls": "chk-row",
+        "placeholder": ""
+      },
+      {
+        "tag": "input",
+        "type": "hidden",
+        "id": "lec_status_num",
+        "name": "num",
+        "cls": "",
+        "placeholder": ""
+      },
+      {
+        "tag": "input",
+        "type": "hidden",
+        "id": "lec_status_val",
+        "name": "lec_status",
+        "cls": "",
+        "placeholder": ""
+      },
+      {
+        "tag": "input",
+        "type": "hidden",
+        "id": "csrf_status",
+        "name": "csrf_test_name",
+        "cls": "",
+        "placeholder": ""
+      },
+      {
+        "tag": "input",
+        "type": "hidden",
+        "id": "max_sin_num",
+        "name": "num",
+        "cls": "",
+        "placeholder": ""
+      },
+      {
+        "tag": "input",
+        "type": "hidden",
+        "id": "max_sin_val",
+        "name": "max_sin",
+        "cls": "",
+        "placeholder": ""
+      },
+      {
+        "tag": "input",
+        "type": "hidden",
+        "id": "csrf_max",
+        "name": "csrf_test_name",
+        "cls": "",
+        "placeholder": ""
+      },
+      {
+        "tag": "input",
+        "type": "hidden",
+        "id": "del_num",
+        "name": "num",
+        "cls": "",
+        "placeholder": ""
+      },
+      {
+        "tag": "input",
+        "type": "hidden",
+        "id": "csrf_del",
+        "name": "csrf_test_name",
+        "cls": "",
+        "placeholder": ""
+      },
+      {
+        "tag": "input",
+        "type": "text",
+        "id": "login_id",
+        "name": "login_id",
+        "cls": "form-control",
+        "placeholder": "아이디"
+      },
+      {
+        "tag": "input",
+        "type": "password",
+        "id": "login_passwd",
+        "name": "login_passwd",
+        "cls": "form-control",
+        "placeholder": "비밀번호"
+      },
+      {
+        "tag": "input",
+        "type": "submit",
+        "id": "",
+        "name": "",
+        "cls": "go_btn",
+        "placeholder": ""
+      }
+    ]
+  }
+}

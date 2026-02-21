@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>중복제한그룹 설정 - 환경설정 - 늘봄학교</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="./assets/css/app.css">
+</head>
+<body data-sidebar-page="cfg-group">
+  <div id="header" class="topbar">
+    <div class="topbar-inner">
+      <div class="topbar-center">
+        <span class="topbar-title">늘봄학교</span>
+        <span class="caret"></span>
+      </div>
+    </div>
+  </div>
+
+  <div id="container" class="layout">
+    <aside id="left_menu" class="sidebar"></aside>
+
+    <main id="contents_box" class="content">
+      <div id="contents_title" class="page-title">
+        <div class="title-left">
+          <div class="title-main"><i class="fa fa-file-text-o"></i> 중복제한그룹</div>
+          <div class="title-sub">운천초등학교 늘봄학교</div>
+        </div>
+      </div>
+      <div id="contents" class="content-inner module-raw-content">
+<div class="panel_main panel-default_main">
+	<div class="panel-heading">중복제한그룹 설정</div>
+<form action="https://www.dbdbschool.kr/af/ad_cfg/appLiGrp/sn/2848" name="fm_edit" id="fm_edit" onsubmit="return fm_edit_check(this);" method="post" accept-charset="utf-8">
+<input type="hidden" name="csrf_test_name" value="e7949d7748f475e6b7014456deae3d9b">                                                                                                       
+<input type="hidden" name="form_open_date_use_chk_csrf" value="2026-02-20 23:16:26">
+	<input type="hidden" name="number" value="">
+	<input type="hidden" name="mode1" value="">
+	<table class="table table-bordered AlignCenter table-hover list MAT30">
+	<tbody><tr>
+		<th class="mobile_none">연번</th>
+		<th>사용</th>
+		<th>코드명</th>
+		<th>신청 가능<br>강좌 수</th>
+		<th>적용</th>
+		<th colspan="2" class="mobile_none">출력순서</th>
+		<th>삭제</th>
+	</tr>
+	<tr>
+		<td class="mobile_none">&nbsp;</td>
+		<td><input id="use_status_add1" name="use_status_add1" value="Y" type="checkbox" checked="checked" title="사용">
+			<div class="error_msg error_use_status_add1"></div>
+		</td>
+		<td>
+		
+			<input id="div_name_add1" name="div_name_add1" value="" type="text" title="코드명" class="form-control size100" style="width:60%;" maxlength="15">			
+			<div class="error_msg error_div_name_add1"></div>			
+		</td>
+		<td><input id="add_data_add1" name="add_data_add1" value="1" type="text" title="개수" class="form-control text-center" style="width:50px;" maxlength="1">
+			<div class="error_msg error_add_data_add1"></div>
+		</td>
+		<td><a href="#none;" onclick="chkAdd(); return false;" class="search_btn">추가</a></td>
+		<td class="mobile_none" colspan="2">
+			<a href="#none;" class="search_btn" onclick="openSortWin('https://www.dbdbschool.kr/af/ad_cfg/sorts/code/appLiGrp/sn/2848','700', '600');">일괄 변경</a>
+		</td>
+		<td class="mobile_right_none">&nbsp;</td>
+	</tr>
+	
+	</tbody></table>
+</form>
+</div>
+<div class="help_box">
+	<ul>
+		<li>신청 가능 강좌 수 : 해당 그룹이 설정된 강좌 중에서 최대 신청 가능한 강좌 개수를 지정합니다.</li>
+		<li>"사용"에 check 되어 있는 경우에만 강좌 등록 시 출력됩니다.</li>
+		<li>코드를 삭제하는 경우 <span class="text-danger">기존에 등록된 강좌 데이터에도 영향을 끼칠 수 있으므로 되도록 "사용" 여부를 조정</span>하여 사용하시기 바랍니다.</li>		
+		<li>코드명을 수정하는 경우 <span class="text-danger">기존에 등록된 강좌 데이터에도 수정</span>되므로 유의하시기 바랍니다.</li>		
+	</ul>
+</div>
+
+			</div>
+      </div>
+      <div id="footer" class="footer"><span class="muted">DBDB School Clone</span></div>
+    </main>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="./assets/js/app.js"></script>
+</body>
+</html>
