@@ -9,6 +9,210 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="./assets/css/app.css">
+  <style>
+    .page-actions {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .ops-summary {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      margin: 18px 0;
+    }
+
+    .summary-card {
+      background: linear-gradient(180deg, #ffffff 0%, #f8fbfe 100%);
+      border: 1px solid #dceaf6;
+      border-radius: 14px;
+      padding: 16px 18px;
+      box-shadow: 0 8px 24px rgba(20, 56, 97, 0.08);
+    }
+
+    .summary-card .summary-label {
+      color: #4d6780;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .summary-card strong {
+      display: block;
+      margin-top: 8px;
+      color: #163a63;
+      font-size: 24px;
+      line-height: 1.1;
+    }
+
+    .summary-card .summary-note {
+      margin-top: 8px;
+      color: #627a90;
+      font-size: 12px;
+    }
+
+    .guide-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .guide-card {
+      background: #fff;
+      border: 1px solid #e3edf5;
+      border-radius: 14px;
+      padding: 18px;
+      min-height: 180px;
+    }
+
+    .guide-card h3 {
+      margin: 0 0 10px;
+      color: #173d67;
+      font-size: 17px;
+    }
+
+    .guide-card p {
+      margin: 0 0 10px;
+      color: #60758a;
+      font-size: 13px;
+    }
+
+    .guide-list {
+      margin: 0;
+      padding-left: 18px;
+      color: #334b60;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .management-flow {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 18px;
+      align-items: center;
+    }
+
+    .flow-step {
+      background: #f4f9ff;
+      border: 1px solid #d7e7f6;
+      color: #1d4a73;
+      padding: 9px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .flow-arrow {
+      color: #8aa4bc;
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .table-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin: 14px 0 10px;
+      color: #4b647a;
+      font-size: 13px;
+    }
+
+    .table-meta .meta-highlight {
+      font-weight: 700;
+      color: #163a63;
+    }
+
+    .table-meta .meta-help {
+      color: #72889d;
+      font-size: 12px;
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .status-complete {
+      background: #ecf7ef;
+      color: #1c7a46;
+    }
+
+    .status-review {
+      background: #fff3dc;
+      color: #8a6400;
+    }
+
+    .refund-type-chip {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: #f3f7fb;
+      color: #355a7d;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .refund-name {
+      color: #163a63;
+      font-weight: 700;
+    }
+
+    .refund-hint {
+      display: block;
+      margin-top: 4px;
+      color: #6c8296;
+      font-size: 12px;
+    }
+
+    .amount-note {
+      display: block;
+      margin-top: 4px;
+      color: #6c8296;
+      font-size: 12px;
+    }
+
+    .help_box {
+      margin-top: 18px;
+      padding: 16px 18px;
+      border-radius: 14px;
+      border: 1px solid #dce9f5;
+      background: #f8fbfe;
+    }
+
+    @media (max-width: 1199px) {
+      .ops-summary,
+      .guide-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 767px) {
+      .page-actions,
+      .table-meta {
+        display: block;
+      }
+
+      .page-actions .btn {
+        margin-top: 8px;
+      }
+
+      .ops-summary,
+      .guide-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body data-sidebar-page="refund">
   <div id="header" class="topbar">
@@ -27,10 +231,82 @@
       <div id="contents_title" class="page-title">
         <div class="title-left">
           <div class="title-main"><i class="fa fa-file-text-o"></i> 환불/취소관리</div>
-          <div class="title-sub">운천초등학교 늘봄학교</div>
+          <div class="title-sub">운천초등학교 늘봄학교 환불·취소 운영 대시보드</div>
+        </div>
+        <div class="page-actions">
+          <a class="btn btn-default btn-sm" href="./applicants.html">신청자관리</a>
+          <a class="btn btn-default btn-sm" href="./waitlist.html">대기자관리</a>
+          <a class="btn btn-primary btn-sm" href="./index.html">강좌관리</a>
         </div>
       </div>
       <div id="contents" class="content-inner module-raw-content">
+<section class="ops-summary" aria-label="환불 요약">
+  <article class="summary-card">
+    <span class="summary-label">처리 건수</span>
+    <strong id="summary-total-refund">0</strong>
+    <div class="summary-note">현재 화면에 표시된 환불·취소 건수</div>
+  </article>
+  <article class="summary-card">
+    <span class="summary-label">수강취소</span>
+    <strong id="summary-cancel-refund">0</strong>
+    <div class="summary-note">취소 유형이 수강취소인 건</div>
+  </article>
+  <article class="summary-card">
+    <span class="summary-label">처리완료</span>
+    <strong id="summary-complete-refund">0</strong>
+    <div class="summary-note">상태가 처리완료로 보이는 건</div>
+  </article>
+  <article class="summary-card">
+    <span class="summary-label">오늘의 작업</span>
+    <strong>3단계</strong>
+    <div class="summary-note">유형 확인, 금액 영향 검토, 처리 상태 점검</div>
+  </article>
+</section>
+
+<section class="guide-grid" aria-label="환불 운영 가이드">
+  <article class="guide-card">
+    <h3>처리 전 확인</h3>
+    <p>환불과 취소는 금액과 행정 처리 영향이 커서 신청 화면보다 한 번 더 확인하는 흐름이 중요합니다.</p>
+    <ul class="guide-list">
+      <li>취소 유형이 수강취소인지 기타인지 먼저 구분</li>
+      <li>환불마감 여부를 강좌명 아래 상태와 함께 확인</li>
+      <li>학생 정보와 보호자 연락처를 같이 확인</li>
+      <li>신청일과 처리일을 보고 시점 차이를 점검</li>
+    </ul>
+  </article>
+  <article class="guide-card">
+    <h3>금액 영향 확인</h3>
+    <p>수강료와 수용비, 재료비는 환불 계산에 직접 연결되므로 한 줄씩 읽히게 하는 편이 안전합니다.</p>
+    <ul class="guide-list">
+      <li>괄호 안 금액은 부분 환불 또는 반영 금액으로 확인</li>
+      <li>재료비, 교재비는 별도 기준이 있을 수 있어 함께 검토</li>
+      <li>환불 데이터 삭제만으로 수강료는 바뀌지 않는 점 주의</li>
+      <li>필요하면 신청자관리에서 원 수강료를 다시 확인</li>
+    </ul>
+  </article>
+  <article class="guide-card">
+    <h3>상태별 처리 흐름</h3>
+    <p>접수, 강사확인, 처리완료처럼 상태가 섞이기 쉬워서 지금 어떤 단계인지 먼저 보여주는 편이 좋습니다.</p>
+    <ul class="guide-list">
+      <li>처리완료는 행정 제출 전 최종 결과 검토용</li>
+      <li>강사확인 단계는 추가 확인 요청이 필요한 구간</li>
+      <li>취소 가능 여부는 접수 상태와 함께 판단</li>
+      <li>삭제 전에는 실제 금액 수정 필요 여부를 같이 확인</li>
+    </ul>
+  </article>
+</section>
+
+<div class="management-flow" aria-label="환불 운영 흐름">
+  <span class="flow-step">유형 확인</span>
+  <span class="flow-arrow">→</span>
+  <span class="flow-step">환불마감 여부 점검</span>
+  <span class="flow-arrow">→</span>
+  <span class="flow-step">금액 영향 검토</span>
+  <span class="flow-arrow">→</span>
+  <span class="flow-step">처리 상태 확인</span>
+  <span class="flow-arrow">→</span>
+  <span class="flow-step">행정 제출 전 최종 검토</span>
+</div>
 <div class="panel_main panel-default_main">
 	<div class="new_help_manualbox hm_loca1">
 		<p class="hm_title"><i class="fa fa-file-text-o" aria-hidden="true"></i>매뉴얼</p>
@@ -915,6 +1191,11 @@
 			</li>
 		</ul>
 </form>
+	</div>
+	
+	<div class="table-meta">
+		<div><span class="meta-highlight">검색 결과 <span id="summary-inline-refund">0</span>건</span>이 표시되고 있습니다.</div>
+		<div class="meta-help">상태와 유형을 먼저 확인한 뒤 금액 열을 읽는 흐름이 안전합니다. 삭제는 신청자 수강료를 자동으로 바꾸지 않습니다.</div>
 	</div>
 	
 	
@@ -2288,9 +2569,9 @@
 			<td>182</td>		
 			<td width="70" style="line-height:160%;">							
 				<a href="https://www.dbdbschool.kr/af/ad_ref/modify/num/20403/p/1/sn/2848"><i class="fa fa-cog icon_btn" title="수정"></i></a><br>
-				<span class="app_sin7">처리완료</span>
+				<span class="status-badge status-complete">처리완료</span>
 			</td>
-			<td>기타</td>
+			<td><span class="refund-type-chip">기타</span></td>
 				
 			<td width="45" class="mobile_none">11월					<br><span class="lec_pro_type1">방과후</span>
 			
@@ -2299,17 +2580,17 @@
 			<td class="text-left" style="line-height:160%;">
 				<span class="desc_none"><span class="lec_div">11월</span></span>				
 				<a href="https://www.dbdbschool.kr/af/ad_ref/view/num/20403/p/1/sn/2848" class="link_type">[선택형] 쿠키클레이 2부 (금 14:50~16:30)</a>
-				<br><span class="app_sin7">환불마감</span>		
+				<br><span class="status-badge status-review">환불마감</span>		
 			</td>
 			<td>2</td>
 			
 			<td>4</td>
 			<td>8</td>
-			<td>박아윤</td>			
+			<td><span class="refund-name">박아윤</span><span class="refund-hint">보호자 확인 후 처리 완료</span></td>			
 			<td><span class="stu_hp_4025870">010-8574-6545<br>010-8574-6545<br>(안영란)</span>
 			</td>
 			<td>-</td>
-			<td>32,400<br>(8,100)</td>
+			<td>32,400<br>(8,100)<span class="amount-note">부분 반영 금액 확인</span></td>
 			<td>1,000<br>(250)</td>	
 			
 			<td>0<br>(0)</td>
@@ -2360,9 +2641,9 @@
 			<td>180</td>		
 			<td width="70" style="line-height:160%;">							
 				<a href="https://www.dbdbschool.kr/af/ad_ref/modify/num/19385/p/1/sn/2848"><i class="fa fa-cog icon_btn" title="수정"></i></a><br>
-				<span class="app_sin7">처리완료</span>
+				<span class="status-badge status-complete">처리완료</span>
 			</td>
-			<td>수강취소</td>
+			<td><span class="refund-type-chip">수강취소</span></td>
 				
 			<td width="45" class="mobile_none">11월					<br><span class="lec_pro_type1">방과후</span>
 			
@@ -2371,17 +2652,17 @@
 			<td class="text-left" style="line-height:160%;">
 				<span class="desc_none"><span class="lec_div">11월</span></span>				
 				<a href="https://www.dbdbschool.kr/af/ad_ref/view/num/19385/p/1/sn/2848" class="link_type">[선택형] 컴퓨터 3부 (화 16:00~16:50, 목 15:00~15:50)</a>
-				<br><span class="app_sin7">환불마감</span>		
+				<br><span class="status-badge status-review">환불마감</span>		
 			</td>
 			<td>3</td>
 			
 			<td>1</td>
 			<td>13</td>
-			<td>박수혁</td>			
+			<td><span class="refund-name">박수혁</span><span class="refund-hint">수강취소 처리 완료</span></td>			
 			<td><span class="stu_hp_4025893">010-3399-3015<br>--<br>(보호자)</span>
 			</td>
 			<td>2025-11-03</td>
-			<td>28,000<br>(28,000)</td>
+			<td>28,000<br>(28,000)<span class="amount-note">전액 기준 확인</span></td>
 			<td>0<br>(0)</td>	
 			
 			<td>0<br>(0)</td>
@@ -2788,5 +3069,35 @@
   <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <script src="./assets/js/app.js"></script>
+  <script>
+    (function ($) {
+      function updateRefundSummary() {
+        var $rows = $('.table-responsive .table tbody tr').not(':first');
+        var total = $rows.length;
+        var cancelCount = 0;
+        var completeCount = 0;
+
+        $rows.each(function () {
+          var rowText = $(this).text();
+
+          if (rowText.indexOf('수강취소') !== -1) {
+            cancelCount += 1;
+          }
+
+          if (rowText.indexOf('처리완료') !== -1) {
+            completeCount += 1;
+          }
+        });
+
+        $('#summary-total-refund, #summary-inline-refund').text(total);
+        $('#summary-cancel-refund').text(cancelCount);
+        $('#summary-complete-refund').text(completeCount);
+      }
+
+      $(function () {
+        updateRefundSummary();
+      });
+    })(jQuery);
+  </script>
 </body>
 </html>

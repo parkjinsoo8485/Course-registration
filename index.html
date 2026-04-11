@@ -1,21 +1,375 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="ko">
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="x-ua-compatible" content="ie=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>목록 - 강좌관리 - 늘봄학교</title>
+  <title>강좌관리 - 운영 대시보드 - 늘봄학교</title>
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="./assets/css/app.css">
+  <style>
+    .page-actions {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .ops-summary {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      margin: 18px 0;
+    }
+
+    .summary-card {
+      background: linear-gradient(180deg, #ffffff 0%, #f7fbff 100%);
+      border: 1px solid #d9e8f6;
+      border-radius: 14px;
+      padding: 16px 18px;
+      box-shadow: 0 8px 24px rgba(20, 56, 97, 0.08);
+    }
+
+    .summary-card strong {
+      display: block;
+      font-size: 24px;
+      line-height: 1.1;
+      margin-top: 8px;
+      color: #163a63;
+    }
+
+    .summary-card .summary-label {
+      color: #4d6780;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .summary-card .summary-note {
+      color: #61788e;
+      font-size: 12px;
+      margin-top: 8px;
+    }
+
+    .guide-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .guide-card {
+      background: #fff;
+      border: 1px solid #e5edf4;
+      border-radius: 14px;
+      padding: 18px;
+      min-height: 190px;
+    }
+
+    .guide-card h3 {
+      margin: 0 0 10px;
+      font-size: 17px;
+      color: #183b63;
+    }
+
+    .guide-card p {
+      color: #607489;
+      font-size: 13px;
+      margin-bottom: 10px;
+    }
+
+    .guide-list {
+      margin: 0;
+      padding-left: 18px;
+      color: #314a5f;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .management-flow {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 18px;
+      align-items: center;
+    }
+
+    .flow-step {
+      background: #f4f9ff;
+      border: 1px solid #d7e7f6;
+      color: #1d4a73;
+      padding: 9px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .flow-arrow {
+      color: #8aa4bc;
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .table-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin: 14px 0 10px;
+      color: #4b647a;
+      font-size: 13px;
+    }
+
+    .table-meta .meta-highlight {
+      font-weight: 700;
+      color: #163a63;
+    }
+
+    .table-meta .meta-help {
+      color: #72889d;
+      font-size: 12px;
+    }
+
+    .status-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border-radius: 999px;
+      padding: 5px 10px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .status-chip-open {
+      background: #e8f8ee;
+      color: #157347;
+    }
+
+    .status-chip-hold {
+      background: #fff5dd;
+      color: #8a6300;
+    }
+
+    .lecture-name strong {
+      display: block;
+      color: #163a63;
+    }
+
+    .lecture-name .lecture-hint {
+      display: block;
+      color: #6d8296;
+      font-size: 12px;
+      margin-top: 4px;
+    }
+
+    .quick-links {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-top: 6px;
+    }
+
+    .quick-links .btn {
+      padding: 2px 8px;
+    }
+
+    #modal-login {
+      width: 460px;
+      max-width: calc(100vw - 32px);
+    }
+
+    .login-role-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .login-role-btn {
+      border: 1px solid #d8e5f2;
+      border-radius: 12px;
+      padding: 10px;
+      background: #f8fbfe;
+      color: #23496f;
+      text-align: left;
+      width: 100%;
+    }
+
+    .login-role-btn.active {
+      border-color: #1f6fb2;
+      background: #eaf5ff;
+      box-shadow: 0 0 0 2px rgba(31, 111, 178, 0.12);
+    }
+
+    .login-role-btn strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 13px;
+    }
+
+    .login-role-btn span {
+      display: block;
+      font-size: 12px;
+      line-height: 1.5;
+      color: #5f7991;
+    }
+
+    .login-role-guide {
+      background: #f6fafe;
+      border: 1px solid #dce9f5;
+      border-radius: 12px;
+      padding: 12px 14px;
+      margin-bottom: 14px;
+      color: #45637e;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .login-role-current {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 10px;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: #e9f5ff;
+      color: #12548a;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .login-help-list {
+      margin: 0 0 14px;
+      padding-left: 18px;
+      color: #5f7991;
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    .login-checks {
+      display: flex;
+      gap: 12px;
+      margin: 10px 0 14px;
+      color: #567088;
+      font-size: 12px;
+    }
+
+    .login-form-block {
+      display: none;
+    }
+
+    .login-form-block.active {
+      display: block;
+    }
+
+    .login-form-block .form-control {
+      margin-bottom: 10px;
+    }
+
+    .student-login-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .field-help {
+      color: #6b8095;
+      font-size: 12px;
+      margin: -2px 0 10px;
+    }
+
+    .login-links {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+
+    .login-links a {
+      font-size: 12px;
+      color: #35648f;
+      text-decoration: none;
+    }
+
+    .login-panel {
+      border: 1px solid #deebf6;
+      border-radius: 14px;
+      background: linear-gradient(180deg, #ffffff 0%, #f8fbfe 100%);
+      padding: 16px;
+    }
+
+    .login-section-title {
+      margin: 0 0 12px;
+      color: #173d67;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .login-status-message {
+      display: none;
+      border-radius: 12px;
+      padding: 10px 12px;
+      margin-bottom: 12px;
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    .login-status-message.show {
+      display: block;
+    }
+
+    .login-status-message.error {
+      background: #fff3f1;
+      border: 1px solid #f0c8c1;
+      color: #9a3f31;
+    }
+
+    .login-status-message.info {
+      background: #eef7ff;
+      border: 1px solid #d5e8f7;
+      color: #3b6488;
+    }
+
+    .form-control.is-invalid {
+      border-color: #d96b5f;
+      box-shadow: 0 0 0 2px rgba(217, 107, 95, 0.1);
+    }
+
+    @media (max-width: 1199px) {
+      .ops-summary,
+      .guide-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 767px) {
+      .page-actions,
+      .table-meta {
+        display: block;
+      }
+
+      .page-actions .btn {
+        margin-top: 8px;
+      }
+
+      .ops-summary,
+      .guide-grid,
+      .login-role-grid,
+      .student-login-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body data-sidebar-page="lecture">
   <div id="header" class="topbar">
     <div class="topbar-inner">
       <div class="topbar-center">
-        <span class="topbar-title">늘봄학교</span>
+        <span class="topbar-title">늘봄학교 운영센터</span>
         <span class="caret"></span>
       </div>
     </div>
@@ -32,13 +386,14 @@
             <span class="user-name">박진선님</span>
             <span class="user-bell"><i class="fa fa-bell"></i><span class="badge badge-red">24</span></span>
           </div>
-          <div class="user-role">[로그아웃] <span class="muted">[정보수정]</span></div>
+          <div class="user-role">교직원 운영 계정 <span class="muted">[정보수정]</span></div>
         </div>
       </div>
 
       <div class="sidebar-actions">
         <a href="./index.html" class="btn btn-success btn-sm">홈으로</a>
         <a href="./lec_write.html" class="btn btn-danger btn-sm">강좌등록</a>
+        <a href="./login.html" class="btn btn-default btn-sm">운영 로그인</a>
       </div>
 
       <ul class="nav side-nav">
@@ -46,47 +401,47 @@
         <li><a href="./qanda.html"><i class="fa fa-phone"></i> 고객지원 게시판</a></li>
         <li><a href="#"><i class="fa fa-cog icon-red"></i> 학교관리</a></li>
         <li class="active"><a href="index.html"><i class="fa fa-globe icon-blue"></i> 강좌관리</a></li>
-        <li><a href="#"><i class="fa fa-user"></i> 신청자관리</a></li>
-        <li><a href="#"><i class="fa fa-user"></i> 대기자관리</a></li>
-        <li><a href="#"><i class="fa fa-user"></i> 환불/취소관리</a></li>
+        <li><a href="./applicants.html"><i class="fa fa-user"></i> 신청자관리</a></li>
+        <li><a href="./waitlist.html"><i class="fa fa-user"></i> 대기자관리</a></li>
+        <li><a href="./refund.html"><i class="fa fa-user"></i> 환불/취소관리</a></li>
 
         <li class="nav-section">
           <a data-toggle="collapse" href="#menu-funding"><i class="fa fa-building"></i> 지원금관리 <span class="caret"></span></a>
           <ul id="menu-funding" class="collapse in">
-            <li><a href="#">대상자관리</a></li>
-            <li><a href="#">수강자관리</a></li>
-            <li><a href="#">지원금설정</a></li>
-            <li><a href="#">순위구분설정</a></li>
+            <li><a href="./fund-targets.html">대상자관리</a></li>
+            <li><a href="./fund-apps.html">수강자관리</a></li>
+            <li><a href="./fund-config.html">지원금설정</a></li>
+            <li><a href="./fund-rank.html">순위구분설정</a></li>
           </ul>
         </li>
 
-        <li><a href="#"><i class="fa fa-briefcase"></i> 강사관리</a></li>
+        <li><a href="./teacher.html"><i class="fa fa-briefcase"></i> 강사관리</a></li>
 
         <li class="nav-section">
           <a data-toggle="collapse" href="#menu-survey"><i class="fa fa-pie-chart"></i> 설문관리 <span class="caret"></span></a>
           <ul id="menu-survey" class="collapse in">
-            <li><a href="#">설문</a></li>
-            <li><a href="#">샘플설문</a></li>
+            <li><a href="./survey.html">설문</a></li>
+            <li><a href="./survey-sample.html">샘플설문</a></li>
           </ul>
         </li>
 
         <li class="nav-section">
           <a data-toggle="collapse" href="#menu-settings"><i class="fa fa-cog"></i> 환경설정 <span class="caret"></span></a>
           <ul id="menu-settings" class="collapse in">
-            <li><a href="#">기본설정</a></li>
-            <li><a href="#">신청기간</a></li>
-            <li><a href="#">강의시간</a></li>
-            <li><a href="#">강좌구분</a></li>
-            <li><a href="#">중복제한그룹</a></li>
-            <li><a href="#">학적검증</a></li>
-            <li><a href="#">나이스/에듀파인 설정</a></li>
+            <li><a href="./cfg-basic.html">기본설정</a></li>
+            <li><a href="./cfg-period.html">신청기간</a></li>
+            <li><a href="./cfg-lecture-time.html">강의시간</a></li>
+            <li><a href="./cfg-division.html">강좌구분</a></li>
+            <li><a href="./cfg-group.html">중복제한그룹</a></li>
+            <li><a href="./cfg-verify.html">학적검증</a></li>
+            <li><a href="./cfg-neis.html">나이스/에듀파인 설정</a></li>
             <li><a href="#">안내문설정</a></li>
             <li><a href="#">초기화</a></li>
           </ul>
         </li>
 
-        <li><a href="#">담당자정보</a></li>
-        <li><a href="#"><i class="fa fa-volume-up"></i> 알림관리</a></li>
+        <li><a href="./school.html">담당자정보</a></li>
+        <li><a href="./notification.html"><i class="fa fa-volume-up"></i> 알림관리</a></li>
         <li><a href="#"><i class="fa fa-bell"></i> 푸시알림관리</a></li>
         <li><a href="#" class="has-badge"><i class="fa fa-calendar"></i> 연장신청 <span class="badge badge-grey">373일 남음</span></a></li>
         <li><a href="#"><i class="fa fa-pie-chart"></i> 설문참여</a></li>
@@ -97,14 +452,87 @@
       <div id="contents_title" class="page-title">
         <div class="title-left">
           <div class="title-main"><i class="fa fa-file-text-o"></i> 강좌관리</div>
-          <div class="title-sub">운천초등학교 늘봄학교</div>
+          <div class="title-sub">운천초등학교 늘봄학교 운영 대시보드</div>
+        </div>
+        <div class="page-actions">
+          <a class="btn btn-default btn-sm" href="./cfg-period.html">신청기간 설정</a>
+          <a class="btn btn-default btn-sm" href="./cfg-lecture-time.html">강의시간 설정</a>
+          <a class="btn btn-primary btn-sm" href="./applicants.html">신청자관리 바로가기</a>
         </div>
       </div>
 
       <div id="contents" class="content-inner">
         <div class="notice-box">
-          <div class="notice-line"><span class="notice-dot"><i class="fa fa-info-circle"></i></span>수강신청 시작 전에 반드시 신청기간을 미리 설정해 주세요.</div>
-          <div class="notice-line"><span class="notice-dot"><i class="fa fa-info-circle"></i></span>자주 묻는 질문은 매뉴얼과 고객지원 게시판에서 확인할 수 있습니다.</div>
+          <div class="notice-line"><span class="notice-dot"><i class="fa fa-info-circle"></i></span>수강신청 시작 전에는 신청기간, 강의시간, 중복제한그룹을 먼저 확인해 주세요.</div>
+          <div class="notice-line"><span class="notice-dot"><i class="fa fa-info-circle"></i></span>강좌 상태가 출력이어야 학생과 강사 화면에 노출되며, 종료 상태에서는 조회만 가능하고 신규 신청은 막힙니다.</div>
+        </div>
+
+        <section class="ops-summary" aria-label="운영 요약">
+          <article class="summary-card">
+            <span class="summary-label">전체 강좌</span>
+            <strong id="summary-total">0</strong>
+            <div class="summary-note">현재 화면에 표시된 강좌 수</div>
+          </article>
+          <article class="summary-card">
+            <span class="summary-label">신청 가능</span>
+            <strong id="summary-open">0</strong>
+            <div class="summary-note">상태가 출력인 강좌</div>
+          </article>
+          <article class="summary-card">
+            <span class="summary-label">대기 가능</span>
+            <strong id="summary-wait">0</strong>
+            <div class="summary-note">대기 정원이 1명 이상인 강좌</div>
+          </article>
+          <article class="summary-card">
+            <span class="summary-label">오늘의 점검</span>
+            <strong>3단계</strong>
+            <div class="summary-note">검색 조건 확인 후 상태 점검, 신청자관리로 이어서 처리</div>
+          </article>
+        </section>
+
+        <section class="guide-grid" aria-label="운영 가이드">
+          <article class="guide-card">
+            <h3>신청 전 체크리스트</h3>
+            <p>강좌를 공개하기 전에 꼭 먼저 맞춰야 하는 항목입니다.</p>
+            <ul class="guide-list">
+              <li>신청기간이 이번 운영 월과 맞는지 확인</li>
+              <li>강의시간과 학년 제한이 정확한지 점검</li>
+              <li>수강료, 대기정원, 강사ID 입력 여부 확인</li>
+              <li>학생 노출이 필요한 강좌만 출력 상태로 전환</li>
+            </ul>
+          </article>
+          <article class="guide-card">
+            <h3>신청 진행 중 확인</h3>
+            <p>접수 중에는 상태보다 실제 신청 흐름을 자주 확인하는 편이 안전합니다.</p>
+            <ul class="guide-list">
+              <li>신청 수와 정원 비율을 보고 증설 여부 판단</li>
+              <li>대기자 발생 강좌는 대기 정원과 이동 계획 점검</li>
+              <li>신청자관리에 바로 연결해 누락이나 중복 신청 확인</li>
+              <li>필요 시 엑셀 출력으로 담당자 공유 자료 생성</li>
+            </ul>
+          </article>
+          <article class="guide-card">
+            <h3>마감 전 운영 흐름</h3>
+            <p>강좌 상세를 따로 열지 않아도 이 화면에서 다음 액션을 바로 판단할 수 있게 정리했습니다.</p>
+            <ul class="guide-list">
+              <li>강사 마감과 환불 마감 시점을 강좌별로 분리 관리</li>
+              <li>상태가 종료인 강좌는 신청 불가 안내 기준으로 사용</li>
+              <li>출석부 출력 전 신청자 최종 확정 여부 확인</li>
+              <li>문의가 있으면 매뉴얼과 고객지원 게시판으로 연결</li>
+            </ul>
+          </article>
+        </section>
+
+        <div class="management-flow" aria-label="운영 흐름">
+          <span class="flow-step">환경설정 점검</span>
+          <span class="flow-arrow">→</span>
+          <span class="flow-step">강좌 공개</span>
+          <span class="flow-arrow">→</span>
+          <span class="flow-step">신청자 모니터링</span>
+          <span class="flow-arrow">→</span>
+          <span class="flow-step">대기·환불 조정</span>
+          <span class="flow-arrow">→</span>
+          <span class="flow-step">출석부·출력물 생성</span>
         </div>
 
         <form id="fm_list_search" class="filter-bar" action="#" method="get">
@@ -146,7 +574,7 @@
               <option value="tea_id">강사ID</option>
             </select>
 
-            <input name="sw" class="form-control input-sm filter-input" placeholder="검색어" />
+            <input name="sw" class="form-control input-sm filter-input" placeholder="강좌명 또는 강사ID 검색" />
             <button type="submit" class="btn btn-default btn-sm">검색</button>
             <button type="button" class="btn btn-default btn-sm" id="btn-reset">전체</button>
             <button type="button" class="btn btn-default btn-sm" id="btn-excel">검색결과엑셀출력</button>
@@ -155,7 +583,7 @@
           <div id="detail-search-box" class="filter-row" style="display:none; margin-top:8px;">
             <input type="text" id="s_date_start" class="form-control input-sm filter-select" placeholder="시작일(YYYY-MM-DD)">
             <input type="text" id="s_date_end" class="form-control input-sm filter-select" placeholder="종료일(YYYY-MM-DD)">
-            <label style="font-weight:400; margin:0 6px;"><input type="checkbox" id="s_only_open"> 출력만 보기</label>
+            <label style="font-weight:400; margin:0 6px;"><input type="checkbox" id="s_only_open"> 출력 상태만 보기</label>
           </div>
 
           <div id="bulk-action-box" class="filter-row" style="display:none; margin-top:8px;">
@@ -183,13 +611,18 @@
           </div>
         </div>
 
+        <div class="table-meta">
+          <div><span class="meta-highlight">검색 결과 <span id="summary-results-inline">0</span>건</span>이 표시되고 있습니다.</div>
+          <div class="meta-help">신청 인원 숫자를 누르면 정원 조정, 신청자관리 바로가기 버튼으로 다음 업무를 이어갈 수 있습니다.</div>
+        </div>
+
         <div class="table-wrap">
           <table class="table table-bordered table-hover table-condensed align-center lecture-table">
             <thead>
               <tr>
                 <th style="width:30px;"><input type="checkbox" id="check_all"></th>
                 <th style="width:60px;">연번</th>
-                <th style="width:55px;">수정</th>
+                <th style="width:72px;">수정</th>
                 <th style="width:80px;">구분<br>(늘봄과정)</th>
                 <th>강좌명</th>
                 <th style="width:90px;">강사ID</th>
@@ -210,9 +643,16 @@
               <tr data-num="745">
                 <td><input type="checkbox" class="chk-row"></td>
                 <td>745</td>
-                <td><button class="btn btn-default btn-xs"><i class="fa fa-cog"></i></button></td>
+                <td><button class="btn btn-default btn-xs">수정</button></td>
                 <td><span class="label label-default">2월</span><br><span class="label label-default">돌봄</span></td>
-                <td class="text-left">아침늘봄</td>
+                <td class="text-left lecture-name">
+                  <strong>아침늘봄</strong>
+                  <span class="lecture-hint">오전 등교 전 운영 강좌</span>
+                  <div class="quick-links">
+                    <a href="./applicants.html" class="btn btn-default btn-xs">신청자관리</a>
+                    <a href="./waitlist.html" class="btn btn-default btn-xs">대기자관리</a>
+                  </div>
+                </td>
                 <td>미정</td>
                 <td class="cell-relative"><span class="count">3</span> / <a href="#" class="max-sin-link" data-max="20">20</a></td>
                 <td>0 / <a href="#" class="max-wait-link" data-max="0">0</a></td>
@@ -224,7 +664,8 @@
                 <td>-</td>
                 <td>-</td>
                 <td>
-                  <div class="isu_wrap">
+                  <div class="status-chip status-chip-open"><i class="fa fa-check-circle"></i> 신청 가능</div>
+                  <div class="isu_wrap" style="margin-top:6px;">
                     <div class="btn-group btn-group-xs isu_check_box">
                       <button type="button" class="btn btn-danger isu_status_sm" id="view_lec_status_745">출력</button>
                       <button type="button" class="btn btn-default isu_toggle"><i class="fa fa-angle-down"></i></button>
@@ -242,9 +683,16 @@
               <tr data-num="744">
                 <td><input type="checkbox" class="chk-row"></td>
                 <td>744</td>
-                <td><button class="btn btn-default btn-xs"><i class="fa fa-cog"></i></button></td>
+                <td><button class="btn btn-default btn-xs">수정</button></td>
                 <td><span class="label label-default">2월</span><br><span class="label label-default">돌봄</span></td>
-                <td class="text-left">[돌봄] 선택형 돌봄 1부 (09:00~09:50)</td>
+                <td class="text-left lecture-name">
+                  <strong>[돌봄] 선택형 돌봄 1부 (09:00~09:50)</strong>
+                  <span class="lecture-hint">대기자 설정이 가능한 오전 돌봄 강좌</span>
+                  <div class="quick-links">
+                    <a href="./applicants.html" class="btn btn-default btn-xs">신청자관리</a>
+                    <a href="./waitlist.html" class="btn btn-default btn-xs">대기자관리</a>
+                  </div>
+                </td>
                 <td>돌봄전담반</td>
                 <td class="cell-relative"><span class="count">11</span> / <a href="#" class="max-sin-link" data-max="40">40</a></td>
                 <td>0 / <a href="#" class="max-wait-link" data-max="5">5</a></td>
@@ -256,7 +704,8 @@
                 <td>-</td>
                 <td>-</td>
                 <td>
-                  <div class="isu_wrap">
+                  <div class="status-chip status-chip-open"><i class="fa fa-check-circle"></i> 신청 가능</div>
+                  <div class="isu_wrap" style="margin-top:6px;">
                     <div class="btn-group btn-group-xs isu_check_box">
                       <button type="button" class="btn btn-danger isu_status_sm" id="view_lec_status_744">출력</button>
                       <button type="button" class="btn btn-default isu_toggle"><i class="fa fa-angle-down"></i></button>
@@ -286,7 +735,7 @@
       </div>
 
       <div id="footer" class="footer">
-        <span class="muted">DBDB School Clone</span>
+        <span class="muted">DBDB School Clone · 운영 흐름 중심 개선안</span>
       </div>
     </main>
   </div>
@@ -310,10 +759,92 @@
 
   <div id="modal-login" style="display:none;">
     <button type="button" class="close" aria-label="닫기">×</button>
+    <h3 style="margin-top:0; margin-bottom:12px;">운영 로그인</h3>
+    <div class="login-role-current"><i class="fa fa-check-circle"></i> 현재 학생 로그인 화면입니다.</div>
+    <div class="login-role-grid">
+      <button type="button" class="login-role-btn active" data-role="staff">
+        <strong>교직원</strong>
+        <span>아이디 로그인 · 강좌 공개와 신청자 운영</span>
+      </button>
+      <button type="button" class="login-role-btn" data-role="teacher">
+        <strong>강사</strong>
+        <span>아이디 로그인 · 담당 강좌와 출석 확인</span>
+      </button>
+      <button type="button" class="login-role-btn" data-role="student">
+        <strong>학생</strong>
+        <span>학년·반·번호 로그인 · 공개 강좌 조회</span>
+      </button>
+    </div>
+    <div class="login-role-guide" id="login-role-guide">
+      학생은 학년, 반, 번호와 이름을 순서대로 확인한 뒤 비밀번호를 입력해 로그인합니다.
+    </div>
+    <ul class="login-help-list">
+      <li>학생은 공개된 강좌만 볼 수 있으므로, 운영자는 먼저 강좌 상태를 출력으로 전환해야 합니다.</li>
+      <li>학생 로그인은 출석번호 기준 입력이 필요하므로 학년, 반, 번호를 먼저 확인해 주세요.</li>
+      <li>문제가 있으면 비밀번호찾기, FAQ, 고객지원 게시판 순서로 확인하는 흐름이 자연스럽습니다.</li>
+    </ul>
     <form id="fm_login_inline" action="#" method="post">
-      <input type="text" id="login_id" name="login_id" class="form-control" placeholder="아이디">
-      <input type="password" id="login_passwd" name="login_passwd" class="form-control" placeholder="비밀번호">
+      <input type="hidden" id="login_role" name="login_role" value="student">
+      <div class="login-panel">
+        <div class="login-section-title">로그인 정보를 입력해 주세요</div>
+        <div id="login-status-message" class="login-status-message info show">학생은 학년, 반, 번호를 차례대로 선택하면 이름과 비밀번호 입력으로 이어집니다.</div>
+        <div class="login-form-block" data-role-form="staff">
+          <input type="text" id="login_id" name="login_id" class="form-control" placeholder="아이디를 입력하세요.">
+          <input type="password" id="login_passwd" name="login_passwd" class="form-control" placeholder="비밀번호를 입력하세요.">
+        </div>
+        <div class="login-form-block active" data-role-form="student">
+          <div class="student-login-grid">
+            <select id="login_stu_grade" name="login_stu_grade" class="form-control">
+              <option value="">학년</option>
+              <option>1학년</option>
+              <option>2학년</option>
+              <option>3학년</option>
+              <option>4학년</option>
+              <option>5학년</option>
+              <option>6학년</option>
+            </select>
+            <select id="login_stu_class" name="login_stu_class" class="form-control">
+              <option value="">반</option>
+              <option>1반</option>
+              <option>2반</option>
+              <option>3반</option>
+              <option>4반</option>
+              <option>5반</option>
+              <option>6반</option>
+            </select>
+            <select id="login_stu_bunho" name="login_stu_bunho" class="form-control">
+              <option value="">번호</option>
+              <option>1번</option>
+              <option>2번</option>
+              <option>3번</option>
+              <option>4번</option>
+              <option>5번</option>
+              <option>6번</option>
+              <option>7번</option>
+              <option>8번</option>
+              <option>9번</option>
+              <option>10번</option>
+            </select>
+          </div>
+          <div class="field-help">학년, 반, 번호는 학교 출석부 기준으로 선택해 주세요.</div>
+          <input type="text" id="login_stu_name" name="login_stu_name" class="form-control" placeholder="이름을 입력하세요. 예: 홍길동">
+          <input type="password" id="login_stu_passwd" name="login_stu_passwd" class="form-control" placeholder="비밀번호를 입력하세요.">
+        </div>
+        <div class="login-form-block" data-role-form="teacher">
+          <input type="text" id="login_lecturer_id" name="login_lecturer_id" class="form-control" placeholder="아이디를 입력하세요.">
+          <input type="password" id="login_lecturer_passwd" name="login_lecturer_passwd" class="form-control" placeholder="비밀번호를 입력하세요.">
+        </div>
+      </div>
+      <div class="login-checks">
+        <label><input type="checkbox" name="save_id"> 아이디 저장</label>
+        <label><input type="checkbox" name="keep_login"> 로그인 유지</label>
+      </div>
       <input type="submit" class="go_btn" value="로그인">
+      <div class="login-links">
+        <a href="./manual.html">로그인 안내</a>
+        <a href="./qanda.html">FAQ</a>
+        <a href="./qanda.html">고객지원 게시판</a>
+      </div>
     </form>
   </div>
 
@@ -325,5 +856,168 @@
   <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <script src="./assets/js/app.js"></script>
+  <script>
+    (function ($) {
+      var roleGuideMap = {
+        staff: "교직원은 아이디와 비밀번호로 로그인하며, 강좌 공개부터 신청자관리와 환불 마감까지 전체 운영 흐름을 다룹니다.",
+        teacher: "강사는 아이디 로그인 후 담당 강좌 중심으로 신청자와 출석 흐름을 확인하고, 강사 마감 전까지 필요한 작업을 진행합니다.",
+        student: "학생은 학년, 반, 번호와 이름을 먼저 확인한 뒤 비밀번호를 입력해 로그인하며, 출력 상태인 강좌만 조회하고 신청할 수 있습니다."
+      };
+
+      var roleLabelMap = {
+        staff: "현재 교직원 로그인 화면입니다.",
+        teacher: "현재 강사 로그인 화면입니다.",
+        student: "현재 학생 로그인 화면입니다."
+      };
+
+      var roleStatusMap = {
+        staff: "교직원은 아이디와 비밀번호를 입력하면 강좌 공개, 신청자관리, 환불 마감까지 이어서 처리할 수 있습니다.",
+        teacher: "강사는 담당 강좌 기준으로 로그인하며, 출석과 신청자 점검 전 아이디 정보를 먼저 확인해 주세요.",
+        student: "학생은 학년, 반, 번호를 차례대로 선택하면 이름과 비밀번호 입력으로 이어집니다."
+      };
+
+      function setStatusMessage(type, text) {
+        $("#login-status-message")
+          .removeClass("error info show")
+          .addClass(type + " show")
+          .text(text);
+      }
+
+      function clearValidation() {
+        $("#fm_login_inline .form-control").removeClass("is-invalid");
+      }
+
+      function focusFirstField(role) {
+        var selectorMap = {
+          staff: "#login_id",
+          teacher: "#login_lecturer_id",
+          student: "#login_stu_grade"
+        };
+        var selector = selectorMap[role];
+        if (selector) {
+          $(selector).trigger("focus");
+        }
+      }
+
+      function validateRoleForm(role) {
+        clearValidation();
+
+        if (role === "student") {
+          var studentFields = [
+            { selector: "#login_stu_grade", message: "학생 로그인은 학년을 먼저 선택해 주세요." },
+            { selector: "#login_stu_class", message: "학생 로그인은 반을 선택해야 합니다." },
+            { selector: "#login_stu_bunho", message: "학생 로그인은 번호를 선택해야 합니다." },
+            { selector: "#login_stu_name", message: "학생 로그인은 이름을 입력해야 합니다." },
+            { selector: "#login_stu_passwd", message: "학생 로그인은 비밀번호를 입력해야 합니다." }
+          ];
+
+          for (var i = 0; i < studentFields.length; i += 1) {
+            var field = studentFields[i];
+            var $field = $(field.selector);
+            if (!$.trim($field.val())) {
+              $field.addClass("is-invalid").trigger("focus");
+              setStatusMessage("error", field.message);
+              return false;
+            }
+          }
+
+          setStatusMessage("info", "학생 로그인 정보가 모두 입력되었습니다. 실제 서비스에서는 서버 검증 후 로그인됩니다.");
+          return false;
+        }
+
+        var commonFields = role === "staff"
+          ? [
+              { selector: "#login_id", message: "교직원 아이디를 입력해 주세요." },
+              { selector: "#login_passwd", message: "교직원 비밀번호를 입력해 주세요." }
+            ]
+          : [
+              { selector: "#login_lecturer_id", message: "강사 아이디를 입력해 주세요." },
+              { selector: "#login_lecturer_passwd", message: "강사 비밀번호를 입력해 주세요." }
+            ];
+
+        for (var j = 0; j < commonFields.length; j += 1) {
+          var commonField = commonFields[j];
+          var $commonField = $(commonField.selector);
+          if (!$.trim($commonField.val())) {
+            $commonField.addClass("is-invalid").trigger("focus");
+            setStatusMessage("error", commonField.message);
+            return false;
+          }
+        }
+
+        setStatusMessage("info", "입력은 완료되었습니다. 실제 서비스에서는 서버 인증 후 다음 화면으로 이동합니다.");
+        return false;
+      }
+
+      function updateSummary() {
+        var $rows = $(".lecture-table tbody tr");
+        var total = $rows.length;
+        var open = 0;
+        var wait = 0;
+
+        $rows.each(function () {
+          var $row = $(this);
+          var status = $.trim($row.find(".isu_status_sm").first().text());
+          var waitText = $.trim($row.find(".max-wait-link").first().text());
+          var waitMax = parseInt(waitText, 10) || 0;
+
+          if (status === "출력") {
+            open += 1;
+          }
+
+          if (waitMax > 0) {
+            wait += 1;
+          }
+        });
+
+        $("#summary-total, #summary-results-inline").text(total);
+        $("#summary-open").text(open);
+        $("#summary-wait").text(wait);
+      }
+
+      $(function () {
+        updateSummary();
+
+        $(".login-role-btn").on("click", function () {
+          var $button = $(this);
+          var role = $button.data("role");
+
+          $(".login-role-btn").removeClass("active");
+          $button.addClass("active");
+          $("#login_role").val(role);
+          $("#login-role-guide").text(roleGuideMap[role] || "");
+          $(".login-role-current").html('<i class="fa fa-check-circle"></i> ' + (roleLabelMap[role] || ""));
+          $(".login-form-block").removeClass("active");
+          $('.login-form-block[data-role-form="' + role + '"]').addClass("active");
+          clearValidation();
+          setStatusMessage("info", roleStatusMap[role] || "");
+          focusFirstField(role);
+        });
+
+        $("#login_stu_grade").on("change", function () {
+          if ($.trim($(this).val())) {
+            $("#login_stu_class").trigger("focus");
+          }
+        });
+
+        $("#login_stu_class").on("change", function () {
+          if ($.trim($(this).val())) {
+            $("#login_stu_bunho").trigger("focus");
+          }
+        });
+
+        $("#login_stu_bunho").on("change", function () {
+          if ($.trim($(this).val())) {
+            $("#login_stu_name").trigger("focus");
+          }
+        });
+
+        $("#fm_login_inline").on("submit", function (event) {
+          event.preventDefault();
+          validateRoleForm($("#login_role").val());
+        });
+      });
+    })(jQuery);
+  </script>
 </body>
 </html>

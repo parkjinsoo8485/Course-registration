@@ -1,0 +1,527 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>로그인 - 늘봄학교</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css">
+  <style>
+    :root {
+      --navy: #3f556d;
+      --navy-dark: #34495d;
+      --blue: #4d93d1;
+      --blue-dark: #347dc0;
+      --line: #d8dde4;
+      --panel: #ffffff;
+      --surface: #f4f4f4;
+      --text: #314255;
+      --muted: #7a8794;
+      --error-bg: #fff2ef;
+      --error-line: #efc8c0;
+      --error-text: #a34437;
+      --info-bg: #f2f8ff;
+      --info-line: #d9e8f6;
+      --info-text: #476b8d;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Noto Sans KR", sans-serif;
+      color: var(--text);
+      background: linear-gradient(180deg, #f7f7f7 0%, #efefef 100%);
+      min-height: 100vh;
+    }
+
+    .login-page {
+      max-width: 610px;
+      margin: 32px auto 28px;
+      padding: 0 16px;
+    }
+
+    .login-panel {
+      border: 1px solid #cfd5db;
+      background: var(--panel);
+    }
+
+    .login-header {
+      display: grid;
+      grid-template-columns: 1fr 84px;
+      min-height: 76px;
+    }
+
+    .login-brand {
+      background: var(--navy);
+      color: #fff;
+      padding: 16px 26px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .login-brand .school-name {
+      font-size: 14px;
+      line-height: 1.2;
+      margin-bottom: 6px;
+      opacity: 0.95;
+    }
+
+    .login-brand .service-name {
+      font-size: 20px;
+      line-height: 1.2;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .login-grid-icon {
+      background: #6f8093;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .grid-icon {
+      width: 28px;
+      height: 28px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3px;
+    }
+
+    .grid-icon span {
+      background: #fff;
+      display: block;
+    }
+
+    .role-tabs {
+      display: flex;
+      gap: 6px;
+      padding: 18px 26px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .role-tab {
+      border: 1px solid var(--line);
+      border-bottom: none;
+      background: #fafafa;
+      color: #586777;
+      padding: 9px 18px 10px;
+      font-size: 14px;
+      line-height: 1;
+      border-radius: 4px 4px 0 0;
+      min-width: 68px;
+    }
+
+    .role-tab.active {
+      background: #fff;
+      color: var(--blue-dark);
+      border-color: var(--blue);
+      position: relative;
+      top: 1px;
+    }
+
+    .login-body {
+      padding: 18px 26px 22px;
+    }
+
+    .login-status {
+      display: none;
+      margin-bottom: 12px;
+      border: 1px solid var(--info-line);
+      background: var(--info-bg);
+      color: var(--info-text);
+      padding: 10px 12px;
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    .login-status.show {
+      display: block;
+    }
+
+    .login-status.error {
+      border-color: var(--error-line);
+      background: var(--error-bg);
+      color: var(--error-text);
+    }
+
+    .student-select-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .login-select,
+    .icon-input input {
+      width: 100%;
+      height: 36px;
+      border: 1px solid #ccd5dd;
+      font-size: 14px;
+      outline: none;
+    }
+
+    .login-select {
+      padding: 0 10px;
+      background: #fff;
+      color: #556474;
+    }
+
+    .form-area {
+      display: none;
+    }
+
+    .form-area.active {
+      display: block;
+    }
+
+    .icon-input {
+      display: grid;
+      grid-template-columns: 74px minmax(0, 1fr);
+      margin-bottom: 8px;
+    }
+
+    .icon-label {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border: 1px solid #ccd5dd;
+      border-right: none;
+      background: #f9fafb;
+      color: #5d6d7c;
+      font-size: 13px;
+    }
+
+    .icon-input input {
+      padding: 0 12px;
+      color: #495767;
+    }
+
+    .icon-input input::placeholder {
+      color: #a0acb6;
+    }
+
+    .login-select.is-invalid,
+    .icon-input input.is-invalid {
+      border-color: #d87061;
+      background: #fffaf9;
+    }
+
+    .student-help {
+      color: var(--muted);
+      font-size: 12px;
+      margin: 2px 0 10px;
+    }
+
+    .login-footer {
+      border-top: 1px solid var(--line);
+      padding-top: 14px;
+      margin-top: 14px;
+    }
+
+    .login-options {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
+      color: #7a8794;
+      font-size: 12px;
+    }
+
+    .login-options a {
+      color: #337ab7;
+      text-decoration: underline;
+      font-weight: 700;
+    }
+
+    .submit-btn {
+      width: 100%;
+      height: 46px;
+      border: none;
+      background: linear-gradient(180deg, #579bda 0%, #418ad0 100%);
+      color: #fff;
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.08);
+    }
+
+    .login-note {
+      text-align: center;
+      font-size: 12px;
+      color: #a36a2d;
+      margin-top: 28px;
+    }
+
+    .login-note a {
+      color: #a36a2d;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .page-links {
+      text-align: center;
+      margin-top: 12px;
+      font-size: 12px;
+    }
+
+    .page-links a {
+      color: #66788a;
+      text-decoration: none;
+      margin: 0 6px;
+    }
+
+    @media (max-width: 640px) {
+      .login-page {
+        margin-top: 16px;
+      }
+
+      .login-header {
+        grid-template-columns: 1fr 72px;
+      }
+
+      .role-tabs,
+      .login-body {
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+
+      .student-select-row {
+        grid-template-columns: 1fr;
+      }
+
+      .icon-input {
+        grid-template-columns: 66px minmax(0, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="login-page">
+    <section class="login-panel">
+      <div class="login-header">
+        <div class="login-brand">
+          <span class="school-name">광주서림초등학교</span>
+          <strong class="service-name">방과후학교</strong>
+        </div>
+        <div class="login-grid-icon" aria-hidden="true">
+          <div class="grid-icon">
+            <span></span><span></span><span></span>
+            <span></span><span></span><span></span>
+            <span></span><span></span><span></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="role-tabs">
+        <button type="button" class="role-tab" data-role="staff">교직원</button>
+        <button type="button" class="role-tab active" data-role="student">학생</button>
+        <button type="button" class="role-tab" data-role="teacher">강사</button>
+      </div>
+
+      <div class="login-body">
+        <div id="login-status" class="login-status show">학생은 학년, 반, 번호를 먼저 선택한 뒤 이름과 비밀번호를 입력해 주세요.</div>
+
+        <form id="fm_login_inline" action="#" method="post">
+          <input type="hidden" id="login_role" name="login_role" value="student">
+
+          <div class="form-area" data-role-form="staff">
+            <div class="icon-input">
+              <div class="icon-label"><i class="fa fa-user"></i><span>아이디</span></div>
+              <input type="text" id="login_id" name="login_id" placeholder="아이디를 입력하세요.">
+            </div>
+            <div class="icon-input">
+              <div class="icon-label"><i class="fa fa-key"></i><span>비밀번호</span></div>
+              <input type="password" id="login_passwd" name="login_passwd" placeholder="비밀번호를 입력하세요.">
+            </div>
+          </div>
+
+          <div class="form-area active" data-role-form="student">
+            <div class="student-select-row">
+              <select id="login_stu_grade" name="login_stu_grade" class="login-select">
+                <option value="">- 학년 -</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+              </select>
+              <select id="login_stu_class" name="login_stu_class" class="login-select">
+                <option value="">- 반 -</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+              </select>
+              <select id="login_stu_bunho" name="login_stu_bunho" class="login-select">
+                <option value="">- 번호 -</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
+                <option>8</option>
+                <option>9</option>
+                <option>10</option>
+              </select>
+            </div>
+            <div class="student-help">출석부 기준 학년, 반, 번호를 선택해 주세요.</div>
+
+            <div class="icon-input">
+              <div class="icon-label"><i class="fa fa-user"></i><span>이름</span></div>
+              <input type="text" id="login_stu_name" name="login_stu_name" placeholder="이름을 입력하세요.">
+            </div>
+            <div class="icon-input">
+              <div class="icon-label"><i class="fa fa-key"></i><span>비밀번호</span></div>
+              <input type="password" id="login_stu_passwd" name="login_stu_passwd" placeholder="비밀번호를 입력하세요.">
+            </div>
+          </div>
+
+          <div class="form-area" data-role-form="teacher">
+            <div class="icon-input">
+              <div class="icon-label"><i class="fa fa-user"></i><span>아이디</span></div>
+              <input type="text" id="login_lecturer_id" name="login_lecturer_id" placeholder="아이디를 입력하세요.">
+            </div>
+            <div class="icon-input">
+              <div class="icon-label"><i class="fa fa-key"></i><span>비밀번호</span></div>
+              <input type="password" id="login_lecturer_passwd" name="login_lecturer_passwd" placeholder="비밀번호를 입력하세요.">
+            </div>
+          </div>
+
+          <div class="login-footer">
+            <div class="login-options">
+              <label><input type="checkbox" name="save_id"> 아이디저장</label>
+              <label><input type="checkbox" name="keep_login"> 로그인유지</label>
+              <a href="./qanda.html">비밀번호찾기</a>
+              <a href="./manual.html">FAQ</a>
+            </div>
+
+            <input type="submit" class="submit-btn" value="로그인">
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <div class="login-note">Copyright ⓒ <a href="http://www.xmecca.com">xmecca.com</a> All Rights Reserved.</div>
+    <div class="page-links">
+      <a href="./index.html">운영 화면</a>
+      <a href="./manual.html">매뉴얼</a>
+      <a href="./qanda.html">고객지원 게시판</a>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+  <script>
+    (function ($) {
+      var roleStatusMap = {
+        staff: "교직원은 아이디와 비밀번호를 입력해 로그인합니다.",
+        teacher: "강사는 아이디와 비밀번호를 입력해 로그인합니다.",
+        student: "학생은 학년, 반, 번호를 먼저 선택한 뒤 이름과 비밀번호를 입력해 주세요."
+      };
+
+      function setStatus(type, text) {
+        $("#login-status")
+          .removeClass("error")
+          .addClass("show")
+          .text(text);
+
+        if (type === "error") {
+          $("#login-status").addClass("error");
+        }
+      }
+
+      function clearValidation() {
+        $("#fm_login_inline input, #fm_login_inline select").removeClass("is-invalid");
+      }
+
+      function focusFirst(role) {
+        var selectorMap = {
+          staff: "#login_id",
+          teacher: "#login_lecturer_id",
+          student: "#login_stu_grade"
+        };
+        $(selectorMap[role]).trigger("focus");
+      }
+
+      function switchRole(role) {
+        $(".role-tab").removeClass("active");
+        $('.role-tab[data-role="' + role + '"]').addClass("active");
+        $("#login_role").val(role);
+        $(".form-area").removeClass("active");
+        $('.form-area[data-role-form="' + role + '"]').addClass("active");
+        clearValidation();
+        setStatus("info", roleStatusMap[role]);
+        focusFirst(role);
+      }
+
+      function invalidate(selector, message) {
+        $(selector).addClass("is-invalid").trigger("focus");
+        setStatus("error", message);
+        return false;
+      }
+
+      function validate(role) {
+        clearValidation();
+
+        if (role === "student") {
+          if (!$.trim($("#login_stu_grade").val())) return invalidate("#login_stu_grade", "학생 로그인은 학년을 먼저 선택해 주세요.");
+          if (!$.trim($("#login_stu_class").val())) return invalidate("#login_stu_class", "학생 로그인은 반을 선택해야 합니다.");
+          if (!$.trim($("#login_stu_bunho").val())) return invalidate("#login_stu_bunho", "학생 로그인은 번호를 선택해야 합니다.");
+          if (!$.trim($("#login_stu_name").val())) return invalidate("#login_stu_name", "학생 로그인은 이름을 입력해야 합니다.");
+          if (!$.trim($("#login_stu_passwd").val())) return invalidate("#login_stu_passwd", "학생 로그인은 비밀번호를 입력해야 합니다.");
+          setStatus("info", "학생 로그인 정보가 모두 입력되었습니다. 실제 서비스에서는 서버 검증 후 로그인됩니다.");
+          return false;
+        }
+
+        if (role === "staff") {
+          if (!$.trim($("#login_id").val())) return invalidate("#login_id", "교직원 아이디를 입력해 주세요.");
+          if (!$.trim($("#login_passwd").val())) return invalidate("#login_passwd", "교직원 비밀번호를 입력해 주세요.");
+          setStatus("info", "교직원 로그인 정보가 입력되었습니다. 실제 서비스에서는 서버 인증 후 이동합니다.");
+          return false;
+        }
+
+        if (!$.trim($("#login_lecturer_id").val())) return invalidate("#login_lecturer_id", "강사 아이디를 입력해 주세요.");
+        if (!$.trim($("#login_lecturer_passwd").val())) return invalidate("#login_lecturer_passwd", "강사 비밀번호를 입력해 주세요.");
+        setStatus("info", "강사 로그인 정보가 입력되었습니다. 실제 서비스에서는 서버 인증 후 이동합니다.");
+        return false;
+      }
+
+      $(function () {
+        $(".role-tab").on("click", function () {
+          switchRole($(this).data("role"));
+        });
+
+        $("#login_stu_grade").on("change", function () {
+          if ($(this).val()) $("#login_stu_class").trigger("focus");
+        });
+
+        $("#login_stu_class").on("change", function () {
+          if ($(this).val()) $("#login_stu_bunho").trigger("focus");
+        });
+
+        $("#login_stu_bunho").on("change", function () {
+          if ($(this).val()) $("#login_stu_name").trigger("focus");
+        });
+
+        $("#fm_login_inline").on("submit", function (event) {
+          event.preventDefault();
+          validate($("#login_role").val());
+        });
+      });
+    })(jQuery);
+  </script>
+</body>
+</html>

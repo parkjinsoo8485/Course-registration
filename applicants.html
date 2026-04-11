@@ -9,6 +9,179 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="./assets/css/app.css">
+  <style>
+    .page-actions {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .ops-summary {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      margin: 18px 0;
+    }
+
+    .summary-card {
+      background: linear-gradient(180deg, #ffffff 0%, #f8fbfe 100%);
+      border: 1px solid #dceaf6;
+      border-radius: 14px;
+      padding: 16px 18px;
+      box-shadow: 0 8px 24px rgba(20, 56, 97, 0.08);
+    }
+
+    .summary-card .summary-label {
+      color: #4d6780;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .summary-card strong {
+      display: block;
+      margin-top: 8px;
+      color: #163a63;
+      font-size: 24px;
+      line-height: 1.1;
+    }
+
+    .summary-card .summary-note {
+      margin-top: 8px;
+      color: #627a90;
+      font-size: 12px;
+    }
+
+    .guide-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .guide-card {
+      background: #fff;
+      border: 1px solid #e3edf5;
+      border-radius: 14px;
+      padding: 18px;
+      min-height: 180px;
+    }
+
+    .guide-card h3 {
+      margin: 0 0 10px;
+      color: #173d67;
+      font-size: 17px;
+    }
+
+    .guide-card p {
+      margin: 0 0 10px;
+      color: #60758a;
+      font-size: 13px;
+    }
+
+    .guide-list {
+      margin: 0;
+      padding-left: 18px;
+      color: #334b60;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .management-flow {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 18px;
+      align-items: center;
+    }
+
+    .flow-step {
+      background: #f4f9ff;
+      border: 1px solid #d7e7f6;
+      color: #1d4a73;
+      padding: 9px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .flow-arrow {
+      color: #8aa4bc;
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .table-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin: 14px 0 10px;
+      color: #4b647a;
+      font-size: 13px;
+    }
+
+    .table-meta .meta-highlight {
+      font-weight: 700;
+      color: #163a63;
+    }
+
+    .table-meta .meta-help {
+      color: #72889d;
+      font-size: 12px;
+    }
+
+    .applicant-name {
+      color: #163a63;
+      font-weight: 700;
+    }
+
+    .applicant-hint {
+      display: block;
+      margin-top: 4px;
+      color: #6c8296;
+      font-size: 12px;
+    }
+
+    .phone-note {
+      display: block;
+      margin-top: 4px;
+      color: #6c8296;
+      font-size: 12px;
+    }
+
+    .help_box {
+      margin-top: 18px;
+      padding: 16px 18px;
+      border-radius: 14px;
+      border: 1px solid #dce9f5;
+      background: #f8fbfe;
+    }
+
+    @media (max-width: 1199px) {
+      .ops-summary,
+      .guide-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 767px) {
+      .page-actions,
+      .table-meta {
+        display: block;
+      }
+
+      .page-actions .btn {
+        margin-top: 8px;
+      }
+
+      .ops-summary,
+      .guide-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body data-sidebar-page="applicants">
   <div id="header" class="topbar">
@@ -27,10 +200,82 @@
       <div id="contents_title" class="page-title">
         <div class="title-left">
           <div class="title-main"><i class="fa fa-file-text-o"></i> 신청자관리</div>
-          <div class="title-sub">이천초등학교 늘봄학교</div>
+          <div class="title-sub">이천초등학교 늘봄학교 신청자 운영 대시보드</div>
+        </div>
+        <div class="page-actions">
+          <a class="btn btn-default btn-sm" href="./index.html">강좌관리로 돌아가기</a>
+          <a class="btn btn-default btn-sm" href="./waitlist.html">대기자관리</a>
+          <a class="btn btn-primary btn-sm" href="./refund.html">환불/취소관리</a>
         </div>
       </div>
       <div id="contents" class="content-inner module-raw-content">
+<section class="ops-summary" aria-label="신청자 요약">
+  <article class="summary-card">
+    <span class="summary-label">검색 결과</span>
+    <strong id="summary-total-applicants">0</strong>
+    <div class="summary-note">현재 화면에 보이는 신청자 수</div>
+  </article>
+  <article class="summary-card">
+    <span class="summary-label">유료 강좌</span>
+    <strong id="summary-paid-applicants">0</strong>
+    <div class="summary-note">수강료가 0원보다 큰 신청 건</div>
+  </article>
+  <article class="summary-card">
+    <span class="summary-label">연락처 확인</span>
+    <strong id="summary-contact-applicants">0</strong>
+    <div class="summary-note">연락처 정보가 표시된 신청 건</div>
+  </article>
+  <article class="summary-card">
+    <span class="summary-label">오늘의 작업</span>
+    <strong>3단계</strong>
+    <div class="summary-note">검색, 금액 확인, 삭제·이동 전 최종 검토</div>
+  </article>
+</section>
+
+<section class="guide-grid" aria-label="신청자 운영 가이드">
+  <article class="guide-card">
+    <h3>신청자 확인 순서</h3>
+    <p>가장 자주 쓰는 실무 순서를 먼저 보이게 정리했습니다.</p>
+    <ul class="guide-list">
+      <li>강좌와 학년, 반으로 먼저 범위를 좁혀 검색</li>
+      <li>동명이인 여부는 학년, 반, 번호를 같이 확인</li>
+      <li>연락처와 신청일을 함께 보고 최근 변동을 점검</li>
+      <li>삭제나 이동 전에는 대기자, 환불 화면까지 같이 확인</li>
+    </ul>
+  </article>
+  <article class="guide-card">
+    <h3>금액 점검 포인트</h3>
+    <p>수강료와 부가 비용은 신청자 이동이나 고지서 출력 전에 먼저 보는 편이 안전합니다.</p>
+    <ul class="guide-list">
+      <li>수강료, 수용비, 교재비, 재료비 누락 여부 확인</li>
+      <li>유료 강좌는 고지서 출력 전 금액이 맞는지 최종 검토</li>
+      <li>무료 강좌라도 수용비가 별도일 수 있어 함께 확인</li>
+      <li>금액 수정은 수강료입력 화면과 연결해 처리</li>
+    </ul>
+  </article>
+  <article class="guide-card">
+    <h3>삭제·이동 전 체크</h3>
+    <p>개인정보가 있는 화면이라 일괄 작업 전에 영향 범위를 먼저 보는 흐름이 중요합니다.</p>
+    <ul class="guide-list">
+      <li>신청자 이동은 대상 강좌 정원과 대기자 상태를 함께 확인</li>
+      <li>삭제 전에는 취소, 환불, 고지서 발행 여부를 점검</li>
+      <li>연락처 수정은 학생 본인 정보와 보호자 정보를 분리해서 확인</li>
+      <li>엑셀 출력 전에는 검색 결과 범위가 맞는지 재확인</li>
+    </ul>
+  </article>
+</section>
+
+<div class="management-flow" aria-label="신청자 운영 흐름">
+  <span class="flow-step">검색 범위 선택</span>
+  <span class="flow-arrow">→</span>
+  <span class="flow-step">신청자 확인</span>
+  <span class="flow-arrow">→</span>
+  <span class="flow-step">금액 점검</span>
+  <span class="flow-arrow">→</span>
+  <span class="flow-step">이동·삭제 판단</span>
+  <span class="flow-arrow">→</span>
+  <span class="flow-step">출력물 생성</span>
+</div>
 <div class="panel_main panel-default_main">
         <div class="panel-heading panel-heading-with-actions">
       신청목록
@@ -102,6 +347,10 @@
 			</li>
 		</ul>
 	</div>
+  <div class="table-meta">
+    <div><span class="meta-highlight">검색 결과 <span id="summary-inline-results">0</span>건</span>이 표시되고 있습니다.</div>
+    <div class="meta-help">학생 이름을 누르면 신청 정보 수정으로, 연락처 영역의 아이콘은 연락처 정정 흐름으로 이어집니다.</div>
+  </div>
 <form action="https://www.dbdbschool.kr/af/ad_app/lists/sn/2848" name="fm_list" id="fm_list" method="post" onsubmit="return fm_list_check(this);" accept-charset="utf-8">
 <input type="hidden" name="csrf_test_name" value="e7949d7748f475e6b7014456deae3d9b">        
 <input type="hidden" name="form_open_date_use_chk_csrf" value="2026-02-20 23:15:48">
@@ -144,14 +393,14 @@
 				<td>2</td>
 				<td>4</td>
 				<td style="position:relative;">
-					<a href="https://www.dbdbschool.kr/af/ad_app/sin/p/1/sn/2848/mem_num/4025827" class="link_type">源?뺥샇</a>
+					<a href="https://www.dbdbschool.kr/af/ad_app/sin/p/1/sn/2848/mem_num/4025827" class="link_type applicant-name">김정호<span class="applicant-hint">신청 정보 열기</span></a>
 					<a href="#none;" id="stu_hp_17874247" style="position:absolute; right:4px; top:0px;" onclick="open_stu_schedule(4025827, 1299686);"><i class="fa fa-list-alt" title="?쒓컙??蹂닿린"></i></a>
 	
 	
 	
 				</td>
 	
-				<td style="position:relative;"><span class="stu_hp_4025827">010-8512-3714<br>010-8512-3714(?먮?寃?</span>&nbsp;<a href="#none;" id="stu_hp_17874247" style="position:absolute; right:4px; top:0px;" onclick="show_stu_hp(17874247, 4025827 ); return false;"><i class="fa fa-pencil-square " title="?곕씫泥??섏젙"></i></a>
+				<td style="position:relative;"><span class="stu_hp_4025827">010-8512-3714<br>010-8512-3714(보호자)</span><span class="phone-note">학생 연락처와 보호자 연락처를 함께 확인하세요.</span>&nbsp;<a href="#none;" id="stu_hp_17874247" style="position:absolute; right:4px; top:0px;" onclick="show_stu_hp(17874247, 4025827 ); return false;"><i class="fa fa-pencil-square " title="?곕씫泥??섏젙"></i></a>
 					<input type="hidden" name="stu_hp_info_17874247" id="stu_hp_info_17874247" class="stu_hp_info_4025827" value="010-8512-3714^?먮?寃?010-8512-3714">
 				</td>
 					
@@ -182,14 +431,14 @@
 				<td>3</td>
 				<td>15</td>
 				<td style="position:relative;">
-					<a href="https://www.dbdbschool.kr/af/ad_app/sin/p/1/sn/2848/mem_num/4025856" class="link_type">?댁???/a>
+					<a href="https://www.dbdbschool.kr/af/ad_app/sin/p/1/sn/2848/mem_num/4025856" class="link_type applicant-name">이예린<span class="applicant-hint">동명이인 여부 확인</span></a>
 					<a href="#none;" id="stu_hp_17870547" style="position:absolute; right:4px; top:0px;" onclick="open_stu_schedule(4025856, 1299689);"><i class="fa fa-list-alt" title="?쒓컙??蹂닿린"></i></a>
 	
 	
 	
 				</td>
 	
-				<td style="position:relative;"><span class="stu_hp_4025856">010-4705-8406<br>010-4705-8406(蹂댄샇??</span>&nbsp;<a href="#none;" id="stu_hp_17870547" style="position:absolute; right:4px; top:0px;" onclick="show_stu_hp(17870547, 4025856 ); return false;"><i class="fa fa-pencil-square " title="?곕씫泥??섏젙"></i></a>
+				<td style="position:relative;"><span class="stu_hp_4025856">010-4705-8406<br>010-4705-8406(보호자)</span><span class="phone-note">최근 변경이 있으면 연락처 수정 아이콘으로 확인하세요.</span>&nbsp;<a href="#none;" id="stu_hp_17870547" style="position:absolute; right:4px; top:0px;" onclick="show_stu_hp(17870547, 4025856 ); return false;"><i class="fa fa-pencil-square " title="?곕씫泥??섏젙"></i></a>
 					<input type="hidden" name="stu_hp_info_17870547" id="stu_hp_info_17870547" class="stu_hp_info_4025856" value="010-4705-8406^^010-4705-8406">
 				</td>
 					
@@ -2083,6 +2332,42 @@
   <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <script src="./assets/js/app.js"></script>
+  <script>
+    (function ($) {
+      function parseMoney(text) {
+        return parseInt(String(text).replace(/[^0-9]/g, ''), 10) || 0;
+      }
+
+      function updateApplicantSummary() {
+        var $rows = $('#fm_list .table tbody tr').not(':first');
+        var total = $rows.length;
+        var paid = 0;
+        var contact = 0;
+
+        $rows.each(function () {
+          var $cells = $(this).children('td');
+          var tuition = parseMoney($cells.eq(9).text());
+          var phoneText = $.trim($cells.eq(8).text());
+
+          if (tuition > 0) {
+            paid += 1;
+          }
+
+          if (phoneText) {
+            contact += 1;
+          }
+        });
+
+        $('#summary-total-applicants, #summary-inline-results').text(total);
+        $('#summary-paid-applicants').text(paid);
+        $('#summary-contact-applicants').text(contact);
+      }
+
+      $(function () {
+        updateApplicantSummary();
+      });
+    })(jQuery);
+  </script>
 </body>
 </html>
 

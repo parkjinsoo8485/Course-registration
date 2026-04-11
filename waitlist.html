@@ -9,6 +9,189 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="./assets/css/app.css">
+  <style>
+    .page-actions {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .ops-summary {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      margin: 18px 0;
+    }
+
+    .summary-card {
+      background: linear-gradient(180deg, #ffffff 0%, #f8fbfe 100%);
+      border: 1px solid #dceaf6;
+      border-radius: 14px;
+      padding: 16px 18px;
+      box-shadow: 0 8px 24px rgba(20, 56, 97, 0.08);
+    }
+
+    .summary-card .summary-label {
+      color: #4d6780;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .summary-card strong {
+      display: block;
+      margin-top: 8px;
+      color: #163a63;
+      font-size: 24px;
+      line-height: 1.1;
+    }
+
+    .summary-card .summary-note {
+      margin-top: 8px;
+      color: #627a90;
+      font-size: 12px;
+    }
+
+    .guide-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .guide-card {
+      background: #fff;
+      border: 1px solid #e3edf5;
+      border-radius: 14px;
+      padding: 18px;
+      min-height: 180px;
+    }
+
+    .guide-card h3 {
+      margin: 0 0 10px;
+      color: #173d67;
+      font-size: 17px;
+    }
+
+    .guide-card p {
+      margin: 0 0 10px;
+      color: #60758a;
+      font-size: 13px;
+    }
+
+    .guide-list {
+      margin: 0;
+      padding-left: 18px;
+      color: #334b60;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .management-flow {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 18px;
+      align-items: center;
+    }
+
+    .flow-step {
+      background: #f4f9ff;
+      border: 1px solid #d7e7f6;
+      color: #1d4a73;
+      padding: 9px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .flow-arrow {
+      color: #8aa4bc;
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .table-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin: 14px 0 10px;
+      color: #4b647a;
+      font-size: 13px;
+    }
+
+    .table-meta .meta-highlight {
+      font-weight: 700;
+      color: #163a63;
+    }
+
+    .table-meta .meta-help {
+      color: #72889d;
+      font-size: 12px;
+    }
+
+    .wait-rank-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 28px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: #fff3dc;
+      color: #8a6400;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .wait-apply-btn {
+      min-width: 62px;
+    }
+
+    .wait-name {
+      color: #163a63;
+      font-weight: 700;
+    }
+
+    .wait-hint {
+      display: block;
+      margin-top: 4px;
+      color: #6c8296;
+      font-size: 12px;
+    }
+
+    .help_box {
+      margin-top: 18px;
+      padding: 16px 18px;
+      border-radius: 14px;
+      border: 1px solid #dce9f5;
+      background: #f8fbfe;
+    }
+
+    @media (max-width: 1199px) {
+      .ops-summary,
+      .guide-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 767px) {
+      .page-actions,
+      .table-meta {
+        display: block;
+      }
+
+      .page-actions .btn {
+        margin-top: 8px;
+      }
+
+      .ops-summary,
+      .guide-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body data-sidebar-page="wait">
   <div id="header" class="topbar">
@@ -27,10 +210,82 @@
       <div id="contents_title" class="page-title">
         <div class="title-left">
           <div class="title-main"><i class="fa fa-file-text-o"></i> 대기자관리</div>
-          <div class="title-sub">이천초등학교 늘봄학교</div>
+          <div class="title-sub">이천초등학교 늘봄학교 대기자 운영 대시보드</div>
+        </div>
+        <div class="page-actions">
+          <a class="btn btn-default btn-sm" href="./applicants.html">신청자관리</a>
+          <a class="btn btn-default btn-sm" href="./index.html">강좌관리</a>
+          <a class="btn btn-primary btn-sm" href="./refund.html">환불/취소관리</a>
         </div>
       </div>
       <div id="contents" class="content-inner module-raw-content">
+<section class="ops-summary" aria-label="대기자 요약">
+  <article class="summary-card">
+    <span class="summary-label">대기 건수</span>
+    <strong id="summary-total-wait">0</strong>
+    <div class="summary-note">현재 화면에 보이는 대기자 수</div>
+  </article>
+  <article class="summary-card">
+    <span class="summary-label">우선 처리</span>
+    <strong id="summary-priority-wait">0</strong>
+    <div class="summary-note">순위 1~3 안에 있는 대기 건</div>
+  </article>
+  <article class="summary-card">
+    <span class="summary-label">신청 전환 가능</span>
+    <strong id="summary-apply-wait">0</strong>
+    <div class="summary-note">신청 버튼이 노출된 대기 건</div>
+  </article>
+  <article class="summary-card">
+    <span class="summary-label">오늘의 작업</span>
+    <strong>3단계</strong>
+    <div class="summary-note">순위 확인, 신청 전환, 삭제 전 영향 검토</div>
+  </article>
+</section>
+
+<section class="guide-grid" aria-label="대기자 운영 가이드">
+  <article class="guide-card">
+    <h3>우선순위 확인</h3>
+    <p>대기자 화면은 순위가 가장 중요한 판단 기준이라 먼저 정리해 두는 편이 좋습니다.</p>
+    <ul class="guide-list">
+      <li>순위 1~3은 결원 발생 시 가장 먼저 검토</li>
+      <li>같은 강좌 안에서 학년과 시간 중복 여부도 함께 확인</li>
+      <li>연락처가 있으면 즉시 안내 대상인지 판단 가능</li>
+      <li>등록일자는 최근 대기 변동 여부를 볼 때 유용</li>
+    </ul>
+  </article>
+  <article class="guide-card">
+    <h3>신청 전환 흐름</h3>
+    <p>신청 버튼은 단순 이동이 아니라 정원, 대기 순위, 기존 신청 상태를 같이 보는 흐름이 안전합니다.</p>
+    <ul class="guide-list">
+      <li>강좌 정원과 현재 신청자 수를 먼저 확인</li>
+      <li>상위 순위자부터 신청 전환 여부를 검토</li>
+      <li>신청 전환 후에는 신청자관리 화면에서 반영 상태 점검</li>
+      <li>필요 시 환불·취소 화면과 함께 교차 확인</li>
+    </ul>
+  </article>
+  <article class="guide-card">
+    <h3>삭제 전 체크</h3>
+    <p>대기 삭제도 기록상 영향이 있으므로 연락처와 순위, 강좌명을 함께 보고 판단하는 편이 좋습니다.</p>
+    <ul class="guide-list">
+      <li>동명이인은 학년, 반, 번호까지 같이 확인</li>
+      <li>보호자 연락처가 있으면 안내 후 삭제 여부를 검토</li>
+      <li>대기 삭제는 차순위자 영향까지 고려해야 함</li>
+      <li>엑셀 출력 전에 검색 조건이 맞는지 다시 확인</li>
+    </ul>
+  </article>
+</section>
+
+<div class="management-flow" aria-label="대기자 운영 흐름">
+  <span class="flow-step">검색 범위 선택</span>
+  <span class="flow-arrow">→</span>
+  <span class="flow-step">순위 확인</span>
+  <span class="flow-arrow">→</span>
+  <span class="flow-step">신청 전환 판단</span>
+  <span class="flow-arrow">→</span>
+  <span class="flow-step">대기 삭제 검토</span>
+  <span class="flow-arrow">→</span>
+  <span class="flow-step">신청자관리 반영 확인</span>
+</div>
 <div class="panel_main panel-default_main">
   <div class="panel-heading panel-heading-with-actions">
     대기자 목록
@@ -95,6 +350,10 @@
       </li>
     </ul>
   </div>
+  <div class="table-meta">
+    <div><span class="meta-highlight">검색 결과 <span id="summary-inline-wait">0</span>건</span>이 표시되고 있습니다.</div>
+    <div class="meta-help">신청 버튼은 대기자를 실제 신청자로 전환하는 흐름이고, 삭제 아이콘은 순위 재조정 영향을 함께 고려해야 합니다.</div>
+  </div>
 <form action="https://www.dbdbschool.kr/af/ad_wait/lists/sn/2848" name="fm_list" id="fm_list" method="post" onsubmit="return fm_list_check(this);" accept-charset="utf-8">
 <input type="hidden" name="csrf_test_name" value="e7949d7748f475e6b7014456deae3d9b">                                                                                                                    
 <input type="hidden" name="form_open_date_use_chk_csrf" value="2026-02-20 23:15:51">
@@ -118,8 +377,8 @@
 			</tr>
 			<tr>
 				<td><input type="checkbox" name="data_checked[]" value="613224"></td>
-				<td>1</td>
-				<td><button type="button" class="btn btn-primary btn-sm" onclick="chk_app('613224');">?좎껌</button></td>
+				<td><span class="wait-rank-badge">1위</span></td>
+				<td><button type="button" class="btn btn-primary btn-sm wait-apply-btn" onclick="chk_app('613224');">신청</button></td>
 					
 				<td>3??						
 				</td>
@@ -129,7 +388,7 @@
 			
 				<td>1</td>
 				<td>13</td>
-				<td>諛뺤닔??/td>
+				<td><span class="wait-name">박수현</span><span class="wait-hint">우선 전환 검토 대상</span></td>
 	
 				<td>010-3399-3015</td>
 				<td>2025-02-27<br>09:07:46</td>
@@ -137,8 +396,8 @@
 			</tr>
 			<tr>
 				<td><input type="checkbox" name="data_checked[]" value="613682"></td>
-				<td>2</td>
-				<td><button type="button" class="btn btn-primary btn-sm" onclick="chk_app('613682');">?좎껌</button></td>
+				<td><span class="wait-rank-badge">2위</span></td>
+				<td><button type="button" class="btn btn-primary btn-sm wait-apply-btn" onclick="chk_app('613682');">신청</button></td>
 					
 				<td>3??						
 				</td>
@@ -148,7 +407,7 @@
 			
 				<td>3</td>
 				<td>14</td>
-				<td>?댁꽑??/td>
+				<td><span class="wait-name">이선우</span><span class="wait-hint">연락 후 전환 검토</span></td>
 	
 				<td>010-3588-4789<br>010-3588-4789(蹂댄샇??</td>
 				<td>2025-02-27<br>10:14:02</td>
@@ -156,8 +415,8 @@
 			</tr>
 			<tr>
 				<td><input type="checkbox" name="data_checked[]" value="613688"></td>
-				<td>3</td>
-				<td><button type="button" class="btn btn-primary btn-sm" onclick="chk_app('613688');">?좎껌</button></td>
+				<td><span class="wait-rank-badge">3위</span></td>
+				<td><button type="button" class="btn btn-primary btn-sm wait-apply-btn" onclick="chk_app('613688');">신청</button></td>
 					
 				<td>3??						
 				</td>
@@ -167,7 +426,7 @@
 			
 				<td>2</td>
 				<td>10</td>
-				<td>諛뺤콈??/td>
+				<td><span class="wait-name">박지윤</span><span class="wait-hint">상위 대기 순번</span></td>
 	
 				<td>010-2710-4012</td>
 				<td>2025-02-27<br>10:23:28</td>
@@ -1133,6 +1392,42 @@
   <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <script src="./assets/js/app.js"></script>
+  <script>
+    (function ($) {
+      function parseRank(text) {
+        return parseInt(String(text).replace(/[^0-9]/g, ''), 10) || 0;
+      }
+
+      function updateWaitSummary() {
+        var $rows = $('#fm_list .table tbody tr').not(':first');
+        var total = $rows.length;
+        var priority = 0;
+        var applyReady = 0;
+
+        $rows.each(function () {
+          var $cells = $(this).children('td');
+          var rank = parseRank($cells.eq(1).text());
+          var hasApplyButton = $cells.eq(2).find('button').length > 0;
+
+          if (rank > 0 && rank <= 3) {
+            priority += 1;
+          }
+
+          if (hasApplyButton) {
+            applyReady += 1;
+          }
+        });
+
+        $('#summary-total-wait, #summary-inline-wait').text(total);
+        $('#summary-priority-wait').text(priority);
+        $('#summary-apply-wait').text(applyReady);
+      }
+
+      $(function () {
+        updateWaitSummary();
+      });
+    })(jQuery);
+  </script>
 </body>
 </html>
 
