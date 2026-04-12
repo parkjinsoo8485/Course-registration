@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
     "analyze:playwright": "node tools/playwright-analyze.js",
     "smoke:playwright": "node tools/playwright-smoke-all.js",
     "deep:playwright": "node tools/playwright-deep-check.js",
@@ -14,6 +16,8 @@
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
-    "playwright": "^1.58.2"
+    "express": "^5.2.1",
+    "playwright": "^1.58.2",
+    "sql.js": "^1.14.1"
   }
 }

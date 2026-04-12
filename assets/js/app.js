@@ -20,6 +20,15 @@
     $("body").addClass("page-" + base);
   }
 
+  function escapeHtml(value) {
+    return String(value == null ? "" : value)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#39;");
+  }
+
   function renderSidebar(activeKey) {
     var isFunding = ["fund-target", "fund-app", "fund-cfg", "fund-rank"].indexOf(activeKey) > -1;
     var isSurvey = ["survey", "survey-sample", "survey-sample-write"].indexOf(activeKey) > -1;
@@ -115,6 +124,41 @@
     var $left = $("#left_menu");
     if (!$left.length) return;
     $left.html(renderSidebar(activeKey));
+  }
+
+  function normalizeUserRole() {
+    $(".user-role").html('<span class="muted">[<a href="./login.html" id="profile-logout">로그아웃</a>] [<a href="./cfg-basic.html">정보수정</a>]</span>');
+  }
+
+  function bindLogoutAction() {
+    $(document).on("click", "#profile-logout, .sidebar-actions a[href='./login.html']", function (event) {
+      event.preventDefault();
+      fetch("/api/auth/logout", {
+        method: "POST",
+        credentials: "same-origin"
+      }).finally(function () {
+        window.location.replace("./login.html");
+      });
+    });
+  }
+
+  function requireAuth() {
+    if ($("body").data("public-page")) return;
+    if (!$(".sidebar, #left_menu").length) return;
+
+    fetch("/api/auth/session", { credentials: "same-origin" })
+      .then(function (response) {
+        if (!response.ok) throw new Error("unauthorized");
+        return response.json();
+      })
+      .then(function (payload) {
+        if (!payload || !payload.user) throw new Error("unauthorized");
+        $(".user-name").text(payload.user.displayName || payload.user.loginId || "운영자");
+      })
+      .catch(function () {
+        var current = window.location.pathname.split("/").pop() || "index.html";
+        window.location.replace("./login.html?returnTo=" + encodeURIComponent(current));
+      });
   }
 
   function nowStamp() {
@@ -501,6 +545,94 @@
     ].join("");
   }
 
+  function getLectureFilterState($form) {
+    return {
+      month: String($form.find('[name="sld"]').val() || "").trim(),
+      process: String($form.find('[name="slp"] option:selected').text() || "").trim(),
+      statusFilter: String($form.find('[name="sls"]').val() || "").trim(),
+      grade: String($form.find('[name="s_grade"]').val() || "").trim(),
+      target: String($form.find('[name="st"]').val() || "lec_name").trim(),
+      keyword: String($form.find('[name="sw"]').val() || "").trim().toLowerCase(),
+      dateStart: String($("#s_date_start").val() || "").trim(),
+      dateEnd: String($("#s_date_end").val() || "").trim(),
+      onlyOpen: $("#s_only_open").is(":checked")
+    };
+  }
+
+  function matchesLectureFilter(lec, filter) {
+    var statusCode = String(Number(lec.status) || 0);
+    var processText = String(lec.proType || "").trim();
+    var monthText = String(lec.div || "").trim();
+    var gradeText = String(lec.grades || "").replace(/\s+/g, "");
+    var lecName = String(lec.name || "").toLowerCase();
+    var teaId = String(lec.teacherId || "").toLowerCase();
+    var periodJoined = [String(lec.periodStart || "").trim(), String(lec.periodEnd || "").trim()].join("~");
+
+    if (filter.month && monthText.indexOf(filter.month) < 0) return false;
+    if (filter.process && filter.process.indexOf("=") < 0 && processText.indexOf(filter.process) < 0) return false;
+    if (filter.statusFilter && statusCode !== filter.statusFilter) return false;
+    if (filter.onlyOpen && statusCode !== "1") return false;
+    if (filter.grade && gradeText.indexOf(filter.grade) < 0) return false;
+    if (filter.dateStart && periodJoined.indexOf(filter.dateStart) < 0) return false;
+    if (filter.dateEnd && periodJoined.indexOf(filter.dateEnd) < 0) return false;
+    if (filter.keyword) {
+      if (filter.target === "tea_id") {
+        if (teaId.indexOf(filter.keyword) < 0) return false;
+      } else if (lecName.indexOf(filter.keyword) < 0) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  function getFilteredLectures(filter) {
+    return loadStore().filter(function (lec) {
+      return matchesLectureFilter(lec, filter);
+    });
+  }
+
+  function lectureExportLines(list) {
+    var lines = [[
+      "연번",
+      "구분",
+      "늘봄과정",
+      "강좌명",
+      "강사ID",
+      "신청/정원",
+      "대기자/정원",
+      "학년",
+      "운영기간",
+      "강의시간",
+      "수강료",
+      "수강료출력",
+      "강사마감",
+      "환불마감",
+      "상태"
+    ].map(escapeCsv).join(",")];
+
+    (list || []).forEach(function (lec) {
+      lines.push([
+        escapeCsv(lec.id),
+        escapeCsv(lec.div || ""),
+        escapeCsv(lec.proType || ""),
+        escapeCsv(lec.name || ""),
+        escapeCsv(lec.teacherId || ""),
+        escapeCsv((Number(lec.applied) || 0) + " / " + (Number(lec.capacity) || 0)),
+        escapeCsv((Number(lec.waitApplied) || 0) + " / " + (Number(lec.waitCapacity) || 0)),
+        escapeCsv(lec.grades || ""),
+        escapeCsv((lec.periodStart || "") + "~" + (lec.periodEnd || "")),
+        escapeCsv(String(lec.lectureTime || "").replace(/\n/g, " / ")),
+        escapeCsv(Number(lec.fee) || 0),
+        escapeCsv(lec.feeVisible || "Y"),
+        escapeCsv(lec.teacherClosed || "-"),
+        escapeCsv(lec.refundClosed || "-"),
+        escapeCsv(statusLabel(lec.status))
+      ].join(","));
+    });
+
+    return lines;
+  }
+
   function renderIndexFromStore() {
     var list = loadStore();
     var $tbody = $(".lecture-table tbody");
@@ -529,47 +661,23 @@
     }
 
     function applyFilters() {
-      var month = ($form.find('[name="sld"]').val() || "").trim();
-      var process = ($form.find('[name="slp"] option:selected').text() || "").trim();
-      var statusFilter = ($form.find('[name="sls"]').val() || "").trim();
-      var grade = ($form.find('[name="s_grade"]').val() || "").trim();
-      var target = ($form.find('[name="st"]').val() || "").trim();
-      var keyword = ($form.find('[name="sw"]').val() || "").trim().toLowerCase();
-      var dateStart = ($("#s_date_start").val() || "").trim();
-      var dateEnd = ($("#s_date_end").val() || "").trim();
-      var onlyOpen = $("#s_only_open").is(":checked");
+      var filter = getLectureFilterState($form);
+      var visibleIds = getFilteredLectures(filter).map(function (lec) {
+        return String(Number(lec.id) || 0);
+      });
 
       $(".lecture-table tbody tr").each(function () {
-        var $tr = $(this);
-        var monthText = ($tr.find("td:eq(3)").text() || "").replace(/\s+/g, " ");
-        var processText = ($tr.find("td:eq(3)").text() || "").replace(/\s+/g, " ");
-        var statusLabelText = ($tr.find(".isu_status_sm").text() || "").trim();
-        var statusCode = statusLabelText === "출력" ? "1" : statusLabelText === "종료" ? "2" : "0";
-        var gradeText = ($tr.find("td:eq(8)").text() || "").replace(/\s+/g, "");
-        var lecName = ($tr.find("td:eq(4)").text() || "").toLowerCase();
-        var teaId = ($tr.find("td:eq(5)").text() || "").toLowerCase();
-
-        var ok = true;
-        if (month) ok = ok && monthText.indexOf(month) > -1;
-        if (process && process.indexOf("=") === -1) ok = ok && processText.indexOf(process) > -1;
-        if (statusFilter) ok = ok && statusCode === statusFilter;
-        if (onlyOpen) ok = ok && statusCode === "1";
-        if (grade) ok = ok && gradeText.indexOf(grade) > -1;
-        if (dateStart) ok = ok && ($tr.find("td:eq(9)").text() || "").indexOf(dateStart) > -1;
-        if (dateEnd) ok = ok && ($tr.find("td:eq(9)").text() || "").indexOf(dateEnd) > -1;
-        if (keyword) {
-          if (target === "tea_id") ok = ok && teaId.indexOf(keyword) > -1;
-          else ok = ok && lecName.indexOf(keyword) > -1;
-        }
-
-        $tr.toggle(ok);
+        var id = String(Number($(this).data("num")) || 0);
+        $(this).toggle(visibleIds.indexOf(id) > -1);
       });
 
       updateCheckAllState();
     }
 
     $("#btn-reset").on("click", function () {
-      $form.find("select, input").val("");
+      $form.find("select").prop("selectedIndex", 0);
+      $form.find('input[type="text"], input[type="search"]').val("");
+      $form.find('input[type="checkbox"]').prop("checked", false);
       applyFilters();
     });
 
@@ -597,7 +705,7 @@
     $("#btn-apply-bulk").on("click", function () {
       var action = ($("#update_type").val() || "").trim();
       if (!action) {
-        notify("변경유형을 선택해 주세요.");
+        notify("일괄 적용 항목을 선택해 주세요.");
         return;
       }
 
@@ -640,6 +748,33 @@
         renderIndexFromStore();
         applyFilters();
         notify("선택 강좌 상태가 변경되었습니다.");
+        return;
+      }
+
+      var fieldMap = {
+        teacher_close_y: { field: "teacherClosed", value: "Y", message: "강사 마감이 일괄 적용되었습니다." },
+        teacher_close_n: { field: "teacherClosed", value: "-", message: "강사 마감을 해제했습니다." },
+        refund_close_y: { field: "refundClosed", value: "Y", message: "환불 마감이 일괄 적용되었습니다." },
+        refund_close_n: { field: "refundClosed", value: "-", message: "환불 마감을 해제했습니다." },
+        fee_visible_y: { field: "feeVisible", value: "Y", message: "수강료 출력이 일괄 적용되었습니다." },
+        fee_visible_n: { field: "feeVisible", value: "N", message: "수강료 출력을 숨김 처리했습니다." }
+      };
+
+      if (Object.prototype.hasOwnProperty.call(fieldMap, action)) {
+        var meta = fieldMap[action];
+        list = list.map(function (lec) {
+          if (ids.indexOf(Number(lec.id)) > -1) lec[meta.field] = meta.value;
+          return lec;
+        });
+        saveStore(list);
+        renderIndexFromStore();
+        applyFilters();
+        notify(meta.message);
+        return;
+      }
+
+      if (action === "sync_fee_all") {
+        notify("신청자 수강료 전체 적용은 목록 데이터까지 연결된 뒤 이어서 맞추겠습니다.");
       }
     });
 
@@ -812,12 +947,12 @@
     });
 
     $("#btn-excel").on("click", function () {
-      var lines = readTableAsCsvLines($(".lecture-table"), "tbody tr:visible");
+      var lines = lectureExportLines(getFilteredLectures(getLectureFilterState($form)));
       if (lines.length <= 1) {
         notify("내보낼 강좌가 없습니다.");
         return;
       }
-      downloadCsv("lecture-list-" + nowStamp() + ".csv", lines);
+      downloadCsv("search-result-" + nowStamp() + ".csv", lines);
     });
 
     $("#btn-attendance").on("click", function () {
@@ -1487,6 +1622,162 @@
 
   function bindManualPage() {
     if (!$(".manual-page").length) return;
+    var STORAGE_KEY = MODULE_PREFIX + "manual_resources";
+    var $page = $(".manual-page");
+
+    function textValue($el) {
+      return String($el.first().text() || "").replace(/\s+/g, " ").trim();
+    }
+
+    function toKey(text, fallback) {
+      var base = String(text || "")
+        .toLowerCase()
+        .replace(/\s+/g, "-")
+        .replace(/[^a-z0-9\u3131-\u318e\uac00-\ud7a3-]/g, "")
+        .replace(/-+/g, "-")
+        .replace(/^-|-$/g, "");
+      return base || fallback;
+    }
+
+    function loadManualResources() {
+      try {
+        var raw = window.localStorage.getItem(STORAGE_KEY);
+        var parsed = raw ? JSON.parse(raw) : [];
+        return Array.isArray(parsed) ? parsed : [];
+      } catch (error) {
+        console.error("manual resource load failed", error);
+        return [];
+      }
+    }
+
+    function saveManualResources(items) {
+      window.localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
+    }
+
+    function getSections() {
+      return $page
+        .find(".faq_box")
+        .map(function (index, box) {
+          var $box = $(box);
+          var title = textValue($box.find(".fq_title span"));
+          if (!title) title = "섹션 " + (index + 1);
+          var key = toKey(title, "manual-section-" + index);
+          $box.attr("data-manual-section", key);
+          return {
+            key: key,
+            title: title,
+            $box: $box
+          };
+        })
+        .get();
+    }
+
+    function buttonHtml(url, label, iconClass) {
+      if (!url) return "";
+      return (
+        '<a href="' +
+        url +
+        '" class="manual_btn" target="_blank" rel="noopener noreferrer"><i class="fa ' +
+        iconClass +
+        '"> ' +
+        label +
+        "</i></a>"
+      );
+    }
+
+    function renderManualResources() {
+      var resources = loadManualResources();
+      var sections = getSections();
+      $page.find(".manual-admin-list-wrap").remove();
+
+      sections.forEach(function (section) {
+        var items = resources.filter(function (item) {
+          return item.sectionKey === section.key;
+        });
+        if (!items.length) return;
+
+        var html = ['<div class="manual-admin-list-wrap"><p class="manual-admin-title">관리자 추가 자료</p><ul class="manual-admin-list">'];
+        items.forEach(function (item) {
+          html.push('<li data-manual-resource-id="' + item.id + '">');
+          html.push('<div class="manual-admin-item-title">' + escapeHtml(item.title || "자료") + "</div>");
+          if (item.note) {
+            html.push('<div class="manual-admin-item-note">' + escapeHtml(item.note) + "</div>");
+          }
+          html.push('<div class="manual-admin-item-actions">');
+          html.push(buttonHtml(item.docUrl, "문서", "fa-download"));
+          html.push(buttonHtml(item.videoUrl, "동영상", "fa-youtube-play"));
+          html.push(
+            '<button type="button" class="manual_btn manual-admin-remove" data-remove-manual-resource="' +
+              item.id +
+              '"><i class="fa fa-trash-o"> 삭제</i></button>'
+          );
+          html.push("</div></li>");
+        });
+        html.push("</ul></div>");
+        section.$box.append(html.join(""));
+      });
+
+      $("#manual-admin-count").text(resources.length);
+    }
+
+    function renderAdminPanel() {
+      if ($page.find("#manual-admin-panel").length) return;
+      var sections = getSections();
+      var options = sections
+        .map(function (section) {
+          return '<option value="' + section.key + '">' + escapeHtml(section.title) + "</option>";
+        })
+        .join("");
+
+      var html = [
+        '<div id="manual-admin-panel" class="panel_main panel-default_main manual-admin-panel">',
+        '  <div class="panel-heading">자료 관리</div>',
+        '  <div class="panel-body">',
+        '    <div class="manual-admin-summary">',
+        '      <h4>문서·동영상 관리자</h4>',
+        '      <p>섹션을 선택한 뒤 문서 링크나 동영상 링크를 추가하면 현재 매뉴얼 화면에 바로 붙습니다. 브라우저에 저장되어 새로고침 후에도 유지됩니다.</p>',
+        '      <div class="manual-admin-meta">',
+        '        <span class="manual-admin-chip"><i class="fa fa-folder-open"></i> 전체 섹션 ' + sections.length + "개</span>",
+        '        <span class="manual-admin-chip"><i class="fa fa-paperclip"></i> 추가 자료 <span id="manual-admin-count">0</span>개</span>',
+        "      </div>",
+        "    </div>",
+        '    <form id="manual-admin-form" class="manual-admin-form">',
+        '      <select id="manual-admin-section" class="form-control">' + options + "</select>",
+        '      <input id="manual-admin-title" type="text" class="form-control" placeholder="자료 제목을 입력하세요.">',
+        '      <div class="manual-admin-grid">',
+        '        <input id="manual-admin-doc-url" type="url" class="form-control" placeholder="문서 URL (선택)">',
+        '        <input id="manual-admin-video-url" type="url" class="form-control" placeholder="동영상 URL (선택)">',
+        "      </div>",
+        '      <textarea id="manual-admin-note" class="form-control" rows="3" placeholder="운영 메모나 안내 문구를 남길 수 있습니다."></textarea>',
+        '      <div class="manual-admin-actions">',
+        '        <div class="manual-admin-help">문서 또는 동영상 링크 중 하나 이상을 넣어야 합니다. 삭제는 각 항목의 삭제 버튼으로 할 수 있습니다.</div>',
+        '        <div class="btn-group">',
+        '          <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> 자료 추가</button>',
+        '          <button type="button" id="manual-admin-reset" class="btn btn-default btn-sm">입력 초기화</button>',
+        '          <button type="button" id="manual-admin-clear" class="btn btn-danger btn-sm">전체 삭제</button>',
+        "        </div>",
+        "      </div>",
+        '      <div id="manual-admin-status" class="manual-admin-status info"></div>',
+        "    </form>",
+        "  </div>",
+        "</div>"
+      ].join("");
+
+      $page.children(".panel_main").first().before(html);
+    }
+
+    function setStatus(type, message) {
+      var $status = $("#manual-admin-status");
+      $status.removeClass("info error is-visible").addClass(type + " is-visible").text(message);
+    }
+
+    function resetForm() {
+      $("#manual-admin-title, #manual-admin-doc-url, #manual-admin-video-url, #manual-admin-note").val("");
+      $("#manual-admin-section").prop("selectedIndex", 0);
+    }
+
+    renderAdminPanel();
+    renderManualResources();
 
     $(".manual_btn").each(function () {
       var $a = $(this);
@@ -1495,6 +1786,63 @@
         $a.attr("target", "_blank");
         $a.attr("rel", "noopener noreferrer");
       }
+    });
+
+    $("#manual-admin-form").on("submit", function (event) {
+      event.preventDefault();
+      var title = String($("#manual-admin-title").val() || "").trim();
+      var sectionKey = String($("#manual-admin-section").val() || "").trim();
+      var docUrl = String($("#manual-admin-doc-url").val() || "").trim();
+      var videoUrl = String($("#manual-admin-video-url").val() || "").trim();
+      var note = String($("#manual-admin-note").val() || "").trim();
+
+      if (!title) {
+        setStatus("error", "자료 제목을 먼저 입력해 주세요.");
+        $("#manual-admin-title").trigger("focus");
+        return;
+      }
+
+      if (!docUrl && !videoUrl) {
+        setStatus("error", "문서 URL 또는 동영상 URL 중 하나는 입력해야 합니다.");
+        $("#manual-admin-doc-url").trigger("focus");
+        return;
+      }
+
+      var items = loadManualResources();
+      items.push({
+        id: "manual_" + Date.now(),
+        sectionKey: sectionKey,
+        title: title,
+        docUrl: docUrl,
+        videoUrl: videoUrl,
+        note: note
+      });
+      saveManualResources(items);
+      renderManualResources();
+      resetForm();
+      setStatus("info", "선택한 섹션에 자료가 추가되었습니다.");
+    });
+
+    $(document).on("click", "[data-remove-manual-resource]", function () {
+      var id = String($(this).data("remove-manual-resource") || "");
+      var items = loadManualResources().filter(function (item) {
+        return item.id !== id;
+      });
+      saveManualResources(items);
+      renderManualResources();
+      setStatus("info", "자료를 삭제했습니다.");
+    });
+
+    $("#manual-admin-reset").on("click", function () {
+      resetForm();
+      setStatus("info", "입력 내용을 초기화했습니다.");
+    });
+
+    $("#manual-admin-clear").on("click", function () {
+      if (!window.confirm("추가한 관리자 자료를 모두 삭제할까요?")) return;
+      saveManualResources([]);
+      renderManualResources();
+      setStatus("info", "추가한 관리자 자료를 모두 삭제했습니다.");
     });
   }
 
@@ -2855,6 +3203,9 @@
 
   applyPageFileClass();
   applyUnifiedSidebar();
+  normalizeUserRole();
+  bindLogoutAction();
+  requireAuth();
   bindPlaceholderLinks();
   bindIndexPage();
   bindBulkInputPage();

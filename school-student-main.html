@@ -23,7 +23,7 @@
         <div class="avatar"><i class="fa fa-user"></i></div>
         <div class="user-meta">
           <div class="user-name-row"><span class="user-name">박진수님</span></div>
-          <div class="user-role"><a href="#">로그아웃</a> <span class="muted">정보수정</span></div>
+          <div class="user-role">교직원 운영 계정 <span class="muted">[<a href="./login.html" id="profile-logout">로그아웃</a>] [<a href="./cfg-basic.html">정보수정</a>]</span></div>
         </div>
       </div>
       <ul class="nav side-nav">
@@ -92,16 +92,18 @@
 		<tr>
 			<th rowspan="3" width="120px;" class="size25">최댓값<br>지정</th>
 			<th width="120px;" class="size25">학년</th>
-			<td><input id="maxGrade" name="maxGrade" type="text" value="6" maxlength="2" class="form-control text-right" placeholder="학년" style="width:60px; " onkeyup="chkMoney(this);" onblur="chkMoney(this);"> 학년
+			<td><input id="maxGrade" name="maxGrade" type="text" value="6" maxlength="2" class="form-control text-right" placeholder="학년" style="width:60px; display: inline-block;" onkeyup="chkMoney(this);" onblur="chkMoney(this);"> 학년
 				<div class="error_msg"></div>
 			</td>
 		</tr>
 		<tr>
 			<th>학급</th>
 			<td>
-				<input id="maxClass" name="maxClass" type="text" value="10" maxlength="2" class="form-control text-right" placeholder="반" style="width:60px;" onkeyup="chkMoney(this); init_class_name();" onblur="chkMoney(this); init_class_name();"> 반
+				<input id="maxClass" name="maxClass" type="text" value="10" maxlength="2" class="form-control text-right" placeholder="반" style="width:60px; display: inline-block;" onkeyup="chkMoney(this); init_class_name();" onblur="chkMoney(this); init_class_name();"> 반
 				<div class="error_msg error_maxClass"></div>
-				<input type="checkbox" name="useClassName" id="useClassName" onclick="init_class_name();" value="Y"><label for="useClassName">학급명 사용</label>
+				<div style="margin-top: 5px;">
+					<input type="checkbox" name="useClassName" id="useClassName" onclick="init_class_name();" value="Y" style="vertical-align: middle; margin: 0 5px 0 0;"><label for="useClassName" style="vertical-align: middle; cursor: pointer; font-weight: normal; margin-bottom: 0;">학급명 사용</label>
+				</div>
 				<div class="error_msg error_useClassName"></div>
 				<div id="class_name_box">
 				</div>
@@ -110,7 +112,7 @@
 		<tr>
 			<th>번호</th>
 			<td>
-				<input id="maxBunho" name="maxBunho" type="text" value="99" maxlength="3" class="form-control text-right" placeholder="번" style="width:60px;" onkeyup="chkMoney(this);" onblur="chkMoney(this);"> 번
+				<input id="maxBunho" name="maxBunho" type="text" value="99" maxlength="3" class="form-control text-right" placeholder="번" style="width:60px; display: inline-block;" onkeyup="chkMoney(this);" onblur="chkMoney(this);"> 번
 				<div class="error_msg"></div>
 			</td>
 		</tr>		

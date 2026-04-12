@@ -74,6 +74,7 @@ input, select, button, textarea, table, th, td {
 .user-bell{
   position:relative;
   color:#555;
+  cursor:pointer;
 }
 .user-bell .badge{
   position:absolute;
@@ -82,7 +83,11 @@ input, select, button, textarea, table, th, td {
   font-size:10px;
   padding:1px 4px;
 }
-.user-role{ font-size:12px; color:#555; margin-top:1px; }
+.user-role{ font-size:0; color:#555; margin-top:1px; }
+.user-role .muted{ font-size:12px; }
+.user-role a{ color:inherit; text-decoration:none; }
+.user-role a:hover,
+.user-role a:focus{ text-decoration:underline; }
 .muted{ color:#888; }
 .badge-red{ background:#d9534f; border-radius:10px; }
 .badge-grey{ background:#999; color:#fff; font-weight:normal; font-size:11px; }
@@ -1823,6 +1828,7 @@ body.page-notification .module-raw-content form[name="fm_list_search"] li.PAD0 {
 /* content */
 .content{
   flex:1;
+  min-width:0;
   background:#fff;
 }
 .page-title{
@@ -1835,12 +1841,65 @@ body.page-notification .module-raw-content form[name="fm_list_search"] li.PAD0 {
 
 .content-inner{ padding:14px 18px 24px; background:#f4f4f5; }
 
+.module-card{
+  background:#fff;
+  border:1px solid #e1e1e1;
+  margin-bottom:10px;
+}
+.module-card-top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:10px 12px 6px;
+}
+.manual-box{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  flex-wrap:wrap;
+}
+.manual-title{
+  margin:0;
+  font-size:12px;
+  font-weight:700;
+  color:#555;
+}
+.manual-links{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  flex-wrap:wrap;
+}
+.manual_btn{
+  display:inline-flex;
+  align-items:center;
+  gap:4px;
+  padding:4px 8px;
+  border:1px solid #d7d7d7;
+  background:#fafafa;
+  color:#555;
+  font-size:12px;
+  text-decoration:none;
+}
+.manual_btn:hover,
+.manual_btn:focus{
+  color:#333;
+  background:#f0f0f0;
+  text-decoration:none;
+}
+.page-label{
+  font-size:12px;
+  color:#666;
+}
+
 /* notice */
 .notice-box{
   background:#fff;
-  border:1px solid #e1e1e1;
-  padding:10px 12px;
-  margin-bottom:10px;
+  border-top:1px solid #ededed;
+  border-bottom:1px solid #ededed;
+  padding:8px 12px;
+  margin-bottom:8px;
 }
 .notice-line{
   font-size:12px;
@@ -1848,6 +1907,10 @@ body.page-notification .module-raw-content form[name="fm_list_search"] li.PAD0 {
   margin:3px 0;
 }
 .notice-dot{ margin-right:6px; }
+.notice-line a{
+  color:#1f76c2;
+  text-decoration:underline;
+}
 
 /* attendance page */
 .attendance-page .panel-default_main1 {
@@ -2002,9 +2065,8 @@ body.page-notification .module-raw-content form[name="fm_list_search"] li.PAD0 {
 /* filter bar */
 .filter-bar{
   background:#fff;
-  border:1px solid #e1e1e1;
-  padding:8px;
-  margin-bottom:10px;
+  padding:0 12px 10px;
+  margin-bottom:0;
 }
 .filter-row{
   display:flex;
@@ -2012,8 +2074,22 @@ body.page-notification .module-raw-content form[name="fm_list_search"] li.PAD0 {
   align-items:center;
   gap:6px;
 }
+.filter-toggle-row{
+  padding-bottom:6px;
+}
 .filter-select{ width:120px; }
 .filter-input{ width:240px; }
+.detail-search-box{
+  margin-top:8px;
+  padding-top:8px;
+  border-top:1px dashed #e2e2e2;
+}
+.filter-check{
+  margin:0;
+  font-size:12px;
+  font-weight:400;
+  color:#555;
+}
 
 /* toolbar */
 .toolbar{
@@ -2023,11 +2099,18 @@ body.page-notification .module-raw-content form[name="fm_list_search"] li.PAD0 {
   margin:8px 0 10px;
 }
 .toolbar-right .btn{ margin-left:6px; }
+.toolbar-index{
+  margin-top:0;
+}
 
 /* table */
 .table-wrap{
   background:#fff;
   border:1px solid #e1e1e1;
+}
+.table-responsive-container{
+  width:100%;
+  overflow-x:auto;
 }
 .align-center th, .align-center td { text-align:center; vertical-align:middle; }
 .lecture-table th{ background:#fff; font-weight:700; font-size:12px; }
@@ -2059,6 +2142,28 @@ body.page-notification .module-raw-content form[name="fm_list_search"] li.PAD0 {
   text-decoration:none;
 }
 .isu_choice li a:hover{ background:#f5f5f5; }
+
+.bulk-action-box{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  margin:10px 0;
+}
+.bulk-action-box select{
+  width:280px;
+}
+.index-help-list{
+  margin:0;
+  padding:10px 12px 0 24px;
+  background:#fff;
+  border:1px solid #e1e1e1;
+  border-top:none;
+}
+.index-help-list li{
+  color:#666;
+  font-size:12px;
+  margin:3px 0;
+}
 
 /* inline max_sin editor */
 .max_sin_box,

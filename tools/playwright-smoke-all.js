@@ -243,9 +243,12 @@ async function testApplicants(page) {
   const searchDl = await searchDlPromise;
   out.searchResultDownload = !!searchDl.suggestedFilename();
 
-  await page.locator("#main_control_box_btn02").click();
+  const allResultBtn = page.locator(".applicants-actions-row a.btn.btn-success.btn-sm", {
+    hasText: "신청결과엑셀출력"
+  }).first();
+  await allResultBtn.waitFor({ state: "visible", timeout: 10000 });
   const allDlPromise = page.waitForEvent("download");
-  await page.locator("#main_control_box_drop a.btn.btn-success.btn-sm", { hasText: "신청결과엑셀출력" }).click();
+  await allResultBtn.click();
   const allDl = await allDlPromise;
   out.allResultDownload = !!allDl.suggestedFilename();
 

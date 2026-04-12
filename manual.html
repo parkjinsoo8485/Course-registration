@@ -370,5 +370,12 @@
   <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <script src="./assets/js/app.js"></script>
+  <script>
+    (function () {
+      var userRole = document.querySelector(".user-role");
+      if (!userRole) return;
+      userRole.innerHTML = '교직원 운영 계정 <span class="muted">[<a href="./login.html" id="profile-logout">로그아웃</a>] [<a href="./cfg-basic.html">정보수정</a>]</span>';
+    })();
+  </script>
 </body>
 </html>

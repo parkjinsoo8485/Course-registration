@@ -16,7 +16,6 @@
       --blue-dark: #347dc0;
       --line: #d8dde4;
       --panel: #ffffff;
-      --surface: #f4f4f4;
       --text: #314255;
       --muted: #7a8794;
       --error-bg: #fff2ef;
@@ -254,6 +253,56 @@
       box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.08);
     }
 
+    .secondary-btn {
+      width: 100%;
+      height: 40px;
+      border: 1px solid #cfd8e2;
+      background: #f7fafc;
+      color: #41576d;
+      font-size: 14px;
+      font-weight: 700;
+      margin-top: 8px;
+    }
+
+    .signup-panel {
+      margin-top: 14px;
+      border-top: 1px solid var(--line);
+      padding-top: 14px;
+      display: none;
+    }
+
+    .signup-panel.show {
+      display: block;
+    }
+
+    .signup-panel-header strong {
+      display: block;
+      font-size: 14px;
+      color: var(--navy-dark);
+      margin-bottom: 4px;
+    }
+
+    .signup-panel-header p {
+      margin: 0 0 12px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    .sample-accounts {
+      margin-top: 14px;
+      padding: 10px 12px;
+      border: 1px dashed var(--info-line);
+      background: #f8fbff;
+      font-size: 12px;
+      color: #55718c;
+      line-height: 1.7;
+    }
+
+    .sample-accounts strong {
+      color: #355777;
+    }
+
     .login-note {
       text-align: center;
       font-size: 12px;
@@ -304,7 +353,7 @@
     }
   </style>
 </head>
-<body>
+<body data-public-page="true">
   <div class="login-page">
     <section class="login-panel">
       <div class="login-header">
@@ -321,7 +370,7 @@
         </div>
       </div>
 
-      <div class="role-tabs">
+      <div class="role-tabs" role="tablist" aria-label="로그인 역할">
         <button type="button" class="role-tab" data-role="staff">교직원</button>
         <button type="button" class="role-tab active" data-role="student">학생</button>
         <button type="button" class="role-tab" data-role="teacher">강사</button>
@@ -346,7 +395,7 @@
 
           <div class="form-area active" data-role-form="student">
             <div class="student-select-row">
-              <select id="login_stu_grade" name="login_stu_grade" class="login-select">
+              <select id="login_stu_grade" name="login_stu_grade" class="login-select" aria-label="학년">
                 <option value="">- 학년 -</option>
                 <option>1</option>
                 <option>2</option>
@@ -355,7 +404,7 @@
                 <option>5</option>
                 <option>6</option>
               </select>
-              <select id="login_stu_class" name="login_stu_class" class="login-select">
+              <select id="login_stu_class" name="login_stu_class" class="login-select" aria-label="반">
                 <option value="">- 반 -</option>
                 <option>1</option>
                 <option>2</option>
@@ -364,7 +413,7 @@
                 <option>5</option>
                 <option>6</option>
               </select>
-              <select id="login_stu_bunho" name="login_stu_bunho" class="login-select">
+              <select id="login_stu_bunho" name="login_stu_bunho" class="login-select" aria-label="번호">
                 <option value="">- 번호 -</option>
                 <option>1</option>
                 <option>2</option>
@@ -409,9 +458,117 @@
               <a href="./manual.html">FAQ</a>
             </div>
 
-            <input type="submit" class="submit-btn" value="로그인">
+            <button type="submit" class="submit-btn">로그인</button>
           </div>
         </form>
+
+        <div id="signup-panel" class="signup-panel">
+          <div class="signup-panel-header">
+            <strong>회원가입</strong>
+            <p>현재 선택한 역할 기준으로 새 계정을 만들 수 있습니다. 학생은 학년/반/번호/성명, 교직원과 강사는 아이디 기반으로 등록됩니다.</p>
+          </div>
+
+          <form id="fm_register_inline" action="#" method="post">
+            <input type="hidden" id="register_role" name="register_role" value="student">
+
+            <div class="form-area" data-register-form="staff">
+              <div class="icon-input">
+                <div class="icon-label"><i class="fa fa-user"></i><span>아이디</span></div>
+                <input type="text" id="register_id" name="register_id" placeholder="교직원용 아이디">
+              </div>
+              <div class="icon-input">
+                <div class="icon-label"><i class="fa fa-pencil"></i><span>성명</span></div>
+                <input type="text" id="register_name_staff" name="register_name_staff" placeholder="실제 성명">
+              </div>
+              <div class="icon-input">
+                <div class="icon-label"><i class="fa fa-phone"></i><span>전화번호</span></div>
+                <input type="text" id="register_phone_staff" name="register_phone_staff" placeholder="예: 010-1234-5678">
+              </div>
+              <div class="icon-input">
+                <div class="icon-label"><i class="fa fa-key"></i><span>비밀번호</span></div>
+                <input type="password" id="register_passwd_staff" name="register_passwd_staff" placeholder="4자 이상 비밀번호">
+              </div>
+            </div>
+
+            <div class="form-area active" data-register-form="student">
+              <div class="student-select-row">
+                <select id="register_stu_grade" name="register_stu_grade" class="login-select" aria-label="회원가입 학년">
+                  <option value="">- 학년 -</option>
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                  <option>6</option>
+                </select>
+                <select id="register_stu_class" name="register_stu_class" class="login-select" aria-label="회원가입 반">
+                  <option value="">- 반 -</option>
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                  <option>6</option>
+                </select>
+                <select id="register_stu_bunho" name="register_stu_bunho" class="login-select" aria-label="회원가입 번호">
+                  <option value="">- 번호 -</option>
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                  <option>6</option>
+                  <option>7</option>
+                  <option>8</option>
+                  <option>9</option>
+                  <option>10</option>
+                </select>
+              </div>
+              <div class="icon-input">
+                <div class="icon-label"><i class="fa fa-user"></i><span>성명</span></div>
+                <input type="text" id="register_stu_name" name="register_stu_name" placeholder="학생 성명">
+              </div>
+              <div class="icon-input">
+                <div class="icon-label"><i class="fa fa-phone"></i><span>전화번호</span></div>
+                <input type="text" id="register_phone_student" name="register_phone_student" placeholder="예: 010-1234-5678">
+              </div>
+              <div class="icon-input">
+                <div class="icon-label"><i class="fa fa-key"></i><span>비밀번호</span></div>
+                <input type="password" id="register_stu_passwd" name="register_stu_passwd" placeholder="4자 이상 비밀번호">
+              </div>
+            </div>
+
+            <div class="form-area" data-register-form="teacher">
+              <div class="icon-input">
+                <div class="icon-label"><i class="fa fa-user"></i><span>아이디</span></div>
+                <input type="text" id="register_teacher_id" name="register_teacher_id" placeholder="강사용 아이디">
+              </div>
+              <div class="icon-input">
+                <div class="icon-label"><i class="fa fa-pencil"></i><span>성명</span></div>
+                <input type="text" id="register_name_teacher" name="register_name_teacher" placeholder="실제 성명">
+              </div>
+              <div class="icon-input">
+                <div class="icon-label"><i class="fa fa-phone"></i><span>전화번호</span></div>
+                <input type="text" id="register_phone_teacher" name="register_phone_teacher" placeholder="예: 010-1234-5678">
+              </div>
+              <div class="icon-input">
+                <div class="icon-label"><i class="fa fa-key"></i><span>비밀번호</span></div>
+                <input type="password" id="register_passwd_teacher" name="register_passwd_teacher" placeholder="4자 이상 비밀번호">
+              </div>
+            </div>
+
+            <button type="submit" class="secondary-btn">회원가입 완료</button>
+          </form>
+        </div>
+
+        <button type="button" id="toggle-signup" class="secondary-btn">회원가입 열기</button>
+
+        <div class="sample-accounts">
+          <strong>기본 테스트 계정</strong><br>
+          교직원: <code>admin / admin1234</code><br>
+          강사: <code>teacher01 / teacher1234</code><br>
+          학생: <code>1학년 1반 1번 홍길동 / student1234</code>
+        </div>
       </div>
     </section>
 
@@ -427,24 +584,26 @@
   <script>
     (function ($) {
       var roleStatusMap = {
-        staff: "교직원은 아이디와 비밀번호를 입력해 로그인합니다.",
-        teacher: "강사는 아이디와 비밀번호를 입력해 로그인합니다.",
+        staff: "교직원은 아이디와 비밀번호를 입력해 로그인해 주세요.",
+        teacher: "강사는 아이디와 비밀번호를 입력해 로그인해 주세요.",
         student: "학생은 학년, 반, 번호를 먼저 선택한 뒤 이름과 비밀번호를 입력해 주세요."
       };
 
       function setStatus(type, text) {
-        $("#login-status")
-          .removeClass("error")
-          .addClass("show")
-          .text(text);
-
+        $("#login-status").removeClass("error").addClass("show").text(text);
         if (type === "error") {
           $("#login-status").addClass("error");
         }
       }
 
       function clearValidation() {
-        $("#fm_login_inline input, #fm_login_inline select").removeClass("is-invalid");
+        $("#fm_login_inline input, #fm_login_inline select, #fm_register_inline input, #fm_register_inline select").removeClass("is-invalid");
+      }
+
+      function invalidate(selector, message) {
+        $(selector).addClass("is-invalid").trigger("focus");
+        setStatus("error", message);
+        return null;
       }
 
       function focusFirst(role) {
@@ -460,48 +619,113 @@
         $(".role-tab").removeClass("active");
         $('.role-tab[data-role="' + role + '"]').addClass("active");
         $("#login_role").val(role);
-        $(".form-area").removeClass("active");
-        $('.form-area[data-role-form="' + role + '"]').addClass("active");
+        $("#register_role").val(role);
+        $('[data-role-form], [data-register-form]').removeClass("active");
+        $('[data-role-form="' + role + '"], [data-register-form="' + role + '"]').addClass("active");
         clearValidation();
         setStatus("info", roleStatusMap[role]);
         focusFirst(role);
       }
 
-      function invalidate(selector, message) {
-        $(selector).addClass("is-invalid").trigger("focus");
-        setStatus("error", message);
-        return false;
+      function currentReturnTo() {
+        var params = new URLSearchParams(window.location.search);
+        return params.get("returnTo") || "./index.html";
       }
 
-      function validate(role) {
-        clearValidation();
+      function requestJson(url, payload) {
+        return fetch(url, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          credentials: "same-origin",
+          body: JSON.stringify(payload)
+        }).then(function (response) {
+          return response.json().then(function (data) {
+            if (!response.ok) {
+              throw new Error(data && data.message ? data.message : "요청 처리에 실패했습니다.");
+            }
+            return data;
+          });
+        });
+      }
 
+      function normalizePhone(value) {
+        return String(value || "").replace(/[^\d-]/g, "").trim();
+      }
+
+      function buildLoginPayload(role) {
         if (role === "student") {
           if (!$.trim($("#login_stu_grade").val())) return invalidate("#login_stu_grade", "학생 로그인은 학년을 먼저 선택해 주세요.");
-          if (!$.trim($("#login_stu_class").val())) return invalidate("#login_stu_class", "학생 로그인은 반을 선택해야 합니다.");
-          if (!$.trim($("#login_stu_bunho").val())) return invalidate("#login_stu_bunho", "학생 로그인은 번호를 선택해야 합니다.");
-          if (!$.trim($("#login_stu_name").val())) return invalidate("#login_stu_name", "학생 로그인은 이름을 입력해야 합니다.");
-          if (!$.trim($("#login_stu_passwd").val())) return invalidate("#login_stu_passwd", "학생 로그인은 비밀번호를 입력해야 합니다.");
-          setStatus("info", "학생 로그인 정보가 모두 입력되었습니다. 실제 서비스에서는 서버 검증 후 로그인됩니다.");
-          return false;
+          if (!$.trim($("#login_stu_class").val())) return invalidate("#login_stu_class", "학생 로그인은 반을 선택해 주세요.");
+          if (!$.trim($("#login_stu_bunho").val())) return invalidate("#login_stu_bunho", "학생 로그인은 번호를 선택해 주세요.");
+          if (!$.trim($("#login_stu_name").val())) return invalidate("#login_stu_name", "학생 로그인은 이름을 입력해 주세요.");
+          if (!$.trim($("#login_stu_passwd").val())) return invalidate("#login_stu_passwd", "학생 로그인은 비밀번호를 입력해 주세요.");
+          return {
+            role: role,
+            grade: $("#login_stu_grade").val(),
+            classNo: $("#login_stu_class").val(),
+            studentNo: $("#login_stu_bunho").val(),
+            name: $.trim($("#login_stu_name").val()),
+            password: $("#login_stu_passwd").val()
+          };
         }
 
-        if (role === "staff") {
-          if (!$.trim($("#login_id").val())) return invalidate("#login_id", "교직원 아이디를 입력해 주세요.");
-          if (!$.trim($("#login_passwd").val())) return invalidate("#login_passwd", "교직원 비밀번호를 입력해 주세요.");
-          setStatus("info", "교직원 로그인 정보가 입력되었습니다. 실제 서비스에서는 서버 인증 후 이동합니다.");
-          return false;
+        var idSelector = role === "staff" ? "#login_id" : "#login_lecturer_id";
+        var passwordSelector = role === "staff" ? "#login_passwd" : "#login_lecturer_passwd";
+        if (!$.trim($(idSelector).val())) return invalidate(idSelector, "아이디를 입력해 주세요.");
+        if (!$.trim($(passwordSelector).val())) return invalidate(passwordSelector, "비밀번호를 입력해 주세요.");
+        return {
+          role: role,
+          loginId: $.trim($(idSelector).val()),
+          password: $(passwordSelector).val()
+        };
+      }
+
+      function buildRegisterPayload(role) {
+        if (role === "student") {
+          if (!$.trim($("#register_stu_grade").val())) return invalidate("#register_stu_grade", "학생 학년을 선택해 주세요.");
+          if (!$.trim($("#register_stu_class").val())) return invalidate("#register_stu_class", "학생 반을 선택해 주세요.");
+          if (!$.trim($("#register_stu_bunho").val())) return invalidate("#register_stu_bunho", "학생 번호를 선택해 주세요.");
+          if (!$.trim($("#register_stu_name").val())) return invalidate("#register_stu_name", "학생 성명을 입력해 주세요.");
+          if (!$.trim($("#register_phone_student").val())) return invalidate("#register_phone_student", "학생 전화번호를 입력해 주세요.");
+          if (!$.trim($("#register_stu_passwd").val())) return invalidate("#register_stu_passwd", "학생 비밀번호를 입력해 주세요.");
+          return {
+            role: role,
+            grade: $("#register_stu_grade").val(),
+            classNo: $("#register_stu_class").val(),
+            studentNo: $("#register_stu_bunho").val(),
+            displayName: $.trim($("#register_stu_name").val()),
+            fullName: $.trim($("#register_stu_name").val()),
+            phone: normalizePhone($("#register_phone_student").val()),
+            password: $("#register_stu_passwd").val()
+          };
         }
 
-        if (!$.trim($("#login_lecturer_id").val())) return invalidate("#login_lecturer_id", "강사 아이디를 입력해 주세요.");
-        if (!$.trim($("#login_lecturer_passwd").val())) return invalidate("#login_lecturer_passwd", "강사 비밀번호를 입력해 주세요.");
-        setStatus("info", "강사 로그인 정보가 입력되었습니다. 실제 서비스에서는 서버 인증 후 이동합니다.");
-        return false;
+        var idSelector = role === "staff" ? "#register_id" : "#register_teacher_id";
+        var nameSelector = role === "staff" ? "#register_name_staff" : "#register_name_teacher";
+        var phoneSelector = role === "staff" ? "#register_phone_staff" : "#register_phone_teacher";
+        var passwordSelector = role === "staff" ? "#register_passwd_staff" : "#register_passwd_teacher";
+        if (!$.trim($(idSelector).val())) return invalidate(idSelector, "회원가입용 아이디를 입력해 주세요.");
+        if (!$.trim($(nameSelector).val())) return invalidate(nameSelector, "성명을 입력해 주세요.");
+        if (!$.trim($(phoneSelector).val())) return invalidate(phoneSelector, "전화번호를 입력해 주세요.");
+        if (!$.trim($(passwordSelector).val())) return invalidate(passwordSelector, "비밀번호를 입력해 주세요.");
+        return {
+          role: role,
+          loginId: $.trim($(idSelector).val()),
+          displayName: $.trim($(nameSelector).val()),
+          fullName: $.trim($(nameSelector).val()),
+          phone: normalizePhone($(phoneSelector).val()),
+          password: $(passwordSelector).val()
+        };
       }
 
       $(function () {
         $(".role-tab").on("click", function () {
           switchRole($(this).data("role"));
+        });
+
+        $("#toggle-signup").on("click", function () {
+          $("#signup-panel").toggleClass("show");
+          $(this).text($("#signup-panel").hasClass("show") ? "회원가입 닫기" : "회원가입 열기");
         });
 
         $("#login_stu_grade").on("change", function () {
@@ -518,7 +742,52 @@
 
         $("#fm_login_inline").on("submit", function (event) {
           event.preventDefault();
-          validate($("#login_role").val());
+          clearValidation();
+          var role = $("#login_role").val();
+          var payload = buildLoginPayload(role);
+          if (!payload) return;
+
+          setStatus("info", "로그인 정보를 확인하고 있습니다.");
+          requestJson("/api/auth/login", payload)
+            .then(function () {
+              setStatus("info", "로그인되었습니다. 운영 화면으로 이동합니다.");
+              window.location.replace(currentReturnTo());
+            })
+            .catch(function (error) {
+              setStatus("error", error.message);
+            });
+        });
+
+        $("#fm_register_inline").on("submit", function (event) {
+          event.preventDefault();
+          clearValidation();
+          var role = $("#register_role").val();
+          var payload = buildRegisterPayload(role);
+          if (!payload) return;
+
+          setStatus("info", "새 계정을 만들고 있습니다.");
+          requestJson("/api/auth/register", payload)
+            .then(function () {
+              $("#signup-panel").removeClass("show");
+              $("#toggle-signup").text("회원가입 열기");
+              if (role === "student") {
+                $("#login_stu_grade").val(payload.grade);
+                $("#login_stu_class").val(payload.classNo);
+                $("#login_stu_bunho").val(payload.studentNo);
+                $("#login_stu_name").val(payload.fullName);
+                $("#login_stu_passwd").val("");
+              } else if (role === "staff") {
+                $("#login_id").val(payload.loginId);
+                $("#login_passwd").val("");
+              } else {
+                $("#login_lecturer_id").val(payload.loginId);
+                $("#login_lecturer_passwd").val("");
+              }
+              setStatus("info", "회원가입이 완료되었습니다. 방금 만든 계정으로 로그인해 주세요.");
+            })
+            .catch(function (error) {
+              setStatus("error", error.message);
+            });
         });
       });
     })(jQuery);

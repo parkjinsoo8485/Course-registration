@@ -1,3 +1,5 @@
 node_modules/
 dbdb-storage-state.json
 tmp-storage.json
+data/*.sqlite
+logs/
