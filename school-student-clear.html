@@ -76,11 +76,13 @@
   	<input type="hidden" name="clear_gubun" id="clear_gubun" value="">
 	<table class="table table-bordered table-hover list AlignCenter ">
 		<tbody><tr>
-			<th style="text-align:right; width:150px;" class="th_chkbox_stu">
-				<label for="stu_hp">휴대폰</label><input type="checkbox" name="stu_hp" id="stu_hp" value="Y"><br>
-				<label for="mem_pa_name">보호자 성명</label><input type="checkbox" name="mem_pa_name" id="mem_pa_name" value="Y"><br>
-				<label for="mem_pa_tel">보호자 연락처</label><input type="checkbox" name="mem_pa_tel" id="mem_pa_tel" value="Y"><br>
-				<label for="mem_sex">성별</label><input type="checkbox" name="mem_sex" id="mem_sex" value="Y">	
+			<th style="text-align: right; width: 180px; padding-right: 20px !important;" class="th_chkbox_stu">
+				<div style="display: flex; flex-direction: column; align-items: flex-end; gap: 8px;">
+					<span><label for="stu_hp" style="margin-right: 5px; cursor: pointer;">휴대폰</label><input type="checkbox" name="stu_hp" id="stu_hp" value="Y" style="vertical-align: middle;"></span>
+					<span><label for="mem_pa_name" style="margin-right: 5px; cursor: pointer;">보호자 성명</label><input type="checkbox" name="mem_pa_name" id="mem_pa_name" value="Y" style="vertical-align: middle;"></span>
+					<span><label for="mem_pa_tel" style="margin-right: 5px; cursor: pointer;">보호자 연락처</label><input type="checkbox" name="mem_pa_tel" id="mem_pa_tel" value="Y" style="vertical-align: middle;"></span>
+					<span><label for="mem_sex" style="margin-right: 5px; cursor: pointer;">성별</label><input type="checkbox" name="mem_sex" id="mem_sex" value="Y" style="vertical-align: middle;"></span>
+				</div>
 			</th>
 			<td align="left">
 				<a href="#none;" onclick="fm_clear_check('stuField'); return false;" class="delete_btn"><i class="fa fa-trash"></i>초기화</a>
@@ -90,17 +92,16 @@
 		<tr>
 			<th>비밀번호</th>
 			<td align="left">
-				<select name="clear_grade" id="clear_grade" class="form-control input-sm PAD0">
+				<select name="clear_grade" id="clear_grade" class="form-control input-sm PAD0" style="width:90px; display:inline-block;">
 					<option value="">=학년전체=</option>
 					<option value="1">1학년</option>
-<option value="2">2학년</option>
-<option value="3">3학년</option>
-<option value="4">4학년</option>
-<option value="5">5학년</option>
-<option value="6">6학년</option>
-		
-				</select>			
-				<input id="def_passwd" name="def_passwd" type="password" value="" maxlength="15" class="form-control input-sm" style="width:200px;">&nbsp;
+					<option value="2">2학년</option>
+					<option value="3">3학년</option>
+					<option value="4">4학년</option>
+					<option value="5">5학년</option>
+					<option value="6">6학년</option>
+				</select>
+				<input id="def_passwd" name="def_passwd" type="password" value="" maxlength="15" class="form-control input-sm" style="width:150px; display:inline-block;">&nbsp;
 				<a href="#none;" onclick="fm_clear_check('stuPass'); return false;" class="delete_btn"><i class="fa fa-trash"></i>초기화</a>
 				<br>(4~15자 이내의 영문 또는 숫자)
 				<p class="text-danger" style="margin-top:5px;">- 임시 비밀번호로 초기화합니다.</p>
@@ -109,15 +110,14 @@
 		<tr>
 			<th>학생 데이터</th>
 			<td align="left">
-				<select name="del_grade" id="del_grade" class="form-control input-sm PAD0">
+				<select name="del_grade" id="del_grade" class="form-control input-sm PAD0" style="width:90px; display:inline-block;">
 					<option value="">=학년전체=</option>
 					<option value="1">1학년</option>
-<option value="2">2학년</option>
-<option value="3">3학년</option>
-<option value="4">4학년</option>
-<option value="5">5학년</option>
-<option value="6">6학년</option>
-		
+					<option value="2">2학년</option>
+					<option value="3">3학년</option>
+					<option value="4">4학년</option>
+					<option value="5">5학년</option>
+					<option value="6">6학년</option>
 				</select>
 				<a href="#none;" onclick="fm_clear_check('student'); return false;" class="delete_btn"><i class="fa fa-trash"></i>삭제하기</a>
 				<p class="text-danger" style="margin-top:5px;">- 선택된 학년의 학생 데이터를 삭제합니다.</p>

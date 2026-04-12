@@ -11,7 +11,9 @@ async function main() {
   fs.mkdirSync(outDir, { recursive: true });
 
   const browser = await chromium.launch({ headless: true });
-  const page = await browser.newPage({ viewport: { width: 1365, height: 900 } });
+  const page = await browser.newPage({
+    viewport: { width: 1365, height: 900 },
+  });
 
   const targets = [
     { key: "to-waitlist", label: "대기자목록" },
@@ -23,12 +25,14 @@ async function main() {
     { key: "list1", label: "미신청자목록" },
     { key: "pdf", label: "수강신청서출력" },
     { key: "pdf1", label: "고지서출력" },
-    { key: "pdf2", label: "시간표출력" }
+    { key: "pdf2", label: "시간표출력" },
   ];
 
   const results = [];
   for (const t of targets) {
-    await page.goto(fileUrl("applicants.html"), { waitUntil: "domcontentloaded" });
+    await page.goto(fileUrl("applicants.html"), {
+      waitUntil: "domcontentloaded",
+    });
     await page.waitForTimeout(400);
 
     let ok = false;
@@ -47,7 +51,10 @@ async function main() {
       title = await page.title();
       url = page.url();
       ok = true;
-      await page.screenshot({ path: path.join(outDir, `${t.key}.png`), fullPage: true });
+      await page.screenshot({
+        path: path.join(outDir, `${t.key}.png`),
+        fullPage: true,
+      });
     } catch (e) {
       error = String(e && e.message ? e.message : e);
     }

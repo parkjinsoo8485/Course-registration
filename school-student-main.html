@@ -70,9 +70,7 @@
       <div id="contents" class="content-inner school-raw-content">
 <div class="panel_main panel-default_main">
 	<div class="panel-heading">기본설정</div>
-<form action="https://www.dbdbschool.kr/sczigi/student/main/sn/2848" name="fm_edit" id="fm_edit" onsubmit="return fm_edit_check(this);" method="post" accept-charset="utf-8">
-<input type="hidden" name="csrf_test_name" value="f4620a2e4d8a4ea7407701a68786c16a">
-<input type="hidden" name="form_open_date_use_chk_csrf" value="2026-02-21 04:22:46">
+<form action="/api/school/config" name="fm_edit" id="fm_edit" onsubmit="return fm_edit_check(this);" method="post" accept-charset="utf-8">
 	<table class="table table-bordered table-hover list">
 		<tbody><tr>
 			<!-- th colspan="2" style="min-width:73px;" >학생 중복 로그인 제한</th>
@@ -120,6 +118,8 @@
 	<p class="text-center MAT30"><input type="button" onclick="history.back(-1); return false;" class="btn btn-default" value="취소"> <input type="submit" value="수정" data-loading-text="처리중 .." class="btn btn-primary"></p>
 	</form>
 </div>
+
+<hr style="margin: 24px 0; border: 0; border-top: 1px solid #d5dbe2;">
 
 <div class="help_box">최댓값 지정 : 학년, 반, 번호를 선택하는 입력 화면에서 사용될 최댓값을 지정합니다.</div>
 

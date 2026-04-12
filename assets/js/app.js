@@ -15,7 +15,10 @@
   function applyPageFileClass() {
     var pathname = String(window.location.pathname || "");
     var file = pathname.split("/").pop() || "index.html";
-    var base = file.replace(/\.html$/i, "").toLowerCase().replace(/[^a-z0-9_-]/g, "");
+    var base = file
+      .replace(/\.html$/i, "")
+      .toLowerCase()
+      .replace(/[^a-z0-9_-]/g, "");
     if (!base) base = "index";
     $("body").addClass("page-" + base);
   }
@@ -30,29 +33,44 @@
   }
 
   function renderSidebar(activeKey) {
-    var isFunding = ["fund-target", "fund-app", "fund-cfg", "fund-rank"].indexOf(activeKey) > -1;
-    var isSurvey = ["survey", "survey-sample", "survey-sample-write"].indexOf(activeKey) > -1;
-    var isSettings = [
-      "cfg-basic",
-      "cfg-period",
-      "cfg-lecture-time",
-      "cfg-division",
-      "cfg-group",
-      "cfg-verify",
-      "cfg-neis",
-      "cfg-message",
-      "cfg-clear",
-      "cfg-manager"
-    ].indexOf(activeKey) > -1;
+    var isFunding =
+      ["fund-target", "fund-app", "fund-cfg", "fund-rank"].indexOf(activeKey) >
+      -1;
+    var isSurvey =
+      ["survey", "survey-sample", "survey-sample-write"].indexOf(activeKey) >
+      -1;
+    var isSettings =
+      [
+        "cfg-basic",
+        "cfg-period",
+        "cfg-lecture-time",
+        "cfg-division",
+        "cfg-group",
+        "cfg-verify",
+        "cfg-neis",
+        "cfg-message",
+        "cfg-clear",
+        "cfg-manager",
+      ].indexOf(activeKey) > -1;
 
     function li(key, href, icon, text) {
       var cls = key === activeKey ? ' class="active"' : "";
-      return '<li' + cls + '><a href="' + href + '"><i class="fa ' + icon + '"></i> ' + text + "</a></li>";
+      return (
+        "<li" +
+        cls +
+        '><a href="' +
+        href +
+        '"><i class="fa ' +
+        icon +
+        '"></i> ' +
+        text +
+        "</a></li>"
+      );
     }
 
     function childLi(key, href, text) {
       var cls = key === activeKey ? ' class="active"' : "";
-      return '<li' + cls + '><a href="' + href + '">' + text + "</a></li>";
+      return "<li" + cls + '><a href="' + href + '">' + text + "</a></li>";
     }
 
     return [
@@ -111,10 +129,20 @@
       "  </ul>",
       "</li>",
       li("notification", "./notification.html", "fa-volume-up", "알림관리"),
-      li("push-notification", "./notification.html?tab=push", "fa-bell", "푸시알림관리"),
+      li(
+        "push-notification",
+        "./notification.html?tab=push",
+        "fa-bell",
+        "푸시알림관리",
+      ),
       '<li><a href="./notification.html?tab=extension" class="has-badge"><span><i class="fa fa-calendar-o"></i> 연장신청</span><span class="badge badge-grey">372일 남음</span></a></li>',
-      li("survey-participation", "./survey.html?mode=participation", "fa-pie-chart", "설문참여"),
-      "</ul>"
+      li(
+        "survey-participation",
+        "./survey.html?mode=participation",
+        "fa-pie-chart",
+        "설문참여",
+      ),
+      "</ul>",
     ].join("");
   }
 
@@ -127,19 +155,25 @@
   }
 
   function normalizeUserRole() {
-    $(".user-role").html('<span class="muted">[<a href="./login.html" id="profile-logout">로그아웃</a>] [<a href="./cfg-basic.html">정보수정</a>]</span>');
+    $(".user-role").html(
+      '<span class="muted">[<a href="./login.html" id="profile-logout">로그아웃</a>] [<a href="./cfg-basic.html">정보수정</a>]</span>',
+    );
   }
 
   function bindLogoutAction() {
-    $(document).on("click", "#profile-logout, .sidebar-actions a[href='./login.html']", function (event) {
-      event.preventDefault();
-      fetch("/api/auth/logout", {
-        method: "POST",
-        credentials: "same-origin"
-      }).finally(function () {
-        window.location.replace("./login.html");
-      });
-    });
+    $(document).on(
+      "click",
+      "#profile-logout, .sidebar-actions a[href='./login.html']",
+      function (event) {
+        event.preventDefault();
+        fetch("/api/auth/logout", {
+          method: "POST",
+          credentials: "same-origin",
+        }).finally(function () {
+          window.location.replace("./login.html");
+        });
+      },
+    );
   }
 
   function requireAuth() {
@@ -153,11 +187,15 @@
       })
       .then(function (payload) {
         if (!payload || !payload.user) throw new Error("unauthorized");
-        $(".user-name").text(payload.user.displayName || payload.user.loginId || "운영자");
+        $(".user-name").text(
+          payload.user.displayName || payload.user.loginId || "운영자",
+        );
       })
       .catch(function () {
         var current = window.location.pathname.split("/").pop() || "index.html";
-        window.location.replace("./login.html?returnTo=" + encodeURIComponent(current));
+        window.location.replace(
+          "./login.html?returnTo=" + encodeURIComponent(current),
+        );
       });
   }
 
@@ -245,7 +283,7 @@
 
   function downloadCsv(filename, lines) {
     var blob = new Blob(["\ufeff" + lines.join("\n")], {
-      type: "text/csv;charset=utf-8;"
+      type: "text/csv;charset=utf-8;",
     });
     downloadBlob(filename, blob);
   }
@@ -266,9 +304,11 @@
 
     $table.find(rowSelector).each(function () {
       var cells = [];
-      $(this).find("td").each(function () {
-        cells.push(escapeCsv($(this).text()));
-      });
+      $(this)
+        .find("td")
+        .each(function () {
+          cells.push(escapeCsv($(this).text()));
+        });
       lines.push(cells.join(","));
     });
 
@@ -307,7 +347,9 @@
     var items = [];
     $(".module-raw-content form[id^='fm_edit']").each(function () {
       var $form = $(this);
-      var num = String($form.find("input[name='free2_data_num']").first().val() || "").trim();
+      var num = String(
+        $form.find("input[name='free2_data_num']").first().val() || "",
+      ).trim();
       if (!num) return;
       var $title = $form.find("input[id^='free2_data'][id$='_title']").first();
       var title = String($title.val() || "").trim();
@@ -318,15 +360,20 @@
   }
 
   function applyFundConfigSortOrder(orderList) {
-    if (String($("body").data("sidebar-page") || "") !== "fund-cfg") return false;
-    var $panel = $(".module-raw-content .panel_main.panel-default_main").first();
+    if (String($("body").data("sidebar-page") || "") !== "fund-cfg")
+      return false;
+    var $panel = $(
+      ".module-raw-content .panel_main.panel-default_main",
+    ).first();
     if (!$panel.length) return false;
 
     var formsById = {};
     var currentIds = [];
     $panel.find("form[id^='fm_edit']").each(function () {
       var $form = $(this);
-      var id = String($form.find("input[name='free2_data_num']").first().val() || "").trim();
+      var id = String(
+        $form.find("input[name='free2_data_num']").first().val() || "",
+      ).trim();
       if (!id) return;
       formsById[id] = $form;
       currentIds.push(id);
@@ -418,14 +465,29 @@
       var id = Number($tr.data("num")) || 0;
       if (!id) return;
 
-      var divText = ($tr.find("td:eq(3)").text() || "").replace(/\s+/g, " ").trim();
+      var divText = ($tr.find("td:eq(3)").text() || "")
+        .replace(/\s+/g, " ")
+        .trim();
       var div = divText.match(/\d+월/) ? divText.match(/\d+월/)[0] : "2월";
-      var proType = divText.indexOf("방과후") > -1 ? "방과후" : divText.indexOf("맞춤형") > -1 ? "맞춤형" : "돌봄";
+      var proType =
+        divText.indexOf("방과후") > -1
+          ? "방과후"
+          : divText.indexOf("맞춤형") > -1
+            ? "맞춤형"
+            : "돌봄";
 
-      var sinText = ($tr.find("td:eq(6)").text() || "").replace(/\s+/g, " ").trim();
-      var waitText = ($tr.find("td:eq(7)").text() || "").replace(/\s+/g, " ").trim();
-      var sinParts = sinText.split("/").map(function (x) { return Number(x.replace(/[^0-9]/g, "")) || 0; });
-      var waitParts = waitText.split("/").map(function (x) { return Number(x.replace(/[^0-9]/g, "")) || 0; });
+      var sinText = ($tr.find("td:eq(6)").text() || "")
+        .replace(/\s+/g, " ")
+        .trim();
+      var waitText = ($tr.find("td:eq(7)").text() || "")
+        .replace(/\s+/g, " ")
+        .trim();
+      var sinParts = sinText.split("/").map(function (x) {
+        return Number(x.replace(/[^0-9]/g, "")) || 0;
+      });
+      var waitParts = waitText.split("/").map(function (x) {
+        return Number(x.replace(/[^0-9]/g, "")) || 0;
+      });
 
       var periodText = ($tr.find("td:eq(9)").text() || "").replace(/\s+/g, "");
       var period = periodText.split("~");
@@ -443,12 +505,20 @@
         grades: ($tr.find("td:eq(8)").text() || "").replace(/\s+/g, ""),
         periodStart: period[0] || "",
         periodEnd: period[1] || "",
-        lectureTime: ($tr.find("td:eq(10)").html() || "").replace(/<br\s*\/?\>/gi, "\n").replace(/<[^>]+>/g, "").trim(),
-        fee: Number(($tr.find("td:eq(11)").text() || "0").replace(/[^0-9]/g, "")) || 0,
+        lectureTime: ($tr.find("td:eq(10)").html() || "")
+          .replace(/<br\s*\/?\>/gi, "\n")
+          .replace(/<[^>]+>/g, "")
+          .trim(),
+        fee:
+          Number(
+            ($tr.find("td:eq(11)").text() || "0").replace(/[^0-9]/g, ""),
+          ) || 0,
         feeVisible: ($tr.find("td:eq(12)").text() || "Y").trim() || "Y",
         teacherClosed: ($tr.find("td:eq(13)").text() || "-").trim() || "-",
         refundClosed: ($tr.find("td:eq(14)").text() || "-").trim() || "-",
-        status: parseStatusFromText(($tr.find("td:eq(15)").text() || "").trim())
+        status: parseStatusFromText(
+          ($tr.find("td:eq(15)").text() || "").trim(),
+        ),
       });
     });
 
@@ -513,49 +583,79 @@
     return [
       '<tr data-num="' + num + '">',
       '  <td><input type="checkbox" class="chk-row"></td>',
-      '  <td>' + num + '</td>',
+      "  <td>" + num + "</td>",
       '  <td><button class="btn btn-default btn-xs"><i class="fa fa-cog"></i></button></td>',
-      '  <td><span class="label label-default">' + (lec.div || "") + '</span><br><span class="label label-default">' + (lec.proType || "") + '</span></td>',
-      '  <td class="text-left">' + (lec.name || "") + '</td>',
-      '  <td>' + (lec.teacherId || "") + '</td>',
-      '  <td class="cell-relative"><span class="count">' + (Number(lec.applied) || 0) + '</span> / <a href="#" class="max-sin-link" data-max="' + (Number(lec.capacity) || 0) + '">' + (Number(lec.capacity) || 0) + '</a></td>',
-      '  <td>' + (Number(lec.waitApplied) || 0) + ' / <a href="#" class="max-wait-link" data-max="' + (Number(lec.waitCapacity) || 0) + '">' + (Number(lec.waitCapacity) || 0) + '</a></td>',
-      '  <td>' + (lec.grades || "") + '</td>',
-      '  <td>' + (lec.periodStart || "") + '~<br>' + (lec.periodEnd || "") + '</td>',
-      '  <td class="text-left">' + lectureTimeHtml + '</td>',
-      '  <td>' + (Number(lec.fee) || 0) + '</td>',
-      '  <td>' + (lec.feeVisible || "Y") + '</td>',
-      '  <td>' + (lec.teacherClosed || "-") + '</td>',
-      '  <td>' + (lec.refundClosed || "-") + '</td>',
-      '  <td>',
+      '  <td><span class="label label-default">' +
+        (lec.div || "") +
+        '</span><br><span class="label label-default">' +
+        (lec.proType || "") +
+        "</span></td>",
+      '  <td class="text-left">' + (lec.name || "") + "</td>",
+      "  <td>" + (lec.teacherId || "") + "</td>",
+      '  <td class="cell-relative"><span class="count">' +
+        (Number(lec.applied) || 0) +
+        '</span> / <a href="#" class="max-sin-link" data-max="' +
+        (Number(lec.capacity) || 0) +
+        '">' +
+        (Number(lec.capacity) || 0) +
+        "</a></td>",
+      "  <td>" +
+        (Number(lec.waitApplied) || 0) +
+        ' / <a href="#" class="max-wait-link" data-max="' +
+        (Number(lec.waitCapacity) || 0) +
+        '">' +
+        (Number(lec.waitCapacity) || 0) +
+        "</a></td>",
+      "  <td>" + (lec.grades || "") + "</td>",
+      "  <td>" +
+        (lec.periodStart || "") +
+        "~<br>" +
+        (lec.periodEnd || "") +
+        "</td>",
+      '  <td class="text-left">' + lectureTimeHtml + "</td>",
+      "  <td>" + (Number(lec.fee) || 0) + "</td>",
+      "  <td>" + (lec.feeVisible || "Y") + "</td>",
+      "  <td>" + (lec.teacherClosed || "-") + "</td>",
+      "  <td>" + (lec.refundClosed || "-") + "</td>",
+      "  <td>",
       '    <div class="isu_wrap">',
       '      <div class="btn-group btn-group-xs isu_check_box">',
-      '        <button type="button" class="' + statusBtnClass(lec.status) + '" id="view_lec_status_' + num + '">' + statusLabel(lec.status) + '</button>',
+      '        <button type="button" class="' +
+        statusBtnClass(lec.status) +
+        '" id="view_lec_status_' +
+        num +
+        '">' +
+        statusLabel(lec.status) +
+        "</button>",
       '        <button type="button" class="btn btn-default isu_toggle"><i class="fa fa-angle-down"></i></button>',
-      '      </div>',
+      "      </div>",
       '      <ul class="isu_choice">',
       '        <li><a href="#" class="isu-option" data-status="1" data-label="출력">출력</a></li>',
       '        <li><a href="#" class="isu-option" data-status="0" data-label="대기">대기</a></li>',
       '        <li><a href="#" class="isu-option" data-status="2" data-label="종료">종료</a></li>',
-      '      </ul>',
-      '    </div>',
-      '  </td>',
+      "      </ul>",
+      "    </div>",
+      "  </td>",
       '  <td><a href="#" class="del-link"><i class="fa fa-trash"></i></a></td>',
-      '</tr>'
+      "</tr>",
     ].join("");
   }
 
   function getLectureFilterState($form) {
     return {
       month: String($form.find('[name="sld"]').val() || "").trim(),
-      process: String($form.find('[name="slp"] option:selected').text() || "").trim(),
+      process: String(
+        $form.find('[name="slp"] option:selected').text() || "",
+      ).trim(),
       statusFilter: String($form.find('[name="sls"]').val() || "").trim(),
       grade: String($form.find('[name="s_grade"]').val() || "").trim(),
       target: String($form.find('[name="st"]').val() || "lec_name").trim(),
-      keyword: String($form.find('[name="sw"]').val() || "").trim().toLowerCase(),
+      keyword: String($form.find('[name="sw"]').val() || "")
+        .trim()
+        .toLowerCase(),
       dateStart: String($("#s_date_start").val() || "").trim(),
       dateEnd: String($("#s_date_end").val() || "").trim(),
-      onlyOpen: $("#s_only_open").is(":checked")
+      onlyOpen: $("#s_only_open").is(":checked"),
     };
   }
 
@@ -566,15 +666,25 @@
     var gradeText = String(lec.grades || "").replace(/\s+/g, "");
     var lecName = String(lec.name || "").toLowerCase();
     var teaId = String(lec.teacherId || "").toLowerCase();
-    var periodJoined = [String(lec.periodStart || "").trim(), String(lec.periodEnd || "").trim()].join("~");
+    var periodJoined = [
+      String(lec.periodStart || "").trim(),
+      String(lec.periodEnd || "").trim(),
+    ].join("~");
 
     if (filter.month && monthText.indexOf(filter.month) < 0) return false;
-    if (filter.process && filter.process.indexOf("=") < 0 && processText.indexOf(filter.process) < 0) return false;
+    if (
+      filter.process &&
+      filter.process.indexOf("=") < 0 &&
+      processText.indexOf(filter.process) < 0
+    )
+      return false;
     if (filter.statusFilter && statusCode !== filter.statusFilter) return false;
     if (filter.onlyOpen && statusCode !== "1") return false;
     if (filter.grade && gradeText.indexOf(filter.grade) < 0) return false;
-    if (filter.dateStart && periodJoined.indexOf(filter.dateStart) < 0) return false;
-    if (filter.dateEnd && periodJoined.indexOf(filter.dateEnd) < 0) return false;
+    if (filter.dateStart && periodJoined.indexOf(filter.dateStart) < 0)
+      return false;
+    if (filter.dateEnd && periodJoined.indexOf(filter.dateEnd) < 0)
+      return false;
     if (filter.keyword) {
       if (filter.target === "tea_id") {
         if (teaId.indexOf(filter.keyword) < 0) return false;
@@ -592,42 +702,54 @@
   }
 
   function lectureExportLines(list) {
-    var lines = [[
-      "연번",
-      "구분",
-      "늘봄과정",
-      "강좌명",
-      "강사ID",
-      "신청/정원",
-      "대기자/정원",
-      "학년",
-      "운영기간",
-      "강의시간",
-      "수강료",
-      "수강료출력",
-      "강사마감",
-      "환불마감",
-      "상태"
-    ].map(escapeCsv).join(",")];
+    var lines = [
+      [
+        "연번",
+        "구분",
+        "늘봄과정",
+        "강좌명",
+        "강사ID",
+        "신청/정원",
+        "대기자/정원",
+        "학년",
+        "운영기간",
+        "강의시간",
+        "수강료",
+        "수강료출력",
+        "강사마감",
+        "환불마감",
+        "상태",
+      ]
+        .map(escapeCsv)
+        .join(","),
+    ];
 
     (list || []).forEach(function (lec) {
-      lines.push([
-        escapeCsv(lec.id),
-        escapeCsv(lec.div || ""),
-        escapeCsv(lec.proType || ""),
-        escapeCsv(lec.name || ""),
-        escapeCsv(lec.teacherId || ""),
-        escapeCsv((Number(lec.applied) || 0) + " / " + (Number(lec.capacity) || 0)),
-        escapeCsv((Number(lec.waitApplied) || 0) + " / " + (Number(lec.waitCapacity) || 0)),
-        escapeCsv(lec.grades || ""),
-        escapeCsv((lec.periodStart || "") + "~" + (lec.periodEnd || "")),
-        escapeCsv(String(lec.lectureTime || "").replace(/\n/g, " / ")),
-        escapeCsv(Number(lec.fee) || 0),
-        escapeCsv(lec.feeVisible || "Y"),
-        escapeCsv(lec.teacherClosed || "-"),
-        escapeCsv(lec.refundClosed || "-"),
-        escapeCsv(statusLabel(lec.status))
-      ].join(","));
+      lines.push(
+        [
+          escapeCsv(lec.id),
+          escapeCsv(lec.div || ""),
+          escapeCsv(lec.proType || ""),
+          escapeCsv(lec.name || ""),
+          escapeCsv(lec.teacherId || ""),
+          escapeCsv(
+            (Number(lec.applied) || 0) + " / " + (Number(lec.capacity) || 0),
+          ),
+          escapeCsv(
+            (Number(lec.waitApplied) || 0) +
+              " / " +
+              (Number(lec.waitCapacity) || 0),
+          ),
+          escapeCsv(lec.grades || ""),
+          escapeCsv((lec.periodStart || "") + "~" + (lec.periodEnd || "")),
+          escapeCsv(String(lec.lectureTime || "").replace(/\n/g, " / ")),
+          escapeCsv(Number(lec.fee) || 0),
+          escapeCsv(lec.feeVisible || "Y"),
+          escapeCsv(lec.teacherClosed || "-"),
+          escapeCsv(lec.refundClosed || "-"),
+          escapeCsv(statusLabel(lec.status)),
+        ].join(","),
+      );
     });
 
     return lines;
@@ -737,7 +859,7 @@
       var statusMap = {
         status_1: 1,
         status_0: 0,
-        status_2: 2
+        status_2: 2,
       };
       if (Object.prototype.hasOwnProperty.call(statusMap, action)) {
         list = list.map(function (lec) {
@@ -752,12 +874,36 @@
       }
 
       var fieldMap = {
-        teacher_close_y: { field: "teacherClosed", value: "Y", message: "강사 마감이 일괄 적용되었습니다." },
-        teacher_close_n: { field: "teacherClosed", value: "-", message: "강사 마감을 해제했습니다." },
-        refund_close_y: { field: "refundClosed", value: "Y", message: "환불 마감이 일괄 적용되었습니다." },
-        refund_close_n: { field: "refundClosed", value: "-", message: "환불 마감을 해제했습니다." },
-        fee_visible_y: { field: "feeVisible", value: "Y", message: "수강료 출력이 일괄 적용되었습니다." },
-        fee_visible_n: { field: "feeVisible", value: "N", message: "수강료 출력을 숨김 처리했습니다." }
+        teacher_close_y: {
+          field: "teacherClosed",
+          value: "Y",
+          message: "강사 마감이 일괄 적용되었습니다.",
+        },
+        teacher_close_n: {
+          field: "teacherClosed",
+          value: "-",
+          message: "강사 마감을 해제했습니다.",
+        },
+        refund_close_y: {
+          field: "refundClosed",
+          value: "Y",
+          message: "환불 마감이 일괄 적용되었습니다.",
+        },
+        refund_close_n: {
+          field: "refundClosed",
+          value: "-",
+          message: "환불 마감을 해제했습니다.",
+        },
+        fee_visible_y: {
+          field: "feeVisible",
+          value: "Y",
+          message: "수강료 출력이 일괄 적용되었습니다.",
+        },
+        fee_visible_n: {
+          field: "feeVisible",
+          value: "N",
+          message: "수강료 출력을 숨김 처리했습니다.",
+        },
       };
 
       if (Object.prototype.hasOwnProperty.call(fieldMap, action)) {
@@ -774,7 +920,9 @@
       }
 
       if (action === "sync_fee_all") {
-        notify("신청자 수강료 전체 적용은 목록 데이터까지 연결된 뒤 이어서 맞추겠습니다.");
+        notify(
+          "신청자 수강료 전체 적용은 목록 데이터까지 연결된 뒤 이어서 맞추겠습니다.",
+        );
       }
     });
 
@@ -789,10 +937,14 @@
       var $icon = $wrap.find(".isu_toggle i");
 
       $(".isu_choice").not($menu).hide();
-      $(".isu_toggle i").not($icon).removeClass("fa-angle-up").addClass("fa-angle-down");
+      $(".isu_toggle i")
+        .not($icon)
+        .removeClass("fa-angle-up")
+        .addClass("fa-angle-down");
 
       $menu.toggle();
-      if ($menu.is(":visible")) $icon.removeClass("fa-angle-down").addClass("fa-angle-up");
+      if ($menu.is(":visible"))
+        $icon.removeClass("fa-angle-down").addClass("fa-angle-up");
       else $icon.removeClass("fa-angle-up").addClass("fa-angle-down");
     });
 
@@ -814,7 +966,9 @@
       var $statusBtn = $("#view_lec_status_" + num);
 
       $statusBtn.text(label);
-      $statusBtn.removeClass("btn-danger btn-default btn-primary").addClass(statusBtnClass(statusVal).replace(" isu_status_sm", ""));
+      $statusBtn
+        .removeClass("btn-danger btn-default btn-primary")
+        .addClass(statusBtnClass(statusVal).replace(" isu_status_sm", ""));
 
       $("#lec_status_num").val(num);
       $("#lec_status_val").val(statusVal);
@@ -841,10 +995,16 @@
 
       var html = [
         '<div class="' + boxClass + '" data-num="' + num + '">',
-        '  <input type="number" min="0" class="form-control input-sm max-input" value="' + currentMax + '"/>',
-        '  <button type="button" class="btn btn-primary btn-xs ' + saveClass + '">수정</button>',
-        '  <button type="button" class="btn btn-default btn-xs ' + cancelClass + '">취소</button>',
-        "</div>"
+        '  <input type="number" min="0" class="form-control input-sm max-input" value="' +
+          currentMax +
+          '"/>',
+        '  <button type="button" class="btn btn-primary btn-xs ' +
+          saveClass +
+          '">수정</button>',
+        '  <button type="button" class="btn btn-default btn-xs ' +
+          cancelClass +
+          '">취소</button>',
+        "</div>",
       ].join("");
 
       $cell.append(html);
@@ -921,7 +1081,10 @@
       });
       saveStore(list);
 
-      console.log("[AJAX POST] /af/ad_lec/max_wait", { num: num, max_wait: val });
+      console.log("[AJAX POST] /af/ad_lec/max_wait", {
+        num: num,
+        max_wait: val,
+      });
     });
 
     $(document).on("click", ".del-link", function (e) {
@@ -947,7 +1110,9 @@
     });
 
     $("#btn-excel").on("click", function () {
-      var lines = lectureExportLines(getFilteredLectures(getLectureFilterState($form)));
+      var lines = lectureExportLines(
+        getFilteredLectures(getLectureFilterState($form)),
+      );
       if (lines.length <= 1) {
         notify("내보낼 강좌가 없습니다.");
         return;
@@ -982,7 +1147,7 @@
   function downloadBulkTemplate(kind) {
     var lines = [
       "강좌명,강좌구분,늘봄과정,강사ID,정원,대기정원,운영시작일,운영종료일,강의시간,상태",
-      "창의미술,3월,돌봄,teacher01,20,5,2026-03-04,2026-03-28,월 3-4교시,출력"
+      "창의미술,3월,돌봄,teacher01,20,5,2026-03-04,2026-03-28,월 3-4교시,출력",
     ];
     downloadCsv(kind + "-template-" + nowStamp() + ".csv", lines);
   }
@@ -1043,7 +1208,7 @@
             feeVisible: "Y",
             teacherClosed: "-",
             refundClosed: "-",
-            status: status
+            status: status,
           });
           added += 1;
         });
@@ -1051,7 +1216,9 @@
         saveStore(list);
         notify("일괄 등록 완료: " + added + "건");
       } else {
-        notify("엑셀 파일 파싱은 데모에서 미지원입니다. CSV 사용을 권장합니다.");
+        notify(
+          "엑셀 파일 파싱은 데모에서 미지원입니다. CSV 사용을 권장합니다.",
+        );
       }
 
       localStorage.setItem("bulk_input_last_file", file.name);
@@ -1070,14 +1237,16 @@
         var list = loadStore();
         var lines = ["강좌번호,강좌명,강사ID,정원,대기정원,상태"];
         list.forEach(function (lec) {
-          lines.push([
-            escapeCsv(lec.id),
-            escapeCsv(lec.name),
-            escapeCsv(lec.teacherId),
-            escapeCsv(lec.capacity),
-            escapeCsv(lec.waitCapacity),
-            escapeCsv(statusLabel(lec.status))
-          ].join(","));
+          lines.push(
+            [
+              escapeCsv(lec.id),
+              escapeCsv(lec.name),
+              escapeCsv(lec.teacherId),
+              escapeCsv(lec.capacity),
+              escapeCsv(lec.waitCapacity),
+              escapeCsv(statusLabel(lec.status)),
+            ].join(","),
+          );
         });
         downloadCsv("current-lecture-list-" + nowStamp() + ".csv", lines);
       });
@@ -1111,9 +1280,14 @@
           var current = list[idx];
           if (row["강좌명"]) current.name = row["강좌명"];
           if (row["강사ID"]) current.teacherId = row["강사ID"];
-          if (row["정원"]) current.capacity = Number(row["정원"]) || current.capacity;
-          if (row["대기정원"]) current.waitCapacity = Number(row["대기정원"]) || current.waitCapacity;
-          if (row["상태"]) current.status = row["상태"] === "종료" ? 2 : row["상태"] === "대기" ? 0 : 1;
+          if (row["정원"])
+            current.capacity = Number(row["정원"]) || current.capacity;
+          if (row["대기정원"])
+            current.waitCapacity =
+              Number(row["대기정원"]) || current.waitCapacity;
+          if (row["상태"])
+            current.status =
+              row["상태"] === "종료" ? 2 : row["상태"] === "대기" ? 0 : 1;
 
           list[idx] = current;
           updated += 1;
@@ -1122,7 +1296,9 @@
         saveStore(list);
         notify("일괄 수정 완료: " + updated + "건");
       } else {
-        notify("엑셀 파일 파싱은 데모에서 미지원입니다. CSV 사용을 권장합니다.");
+        notify(
+          "엑셀 파일 파싱은 데모에서 미지원입니다. CSV 사용을 권장합니다.",
+        );
       }
 
       localStorage.setItem("bulk_modify_last_file", file.name);
@@ -1137,7 +1313,20 @@
     if (!$btn.length || !$from.length || !$to.length) return;
 
     (function populateCopySelects() {
-      var baseMonths = ["3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월", "1월", "2월"];
+      var baseMonths = [
+        "3월",
+        "4월",
+        "5월",
+        "6월",
+        "7월",
+        "8월",
+        "9월",
+        "10월",
+        "11월",
+        "12월",
+        "1월",
+        "2월",
+      ];
       var existing = loadStore()
         .map(function (lec) {
           return String(lec.div || "").trim();
@@ -1204,7 +1393,12 @@
       saveStore(list);
       localStorage.setItem(
         "copy_last_operation",
-        JSON.stringify({ from: fromVal, to: toVal, count: sources.length, at: new Date().toISOString() })
+        JSON.stringify({
+          from: fromVal,
+          to: toVal,
+          count: sources.length,
+          at: new Date().toISOString(),
+        }),
       );
       notify("일괄 복사 완료: " + sources.length + "건");
     });
@@ -1226,7 +1420,8 @@
       var filtered = list.filter(function (lec) {
         var ok = true;
         if (divVal) ok = ok && String(lec.div).indexOf(divVal) > -1;
-        if (proVal && proVal.indexOf("=") === -1) ok = ok && String(lec.proType) === proVal;
+        if (proVal && proVal.indexOf("=") === -1)
+          ok = ok && String(lec.proType) === proVal;
         return ok;
       });
 
@@ -1240,7 +1435,7 @@
             count: 0,
             cap: 0,
             applied: 0,
-            fee: 0
+            fee: 0,
           };
         }
         map[key].count += 1;
@@ -1264,24 +1459,44 @@
         sum.fee += r.fee;
         $tbody.append(
           "<tr>" +
-            "<td>" + (r.div || "") + "</td>" +
-            "<td>" + (r.proType || "") + "</td>" +
-            "<td>" + r.count + "</td>" +
-            "<td>" + r.cap + "</td>" +
-            "<td>" + r.applied + "</td>" +
-            "<td>" + r.fee + "</td>" +
-          "</tr>"
+            "<td>" +
+            (r.div || "") +
+            "</td>" +
+            "<td>" +
+            (r.proType || "") +
+            "</td>" +
+            "<td>" +
+            r.count +
+            "</td>" +
+            "<td>" +
+            r.cap +
+            "</td>" +
+            "<td>" +
+            r.applied +
+            "</td>" +
+            "<td>" +
+            r.fee +
+            "</td>" +
+            "</tr>",
         );
       });
 
       $tbody.append(
         "<tr>" +
           '<td colspan="2" class="text-right"><strong>합계</strong></td>' +
-          "<td>" + sum.count + "</td>" +
-          "<td>" + sum.cap + "</td>" +
-          "<td>" + sum.applied + "</td>" +
-          "<td>" + sum.fee + "</td>" +
-        "</tr>"
+          "<td>" +
+          sum.count +
+          "</td>" +
+          "<td>" +
+          sum.cap +
+          "</td>" +
+          "<td>" +
+          sum.applied +
+          "</td>" +
+          "<td>" +
+          sum.fee +
+          "</td>" +
+          "</tr>",
       );
     }
 
@@ -1318,7 +1533,7 @@
         date: "2025-07-23",
         status: "2",
         statusText: "완료",
-        answer: "07/23"
+        answer: "07/23",
       },
       {
         num: 2,
@@ -1327,7 +1542,7 @@
         date: "2025-08-01",
         status: "1",
         statusText: "처리중",
-        answer: "-"
+        answer: "-",
       },
       {
         num: 3,
@@ -1336,12 +1551,13 @@
         date: "2025-08-06",
         status: "0",
         statusText: "접수",
-        answer: "-"
-      }
+        answer: "-",
+      },
     ];
 
     function statusStyle(text) {
-      if (text === "완료" || text === "답변완료") return 'style="color:#EB9316;"';
+      if (text === "완료" || text === "답변완료")
+        return 'style="color:#EB9316;"';
       if (text === "처리중") return 'style="color:#337ab7;"';
       return 'style="color:#777;"';
     }
@@ -1349,11 +1565,23 @@
     function rowHtml(item) {
       return (
         "<tr>" +
-        "<td>" + item.num + "</td>" +
-        '<td class="text-left"><a href="#" class="link_type">' + item.subject + "</a></td>" +
-        "<td>" + item.date + "</td>" +
-        "<td><span " + statusStyle(item.statusText) + ">" + item.statusText + "</span></td>" +
-        "<td>" + item.answer + "</td>" +
+        "<td>" +
+        item.num +
+        "</td>" +
+        '<td class="text-left"><a href="#" class="link_type">' +
+        item.subject +
+        "</a></td>" +
+        "<td>" +
+        item.date +
+        "</td>" +
+        "<td><span " +
+        statusStyle(item.statusText) +
+        ">" +
+        item.statusText +
+        "</span></td>" +
+        "<td>" +
+        item.answer +
+        "</td>" +
         "</tr>"
       );
     }
@@ -1368,7 +1596,8 @@
         if (status !== "all") ok = ok && x.status === status;
         if (word) {
           if (target === "subject") ok = ok && x.subject.indexOf(word) > -1;
-          else if (target === "contents") ok = ok && x.contents.indexOf(word) > -1;
+          else if (target === "contents")
+            ok = ok && x.contents.indexOf(word) > -1;
           else ok = ok && (x.subject + " " + x.contents).indexOf(word) > -1;
         }
         return ok;
@@ -1376,7 +1605,9 @@
 
       $tbody.empty();
       if (!filtered.length) {
-        $tbody.append('<tr><td colspan="5" class="text-center text-muted">검색 결과가 없습니다.</td></tr>');
+        $tbody.append(
+          '<tr><td colspan="5" class="text-center text-muted">검색 결과가 없습니다.</td></tr>',
+        );
         return;
       }
       filtered.forEach(function (item) {
@@ -1472,19 +1703,33 @@
 
       $tbody.empty();
       if (!filtered.length) {
-        $tbody.append('<tr><td colspan="5" class="text-center text-muted">검색 결과가 없습니다.</td></tr>');
+        $tbody.append(
+          '<tr><td colspan="5" class="text-center text-muted">검색 결과가 없습니다.</td></tr>',
+        );
         return;
       }
 
       filtered.forEach(function (x, idx) {
         $tbody.append(
           "<tr>" +
-            "<td>" + (idx + 1) + "</td>" +
-            '<td class="text-left">' + (x.title || "") + "</td>" +
-            "<td>" + (x.date || "") + "</td>" +
-            '<td><span style="color:' + statusColor(x.status) + ';">' + statusLabel(x.status) + "</span></td>" +
-            "<td>" + (x.note || "-") + "</td>" +
-          "</tr>"
+            "<td>" +
+            (idx + 1) +
+            "</td>" +
+            '<td class="text-left">' +
+            (x.title || "") +
+            "</td>" +
+            "<td>" +
+            (x.date || "") +
+            "</td>" +
+            '<td><span style="color:' +
+            statusColor(x.status) +
+            ';">' +
+            statusLabel(x.status) +
+            "</span></td>" +
+            "<td>" +
+            (x.note || "-") +
+            "</td>" +
+            "</tr>",
         );
       });
     }
@@ -1501,14 +1746,18 @@
       if (!title) return notify("제목을 입력해 주세요.");
 
       var status = normalizeStatus($("#module-status").val() || "all");
-      if (status === "all") status = Object.keys(statusMap).filter(function (k) { return k !== "all"; })[0] || "all";
+      if (status === "all")
+        status =
+          Object.keys(statusMap).filter(function (k) {
+            return k !== "all";
+          })[0] || "all";
 
       var rows = load();
       rows.unshift({
         title: title,
         date: new Date().toISOString().slice(0, 10),
         status: status,
-        note: "-"
+        note: "-",
       });
       save(rows);
       $("#module-title").val("");
@@ -1533,8 +1782,10 @@
       var lecTimeDisplay = ($("#lec_time_").val() || lecTime).trim();
 
       if (!lecName) return notify("강좌명을 입력해 주세요.");
-      if (!lecDiv || lecDiv.indexOf("선택") > -1) return notify("강좌구분을 선택해 주세요.");
-      if (!lecProType || lecProType.indexOf("선택") > -1) return notify("늘봄과정을 선택해 주세요.");
+      if (!lecDiv || lecDiv.indexOf("선택") > -1)
+        return notify("강좌구분을 선택해 주세요.");
+      if (!lecProType || lecProType.indexOf("선택") > -1)
+        return notify("늘봄과정을 선택해 주세요.");
       if (!teaId) return notify("강사ID를 입력해 주세요.");
       if (!lecTime) return notify("강의시간을 선택해 주세요.");
 
@@ -1558,7 +1809,7 @@
         feeVisible: "Y",
         teacherClosed: "-",
         refundClosed: "-",
-        status: 1
+        status: 1,
       });
       saveStore(list);
 
@@ -1570,8 +1821,8 @@
           lec_pro_type: lecProType,
           tea_id: teaId,
           lec_time: lecTime,
-          at: new Date().toISOString()
-        })
+          at: new Date().toISOString(),
+        }),
       );
 
       notify("강좌 등록이 완료되었습니다.");
@@ -1609,7 +1860,7 @@
         title: title,
         type: type,
         content: content,
-        createdAt: new Date().toISOString()
+        createdAt: new Date().toISOString(),
       });
       localStorage.setItem(storageKey, JSON.stringify(rows));
 
@@ -1626,7 +1877,9 @@
     var $page = $(".manual-page");
 
     function textValue($el) {
-      return String($el.first().text() || "").replace(/\s+/g, " ").trim();
+      return String($el.first().text() || "")
+        .replace(/\s+/g, " ")
+        .trim();
     }
 
     function toKey(text, fallback) {
@@ -1666,7 +1919,7 @@
           return {
             key: key,
             title: title,
-            $box: $box
+            $box: $box,
           };
         })
         .get();
@@ -1696,12 +1949,22 @@
         });
         if (!items.length) return;
 
-        var html = ['<div class="manual-admin-list-wrap"><p class="manual-admin-title">관리자 추가 자료</p><ul class="manual-admin-list">'];
+        var html = [
+          '<div class="manual-admin-list-wrap"><p class="manual-admin-title">관리자 추가 자료</p><ul class="manual-admin-list">',
+        ];
         items.forEach(function (item) {
           html.push('<li data-manual-resource-id="' + item.id + '">');
-          html.push('<div class="manual-admin-item-title">' + escapeHtml(item.title || "자료") + "</div>");
+          html.push(
+            '<div class="manual-admin-item-title">' +
+              escapeHtml(item.title || "자료") +
+              "</div>",
+          );
           if (item.note) {
-            html.push('<div class="manual-admin-item-note">' + escapeHtml(item.note) + "</div>");
+            html.push(
+              '<div class="manual-admin-item-note">' +
+                escapeHtml(item.note) +
+                "</div>",
+            );
           }
           html.push('<div class="manual-admin-item-actions">');
           html.push(buttonHtml(item.docUrl, "문서", "fa-download"));
@@ -1709,7 +1972,7 @@
           html.push(
             '<button type="button" class="manual_btn manual-admin-remove" data-remove-manual-resource="' +
               item.id +
-              '"><i class="fa fa-trash-o"> 삭제</i></button>'
+              '"><i class="fa fa-trash-o"> 삭제</i></button>',
           );
           html.push("</div></li>");
         });
@@ -1725,7 +1988,13 @@
       var sections = getSections();
       var options = sections
         .map(function (section) {
-          return '<option value="' + section.key + '">' + escapeHtml(section.title) + "</option>";
+          return (
+            '<option value="' +
+            section.key +
+            '">' +
+            escapeHtml(section.title) +
+            "</option>"
+          );
         })
         .join("");
 
@@ -1734,15 +2003,19 @@
         '  <div class="panel-heading">자료 관리</div>',
         '  <div class="panel-body">',
         '    <div class="manual-admin-summary">',
-        '      <h4>문서·동영상 관리자</h4>',
-        '      <p>섹션을 선택한 뒤 문서 링크나 동영상 링크를 추가하면 현재 매뉴얼 화면에 바로 붙습니다. 브라우저에 저장되어 새로고침 후에도 유지됩니다.</p>',
+        "      <h4>문서·동영상 관리자</h4>",
+        "      <p>섹션을 선택한 뒤 문서 링크나 동영상 링크를 추가하면 현재 매뉴얼 화면에 바로 붙습니다. 브라우저에 저장되어 새로고침 후에도 유지됩니다.</p>",
         '      <div class="manual-admin-meta">',
-        '        <span class="manual-admin-chip"><i class="fa fa-folder-open"></i> 전체 섹션 ' + sections.length + "개</span>",
+        '        <span class="manual-admin-chip"><i class="fa fa-folder-open"></i> 전체 섹션 ' +
+          sections.length +
+          "개</span>",
         '        <span class="manual-admin-chip"><i class="fa fa-paperclip"></i> 추가 자료 <span id="manual-admin-count">0</span>개</span>',
         "      </div>",
         "    </div>",
         '    <form id="manual-admin-form" class="manual-admin-form">',
-        '      <select id="manual-admin-section" class="form-control">' + options + "</select>",
+        '      <select id="manual-admin-section" class="form-control">' +
+          options +
+          "</select>",
         '      <input id="manual-admin-title" type="text" class="form-control" placeholder="자료 제목을 입력하세요.">',
         '      <div class="manual-admin-grid">',
         '        <input id="manual-admin-doc-url" type="url" class="form-control" placeholder="문서 URL (선택)">',
@@ -1760,7 +2033,7 @@
         '      <div id="manual-admin-status" class="manual-admin-status info"></div>',
         "    </form>",
         "  </div>",
-        "</div>"
+        "</div>",
       ].join("");
 
       $page.children(".panel_main").first().before(html);
@@ -1768,11 +2041,16 @@
 
     function setStatus(type, message) {
       var $status = $("#manual-admin-status");
-      $status.removeClass("info error is-visible").addClass(type + " is-visible").text(message);
+      $status
+        .removeClass("info error is-visible")
+        .addClass(type + " is-visible")
+        .text(message);
     }
 
     function resetForm() {
-      $("#manual-admin-title, #manual-admin-doc-url, #manual-admin-video-url, #manual-admin-note").val("");
+      $(
+        "#manual-admin-title, #manual-admin-doc-url, #manual-admin-video-url, #manual-admin-note",
+      ).val("");
       $("#manual-admin-section").prop("selectedIndex", 0);
     }
 
@@ -1803,7 +2081,10 @@
       }
 
       if (!docUrl && !videoUrl) {
-        setStatus("error", "문서 URL 또는 동영상 URL 중 하나는 입력해야 합니다.");
+        setStatus(
+          "error",
+          "문서 URL 또는 동영상 URL 중 하나는 입력해야 합니다.",
+        );
         $("#manual-admin-doc-url").trigger("focus");
         return;
       }
@@ -1815,7 +2096,7 @@
         title: title,
         docUrl: docUrl,
         videoUrl: videoUrl,
-        note: note
+        note: note,
       });
       saveManualResources(items);
       renderManualResources();
@@ -1873,8 +2154,8 @@
             teacherId: "teacher01",
             periodStart: "",
             periodEnd: "",
-            lectureTime: "월 3-4교시"
-          }
+            lectureTime: "월 3-4교시",
+          },
         ];
       }
       sourceRows = storeRows.slice();
@@ -1899,9 +2180,13 @@
       $listWrap.empty();
       if (!rows.length) {
         if (!String($div.val() || "").trim()) {
-          $listWrap.html('<div class="text-muted">강좌구분을 선택해 주세요.</div>');
+          $listWrap.html(
+            '<div class="text-muted">강좌구분을 선택해 주세요.</div>',
+          );
         } else {
-          $listWrap.html('<div class="text-muted">선택 가능한 강좌가 없습니다.</div>');
+          $listWrap.html(
+            '<div class="text-muted">선택 가능한 강좌가 없습니다.</div>',
+          );
         }
         $all.prop("checked", false).prop("indeterminate", false);
         return;
@@ -1909,10 +2194,19 @@
 
       var html = ['<ul class="att-lecture-items">'];
       rows.forEach(function (lec) {
-        var label = "[" + (lec.div || "-") + "] [" + (lec.proType || "-") + "] " + (lec.name || "-");
+        var label =
+          "[" +
+          (lec.div || "-") +
+          "] [" +
+          (lec.proType || "-") +
+          "] " +
+          (lec.name || "-");
         html.push(
-          '<li><label><input type="checkbox" class="att-lec" value="' + (lec.id || "") + '" checked> ' +
-            label + "</label></li>"
+          '<li><label><input type="checkbox" class="att-lec" value="' +
+            (lec.id || "") +
+            '" checked> ' +
+            label +
+            "</label></li>",
         );
       });
       html.push("</ul>");
@@ -1923,10 +2217,17 @@
 
     function buildAttendanceCsv(selected, opts) {
       var lines = [];
-      var dayCount = opts.printDirection === "H" ? opts.colCountH : opts.colCountV;
+      var dayCount =
+        opts.printDirection === "H" ? opts.colCountH : opts.colCountV;
       if (dayCount < 3) dayCount = 3;
       if (dayCount > 31) dayCount = 31;
-      var header = ['"강좌번호"', '"강좌명"', '"강사ID"', '"운영기간"', '"강의시간"'];
+      var header = [
+        '"강좌번호"',
+        '"강좌명"',
+        '"강사ID"',
+        '"운영기간"',
+        '"강의시간"',
+      ];
       for (var i = 1; i <= dayCount; i += 1) {
         header.push('"출석' + i + '"');
       }
@@ -1938,7 +2239,7 @@
           escapeCsv(lec.name),
           escapeCsv(lec.teacherId),
           escapeCsv((lec.periodStart || "") + "~" + (lec.periodEnd || "")),
-          escapeCsv(lec.lectureTime || "")
+          escapeCsv(lec.lectureTime || ""),
         ];
         for (var j = 1; j <= dayCount; j += 1) row.push('""');
         if (opts.viewHp === "2") row.push('""');
@@ -1950,14 +2251,20 @@
     function applyPrintDirectionStyle() {
       var dir = $("input[name='op_pr_dir']:checked").val() || "V";
       var isVertical = dir === "V";
-      $("#op_col_cnt_h, #op_col_width_h, #op_row_cnt_h, #op_row_height_h").toggleClass("att-highlight", !isVertical);
-      $("#op_col_cnt_v, #op_col_width_v, #op_row_cnt_v, #op_row_height_v").toggleClass("att-highlight", isVertical);
+      $(
+        "#op_col_cnt_h, #op_col_width_h, #op_row_cnt_h, #op_row_height_h",
+      ).toggleClass("att-highlight", !isVertical);
+      $(
+        "#op_col_cnt_v, #op_col_width_v, #op_row_cnt_v, #op_row_height_v",
+      ).toggleClass("att-highlight", isVertical);
     }
 
     $div.on("change", renderList);
     $pro.on("change", renderList);
     $("input[name='op_pr_dir']").on("change", applyPrintDirectionStyle);
-    $("#op_col_cnt_h, #op_col_width_h, #op_col_cnt_v, #op_col_width_v, #op_row_cnt_h, #op_row_height_h, #op_row_cnt_v, #op_row_height_v").on("input", function () {
+    $(
+      "#op_col_cnt_h, #op_col_width_h, #op_col_cnt_v, #op_col_width_v, #op_row_cnt_h, #op_row_height_h, #op_row_cnt_v, #op_row_height_v",
+    ).on("input", function () {
       this.value = String(this.value || "").replace(/[^\d]/g, "");
     });
 
@@ -1981,7 +2288,9 @@
       }
 
       var ids = $(".att-lec:checked")
-        .map(function () { return Number(this.value) || 0; })
+        .map(function () {
+          return Number(this.value) || 0;
+        })
         .get()
         .filter(Boolean);
       if (!ids.length) {
@@ -1994,22 +2303,33 @@
       var colCntV = intVal("#op_col_cnt_v");
       var rowCntH = intVal("#op_row_cnt_h");
       var rowCntV = intVal("#op_row_cnt_v");
-      if (colCntH < 3) return notify("수업 일수(가로 인쇄) : 최소 3칸 이상입니다.");
-      if (colCntV < 3) return notify("수업 일수(세로 인쇄) : 최소 3칸 이상입니다.");
-      if (rowCntH < 3) return notify("학생 명단(가로 인쇄) : 최소 3칸 이상입니다.");
-      if (rowCntV < 3) return notify("학생 명단(세로 인쇄) : 최소 3칸 이상입니다.");
+      if (colCntH < 3)
+        return notify("수업 일수(가로 인쇄) : 최소 3칸 이상입니다.");
+      if (colCntV < 3)
+        return notify("수업 일수(세로 인쇄) : 최소 3칸 이상입니다.");
+      if (rowCntH < 3)
+        return notify("학생 명단(가로 인쇄) : 최소 3칸 이상입니다.");
+      if (rowCntV < 3)
+        return notify("학생 명단(세로 인쇄) : 최소 3칸 이상입니다.");
 
       var list = sourceRows.filter(function (lec) {
         return ids.indexOf(Number(lec.id)) > -1;
       });
       if (!list.length) return notify("출력할 데이터가 없습니다.");
 
-      if (!window.confirm("출력하시겠습니까?\n\n(데이터가 많은 경우 처리되는 시간이 다소 지연될 수 있습니다.)")) return;
+      if (
+        !window.confirm(
+          "출력하시겠습니까?\n\n(데이터가 많은 경우 처리되는 시간이 다소 지연될 수 있습니다.)",
+        )
+      )
+        return;
       var opts = {
         viewHp: String($("input[name='op_view_hp']:checked").val() || "1"),
-        printDirection: String($("input[name='op_pr_dir']:checked").val() || "V"),
+        printDirection: String(
+          $("input[name='op_pr_dir']:checked").val() || "V",
+        ),
         colCountH: colCntH,
-        colCountV: colCntV
+        colCountV: colCntV,
       };
       var lines = buildAttendanceCsv(list, opts);
       downloadCsv("attendance-sheet-" + nowStamp() + ".csv", lines);
@@ -2028,7 +2348,9 @@
     if ($lecSel.length) {
       var options = [];
       $table.find("tbody tr").each(function () {
-        var text = String($(this).find("td.text-left").first().text() || "").replace(/\s+/g, " ").trim();
+        var text = String($(this).find("td.text-left").first().text() || "")
+          .replace(/\s+/g, " ")
+          .trim();
         if (!text) return;
         if (options.indexOf(text) < 0) options.push(text);
       });
@@ -2045,7 +2367,7 @@
       var processMap = {
         lec_pro_type1: "방과후",
         lec_pro_type2: "맞춤형",
-        lec_pro_type3: "돌봄"
+        lec_pro_type3: "돌봄",
       };
       $table.find("tbody tr").each(function (idx) {
         var $tr = $(this);
@@ -2065,23 +2387,35 @@
         }
 
         var $lecCell = $td.eq(3);
-        var lecText = String($lecCell.text() || "").replace(/\s+/g, " ").trim();
+        var lecText = String($lecCell.text() || "")
+          .replace(/\s+/g, " ")
+          .trim();
         if (!lecText || /\?/.test(lecText)) {
           var rowNo = String($td.eq(1).text() || "").trim() || String(idx + 1);
           $lecCell.text("[강좌] 신청 강좌 " + rowNo);
         }
 
         var $nameCell = $td.eq(7);
-        var nameText = String($nameCell.text() || "").replace(/\s+/g, " ").trim();
+        var nameText = String($nameCell.text() || "")
+          .replace(/\s+/g, " ")
+          .trim();
         if (!nameText || /\?/.test(nameText)) {
           var fixedName = "학생" + (idx + 1);
           var $nameLink = $nameCell.find("a.link_type").first();
           if ($nameLink.length) $nameLink.text(fixedName);
-          $nameCell.find("a").not($nameLink).each(function () {
-            var $a = $(this);
-            if (!$a.find("i").length) $a.text("");
-          });
-          $nameCell.contents().filter(function () { return this.nodeType === 3; }).remove();
+          $nameCell
+            .find("a")
+            .not($nameLink)
+            .each(function () {
+              var $a = $(this);
+              if (!$a.find("i").length) $a.text("");
+            });
+          $nameCell
+            .contents()
+            .filter(function () {
+              return this.nodeType === 3;
+            })
+            .remove();
           if (!$nameLink.length) $nameCell.prepend(fixedName);
         }
 
@@ -2089,7 +2423,9 @@
         var phoneText = String($phoneCell.text() || "");
         var phoneMatch = phoneText.match(/\b01\d-\d{3,4}-\d{4}\b/);
         if (!phoneMatch) {
-          var hiddenVal = String($phoneCell.find("input[type='hidden']").val() || "");
+          var hiddenVal = String(
+            $phoneCell.find("input[type='hidden']").val() || "",
+          );
           phoneMatch = hiddenVal.match(/\b01\d-\d{3,4}-\d{4}\b/);
         }
         if (!phoneMatch) {
@@ -2117,25 +2453,37 @@
     }
 
     function addApplicantRow(data) {
-      var $rows = $table.find("tbody tr").filter(function () { return $(this).find("td").length > 0; });
-      var nextNo = $rows.length ? Number($rows.first().find("td:eq(1)").text()) + 1 : 1;
+      var $rows = $table.find("tbody tr").filter(function () {
+        return $(this).find("td").length > 0;
+      });
+      var nextNo = $rows.length
+        ? Number($rows.first().find("td:eq(1)").text()) + 1
+        : 1;
       var rowNo = String(nextNo || 1);
       var today = new Date().toISOString().slice(0, 10);
       var html = [
         "<tr>",
-        '<td><input type="checkbox" name="data_checked[]" value="' + Date.now() + '"></td>',
+        '<td><input type="checkbox" name="data_checked[]" value="' +
+          Date.now() +
+          '"></td>',
         "<td>" + rowNo + "</td>",
-        "<td>2월<br><span class=\"lec_pro_type3\">돌봄</span></td>",
-        "<td class=\"text-left\">[강좌] " + (data.lecture || ("신청 강좌 " + rowNo)) + "</td>",
+        '<td>2월<br><span class="lec_pro_type3">돌봄</span></td>',
+        '<td class="text-left">[강좌] ' +
+          (data.lecture || "신청 강좌 " + rowNo) +
+          "</td>",
         "<td>" + (data.grade || "2") + "</td>",
         "<td>" + (data.classNo || "1") + "</td>",
         "<td>" + (data.stuNo || "1") + "</td>",
-        "<td style=\"position:relative;\"><a href=\"#\" class=\"link_type\">" + (data.name || ("학생" + rowNo)) + "</a> <a href=\"#none;\"><i class=\"fa fa-list-alt\"></i></a></td>",
-        "<td style=\"position:relative;\"><span>" + (data.phone || "-") + "</span> <a href=\"#none;\"><i class=\"fa fa-pencil-square\"></i></a></td>",
+        '<td style="position:relative;"><a href="#" class="link_type">' +
+          (data.name || "학생" + rowNo) +
+          '</a> <a href="#none;"><i class="fa fa-list-alt"></i></a></td>',
+        '<td style="position:relative;"><span>' +
+          (data.phone || "-") +
+          '</span> <a href="#none;"><i class="fa fa-pencil-square"></i></a></td>',
         "<td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>",
         "<td>" + today + "<br>09:00:00</td>",
         '<td><a href="#none;" class="del-link"><i class="fa fa-trash-o icon_btn"></i></a></td>',
-        "</tr>"
+        "</tr>",
       ].join("");
       $table.find("tbody").prepend(html);
     }
@@ -2154,28 +2502,40 @@
             ($td.eq(1).text() || "").trim(),
             ($td.eq(3).text() || "").replace(/\s+/g, " ").trim(),
             ($td.eq(7).text() || "").replace(/\s+/g, " ").trim(),
-            ($td.eq(8).text() || "").replace(/\s+/g, " ").trim()
-          ].join(",")
+            ($td.eq(8).text() || "").replace(/\s+/g, " ").trim(),
+          ].join(","),
         );
       });
-      downloadText("applicants-" + kind + "-" + nowStamp() + ".txt", lines.join("\n"));
+      downloadText(
+        "applicants-" + kind + "-" + nowStamp() + ".txt",
+        lines.join("\n"),
+      );
     }
 
     function handleApplicantsAction(actionKey) {
       if (actionKey === "sin") {
-        var name = String(window.prompt("학생 이름을 입력해 주세요.", "신규학생") || "").trim();
+        var name = String(
+          window.prompt("학생 이름을 입력해 주세요.", "신규학생") || "",
+        ).trim();
         if (!name) return;
-        var phone = String(window.prompt("연락처를 입력해 주세요.", "010-0000-0000") || "").trim();
+        var phone = String(
+          window.prompt("연락처를 입력해 주세요.", "010-0000-0000") || "",
+        ).trim();
         addApplicantRow({ name: name, phone: phone });
         notify("신청자 등록이 완료되었습니다.");
         return;
       }
       if (actionKey === "input") {
-        downloadText("applicants-bulk-template-" + nowStamp() + ".csv", "이름,연락처,학년,반,강좌명\n홍길동,010-0000-0000,2,1,신청 강좌");
+        downloadText(
+          "applicants-bulk-template-" + nowStamp() + ".csv",
+          "이름,연락처,학년,반,강좌명\n홍길동,010-0000-0000,2,1,신청 강좌",
+        );
         return;
       }
       if (actionKey === "copy") {
-        var $checked = $("#fm_list input[name='data_checked[]']:checked").closest("tr");
+        var $checked = $(
+          "#fm_list input[name='data_checked[]']:checked",
+        ).closest("tr");
         if (!$checked.length) {
           notify("복사할 신청자를 선택해 주세요.");
           return;
@@ -2207,33 +2567,49 @@
         return;
       }
       if (actionKey === "pay") {
-        notify("수강료 입력 화면은 로컬 데모에서 표 데이터 편집으로 대체됩니다.");
+        notify(
+          "수강료 입력 화면은 로컬 데모에서 표 데이터 편집으로 대체됩니다.",
+        );
       }
     }
 
     $(document).on("click", ".module-raw-content a[href]", function (e) {
       var href = String($(this).attr("href") || "").trim();
       if (!href) return;
-      if (/\/af\/ad_app\/listse\//i.test(href) || /applicants\.html\?download=search/i.test(href)) {
+      if (
+        /\/af\/ad_app\/listse\//i.test(href) ||
+        /applicants\.html\?download=search/i.test(href)
+      ) {
         e.preventDefault();
         downloadApplicantsCsv("applicants-search-result");
         return;
       }
-      if (/\/af\/ad_app\/excel\//i.test(href) || /applicants\.html\?download=all/i.test(href)) {
+      if (
+        /\/af\/ad_app\/excel\//i.test(href) ||
+        /applicants\.html\?download=all/i.test(href)
+      ) {
         e.preventDefault();
         downloadApplicantsCsv("applicants-result");
         return;
       }
-      if (/\/af\/ad_app\/(sin|input|copy|com|list1|pdf|pdf1|pdf2)\//i.test(href) || /\/af\/ad_pay\/edit\//i.test(href)) {
+      if (
+        /\/af\/ad_app\/(sin|input|copy|com|list1|pdf|pdf1|pdf2)\//i.test(
+          href,
+        ) ||
+        /\/af\/ad_pay\/edit\//i.test(href)
+      ) {
         e.preventDefault();
         var mapped = mapDbdbUrlToLocal(href);
         if (mapped) {
           window.location.href = mapped;
           return;
         }
-        var m = href.match(/\/af\/ad_app\/(sin|input|copy|com|list1|pdf|pdf1|pdf2)\//i);
+        var m = href.match(
+          /\/af\/ad_app\/(sin|input|copy|com|list1|pdf|pdf1|pdf2)\//i,
+        );
         if (m && m[1]) handleApplicantsAction(String(m[1]).toLowerCase());
-        else if (/\/af\/ad_pay\/edit\//i.test(href)) handleApplicantsAction("pay");
+        else if (/\/af\/ad_pay\/edit\//i.test(href))
+          handleApplicantsAction("pay");
       }
     });
 
@@ -2244,7 +2620,10 @@
       if (dl === "all") downloadApplicantsCsv("applicants-result");
       var mode = String(params.get("mode") || "").trim();
       if (mode) {
-        var modeHref = mode === "pay" ? "https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848" : "https://www.dbdbschool.kr/af/ad_app/" + mode + "/p/1/sn/2848";
+        var modeHref =
+          mode === "pay"
+            ? "https://www.dbdbschool.kr/af/ad_pay/edit/p/1/sn/2848"
+            : "https://www.dbdbschool.kr/af/ad_app/" + mode + "/p/1/sn/2848";
         var mappedMode = mapDbdbUrlToLocal(modeHref);
         if (mappedMode) window.location.href = mappedMode;
         else handleApplicantsAction(mode);
@@ -2260,40 +2639,46 @@
     (function normalizeWaitSearchOptions() {
       var monthByValue = {
         all: "=강좌구분=",
-        "1": "3월",
-        "2": "4월",
-        "3": "5월",
-        "4": "6월",
-        "5": "7월",
-        "6": "8월",
-        "7": "9월",
-        "8": "10월",
-        "9": "11월",
-        "10": "12월",
-        "11": "1월",
-        "12": "2월",
-        "13": "2026년 3월"
+        1: "3월",
+        2: "4월",
+        3: "5월",
+        4: "6월",
+        5: "7월",
+        6: "8월",
+        7: "9월",
+        8: "10월",
+        9: "11월",
+        10: "12월",
+        11: "1월",
+        12: "2월",
+        13: "2026년 3월",
       };
       var courseByValue = {
         all: "=늘봄과정=",
-        "1": "방과후",
-        "2": "맞춤형",
-        "3": "돌봄"
+        1: "방과후",
+        2: "맞춤형",
+        3: "돌봄",
       };
 
-      $("form[name='fm_list_search'] select[name='sld'] option").each(function () {
-        var $opt = $(this);
-        var value = String($opt.attr("value") || "").trim();
-        var text = String($opt.text() || "").trim();
-        if (/\?/.test(text) && monthByValue[value]) $opt.text(monthByValue[value]);
-      });
+      $("form[name='fm_list_search'] select[name='sld'] option").each(
+        function () {
+          var $opt = $(this);
+          var value = String($opt.attr("value") || "").trim();
+          var text = String($opt.text() || "").trim();
+          if (/\?/.test(text) && monthByValue[value])
+            $opt.text(monthByValue[value]);
+        },
+      );
 
-      $("form[name='fm_list_search'] select[name='slp'] option").each(function () {
-        var $opt = $(this);
-        var value = String($opt.attr("value") || "").trim();
-        var text = String($opt.text() || "").trim();
-        if (/\?/.test(text) && courseByValue[value]) $opt.text(courseByValue[value]);
-      });
+      $("form[name='fm_list_search'] select[name='slp'] option").each(
+        function () {
+          var $opt = $(this);
+          var value = String($opt.attr("value") || "").trim();
+          var text = String($opt.text() || "").trim();
+          if (/\?/.test(text) && courseByValue[value])
+            $opt.text(courseByValue[value]);
+        },
+      );
     })();
 
     var $table = $(".module-raw-content table").first();
@@ -2310,15 +2695,20 @@
         if (/\?/.test(catText)) $catCell.text("2월");
 
         var $lecCell = $td.eq(4);
-        var lecText = String($lecCell.text() || "").replace(/\s+/g, " ").trim();
+        var lecText = String($lecCell.text() || "")
+          .replace(/\s+/g, " ")
+          .trim();
         if (!lecText || /\?/.test(lecText)) {
           var rowNo = String($td.eq(1).text() || "").trim() || String(idx + 1);
           $lecCell.text("[대기] 신청 강좌 " + rowNo);
         }
 
         var $nameCell = $td.eq(8);
-        var nameText = String($nameCell.text() || "").replace(/\s+/g, " ").trim();
-        if (!nameText || /\?/.test(nameText)) $nameCell.text("학생" + (idx + 1));
+        var nameText = String($nameCell.text() || "")
+          .replace(/\s+/g, " ")
+          .trim();
+        if (!nameText || /\?/.test(nameText))
+          $nameCell.text("학생" + (idx + 1));
 
         var $phoneCell = $td.eq(9);
         var phoneText = String($phoneCell.text() || "");
@@ -2328,7 +2718,9 @@
 
         var $applyBtn = $td.eq(2).find("button");
         if ($applyBtn.length) {
-          var applyText = String($applyBtn.text() || "").replace(/\s+/g, " ").trim();
+          var applyText = String($applyBtn.text() || "")
+            .replace(/\s+/g, " ")
+            .trim();
           if (!applyText || /\?/.test(applyText)) $applyBtn.text("신청");
         }
       });
@@ -2352,43 +2744,60 @@
 
     function addWaitRow(data) {
       var $rows = visibleRows();
-      var nextRank = $rows.length ? Number($rows.last().find("td:eq(1)").text()) + 1 : 1;
-      var nextNo = $rows.length ? Number($rows.first().find("td:eq(7)").text()) + 1 : 1;
+      var nextRank = $rows.length
+        ? Number($rows.last().find("td:eq(1)").text()) + 1
+        : 1;
+      var nextNo = $rows.length
+        ? Number($rows.first().find("td:eq(7)").text()) + 1
+        : 1;
       var today = new Date().toISOString().slice(0, 10);
       var html = [
         "<tr>",
-        '<td><input type="checkbox" name="data_checked[]" value="' + Date.now() + '"></td>',
+        '<td><input type="checkbox" name="data_checked[]" value="' +
+          Date.now() +
+          '"></td>',
         "<td>" + nextRank + "</td>",
         '<td><button type="button" class="btn btn-primary btn-sm btn-wait-apply">신청</button></td>',
         "<td>2월</td>",
-        '<td class="text-left">[대기] ' + (data.lecture || ("신청 강좌 " + nextRank)) + "</td>",
+        '<td class="text-left">[대기] ' +
+          (data.lecture || "신청 강좌 " + nextRank) +
+          "</td>",
         "<td>" + (data.grade || "2") + "</td>",
         "<td>" + (data.classNo || "1") + "</td>",
         "<td>" + nextNo + "</td>",
-        "<td>" + (data.name || ("학생" + nextRank)) + "</td>",
+        "<td>" + (data.name || "학생" + nextRank) + "</td>",
         "<td>" + (data.phone || "-") + "</td>",
         "<td>" + today + "<br>09:00:00</td>",
         '<td><a href="#none;" class="del-link"><i class="fa fa-trash-o icon_btn"></i></a></td>',
-        "</tr>"
+        "</tr>",
       ].join("");
       $table.find("tbody").append(html);
     }
 
     function handleWaitAction(actionKey) {
       if (actionKey === "sin") {
-        var name = String(window.prompt("대기자 이름을 입력해 주세요.", "신규대기자") || "").trim();
+        var name = String(
+          window.prompt("대기자 이름을 입력해 주세요.", "신규대기자") || "",
+        ).trim();
         if (!name) return;
-        var phone = String(window.prompt("연락처를 입력해 주세요.", "010-0000-0000") || "").trim();
+        var phone = String(
+          window.prompt("연락처를 입력해 주세요.", "010-0000-0000") || "",
+        ).trim();
         addWaitRow({ name: name, phone: phone });
         notify("대기자 등록이 완료되었습니다.");
         return;
       }
       if (actionKey === "input") {
-        downloadText("waitlist-bulk-template-" + nowStamp() + ".csv", "이름,연락처,학년,반,강좌명\n홍길동,010-0000-0000,2,1,신청 강좌");
+        downloadText(
+          "waitlist-bulk-template-" + nowStamp() + ".csv",
+          "이름,연락처,학년,반,강좌명\n홍길동,010-0000-0000,2,1,신청 강좌",
+        );
         return;
       }
       if (actionKey === "copy") {
-        var $checked = $("#fm_list input[name='data_checked[]']:checked").closest("tr");
+        var $checked = $(
+          "#fm_list input[name='data_checked[]']:checked",
+        ).closest("tr");
         if (!$checked.length) {
           notify("복사할 대기자를 선택해 주세요.");
           return;
@@ -2407,21 +2816,32 @@
     $(document).on("click", ".module-raw-content .btn-wait-apply", function () {
       var $btn = $(this);
       var $tr = $btn.closest("tr");
-      $btn.removeClass("btn-primary").addClass("btn-default").text("처리완료").prop("disabled", true);
+      $btn
+        .removeClass("btn-primary")
+        .addClass("btn-default")
+        .text("처리완료")
+        .prop("disabled", true);
       $tr.addClass("wait-applied");
       notify("대기자 신청 처리가 완료되었습니다.");
     });
 
-    $(document).on("click", ".module-raw-content button[onclick*='chk_app(']", function (e) {
-      e.preventDefault();
-      $(this).removeAttr("onclick").addClass("btn-wait-apply").text("신청");
-      $(this).trigger("click");
-    });
+    $(document).on(
+      "click",
+      ".module-raw-content button[onclick*='chk_app(']",
+      function (e) {
+        e.preventDefault();
+        $(this).removeAttr("onclick").addClass("btn-wait-apply").text("신청");
+        $(this).trigger("click");
+      },
+    );
 
     $(document).on("click", ".module-raw-content a[href]", function (e) {
       var href = String($(this).attr("href") || "").trim();
       if (!href) return;
-      if (/\/af\/ad_wait\/excel\//i.test(href) || /waitlist\.html\?download=all/i.test(href)) {
+      if (
+        /\/af\/ad_wait\/excel\//i.test(href) ||
+        /waitlist\.html\?download=all/i.test(href)
+      ) {
         e.preventDefault();
         downloadWaitCsv("waitlist-result");
         return;
@@ -2440,7 +2860,8 @@
       if (dl === "all") downloadWaitCsv("waitlist-result");
       var mode = String(params.get("mode") || "").trim();
       if (mode) handleWaitAction(mode);
-      if (dl || mode) window.history.replaceState({}, "", window.location.pathname);
+      if (dl || mode)
+        window.history.replaceState({}, "", window.location.pathname);
     }
   }
 
@@ -2479,17 +2900,47 @@
       { re: /^\/af\/ad_att\/excel\//, file: "./attendance.html" },
       { re: /^\/af\/ad_lec\/lists\//, file: "./index.html" },
       { re: /^\/af\/ad_app\/lists\//, file: "./applicants.html" },
-      { re: /^\/af\/ad_app\/listse\//, file: "./applicants.html?download=search" },
+      {
+        re: /^\/af\/ad_app\/listse\//,
+        file: "./applicants.html?download=search",
+      },
       { re: /^\/af\/ad_app\/excel\//, file: "./applicants.html?download=all" },
-      { re: /^\/af\/ad_app\/sin\//, file: "./applicants-subpage.html?kind=sin" },
-      { re: /^\/af\/ad_app\/input\//, file: "./applicants-subpage.html?kind=input" },
-      { re: /^\/af\/ad_app\/copy\//, file: "./applicants-subpage.html?kind=copy" },
-      { re: /^\/af\/ad_app\/com\//, file: "./applicants-subpage.html?kind=com" },
-      { re: /^\/af\/ad_app\/list1\//, file: "./applicants-subpage.html?kind=list1" },
-      { re: /^\/af\/ad_app\/pdf\//, file: "./applicants-subpage.html?kind=pdf" },
-      { re: /^\/af\/ad_app\/pdf1\//, file: "./applicants-subpage.html?kind=pdf1" },
-      { re: /^\/af\/ad_app\/pdf2\//, file: "./applicants-subpage.html?kind=pdf2" },
-      { re: /^\/af\/ad_pay\/edit\//, file: "./applicants-subpage.html?kind=pay" },
+      {
+        re: /^\/af\/ad_app\/sin\//,
+        file: "./applicants-subpage.html?kind=sin",
+      },
+      {
+        re: /^\/af\/ad_app\/input\//,
+        file: "./applicants-subpage.html?kind=input",
+      },
+      {
+        re: /^\/af\/ad_app\/copy\//,
+        file: "./applicants-subpage.html?kind=copy",
+      },
+      {
+        re: /^\/af\/ad_app\/com\//,
+        file: "./applicants-subpage.html?kind=com",
+      },
+      {
+        re: /^\/af\/ad_app\/list1\//,
+        file: "./applicants-subpage.html?kind=list1",
+      },
+      {
+        re: /^\/af\/ad_app\/pdf\//,
+        file: "./applicants-subpage.html?kind=pdf",
+      },
+      {
+        re: /^\/af\/ad_app\/pdf1\//,
+        file: "./applicants-subpage.html?kind=pdf1",
+      },
+      {
+        re: /^\/af\/ad_app\/pdf2\//,
+        file: "./applicants-subpage.html?kind=pdf2",
+      },
+      {
+        re: /^\/af\/ad_pay\/edit\//,
+        file: "./applicants-subpage.html?kind=pay",
+      },
       { re: /^\/af\/ad_wait\/lists\//, file: "./waitlist.html" },
       { re: /^\/af\/ad_wait\/excel\//, file: "./waitlist.html?download=all" },
       { re: /^\/af\/ad_wait\/sin\//, file: "./waitlist.html?mode=sin" },
@@ -2497,24 +2948,66 @@
       { re: /^\/af\/ad_wait\/copy\//, file: "./waitlist.html?mode=copy" },
       { re: /^\/af\/ad_refund\/lists\//, file: "./refund.html" },
       { re: /^\/af\/ad_free2_stu\/lists\//, file: "./fund-targets.html" },
-      { re: /^\/af\/ad_free2_stu\/write\//, file: "./fund-targets.html?mode=write" },
-      { re: /^\/af\/ad_free2_stu\/input\//, file: "./fund-targets.html?mode=input" },
-      { re: /^\/af\/ad_free2_stu\/listse1\//, file: "./fund-targets.html?download=all" },
-      { re: /^\/af\/ad_free2_stu\/listse\//, file: "./fund-targets.html?download=search" },
+      {
+        re: /^\/af\/ad_free2_stu\/write\//,
+        file: "./fund-targets.html?mode=write",
+      },
+      {
+        re: /^\/af\/ad_free2_stu\/input\//,
+        file: "./fund-targets.html?mode=input",
+      },
+      {
+        re: /^\/af\/ad_free2_stu\/listse1\//,
+        file: "./fund-targets.html?download=all",
+      },
+      {
+        re: /^\/af\/ad_free2_stu\/listse\//,
+        file: "./fund-targets.html?download=search",
+      },
       { re: /^\/af\/ad_free2_stu\/del\//, file: "./fund-targets.html" },
       { re: /^\/af\/ad_free2_app\/lists\//, file: "./fund-apps.html" },
-      { re: /^\/af\/ad_free2_app\/write\//, file: "./fund-apps.html?mode=write" },
-      { re: /^\/af\/ad_free2_app\/apply\//, file: "./fund-apps.html?mode=apply" },
-      { re: /^\/af\/ad_free2_app\/listse\//, file: "./fund-apps.html?download=search" },
-      { re: /^\/af\/ad_free2_app\/excel6\//, file: "./fund-apps.html?download=all_collect" },
-      { re: /^\/af\/ad_free2_appe\/excel2\//, file: "./fund-apps.html?download=month" },
-      { re: /^\/af\/ad_free2_appe\/excel3\//, file: "./fund-apps.html?download=bank" },
-      { re: /^\/af\/ad_free2_appe\/excel4\//, file: "./fund-apps.html?download=admin" },
-      { re: /^\/af\/ad_free2_appe\/excel5\//, file: "./fund-apps.html?download=neis" },
-      { re: /^\/af\/ad_free2_app\/free_month\//, file: "./fund-apps.html?mode=free_month" },
+      {
+        re: /^\/af\/ad_free2_app\/write\//,
+        file: "./fund-apps.html?mode=write",
+      },
+      {
+        re: /^\/af\/ad_free2_app\/apply\//,
+        file: "./fund-apps.html?mode=apply",
+      },
+      {
+        re: /^\/af\/ad_free2_app\/listse\//,
+        file: "./fund-apps.html?download=search",
+      },
+      {
+        re: /^\/af\/ad_free2_app\/excel6\//,
+        file: "./fund-apps.html?download=all_collect",
+      },
+      {
+        re: /^\/af\/ad_free2_appe\/excel2\//,
+        file: "./fund-apps.html?download=month",
+      },
+      {
+        re: /^\/af\/ad_free2_appe\/excel3\//,
+        file: "./fund-apps.html?download=bank",
+      },
+      {
+        re: /^\/af\/ad_free2_appe\/excel4\//,
+        file: "./fund-apps.html?download=admin",
+      },
+      {
+        re: /^\/af\/ad_free2_appe\/excel5\//,
+        file: "./fund-apps.html?download=neis",
+      },
+      {
+        re: /^\/af\/ad_free2_app\/free_month\//,
+        file: "./fund-apps.html?mode=free_month",
+      },
       { re: /^\/af\/ad_free2_app\/del\//, file: "./fund-apps.html" },
       { re: /^\/af\/ad_free2_cfg\/main\//, file: "./fund-config.html" },
-      { re: /^\/af\/ad_free2_cfg\/sorts\//, file: "./popups/fund-config-sorts.html" },
+      {
+        re: /^\/af\/ad_free2_cfg\/sorts\//,
+        file: "./popups/fund-config-sorts.html",
+      },
       { re: /^\/af\/ad_free2_cfg\/free\d+\//, file: "./fund-rank.html" },
       { re: /^\/af\/ad_fund\/target/, file: "./fund-targets.html" },
       { re: /^\/af\/ad_fund\/app/, file: "./fund-apps.html" },
@@ -2524,7 +3017,10 @@
       { re: /^\/af\/ad_tea\/write\//, file: "./teacher.html?mode=write" },
       { re: /^\/af\/ad_tea\/input\//, file: "./teacher.html?mode=input" },
       { re: /^\/af\/ad_tea\/listse\//, file: "./teacher.html?download=search" },
-      { re: /^\/af\/ad_tea\/schedule\//, file: "./teacher.html?download=schedule" },
+      {
+        re: /^\/af\/ad_tea\/schedule\//,
+        file: "./teacher.html?download=schedule",
+      },
       { re: /^\/af\/ad_tea\/modify\/num\/(\d+)\//, file: "./teacher.html" },
       { re: /^\/af\/ad_tea\/del\//, file: "./teacher.html" },
       { re: /^\/af\/ad_survey\/lists\//, file: "./survey.html" },
@@ -2540,18 +3036,36 @@
       { re: /^\/af\/ad_cfg\/neis\//, file: "./cfg-neis.html" },
       { re: /^\/af\/notification\/lists\//, file: "./notification.html" },
       { re: /^\/sczigi\/teacher\/lists\//, file: "./school-teacher.html" },
-      { re: /^\/sczigi\/teacher\/field\//, file: "./school-teacher-field.html" },
-      { re: /^\/sczigi\/teacher\/level\//, file: "./school-teacher-level.html" },
-      { re: /^\/sczigi\/teacher\/clear\//, file: "./school-teacher-clear.html" },
+      {
+        re: /^\/sczigi\/teacher\/field\//,
+        file: "./school-teacher-field.html",
+      },
+      {
+        re: /^\/sczigi\/teacher\/level\//,
+        file: "./school-teacher-level.html",
+      },
+      {
+        re: /^\/sczigi\/teacher\/clear\//,
+        file: "./school-teacher-clear.html",
+      },
       { re: /^\/sczigi\/student\/lists\//, file: "./school-student.html" },
       { re: /^\/sczigi\/student\/main\//, file: "./school-student-main.html" },
-      { re: /^\/sczigi\/student\/field\//, file: "./school-student-field.html" },
-      { re: /^\/sczigi\/student\/course\//, file: "./school-student-course.html" },
-      { re: /^\/sczigi\/student\/clear\//, file: "./school-student-clear.html" },
+      {
+        re: /^\/sczigi\/student\/field\//,
+        file: "./school-student-field.html",
+      },
+      {
+        re: /^\/sczigi\/student\/course\//,
+        file: "./school-student-course.html",
+      },
+      {
+        re: /^\/sczigi\/student\/clear\//,
+        file: "./school-student-clear.html",
+      },
       { re: /^\/sczigi\/sms\/tel\//, file: "./school-sms-tel.html" },
       { re: /^\/sczigi\/sms\/sin\//, file: "./school-sms-sin.html" },
       { re: /^\/sczigi\/sms\/charge\//, file: "./school-sms-charge.html" },
-      { re: /^\/sczigi\/sms\/report\//, file: "./school-sms-report.html" }
+      { re: /^\/sczigi\/sms\/report\//, file: "./school-sms-report.html" },
     ];
 
     for (var i = 0; i < routes.length; i += 1) {
@@ -2587,7 +3101,9 @@
       });
       if (!$rows.length) return;
 
-      var keyword = normalizeText($form.find('input[name="sw"], #s_word').first().val() || "");
+      var keyword = normalizeText(
+        $form.find('input[name="sw"], #s_word').first().val() || "",
+      );
       var sdate = String($form.find('input[name="sdate"]').val() || "").trim();
       var edate = String($form.find('input[name="edate"]').val() || "").trim();
 
@@ -2629,12 +3145,17 @@
 
       var $empty = $container.find(".local-empty-row");
       if (!$empty.length) {
-        var col = $table.find("thead th").length || $table.find("tr").first().children().length || 5;
-        $table.find("tbody").append(
-          '<tr class="local-empty-row" style="display:none;"><td colspan="' +
-            col +
-            '" class="text-center text-muted">검색 결과가 없습니다.</td></tr>'
-        );
+        var col =
+          $table.find("thead th").length ||
+          $table.find("tr").first().children().length ||
+          5;
+        $table
+          .find("tbody")
+          .append(
+            '<tr class="local-empty-row" style="display:none;"><td colspan="' +
+              col +
+              '" class="text-center text-muted">검색 결과가 없습니다.</td></tr>',
+          );
         $empty = $container.find(".local-empty-row");
       }
       $empty.toggle(visibleCount === 0);
@@ -2649,12 +3170,20 @@
     }
 
     function fallbackRawWrite(mode) {
-      var $table = $scope.find("table").filter(function () {
-        return $(this).find("tbody").length > 0 && $(this).find("tr").first().children().length >= 8;
-      }).first();
+      var $table = $scope
+        .find("table")
+        .filter(function () {
+          return (
+            $(this).find("tbody").length > 0 &&
+            $(this).find("tr").first().children().length >= 8
+          );
+        })
+        .first();
       if (!$table.length) return false;
 
-      var reason = String(window.prompt("사유를 입력해 주세요.", "사용자 요청") || "").trim();
+      var reason = String(
+        window.prompt("사유를 입력해 주세요.", "사용자 요청") || "",
+      ).trim();
       if (!reason) return false;
 
       var cols = $table.find("tr").first().children().length || 8;
@@ -2664,18 +3193,30 @@
 
       var html = ["<tr>"];
       for (var i = 0; i < cols; i += 1) {
-        if (i === 0) html.push("<td><input type='checkbox' name='data_checked[]' value='" + uid + "'></td>");
+        if (i === 0)
+          html.push(
+            "<td><input type='checkbox' name='data_checked[]' value='" +
+              uid +
+              "'></td>",
+          );
         else if (i === 1) html.push("<td>" + nextNo + "</td>");
         else if (i === 2) html.push("<td>신규</td>");
         else if (i === cols - 4) html.push("<td>" + reason + "</td>");
         else if (i === cols - 3) html.push("<td>" + stamp + "</td>");
         else if (i === cols - 2) html.push("<td>접수</td>");
-        else if (i === cols - 1) html.push("<td><a href='#none;'><i class='fa fa-trash-o icon_btn'></i></a></td>");
+        else if (i === cols - 1)
+          html.push(
+            "<td><a href='#none;'><i class='fa fa-trash-o icon_btn'></i></a></td>",
+          );
         else html.push("<td>-</td>");
       }
       html.push("</tr>");
       $table.find("tbody").prepend(html.join(""));
-      notify(mode === "input" ? "일괄등록(로컬)이 완료되었습니다." : "등록(로컬)이 완료되었습니다.");
+      notify(
+        mode === "input"
+          ? "일괄등록(로컬)이 완료되었습니다."
+          : "등록(로컬)이 완료되었습니다.",
+      );
       return true;
     }
 
@@ -2698,7 +3239,10 @@
         notify("내보낼 데이터가 없습니다.");
         return false;
       }
-      downloadCsv((prefix || "search-result") + "-" + nowStamp() + ".csv", lines);
+      downloadCsv(
+        (prefix || "search-result") + "-" + nowStamp() + ".csv",
+        lines,
+      );
       return true;
     }
 
@@ -2732,77 +3276,94 @@
       if (mapped) $f.attr("action", mapped);
     });
 
-    $(document).on("submit", ".module-raw-content form, .school-raw-content form", function (e) {
-      var $form = $(this);
-      var formName = String($form.attr("name") || "");
-      var formId = String($form.attr("id") || "");
-      var isSearchForm = /^fm_list_search/.test(formName) || /^fm_list_search/.test(formId);
-      if (isSearchForm) {
-        e.preventDefault();
-        filterRowsByForm($form);
-        return;
-      }
+    $(document).on(
+      "submit",
+      ".module-raw-content form, .school-raw-content form",
+      function (e) {
+        var $form = $(this);
+        var formName = String($form.attr("name") || "");
+        var formId = String($form.attr("id") || "");
+        var isSearchForm =
+          /^fm_list_search/.test(formName) || /^fm_list_search/.test(formId);
+        if (isSearchForm) {
+          e.preventDefault();
+          filterRowsByForm($form);
+          return;
+        }
 
-      if (formName === "fm_list" || formId === "fm_list") {
-        e.preventDefault();
-        var action = String($form.find('[name="update_type"]').val() || "").trim();
-        var $checked = $form.find("input[name='data_checked[]']:checked, input[name='check[]']:checked");
-        if (!action) {
-          notify("일괄 적용 항목을 선택해 주세요.");
-          return;
+        if (formName === "fm_list" || formId === "fm_list") {
+          e.preventDefault();
+          var action = String(
+            $form.find('[name="update_type"]').val() || "",
+          ).trim();
+          var $checked = $form.find(
+            "input[name='data_checked[]']:checked, input[name='check[]']:checked",
+          );
+          if (!action) {
+            notify("일괄 적용 항목을 선택해 주세요.");
+            return;
+          }
+          if (!$checked.length) {
+            notify("적용할 항목을 선택해 주세요.");
+            return;
+          }
+          if (action === "del") {
+            if (!window.confirm("선택한 항목을 삭제하시겠습니까?")) return;
+            $checked.closest("tr").remove();
+            notify("선택 항목이 삭제되었습니다.");
+            return;
+          }
+          if (action === "move") {
+            var target = String(
+              window.prompt("이동할 강좌명을 입력해 주세요.", "") || "",
+            ).trim();
+            if (!target) return;
+            $checked.each(function () {
+              var $tr = $(this).closest("tr");
+              var $lecCell = $tr.find("td.text-left").first();
+              if (!$lecCell.length) return;
+              var raw = String($lecCell.text() || "")
+                .replace(/\s+/g, " ")
+                .trim();
+              var updated = raw;
+              if (raw.indexOf("] ") > -1)
+                updated = raw.replace(/^\[[^\]]+\]\s*/, "[" + target + "] ");
+              else updated = "[" + target + "] " + raw;
+              $lecCell.text(updated);
+            });
+            notify("선택 신청자가 다른 강좌로 이동 처리되었습니다.");
+            return;
+          }
+          if (action.indexOf("status_") === 0) {
+            var val = action.replace("status_", "");
+            $checked.each(function () {
+              var $tr = $(this).closest("tr");
+              var idm = String(
+                $tr.find("[id^='view_mem_status_']").attr("id") || "",
+              ).match(/(\d+)$/);
+              var num = idm ? idm[1] : "";
+              if (!num) return;
+              if (typeof window.chk_mem_status === "function")
+                window.chk_mem_status(num, Number(val));
+            });
+            notify("선택 항목 상태가 변경되었습니다.");
+            return;
+          }
         }
-        if (!$checked.length) {
-          notify("적용할 항목을 선택해 주세요.");
-          return;
-        }
-        if (action === "del") {
-          if (!window.confirm("선택한 항목을 삭제하시겠습니까?")) return;
-          $checked.closest("tr").remove();
-          notify("선택 항목이 삭제되었습니다.");
-          return;
-        }
-        if (action === "move") {
-          var target = String(window.prompt("이동할 강좌명을 입력해 주세요.", "") || "").trim();
-          if (!target) return;
-          $checked.each(function () {
-            var $tr = $(this).closest("tr");
-            var $lecCell = $tr.find("td.text-left").first();
-            if (!$lecCell.length) return;
-            var raw = String($lecCell.text() || "").replace(/\s+/g, " ").trim();
-            var updated = raw;
-            if (raw.indexOf("] ") > -1) updated = raw.replace(/^\[[^\]]+\]\s*/, "[" + target + "] ");
-            else updated = "[" + target + "] " + raw;
-            $lecCell.text(updated);
-          });
-          notify("선택 신청자가 다른 강좌로 이동 처리되었습니다.");
-          return;
-        }
-        if (action.indexOf("status_") === 0) {
-          var val = action.replace("status_", "");
-          $checked.each(function () {
-            var $tr = $(this).closest("tr");
-            var idm = String($tr.find("[id^='view_mem_status_']").attr("id") || "").match(/(\d+)$/);
-            var num = idm ? idm[1] : "";
-            if (!num) return;
-            if (typeof window.chk_mem_status === "function") window.chk_mem_status(num, Number(val));
-          });
-          notify("선택 항목 상태가 변경되었습니다.");
-          return;
-        }
-      }
 
-      var action = String($form.attr("action") || "").trim();
-      var mapped = mapDbdbUrlToLocal(action);
-      if (mapped) {
-        e.preventDefault();
-        window.location.href = mapped;
-        return;
-      }
-      if (/^https?:\/\/[^/]*dbdbschool\.kr/i.test(action)) {
-        e.preventDefault();
-        notify("원본 서버 저장은 비활성화되어 로컬 화면만 유지됩니다.");
-      }
-    });
+        var action = String($form.attr("action") || "").trim();
+        var mapped = mapDbdbUrlToLocal(action);
+        if (mapped) {
+          e.preventDefault();
+          window.location.href = mapped;
+          return;
+        }
+        if (/^https?:\/\/[^/]*dbdbschool\.kr/i.test(action)) {
+          e.preventDefault();
+          notify("원본 서버 저장은 비활성화되어 로컬 화면만 유지됩니다.");
+        }
+      },
+    );
 
     $(document).on(
       "click",
@@ -2811,7 +3372,7 @@
         e.preventDefault();
         var $form = $(this).closest("form");
         resetFilterForm($form);
-      }
+      },
     );
 
     $(document).on(
@@ -2820,68 +3381,93 @@
       function () {
         var $form = $(this).closest("form");
         filterRowsByForm($form);
-      }
+      },
     );
 
-    $(document).on("change", ".module-raw-content #check_all, .school-raw-content #check_all, .module-raw-content #chk_all, .school-raw-content #chk_all", function () {
-      var checked = this.checked;
-      var $form = $(this).closest("form");
-      var $target = $form.length ? $form : $scope;
-      $target
-        .find('input[type="checkbox"]')
-        .not(this)
-        .filter(function () {
-          var nm = String(this.name || "").toLowerCase();
-          var id = String(this.id || "").toLowerCase();
-          return nm.indexOf("all") < 0 && id.indexOf("all") < 0;
-        })
-        .prop("checked", checked);
-    });
+    $(document).on(
+      "change",
+      ".module-raw-content #check_all, .school-raw-content #check_all, .module-raw-content #chk_all, .school-raw-content #chk_all",
+      function () {
+        var checked = this.checked;
+        var $form = $(this).closest("form");
+        var $target = $form.length ? $form : $scope;
+        $target
+          .find('input[type="checkbox"]')
+          .not(this)
+          .filter(function () {
+            var nm = String(this.name || "").toLowerCase();
+            var id = String(this.id || "").toLowerCase();
+            return nm.indexOf("all") < 0 && id.indexOf("all") < 0;
+          })
+          .prop("checked", checked);
+      },
+    );
 
-    $(document).on("click", ".module-raw-content .btn[type='submit'], .school-raw-content .btn[type='submit']", function () {
-      var $btn = $(this);
-      if ($btn.closest("form").length) return;
-      var text = ($btn.text() || "").replace(/\s+/g, " ").trim();
-      if (text) notify("버튼 동작: " + text);
-    });
+    $(document).on(
+      "click",
+      ".module-raw-content .btn[type='submit'], .school-raw-content .btn[type='submit']",
+      function () {
+        var $btn = $(this);
+        if ($btn.closest("form").length) return;
+        var text = ($btn.text() || "").replace(/\s+/g, " ").trim();
+        if (text) notify("버튼 동작: " + text);
+      },
+    );
 
     // 상세검색/추가기능 토글
     $scope.find("#main_control_box_search").removeClass("is-open").hide();
     $scope.find("#main_control_box_drop").removeClass("is-open").hide();
-    $scope.find("#main_control_box_btn01, #main_control_box_btn02").each(function () {
-      var $btn = $(this);
-      var targetId = $btn.attr("id") === "main_control_box_btn01" ? "#main_control_box_search" : "#main_control_box_drop";
-      var $target = $btn.next(targetId);
-      if (!$target.length) return;
+    $scope
+      .find("#main_control_box_btn01, #main_control_box_btn02")
+      .each(function () {
+        var $btn = $(this);
+        var targetId =
+          $btn.attr("id") === "main_control_box_btn01"
+            ? "#main_control_box_search"
+            : "#main_control_box_drop";
+        var $target = $btn.next(targetId);
+        if (!$target.length) return;
 
-      $btn.off("click.rawtoggle").on("click.rawtoggle", function (e) {
-        e.preventDefault();
-        var open = !$target.hasClass("is-open");
-        $target.toggleClass("is-open", open).toggle(open);
+        $btn.off("click.rawtoggle").on("click.rawtoggle", function (e) {
+          e.preventDefault();
+          var open = !$target.hasClass("is-open");
+          $target.toggleClass("is-open", open).toggle(open);
 
-        if ($btn.attr("id") === "main_control_box_btn01") {
-          var $strong = $btn.find("strong");
-          if ($strong.length) $strong.text(open ? "닫기" : "열기");
-          else $btn.text(open ? "상세검색 닫기" : "상세검색 열기");
-        }
+          if ($btn.attr("id") === "main_control_box_btn01") {
+            var $strong = $btn.find("strong");
+            if ($strong.length) $strong.text(open ? "닫기" : "열기");
+            else $btn.text(open ? "상세검색 닫기" : "상세검색 열기");
+          }
+        });
       });
-    });
 
     // 상태 드롭다운 토글(교직원/학생 등)
-    $(document).on("click", ".module-raw-content .isu_check_box > a, .school-raw-content .isu_check_box > a", function (e) {
-      e.preventDefault();
-      e.stopPropagation();
-      var $a = $(this);
-      var $menu = $a.siblings(".isu_choice");
-      $(".module-raw-content .isu_choice, .school-raw-content .isu_choice").not($menu).hide();
-      $menu.toggle();
-    });
+    $(document).on(
+      "click",
+      ".module-raw-content .isu_check_box > a, .school-raw-content .isu_check_box > a",
+      function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var $a = $(this);
+        var $menu = $a.siblings(".isu_choice");
+        $(".module-raw-content .isu_choice, .school-raw-content .isu_choice")
+          .not($menu)
+          .hide();
+        $menu.toggle();
+      },
+    );
     $(document).on("click", function () {
-      $(".module-raw-content .isu_choice, .school-raw-content .isu_choice").hide();
+      $(
+        ".module-raw-content .isu_choice, .school-raw-content .isu_choice",
+      ).hide();
     });
-    $(document).on("click", ".module-raw-content .isu_choice, .school-raw-content .isu_choice", function (e) {
-      e.stopPropagation();
-    });
+    $(document).on(
+      "click",
+      ".module-raw-content .isu_choice, .school-raw-content .isu_choice",
+      function (e) {
+        e.stopPropagation();
+      },
+    );
 
     var params = getSearchParams();
     if (params) {
@@ -2901,17 +3487,27 @@
 
       var mode = String(params.get("mode") || "").trim();
       if (mode === "write" || mode === "input" || mode === "apply") {
-        if (typeof window.chk_write === "function") window.chk_write(mode === "input" ? "writes" : "write");
+        if (typeof window.chk_write === "function")
+          window.chk_write(mode === "input" ? "writes" : "write");
         else fallbackRawWrite(mode);
       } else if (mode === "modify") {
         var num = String(params.get("num") || "").trim();
-        if (num) notify("대상자 수정 화면(번호: " + num + ")은 원본과 동일하게 목록 화면에서 대체 표시됩니다.");
-        else notify("대상자 수정 화면은 원본과 동일하게 목록 화면에서 대체 표시됩니다.");
+        if (num)
+          notify(
+            "대상자 수정 화면(번호: " +
+              num +
+              ")은 원본과 동일하게 목록 화면에서 대체 표시됩니다.",
+          );
+        else
+          notify(
+            "대상자 수정 화면은 원본과 동일하게 목록 화면에서 대체 표시됩니다.",
+          );
       } else if (mode === "free_month") {
         $("#box_free_month").show();
       }
 
-      if (dl || mode) window.history.replaceState({}, "", window.location.pathname);
+      if (dl || mode)
+        window.history.replaceState({}, "", window.location.pathname);
     }
   }
 
@@ -2935,7 +3531,10 @@
     setIfMissing("chk_all", function (el) {
       var $root = $(el).closest("form");
       if (!$root.length) $root = $(document);
-      $root.find('input[type="checkbox"]').not(el).prop("checked", !!el.checked);
+      $root
+        .find('input[type="checkbox"]')
+        .not(el)
+        .prop("checked", !!el.checked);
       return true;
     });
 
@@ -2946,16 +3545,34 @@
       else $box.hide();
       return true;
     });
-    setIfMissing("chk_free_level", function () { return true; });
-    setIfMissing("chk_free_num", function () { return true; });
-    setIfMissing("chk_month", function () { return true; });
-    setIfMissing("chkAdd", function () { return true; });
+    setIfMissing("chk_free_level", function () {
+      return true;
+    });
+    setIfMissing("chk_free_num", function () {
+      return true;
+    });
+    setIfMissing("chk_month", function () {
+      return true;
+    });
+    setIfMissing("chkAdd", function () {
+      return true;
+    });
 
-    setIfMissing("fm_edit_check", function () { return true; });
-    setIfMissing("fm_list_check", function () { return true; });
-    setIfMissing("fm_verify_check", function () { return true; });
-    setIfMissing("fm_clear_check", function () { return true; });
-    setIfMissing("fm_comm_login_check", function () { return true; });
+    setIfMissing("fm_edit_check", function () {
+      return true;
+    });
+    setIfMissing("fm_list_check", function () {
+      return true;
+    });
+    setIfMissing("fm_verify_check", function () {
+      return true;
+    });
+    setIfMissing("fm_clear_check", function () {
+      return true;
+    });
+    setIfMissing("fm_comm_login_check", function () {
+      return true;
+    });
     setIfMissing("fm_free_month_check", function (fm) {
       var $f = $(fm || "#fm_free_month");
       var labels = [];
@@ -2965,14 +3582,22 @@
         labels.push(($lb.text() || "").trim());
       });
       if (labels.length) {
-        $("#view_free_month").html(labels.map(function (x) { return '<span class=\"free_month_on\">' + x + "</span>"; }).join(" "));
+        $("#view_free_month").html(
+          labels
+            .map(function (x) {
+              return '<span class=\"free_month_on\">' + x + "</span>";
+            })
+            .join(" "),
+        );
       }
       $("#box_free_month").hide();
       notify("조회 허용 월이 적용되었습니다.");
       return false;
     });
 
-    setIfMissing("remember_memory", function () { return true; });
+    setIfMissing("remember_memory", function () {
+      return true;
+    });
     setIfMissing("delAddMem", function () {
       notify("추가 담당자 항목이 삭제되었습니다.");
       return true;
@@ -2980,12 +3605,20 @@
 
     setIfMissing("openMemWin", function (href) {
       var mapped = mapDbdbUrlToLocal(href);
-      window.open(mapped || href || "about:blank", "_blank", "width=980,height=780");
+      window.open(
+        mapped || href || "about:blank",
+        "_blank",
+        "width=980,height=780",
+      );
       return false;
     });
     setIfMissing("openAfTeaWin", function (href) {
       var mapped = mapDbdbUrlToLocal(href);
-      window.open(mapped || href || "about:blank", "_blank", "width=980,height=780");
+      window.open(
+        mapped || href || "about:blank",
+        "_blank",
+        "width=980,height=780",
+      );
       return false;
     });
     setIfMissing("openSortWin", function (href) {
@@ -3000,7 +3633,11 @@
     });
     setIfMissing("openLecTimeWin", function (href) {
       var mapped = mapDbdbUrlToLocal(href);
-      window.open(mapped || href || "about:blank", "_blank", "width=980,height=780");
+      window.open(
+        mapped || href || "about:blank",
+        "_blank",
+        "width=980,height=780",
+      );
       return false;
     });
 
@@ -3029,13 +3666,17 @@
 
     setIfMissing("chk_cancel", function (num) {
       if (!window.confirm("삭제하시겠습니까?")) return false;
-      var $row = $("tr").has('a[onclick*="chk_cancel(' + String(num) + '"]').first();
+      var $row = $("tr")
+        .has('a[onclick*="chk_cancel(' + String(num) + '"]')
+        .first();
       if ($row.length) $row.remove();
       return false;
     });
     setIfMissing("chk_del", function () {
       if (!window.confirm("삭제하시겠습니까?")) return false;
-      $(".chk-row:checked, input[name='check[]']:checked, input[name='data_checked[]']:checked")
+      $(
+        ".chk-row:checked, input[name='check[]']:checked, input[name='data_checked[]']:checked",
+      )
         .closest("tr")
         .remove();
       return false;
@@ -3048,7 +3689,9 @@
       var n = String(num || "");
       var s = Number(statusCode);
       var label = s === 2 ? "처리완료" : s === 1 ? "강사확인" : "접수";
-      var $row = $("tr").has("a[onclick*='chk_app(" + n + "']").first();
+      var $row = $("tr")
+        .has("a[onclick*='chk_app(" + n + "']")
+        .first();
       if ($row.length) {
         var $cells = $row.find("td");
         var idx = Math.max(0, $cells.length - 2);
@@ -3080,16 +3723,23 @@
     });
 
     setIfMissing("chk_write", function (mode) {
-      var $table = $("table").filter(function () {
-        return $(this).find("tbody").length > 0 && $(this).find("tr").first().children().length >= 8;
-      }).first();
+      var $table = $("table")
+        .filter(function () {
+          return (
+            $(this).find("tbody").length > 0 &&
+            $(this).find("tr").first().children().length >= 8
+          );
+        })
+        .first();
 
       if (!$table.length) {
         notify("등록 화면을 준비 중입니다.");
         return false;
       }
 
-      var reason = String(window.prompt("사유를 입력해 주세요.", "사용자 요청") || "").trim();
+      var reason = String(
+        window.prompt("사유를 입력해 주세요.", "사용자 요청") || "",
+      ).trim();
       if (!reason) return false;
 
       var cols = $table.find("tr").first().children().length || 8;
@@ -3099,19 +3749,33 @@
 
       var html = ["<tr>"];
       for (var i = 0; i < cols; i += 1) {
-        if (i === 0) html.push("<td><input type='checkbox' name='data_checked[]' value='" + uid + "'></td>");
+        if (i === 0)
+          html.push(
+            "<td><input type='checkbox' name='data_checked[]' value='" +
+              uid +
+              "'></td>",
+          );
         else if (i === 1) html.push("<td>" + nextNo + "</td>");
         else if (i === 2) html.push("<td>신규</td>");
         else if (i === cols - 4) html.push("<td>" + reason + "</td>");
         else if (i === cols - 3) html.push("<td>" + stamp + "</td>");
         else if (i === cols - 2) html.push("<td>접수</td>");
-        else if (i === cols - 1) html.push("<td><a href='#none;' onclick='return chk_cancel(" + Date.now() + ",2);'><i class='fa fa-trash-o icon_btn'></i></a></td>");
+        else if (i === cols - 1)
+          html.push(
+            "<td><a href='#none;' onclick='return chk_cancel(" +
+              Date.now() +
+              ",2);'><i class='fa fa-trash-o icon_btn'></i></a></td>",
+          );
         else html.push("<td>-</td>");
       }
       html.push("</tr>");
       $table.find("tbody").prepend(html.join(""));
 
-      notify(mode === "writes" ? "일괄등록(로컬)이 완료되었습니다." : "등록(로컬)이 완료되었습니다.");
+      notify(
+        mode === "writes"
+          ? "일괄등록(로컬)이 완료되었습니다."
+          : "등록(로컬)이 완료되었습니다.",
+      );
       return false;
     });
     setIfMissing("chkSortDown", function () {
@@ -3146,8 +3810,16 @@
       }
       var html = [];
       for (var i = 1; i <= maxClass; i += 1) {
-        html.push('<div style="margin-top:4px;"><span style="display:inline-block;width:36px;">' + i + "반</span>");
-        html.push('<input type="text" class="form-control input-sm" style="width:180px;display:inline-block;" placeholder="' + i + '반 명칭"></div>');
+        html.push(
+          '<div style="margin-top:4px;"><span style="display:inline-block;width:36px;">' +
+            i +
+            "반</span>",
+        );
+        html.push(
+          '<input type="text" class="form-control input-sm" style="width:180px;display:inline-block;" placeholder="' +
+            i +
+            '반 명칭"></div>',
+        );
       }
       $box.html(html.join(""));
       return true;

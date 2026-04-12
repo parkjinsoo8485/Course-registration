@@ -1,89 +1,169 @@
 <!doctype html>
 <html lang="ko">
-<head>
-  <meta charset="utf-8" />
-  <meta http-equiv="x-ua-compatible" content="ie=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>등록 - 샘플설문 - 늘봄학교</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="./assets/css/app.css">
-</head>
-<body data-sidebar-page="survey-sample">
-  <div id="header" class="topbar">
-    <div class="topbar-inner">
-      <div class="topbar-center">
-        <span class="topbar-title">늘봄학교</span>
-        <span class="caret"></span>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>등록 - 샘플설문 - 늘봄학교</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="./assets/css/app.css" />
+  </head>
+  <body data-sidebar-page="survey-sample">
+    <div id="header" class="topbar">
+      <div class="topbar-inner">
+        <div class="topbar-center">
+          <span class="topbar-title">늘봄학교</span>
+          <span class="caret"></span>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div id="container" class="layout">
-    <aside id="left_menu" class="sidebar"></aside>
+    <div id="container" class="layout">
+      <aside id="left_menu" class="sidebar"></aside>
 
-    <main id="contents_box" class="content">
-      <div id="contents_title" class="page-title">
-        <div class="title-left">
-          <div class="title-main"><i class="fa fa-file-text-o"></i> 샘플설문</div>
-          <div class="title-sub">운천초등학교 늘봄학교</div>
-        </div>
-      </div>
-      <div id="contents" class="content-inner module-raw-content">
-        <div class="panel_main panel-default_main">
-          <div class="panel-heading">등록</div>
-          <div class="panel-body">
-            <p class="MAT20"><i class="fa required" title="필수항목"></i><span class="font-12"> 표시가 있는 항목은 반드시 입력해야 합니다.</span></p>
+      <main id="contents_box" class="content">
+        <div id="contents_title" class="page-title">
+          <div class="title-left">
+            <div class="title-main">
+              <i class="fa fa-file-text-o"></i> 샘플설문
+            </div>
+            <div class="title-sub">운천초등학교 늘봄학교</div>
           </div>
-          <form action="./survey-sample-write.html" name="fm_edit" id="fm_edit" method="post" accept-charset="utf-8">
-            <table class="table table-bordered table-hover list" style="margin-top:0px;">
-              <tbody>
-                <tr>
-                  <th width="150" style="min-width:73px;" class="size35">제목 <span><i class="fa required" title="필수항목"></i></span></th>
-                  <td>
-                    <input id="sur_title" name="sur_title" type="text" title="제목" value="" class="form-control" style="width:80%;" maxlength="100">
-                    <div class="error_msg"></div>
-                  </td>
-                </tr>
-                <tr>
-                  <th>설문구분 <span><i class="fa required" title="필수항목"></i></span></th>
-                  <td>
-                    <span><input type="radio" name="sur_type" id="sur_type_1" value="1"><label for="sur_type_1">종합</label></span>
-                    <span><input type="radio" name="sur_type" id="sur_type_2" value="2"><label for="sur_type_2">강좌</label></span>
-                    <span><input type="radio" name="sur_type" id="sur_type_3" value="3"><label for="sur_type_3">강좌(강사평가)</label></span>
-                    <div class="error_msg error_sur_type"></div>
-                  </td>
-                </tr>
-                <tr>
-                  <th>안내글</th>
-                  <td>
-                    <textarea name="sur_content" id="sur_content" rows="10" class="form-control"></textarea>
-                    <div class="error_msg"></div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-            <p class="text-center MAT30">
-              <input type="button" id="btn-survey-sample-cancel" class="btn btn-default" value="취소">
-              <input type="submit" value="등록" class="btn btn-danger">
-            </p>
-          </form>
         </div>
+        <div id="contents" class="content-inner module-raw-content">
+          <div class="panel_main panel-default_main">
+            <div class="panel-heading">등록</div>
+            <div class="panel-body">
+              <p class="MAT20">
+                <i class="fa required" title="필수항목"></i
+                ><span class="font-12">
+                  표시가 있는 항목은 반드시 입력해야 합니다.</span
+                >
+              </p>
+            </div>
+            <form
+              action="./survey-sample-write.html"
+              name="fm_edit"
+              id="fm_edit"
+              method="post"
+              accept-charset="utf-8"
+            >
+              <table
+                class="table table-bordered table-hover list"
+                style="margin-top: 0px"
+              >
+                <tbody>
+                  <tr>
+                    <th width="150" style="min-width: 73px" class="size35">
+                      제목
+                      <span><i class="fa required" title="필수항목"></i></span>
+                    </th>
+                    <td>
+                      <input
+                        id="sur_title"
+                        name="sur_title"
+                        type="text"
+                        title="제목"
+                        value=""
+                        class="form-control"
+                        style="width: 80%"
+                        maxlength="100"
+                      />
+                      <div class="error_msg"></div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>
+                      설문구분
+                      <span><i class="fa required" title="필수항목"></i></span>
+                    </th>
+                    <td>
+                      <span
+                        ><input
+                          type="radio"
+                          name="sur_type"
+                          id="sur_type_1"
+                          value="1"
+                        /><label for="sur_type_1">종합</label></span
+                      >
+                      <span
+                        ><input
+                          type="radio"
+                          name="sur_type"
+                          id="sur_type_2"
+                          value="2"
+                        /><label for="sur_type_2">강좌</label></span
+                      >
+                      <span
+                        ><input
+                          type="radio"
+                          name="sur_type"
+                          id="sur_type_3"
+                          value="3"
+                        /><label for="sur_type_3">강좌(강사평가)</label></span
+                      >
+                      <div class="error_msg error_sur_type"></div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>안내글</th>
+                    <td>
+                      <textarea
+                        name="sur_content"
+                        id="sur_content"
+                        rows="10"
+                        class="form-control"
+                      ></textarea>
+                      <div class="error_msg"></div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <p class="text-center MAT30">
+                <input
+                  type="button"
+                  id="btn-survey-sample-cancel"
+                  class="btn btn-default"
+                  value="취소"
+                />
+                <input type="submit" value="등록" class="btn btn-danger" />
+              </p>
+            </form>
+          </div>
 
-        <div class="help_box">
-          <ul>
-            <li> 설문구분(종합) : <span class="text-danger">강좌와 상관없이</span> 설문을 받고 싶을 때 선택합니다.</li>
-            <li> 설문구분(강좌) : <span class="text-danger">강좌별</span> 설문인 경우 선택합니다.</li>
-          </ul>
+          <div class="help_box">
+            <ul>
+              <li>
+                설문구분(종합) :
+                <span class="text-danger">강좌와 상관없이</span> 설문을 받고
+                싶을 때 선택합니다.
+              </li>
+              <li>
+                설문구분(강좌) : <span class="text-danger">강좌별</span> 설문인
+                경우 선택합니다.
+              </li>
+            </ul>
+          </div>
         </div>
-      </div>
-      <div id="footer" class="footer"><span class="muted">DBDB School Clone</span></div>
-    </main>
-  </div>
+        <div id="footer" class="footer">
+          <span class="muted">DBDB School Clone</span>
+        </div>
+      </main>
+    </div>
 
-  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <script src="./assets/js/app.js"></script>
-</body>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="./assets/js/app.js"></script>
+  </body>
 </html>

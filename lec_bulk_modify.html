@@ -1,52 +1,113 @@
 ﻿<!doctype html>
 <html lang="ko">
-<head>
-  <meta charset="utf-8" />
-  <meta http-equiv="x-ua-compatible" content="ie=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>강좌 일괄수정 - 강좌관리 - 늘봄학교</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="./assets/css/app.css">
-</head>
-<body>
-  <div id="header" class="topbar"><div class="topbar-inner"><div class="topbar-center"><span class="topbar-title">늘봄학교</span><span class="caret"></span></div></div></div>
-  <div id="container" class="layout">
-    <aside id="left_menu" class="sidebar">
-      <div class="sidebar-school">운천초등학교</div>
-      <div class="sidebar-actions"><a href="index.html" class="btn btn-success btn-sm">홈으로</a><a href="./lec_write.html" class="btn btn-danger btn-sm">강좌등록</a></div>
-      <ul class="nav side-nav"><li><a href="./manual.html"><i class="fa fa-download"></i> 매뉴얼</a></li><li class="active"><a href="index.html"><i class="fa fa-globe icon-blue"></i> 강좌관리</a></li></ul>
-    </aside>
-
-    <main id="contents_box" class="content">
-      <div id="contents_title" class="page-title"><div class="title-left"><div class="title-main"><i class="fa fa-edit"></i> 강좌 일괄수정</div><div class="title-sub">운천초등학교 늘봄학교</div></div></div>
-      <div id="contents" class="content-inner">
-        <div class="notice-box"><div class="notice-line"><span class="notice-dot"><i class="fa fa-info-circle"></i></span>강좌번호를 기준으로 기존 강좌 정보를 일괄 수정합니다.</div></div>
-
-        <div class="table-wrap" style="padding:16px;">
-          <div class="form-group">
-            <label>1. 현재 강좌 목록 다운로드</label>
-            <div>
-              <a href="#" id="btn-modify-template-download" class="btn btn-default btn-sm"><i class="fa fa-download"></i> 현재 강좌 목록.csv</a>
-              <span class="help-block">다운로드한 파일에서 수정 후 업로드하세요.</span>
-            </div>
-          </div>
-          <div class="form-group">
-            <label>2. 수정 파일 업로드</label>
-            <div><input type="file" id="bulk-modify-file" class="form-control" accept=".xlsx,.xls,.csv"></div>
-          </div>
-          <div class="form-group">
-            <button type="button" id="btn-bulk-modify-submit" class="btn btn-info btn-sm">일괄수정</button>
-            <a href="index.html" class="btn btn-default btn-sm">목록</a>
-          </div>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>강좌 일괄수정 - 강좌관리 - 늘봄학교</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="./assets/css/app.css" />
+  </head>
+  <body>
+    <div id="header" class="topbar">
+      <div class="topbar-inner">
+        <div class="topbar-center">
+          <span class="topbar-title">늘봄학교</span><span class="caret"></span>
         </div>
       </div>
-      <div id="footer" class="footer"><span class="muted">DBDB School Clone</span></div>
-    </main>
-  </div>
-  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <script src="./assets/js/app.js"></script>
-</body>
+    </div>
+    <div id="container" class="layout">
+      <aside id="left_menu" class="sidebar">
+        <div class="sidebar-school">운천초등학교</div>
+        <div class="sidebar-actions">
+          <a href="index.html" class="btn btn-success btn-sm">홈으로</a
+          ><a href="./lec_write.html" class="btn btn-danger btn-sm">강좌등록</a>
+        </div>
+        <ul class="nav side-nav">
+          <li>
+            <a href="./manual.html"><i class="fa fa-download"></i> 매뉴얼</a>
+          </li>
+          <li class="active">
+            <a href="index.html"
+              ><i class="fa fa-globe icon-blue"></i> 강좌관리</a
+            >
+          </li>
+        </ul>
+      </aside>
+
+      <main id="contents_box" class="content">
+        <div id="contents_title" class="page-title">
+          <div class="title-left">
+            <div class="title-main">
+              <i class="fa fa-edit"></i> 강좌 일괄수정
+            </div>
+            <div class="title-sub">운천초등학교 늘봄학교</div>
+          </div>
+        </div>
+        <div id="contents" class="content-inner">
+          <div class="notice-box">
+            <div class="notice-line">
+              <span class="notice-dot"><i class="fa fa-info-circle"></i></span
+              >강좌번호를 기준으로 기존 강좌 정보를 일괄 수정합니다.
+            </div>
+          </div>
+
+          <div class="table-wrap" style="padding: 16px">
+            <div class="form-group">
+              <label>1. 현재 강좌 목록 다운로드</label>
+              <div>
+                <a
+                  href="#"
+                  id="btn-modify-template-download"
+                  class="btn btn-default btn-sm"
+                  ><i class="fa fa-download"></i> 현재 강좌 목록.csv</a
+                >
+                <span class="help-block"
+                  >다운로드한 파일에서 수정 후 업로드하세요.</span
+                >
+              </div>
+            </div>
+            <div class="form-group">
+              <label>2. 수정 파일 업로드</label>
+              <div>
+                <input
+                  type="file"
+                  id="bulk-modify-file"
+                  class="form-control"
+                  accept=".xlsx,.xls,.csv"
+                />
+              </div>
+            </div>
+            <div class="form-group">
+              <button
+                type="button"
+                id="btn-bulk-modify-submit"
+                class="btn btn-info btn-sm"
+              >
+                일괄수정
+              </button>
+              <a href="index.html" class="btn btn-default btn-sm">목록</a>
+            </div>
+          </div>
+        </div>
+        <div id="footer" class="footer">
+          <span class="muted">DBDB School Clone</span>
+        </div>
+      </main>
+    </div>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="./assets/js/app.js"></script>
+  </body>
 </html>

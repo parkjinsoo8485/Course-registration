@@ -11,25 +11,30 @@ async function main() {
   fs.mkdirSync(outDir, { recursive: true });
 
   const browser = await chromium.launch({ headless: true });
-  const page = await browser.newPage({ viewport: { width: 1365, height: 900 } });
+  const page = await browser.newPage({
+    viewport: { width: 1365, height: 900 },
+  });
 
   await page.goto(fileUrl("index.html"), { waitUntil: "domcontentloaded" });
   await page.waitForTimeout(800);
 
-  const links = await page.$$eval("#left_menu .side-nav a[href$='.html']", (els) => {
-    const seen = new Set();
-    return els
-      .map((a) => ({
-        href: a.getAttribute("href") || "",
-        text: (a.textContent || "").replace(/\s+/g, " ").trim()
-      }))
-      .filter((x) => {
-        if (!x.href) return false;
-        if (seen.has(x.href)) return false;
-        seen.add(x.href);
-        return true;
-      });
-  });
+  const links = await page.$$eval(
+    "#left_menu .side-nav a[href$='.html']",
+    (els) => {
+      const seen = new Set();
+      return els
+        .map((a) => ({
+          href: a.getAttribute("href") || "",
+          text: (a.textContent || "").replace(/\s+/g, " ").trim(),
+        }))
+        .filter((x) => {
+          if (!x.href) return false;
+          if (seen.has(x.href)) return false;
+          seen.add(x.href);
+          return true;
+        });
+    },
+  );
 
   const results = [];
   for (const link of links) {
@@ -51,7 +56,11 @@ async function main() {
   }
 
   await browser.close();
-  fs.writeFileSync(path.join(outDir, "summary.json"), JSON.stringify(results, null, 2), "utf8");
+  fs.writeFileSync(
+    path.join(outDir, "summary.json"),
+    JSON.stringify(results, null, 2),
+    "utf8",
+  );
   console.log(JSON.stringify(results, null, 2));
 }
 

@@ -1,57 +1,76 @@
 ﻿<!doctype html>
 <html lang="ko">
-<head>
-  <meta charset="utf-8" />
-  <title>강사 검색</title>
-  <style>
-    body{font-family:system-ui, sans-serif; padding:12px;}
-    input{width:100%; padding:8px; box-sizing:border-box;}
-    ul{padding-left:0; list-style:none;}
-    li{padding:10px; border:1px solid #ddd; margin-top:8px; cursor:pointer;}
-    li:hover{background:#f5f5f5;}
-  </style>
-</head>
-<body>
-  <h3>강사 검색</h3>
-  <input id="q" placeholder="이름/ID로 검색(임시)" />
-  <ul id="list"></ul>
+  <head>
+    <meta charset="utf-8" />
+    <title>강사 검색</title>
+    <style>
+      body {
+        font-family: system-ui, sans-serif;
+        padding: 12px;
+      }
+      input {
+        width: 100%;
+        padding: 8px;
+        box-sizing: border-box;
+      }
+      ul {
+        padding-left: 0;
+        list-style: none;
+      }
+      li {
+        padding: 10px;
+        border: 1px solid #ddd;
+        margin-top: 8px;
+        cursor: pointer;
+      }
+      li:hover {
+        background: #f5f5f5;
+      }
+    </style>
+  </head>
+  <body>
+    <h3>강사 검색</h3>
+    <input id="q" placeholder="이름/ID로 검색(임시)" />
+    <ul id="list"></ul>
 
-  <script>
-    const params = new URLSearchParams(location.search);
-    const target = params.get("target") || "tea_id";
+    <script>
+      const params = new URLSearchParams(location.search);
+      const target = params.get("target") || "tea_id";
 
-    // TODO: 나중에 실제 API 붙일 자리
-    const MOCK = [
-      { id: "teacher01", name: "홍길동" },
-      { id: "teacher02", name: "김영희" },
-      { id: "teacher03", name: "이철수" },
-    ];
+      // TODO: 나중에 실제 API 붙일 자리
+      const MOCK = [
+        { id: "teacher01", name: "홍길동" },
+        { id: "teacher02", name: "김영희" },
+        { id: "teacher03", name: "이철수" },
+      ];
 
-    const q = document.getElementById("q");
-    const list = document.getElementById("list");
+      const q = document.getElementById("q");
+      const list = document.getElementById("list");
 
-    function render(items) {
-      list.innerHTML = "";
-      items.forEach(t => {
-        const li = document.createElement("li");
-        li.textContent = `${t.name} (${t.id})`;
-        li.onclick = () => {
-          if (window.opener && window.opener.applyPopupValue) {
-            window.opener.applyPopupValue(target, t.id, t.name);
-          }
-          window.close();
-        };
-        list.appendChild(li);
+      function render(items) {
+        list.innerHTML = "";
+        items.forEach((t) => {
+          const li = document.createElement("li");
+          li.textContent = `${t.name} (${t.id})`;
+          li.onclick = () => {
+            if (window.opener && window.opener.applyPopupValue) {
+              window.opener.applyPopupValue(target, t.id, t.name);
+            }
+            window.close();
+          };
+          list.appendChild(li);
+        });
+      }
+
+      q.addEventListener("input", () => {
+        const k = q.value.trim();
+        const filtered = k
+          ? MOCK.filter((x) => (x.name + x.id).includes(k))
+          : MOCK;
+        render(filtered);
       });
-    }
 
-    q.addEventListener("input", () => {
-      const k = q.value.trim();
-      const filtered = k ? MOCK.filter(x => (x.name + x.id).includes(k)) : MOCK;
-      render(filtered);
-    });
-
-    render(MOCK);
-  </script>
-</body>
+      render(MOCK);
+    </script>
+  </body>
 </html>

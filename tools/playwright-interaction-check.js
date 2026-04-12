@@ -18,7 +18,9 @@ async function testToggle(page) {
 }
 
 async function testDateQuick(page) {
-  await page.goto(fileUrl("school-sms-report.html"), { waitUntil: "domcontentloaded" });
+  await page.goto(fileUrl("school-sms-report.html"), {
+    waitUntil: "domcontentloaded",
+  });
   const s0 = await page.locator("#sdate").inputValue();
   const e0 = await page.locator("#edate").inputValue();
   await page.getByRole("button", { name: "최근1달" }).click();
@@ -40,7 +42,10 @@ async function testRefundWrite(page) {
   await page.getByRole("button", { name: "환불/취소자등록" }).click();
   await page.waitForTimeout(200);
   const after = await page.locator("input[name='data_checked[]']").count();
-  const hasLocal = (await page.locator("input[name='data_checked[]'][value^='local_']").count()) > 0;
+  const hasLocal =
+    (await page
+      .locator("input[name='data_checked[]'][value^='local_']")
+      .count()) > 0;
   return { before, after, added: after > before || hasLocal };
 }
 
@@ -52,7 +57,7 @@ async function main() {
     generatedAt: new Date().toISOString(),
     toggle: await testToggle(page),
     dateQuick: await testDateQuick(page),
-    refundWrite: await testRefundWrite(page)
+    refundWrite: await testRefundWrite(page),
   };
 
   await browser.close();

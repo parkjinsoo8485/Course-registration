@@ -8,7 +8,7 @@ const pages = [
     heading: "교직원관리",
     moduleKey: "school_teacher_lists",
     active: "teacher_lists",
-    seed: ["교직원 기본정보", "담당업무 배정", "권한 설정"]
+    seed: ["교직원 기본정보", "담당업무 배정", "권한 설정"],
   },
   {
     file: "school-teacher-field.html",
@@ -16,7 +16,7 @@ const pages = [
     heading: "인원필드설정",
     moduleKey: "school_teacher_field",
     active: "teacher_field",
-    seed: ["필드 추가", "필드 순서 변경", "필드 표시 여부"]
+    seed: ["필드 추가", "필드 순서 변경", "필드 표시 여부"],
   },
   {
     file: "school-teacher-level.html",
@@ -24,7 +24,7 @@ const pages = [
     heading: "직위명설정",
     moduleKey: "school_teacher_level",
     active: "teacher_level",
-    seed: ["교감", "부장교사", "담당교사"]
+    seed: ["교감", "부장교사", "담당교사"],
   },
   {
     file: "school-teacher-clear.html",
@@ -32,7 +32,7 @@ const pages = [
     heading: "교직원 초기화",
     moduleKey: "school_teacher_clear",
     active: "teacher_clear",
-    seed: ["초기화 전 백업", "초기화 실행", "초기화 이력 확인"]
+    seed: ["초기화 전 백업", "초기화 실행", "초기화 이력 확인"],
   },
   {
     file: "school-student.html",
@@ -40,7 +40,7 @@ const pages = [
     heading: "학생관리",
     moduleKey: "school_student_lists",
     active: "student_lists",
-    seed: ["학생 명단 확인", "학년/반 수정", "재학 상태 관리"]
+    seed: ["학생 명단 확인", "학년/반 수정", "재학 상태 관리"],
   },
   {
     file: "school-student-main.html",
@@ -48,7 +48,7 @@ const pages = [
     heading: "학생 기본설정",
     moduleKey: "school_student_main",
     active: "student_main",
-    seed: ["학년 체계 설정", "반 체계 설정", "기본값 설정"]
+    seed: ["학년 체계 설정", "반 체계 설정", "기본값 설정"],
   },
   {
     file: "school-student-field.html",
@@ -56,7 +56,7 @@ const pages = [
     heading: "학생 인원필드설정",
     moduleKey: "school_student_field",
     active: "student_field",
-    seed: ["필드 추가", "필수 입력 설정", "표시 순서 설정"]
+    seed: ["필드 추가", "필수 입력 설정", "표시 순서 설정"],
   },
   {
     file: "school-student-course.html",
@@ -64,7 +64,7 @@ const pages = [
     heading: "입학/졸업",
     moduleKey: "school_student_course",
     active: "student_course",
-    seed: ["입학 처리", "졸업 처리", "진급 일괄 처리"]
+    seed: ["입학 처리", "졸업 처리", "진급 일괄 처리"],
   },
   {
     file: "school-student-clear.html",
@@ -72,7 +72,7 @@ const pages = [
     heading: "학생 초기화",
     moduleKey: "school_student_clear",
     active: "student_clear",
-    seed: ["초기화 전 확인", "초기화 실행", "복구 방법 안내"]
+    seed: ["초기화 전 확인", "초기화 실행", "복구 방법 안내"],
   },
   {
     file: "school-sms-tel.html",
@@ -80,7 +80,7 @@ const pages = [
     heading: "발신번호관리",
     moduleKey: "school_sms_tel",
     active: "sms_tel",
-    seed: ["대표 발신번호 등록", "발신번호 인증", "발신번호 삭제"]
+    seed: ["대표 발신번호 등록", "발신번호 인증", "발신번호 삭제"],
   },
   {
     file: "school-sms-sin.html",
@@ -88,7 +88,7 @@ const pages = [
     heading: "충전신청",
     moduleKey: "school_sms_sin",
     active: "sms_sin",
-    seed: ["충전금액 선택", "결제 요청", "신청 내역 확인"]
+    seed: ["충전금액 선택", "결제 요청", "신청 내역 확인"],
   },
   {
     file: "school-sms-charge.html",
@@ -96,7 +96,7 @@ const pages = [
     heading: "충전내역",
     moduleKey: "school_sms_charge",
     active: "sms_charge",
-    seed: ["최근 충전 내역", "월별 합계", "결제 상태 확인"]
+    seed: ["최근 충전 내역", "월별 합계", "결제 상태 확인"],
   },
   {
     file: "school-sms-report.html",
@@ -104,8 +104,8 @@ const pages = [
     heading: "발송통계",
     moduleKey: "school_sms_report",
     active: "sms_report",
-    seed: ["일별 발송 건수", "실패 건수", "월별 리포트"]
-  }
+    seed: ["일별 발송 건수", "실패 건수", "월별 리포트"],
+  },
 ];
 
 function item(active, key, href, label) {
@@ -168,7 +168,7 @@ function pageTemplate(p) {
     title,
     date: `2026-02-${String(16 + idx).padStart(2, "0")}`,
     status: idx === 0 ? "done" : idx === 1 ? "progress" : "pending",
-    note: idx === 0 ? "완료" : "-"
+    note: idx === 0 ? "완료" : "-",
   }));
 
   return `<!doctype html>

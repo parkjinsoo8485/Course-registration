@@ -10,16 +10,18 @@ async function extractPageData(page, label) {
     };
 
     const tableHeaders = Array.from(
-      document.querySelectorAll(".lecture-table thead th, table thead th")
+      document.querySelectorAll(".lecture-table thead th, table thead th"),
     ).map((th) => th.textContent.replace(/\s+/g, " ").trim());
 
     const rowCells = Array.from(
-      document.querySelectorAll(".lecture-table tbody tr:first-child td, table tbody tr:first-child td")
+      document.querySelectorAll(
+        ".lecture-table tbody tr:first-child td, table tbody tr:first-child td",
+      ),
     ).map((td) => td.textContent.replace(/\s+/g, " ").trim());
 
-    const statusMenuItems = Array.from(document.querySelectorAll(".isu-option")).map((a) =>
-      a.textContent.trim()
-    );
+    const statusMenuItems = Array.from(
+      document.querySelectorAll(".isu-option"),
+    ).map((a) => a.textContent.trim());
 
     return {
       title: document.title,
@@ -35,7 +37,9 @@ async function extractPageData(page, label) {
       tableHeaders,
       firstRowCells: rowCells,
       statusMenuItems,
-      scripts: Array.from(document.querySelectorAll("script[src]")).map((s) => s.getAttribute("src"))
+      scripts: Array.from(document.querySelectorAll("script[src]")).map((s) =>
+        s.getAttribute("src"),
+      ),
     };
   });
 
@@ -48,7 +52,7 @@ async function testInteractions(page) {
     statusChangeWorks: false,
     maxSinEditWorks: false,
     maxWaitEditWorks: false,
-    deleteRowWorks: false
+    deleteRowWorks: false,
   };
 
   const rowCountBefore = await page.locator(".lecture-table tbody tr").count();
@@ -120,10 +124,14 @@ async function main() {
     targetUrl,
     real,
     local,
-    localInteraction
+    localInteraction,
   };
 
-  fs.writeFileSync("playwright-analysis.json", JSON.stringify(report, null, 2), "utf8");
+  fs.writeFileSync(
+    "playwright-analysis.json",
+    JSON.stringify(report, null, 2),
+    "utf8",
+  );
   console.log(JSON.stringify(report, null, 2));
 }
 

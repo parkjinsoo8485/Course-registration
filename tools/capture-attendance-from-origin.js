@@ -16,22 +16,35 @@ async function main() {
     storageState: storagePath,
     locale: "ko-KR",
     viewport: { width: 1365, height: 900 },
-    acceptDownloads: true
+    acceptDownloads: true,
   });
   const page = await context.newPage();
 
-  const result = { mode: "unknown", lectureUrl: "", finalUrl: "", title: "", downloaded: null };
+  const result = {
+    mode: "unknown",
+    lectureUrl: "",
+    finalUrl: "",
+    title: "",
+    downloaded: null,
+  };
 
   await page.goto("https://www.dbdbschool.kr/af/ad_lec/lists/sn/2848", {
     waitUntil: "domcontentloaded",
-    timeout: 90000
+    timeout: 90000,
   });
   await page.waitForTimeout(1800);
   const firstTitle = await page.title();
   if (firstTitle.indexOf("403") > -1 || /member\/login/.test(page.url())) {
-    console.log("[INFO] 403/로그인 상태 감지. 브라우저에서 직접 로그인해 주세요. (최대 5분 대기)");
-    await page.goto("https://www.dbdbschool.kr/member/login", { waitUntil: "domcontentloaded", timeout: 90000 });
-    await page.waitForURL(/\/af\/ad_lec\/lists\/sn\/2848/i, { timeout: 300000 });
+    console.log(
+      "[INFO] 403/로그인 상태 감지. 브라우저에서 직접 로그인해 주세요. (최대 5분 대기)",
+    );
+    await page.goto("https://www.dbdbschool.kr/member/login", {
+      waitUntil: "domcontentloaded",
+      timeout: 90000,
+    });
+    await page.waitForURL(/\/af\/ad_lec\/lists\/sn\/2848/i, {
+      timeout: 300000,
+    });
     await context.storageState({ path: storagePath });
     await page.waitForTimeout(1500);
   }
@@ -44,15 +57,26 @@ async function main() {
     result.title = await page.title();
     const html = await page.content();
     fs.writeFileSync(path.join(outDir, "attendance-result.html"), html, "utf8");
-    await page.screenshot({ path: path.join(outDir, "attendance-result.png"), fullPage: true });
-    fs.writeFileSync(path.join(outDir, "summary.json"), JSON.stringify(result, null, 2), "utf8");
+    await page.screenshot({
+      path: path.join(outDir, "attendance-result.png"),
+      fullPage: true,
+    });
+    fs.writeFileSync(
+      path.join(outDir, "summary.json"),
+      JSON.stringify(result, null, 2),
+      "utf8",
+    );
     await browser.close();
     console.log(JSON.stringify(result, null, 2));
     return;
   }
 
-  const navPromise = page.waitForNavigation({ waitUntil: "domcontentloaded", timeout: 12000 }).catch(() => null);
-  const dlPromise = page.waitForEvent("download", { timeout: 12000 }).catch(() => null);
+  const navPromise = page
+    .waitForNavigation({ waitUntil: "domcontentloaded", timeout: 12000 })
+    .catch(() => null);
+  const dlPromise = page
+    .waitForEvent("download", { timeout: 12000 })
+    .catch(() => null);
   await btn.first().click();
 
   const [nav, dl] = await Promise.all([navPromise, dlPromise]);
@@ -64,15 +88,23 @@ async function main() {
     result.downloaded = { suggested, savedAs: savePath };
   }
   if (nav) {
-    result.mode = result.mode === "download" ? "download+navigation" : "navigation";
+    result.mode =
+      result.mode === "download" ? "download+navigation" : "navigation";
   }
 
   result.finalUrl = page.url();
   result.title = await page.title();
   const html = await page.content();
   fs.writeFileSync(path.join(outDir, "attendance-result.html"), html, "utf8");
-  await page.screenshot({ path: path.join(outDir, "attendance-result.png"), fullPage: true });
-  fs.writeFileSync(path.join(outDir, "summary.json"), JSON.stringify(result, null, 2), "utf8");
+  await page.screenshot({
+    path: path.join(outDir, "attendance-result.png"),
+    fullPage: true,
+  });
+  fs.writeFileSync(
+    path.join(outDir, "summary.json"),
+    JSON.stringify(result, null, 2),
+    "utf8",
+  );
 
   await browser.close();
   console.log(JSON.stringify(result, null, 2));

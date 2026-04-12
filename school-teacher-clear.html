@@ -76,11 +76,13 @@
   	<input type="hidden" name="clear_gubun" id="clear_gubun" value="">
 	<table class="table table-bordered table-hover list AlignCenter ">
 		<tbody><tr>
-			<th style="text-align:right; width:150px;">
-				<label for="tea_hp">휴대폰</label><input type="checkbox" name="tea_hp" id="tea_hp" value="Y"><br>
-				<label for="mem_level">직위</label><input type="checkbox" name="mem_level" id="mem_level" value="Y"><br>
-				<label for="tea_birthday">생년월일</label><input type="checkbox" name="tea_birthday" id="tea_birthday" value="Y"><br>
-				<label for="nice_bunho">나이스 개인번호</label><input type="checkbox" name="nice_bunho" id="nice_bunho" value="Y">			
+			<th style="text-align: right; width: 180px; padding-right: 20px !important;">
+				<div style="display: flex; flex-direction: column; align-items: flex-end; gap: 8px;">
+					<span><label for="tea_hp" style="margin-right: 5px; cursor: pointer;">휴대폰</label><input type="checkbox" name="tea_hp" id="tea_hp" value="Y" style="vertical-align: middle;"></span>
+					<span><label for="mem_level" style="margin-right: 5px; cursor: pointer;">직위</label><input type="checkbox" name="mem_level" id="mem_level" value="Y" style="vertical-align: middle;"></span>
+					<span><label for="tea_birthday" style="margin-right: 5px; cursor: pointer;">생년월일</label><input type="checkbox" name="tea_birthday" id="tea_birthday" value="Y" style="vertical-align: middle;"></span>
+					<span><label for="nice_bunho" style="margin-right: 5px; cursor: pointer;">나이스 개인번호</label><input type="checkbox" name="nice_bunho" id="nice_bunho" value="Y" style="vertical-align: middle;"></span>
+				</div>
 			</th>
 			<td align="left" style="padding-top:12px !important;">
 				<a href="#none;" onclick="fm_clear_check('teaField'); return false;" class="delete_btn"><i class="fa fa-trash"></i>초기화</a>

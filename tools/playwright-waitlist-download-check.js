@@ -17,7 +17,7 @@ async function main() {
       if (this && this.download) {
         window.__downloadMeta.push({
           filename: this.download,
-          href: this.getAttribute("href") || ""
+          href: this.getAttribute("href") || "",
         });
       }
       return originalClick.apply(this, arguments);
@@ -29,11 +29,22 @@ async function main() {
   await page.waitForTimeout(500);
 
   out.titleOk = (await page.title()).includes("대기자");
-  out.monthLabel = ((await page.locator("select[name='sld'] option").first().textContent()) || "").trim();
-  out.courseLabel = ((await page.locator("select[name='slp'] option").first().textContent()) || "").trim();
-  out.applyButtonText = ((await page.locator("button[onclick*='chk_app(']").first().textContent()) || "").trim();
+  out.monthLabel = (
+    (await page.locator("select[name='sld'] option").first().textContent()) ||
+    ""
+  ).trim();
+  out.courseLabel = (
+    (await page.locator("select[name='slp'] option").first().textContent()) ||
+    ""
+  ).trim();
+  out.applyButtonText = (
+    (await page.locator("button[onclick*='chk_app(']").first().textContent()) ||
+    ""
+  ).trim();
 
-  const excelLink = page.getByRole("link", { name: /대기자엑셀출력|엑셀출력/ }).first();
+  const excelLink = page
+    .getByRole("link", { name: /대기자엑셀출력|엑셀출력/ })
+    .first();
   await excelLink.click();
   await page.waitForTimeout(300);
   const metas = await page.evaluate(() => window.__downloadMeta || []);

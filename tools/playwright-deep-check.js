@@ -23,17 +23,23 @@ async function withDialogCapture(page, fn) {
 
 async function checkApplicants(page) {
   const out = { page: "applicants" };
-  await page.goto(fileUrl("applicants.html"), { waitUntil: "domcontentloaded" });
+  await page.goto(fileUrl("applicants.html"), {
+    waitUntil: "domcontentloaded",
+  });
 
   const checkAll = page.locator("#check_all");
   if (await checkAll.count()) {
     await checkAll.check();
-    out.checkAllChecked = (await page.locator("input[name='data_checked[]']:checked").count()) > 0;
+    out.checkAllChecked =
+      (await page.locator("input[name='data_checked[]']:checked").count()) > 0;
   } else {
     out.checkAllChecked = false;
   }
 
-  const excelButton = page.locator("a.btn.btn-success.btn-sm").filter({ hasText: "검색결과출력" }).first();
+  const excelButton = page
+    .locator("a.btn.btn-success.btn-sm")
+    .filter({ hasText: "검색결과출력" })
+    .first();
   if (await excelButton.count()) {
     const dl = page.waitForEvent("download");
     await excelButton.click();
@@ -55,7 +61,9 @@ async function checkApplicants(page) {
 
 async function checkCfgDivision(page) {
   const out = { page: "cfg-division" };
-  await page.goto(fileUrl("cfg-division.html"), { waitUntil: "domcontentloaded" });
+  await page.goto(fileUrl("cfg-division.html"), {
+    waitUntil: "domcontentloaded",
+  });
 
   const applyBtn = page.locator("a[onclick*='chkModify(']").first();
   out.modifyAlert = null;
@@ -77,7 +85,9 @@ async function checkCfgDivision(page) {
 
 async function checkSchoolStudentMain(page) {
   const out = { page: "school-student-main" };
-  await page.goto(fileUrl("school-student-main.html"), { waitUntil: "domcontentloaded" });
+  await page.goto(fileUrl("school-student-main.html"), {
+    waitUntil: "domcontentloaded",
+  });
 
   const maxClass = page.locator("#maxClass");
   const useClassName = page.locator("#useClassName");
@@ -102,7 +112,7 @@ async function main() {
     generatedAt: new Date().toISOString(),
     applicants: await checkApplicants(page),
     cfgDivision: await checkCfgDivision(page),
-    schoolStudentMain: await checkSchoolStudentMain(page)
+    schoolStudentMain: await checkSchoolStudentMain(page),
   };
 
   await browser.close();

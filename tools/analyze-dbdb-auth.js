@@ -3,27 +3,34 @@ const path = require("path");
 const { chromium } = require("playwright");
 
 function normalizeText(s) {
-  return String(s || "").replace(/\s+/g, " ").trim();
+  return String(s || "")
+    .replace(/\s+/g, " ")
+    .trim();
 }
 
 async function extractPageShape(page, label) {
   return await page.evaluate((inputLabel) => {
-    const norm = (s) => String(s || "").replace(/\s+/g, " ").trim();
+    const norm = (s) =>
+      String(s || "")
+        .replace(/\s+/g, " ")
+        .trim();
     const pick = (sel) => Array.from(document.querySelectorAll(sel));
 
-    const buttons = pick("button, a.btn, input[type='button'], input[type='submit']").map((el) => ({
+    const buttons = pick(
+      "button, a.btn, input[type='button'], input[type='submit']",
+    ).map((el) => ({
       tag: el.tagName.toLowerCase(),
       id: el.id || "",
       cls: el.className || "",
       text: norm(el.textContent || el.value || ""),
       href: el.getAttribute("href") || "",
-      type: el.getAttribute("type") || ""
+      type: el.getAttribute("type") || "",
     }));
 
     const links = pick("a").map((a) => ({
       text: norm(a.textContent),
       href: a.getAttribute("href") || "",
-      cls: a.className || ""
+      cls: a.className || "",
     }));
 
     const inputs = pick("input, select, textarea").map((el) => ({
@@ -32,7 +39,7 @@ async function extractPageShape(page, label) {
       id: el.id || "",
       name: el.getAttribute("name") || "",
       cls: el.className || "",
-      placeholder: el.getAttribute("placeholder") || ""
+      placeholder: el.getAttribute("placeholder") || "",
     }));
 
     const headers = pick("table thead th").map((th) => norm(th.textContent));
@@ -47,7 +54,7 @@ async function extractPageShape(page, label) {
       links,
       inputs,
       headers,
-      rowCount
+      rowCount,
     };
   }, label);
 }
@@ -80,12 +87,12 @@ async function main() {
   const realCtx = await browser.newContext({
     storageState: storagePath,
     locale: "ko-KR",
-    viewport: { width: 1440, height: 900 }
+    viewport: { width: 1440, height: 900 },
   });
   const realPage = await realCtx.newPage();
   await realPage.goto("https://www.dbdbschool.kr/af/ad_lec/lists/sn/2848", {
     waitUntil: "domcontentloaded",
-    timeout: 60000
+    timeout: 60000,
   });
   await realPage.waitForTimeout(3000);
   const realShape = await extractPageShape(realPage, "real");
@@ -93,16 +100,22 @@ async function main() {
 
   const localCtx = await browser.newContext({
     locale: "ko-KR",
-    viewport: { width: 1440, height: 900 }
+    viewport: { width: 1440, height: 900 },
   });
   const localPage = await localCtx.newPage();
-  await localPage.goto("file:///" + path.resolve("index.html").replace(/\\/g, "/"), {
-    waitUntil: "domcontentloaded",
-    timeout: 60000
-  });
+  await localPage.goto(
+    "file:///" + path.resolve("index.html").replace(/\\/g, "/"),
+    {
+      waitUntil: "domcontentloaded",
+      timeout: 60000,
+    },
+  );
   await localPage.waitForTimeout(1000);
   const localShape = await extractPageShape(localPage, "local");
-  await localPage.screenshot({ path: "dbdb-local-current.png", fullPage: true });
+  await localPage.screenshot({
+    path: "dbdb-local-current.png",
+    fullPage: true,
+  });
 
   await browser.close();
 
@@ -127,22 +140,26 @@ async function main() {
       realInputs: realShape.inputs.length,
       localInputs: localShape.inputs.length,
       realRows: realShape.rowCount,
-      localRows: localShape.rowCount
+      localRows: localShape.rowCount,
     },
     missingInLocal: {
       buttonTexts: diffSets(realButtons, localButtons),
       linkTexts: diffSets(realLinks, localLinks),
-      tableHeaders: diffSets(realHeaders, localHeaders)
+      tableHeaders: diffSets(realHeaders, localHeaders),
     },
     samples: {
       realButtons: realShape.buttons.slice(0, 40),
       localButtons: localShape.buttons.slice(0, 40),
       realInputs: realShape.inputs.slice(0, 60),
-      localInputs: localShape.inputs.slice(0, 60)
-    }
+      localInputs: localShape.inputs.slice(0, 60),
+    },
   };
 
-  fs.writeFileSync("dbdb-auth-analysis-report.json", JSON.stringify(report, null, 2), "utf8");
+  fs.writeFileSync(
+    "dbdb-auth-analysis-report.json",
+    JSON.stringify(report, null, 2),
+    "utf8",
+  );
   console.log(JSON.stringify(report, null, 2));
 }
 

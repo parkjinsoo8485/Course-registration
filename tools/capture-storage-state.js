@@ -5,22 +5,24 @@ async function main() {
   const outputPath = path.resolve("dbdb-storage-state.json");
   const browser = await chromium.launch({
     channel: "chrome",
-    headless: false
+    headless: false,
   });
 
   const context = await browser.newContext({
     viewport: { width: 1400, height: 900 },
-    locale: "ko-KR"
+    locale: "ko-KR",
   });
 
   const page = await context.newPage();
   await page.goto("https://www.dbdbschool.kr/member/login/sn/2848", {
     waitUntil: "domcontentloaded",
-    timeout: 60000
+    timeout: 60000,
   });
 
   console.log("[INFO] 브라우저 창에서 로그인하세요.");
-  console.log("[INFO] 로그인 후 강좌관리 목록 페이지(/af/ad_lec/lists/sn/2848)까지 이동하면 자동 저장됩니다.");
+  console.log(
+    "[INFO] 로그인 후 강좌관리 목록 페이지(/af/ad_lec/lists/sn/2848)까지 이동하면 자동 저장됩니다.",
+  );
 
   const deadline = Date.now() + 10 * 60 * 1000;
   while (Date.now() < deadline) {
@@ -43,4 +45,3 @@ main().catch((err) => {
   console.error(err);
   process.exit(1);
 });
-

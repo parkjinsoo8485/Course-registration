@@ -35,21 +35,21 @@
 	<div class="new_help_manualbox hm_loca1">
     	<p class="hm_title"><i class="fa fa-file-text-o" aria-hidden="true"></i>매뉴얼</p>
         <ul>
-        	<li><a href="https://www.dbdbschool.kr/help/go_data/num/73/data/link1" target="_blank" class="manual_btn"><i class="fa fa-youtube-play"></i> 기본설정</a></li>
+        	<li><a href="./manual.html" target="_blank" class="manual_btn"><i class="fa fa-youtube-play"></i> 기본설정</a></li>
         </ul>
     </div>
 			
 	<div class="panel-heading">기본설정</div>
 	<div class="panel-body" style="margin-bottom:-20px;">
 		<ul class="tapMenu">
-			<li class="on"><a href="https://www.dbdbschool.kr/af/ad_cfg/main/sn/2848">기본설정</a></li>
-			<li><a href="https://www.dbdbschool.kr/af/ad_cfg/tea/sn/2848">강사권한</a></li>
-			<li><a href="https://www.dbdbschool.kr/af/ad_cfg/att/sn/2848">출석부옵션</a></li>
-			<li><a href="https://www.dbdbschool.kr/af/ad_cfg/sms/sn/2848">문자설정</a></li>
+			<li class="on"><a href="./cfg-basic.html">기본설정</a></li>
+			<li><a href="./cfg-teacher-auth.html">강사권한</a></li>
+			<li><a href="./cfg-attend-option.html">출석부옵션</a></li>
+			<li><a href="./cfg-sms-option.html">문자설정</a></li>
 		</ul>		
 	</div>
 		
-<form action="https://www.dbdbschool.kr/af/ad_cfg/main/sn/2848" name="fm_edit" id="fm_edit" onsubmit="return fm_edit_check(this);" method="post" accept-charset="utf-8">
+<form action="./cfg-basic.html" name="fm_edit" id="fm_edit" onsubmit="return false;" method="post" accept-charset="utf-8">
                                 <input type="hidden" name="csrf_test_name" value="e7949d7748f475e6b7014456deae3d9b">
 <input type="hidden" name="form_open_date_use_chk_csrf" value="2026-02-20 23:16:16">
 	<table class="table table-bordered table-hover list MAT0">
@@ -77,17 +77,23 @@
 		<tr>
 			<th colspan="2">서비스 관리자</th>
 			<td>				
-				<div style="float:left;">												
-					<select multiple="" id="addAdminList" name="addAdminList" size="4" class="form-control PAD0 select_box_menu_width" style="height:86px;  min-width:100px;">
-						<option value="128295">관리자2</option>
-					</select>
-					<input type="hidden" id="addAdminNum" name="addAdminNum" value="128295">
+				<div style="display: flex; align-items: flex-start; gap: 12px;">
+					<div>												
+						<select multiple="" id="addAdminList" name="addAdminList" size="4" class="form-control" style="height:90px; min-width:160px; padding: 0;">
+							<option value="128295">관리자2</option>
+						</select>
+						<input type="hidden" id="addAdminNum" name="addAdminNum" value="128295">
+					</div>
+					<div style="display: flex; flex-direction: column; gap: 8px; padding-top: 5px;">
+						<a href="./school-teacher.html" onclick="openMemWin(this.href); return false;" class="btn btn-default btn-sm" style="display: flex; align-items: center; justify-content: center; gap: 5px; height: 35px; min-width: 85px;">
+							<i class="fa fa-binoculars"></i> 추가
+						</a>
+						<a href="#none;" onclick="delAddMem(); return false;" class="btn btn-danger btn-sm" style="display: flex; align-items: center; justify-content: center; gap: 5px; height: 35px; min-width: 85px;">
+							<i class="fa fa-trash"></i> 삭제
+						</a>
+					</div>
 				</div>
-				<div style="float:left; padding:13px 0 0 5px">
-					<a href="https://www.dbdbschool.kr/teacher/search/sn/2848/tn/cfg_main_admin" onclick="openMemWin(this.href); return false" class="search_btn"><i class="fa fa-binoculars"></i>추가</a>&nbsp;
-					<br><br><a href="#none;" onclick="delAddMem(); return false;" class="delete_btn"><i class="fa fa-trash"></i>삭제</a>
-				</div>
-				<div class="ClearBoth">(서비스를 관리할 교직원을 지정합니다.)</div>
+				<div class="ClearBoth MAT5" style="font-size: 11px; color: #888; margin-top: 10px;">(서비스를 관리할 교직원을 지정합니다.)</div>
 				<div class="error_msg addAdminNum"></div>
 			</td>	
 		</tr>					
@@ -167,7 +173,7 @@
 			<td>
 				<input id="surveyPwd" name="surveyPwd" type="text" title="" value="" size="10" maxlength="8" class="form-control size30" style="width:120px;"> (8자 이하로 입력)
 				<p>(로그인 하지 않고 설문에 참여하기 위한 비밀번호)</p>		
-				<p style="padding:5px 0;"><i class="fa fa-external-link-square"></i> <a href="https://www.dbdbschool.kr/go/aso/066CJUK" target="_blank" class="link_type">단축 주소</a> : <span id="link_survay_short" style="padding:2px; border:1px #CCCCCC dashed; line-height:160%;">https://www.dbdbschool.kr/go/aso/066CJUK</span></p>
+				<p style="padding:5px 0;"><i class="fa fa-external-link-square"></i> <a href="./survey.html" target="_blank" class="link_type">단축 주소</a> : <span id="link_survay_short" style="padding:2px; border:1px #CCCCCC dashed; line-height:160%;">http://localhost:3000/survey.html</span></p>
 				<div id="qr_container_1" title="https://www.dbdbschool.kr/go/aso/066CJUK"><canvas width="170" height="170" style="display: none;"></canvas><img src="data:image/png;base64,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" style="display: block;"></div>
 				<div class="error_msg error_surveyPwd"></div>
 			</td>

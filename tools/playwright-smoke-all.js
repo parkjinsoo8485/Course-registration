@@ -37,23 +37,47 @@ async function submitAttendanceAndCapture(page) {
     .catch(() => null);
 
   await page.locator("#fm_attendance button[type='submit']").click();
-  const [download, dialogMessage] = await Promise.all([downloadPromise, dialogPromise]);
+  const [download, dialogMessage] = await Promise.all([
+    downloadPromise,
+    dialogPromise,
+  ]);
   return { download, dialogMessage };
 }
 
 async function testIndex(page) {
   const out = {};
   await page.goto(fileUrl("index.html"), { waitUntil: "domcontentloaded" });
-  const checkAll = (await page.locator("#check_all").count()) ? page.locator("#check_all") : page.locator("#chk-all");
+  const checkAll = (await page.locator("#check_all").count())
+    ? page.locator("#check_all")
+    : page.locator("#chk-all");
   await checkAll.check();
   const total = await page.locator(".chk-row").count();
   const checked = await page.locator(".chk-row:checked").count();
   out.checkAll = total > 0 && total === checked;
 
-  await page.locator(".lecture-table tbody tr").first().locator(".max-wait-link").click();
-  await page.locator(".lecture-table tbody tr").first().locator(".max_wait_box .max-input").fill("8");
-  await page.locator(".lecture-table tbody tr").first().locator(".btn-wait-save").click();
-  out.maxWait = ((await page.locator(".lecture-table tbody tr").first().locator(".max-wait-link").textContent()) || "").trim() === "8";
+  await page
+    .locator(".lecture-table tbody tr")
+    .first()
+    .locator(".max-wait-link")
+    .click();
+  await page
+    .locator(".lecture-table tbody tr")
+    .first()
+    .locator(".max_wait_box .max-input")
+    .fill("8");
+  await page
+    .locator(".lecture-table tbody tr")
+    .first()
+    .locator(".btn-wait-save")
+    .click();
+  out.maxWait =
+    (
+      (await page
+        .locator(".lecture-table tbody tr")
+        .first()
+        .locator(".max-wait-link")
+        .textContent()) || ""
+    ).trim() === "8";
 
   const excelDl = page.waitForEvent("download");
   await page.locator("#btn-excel").click();
@@ -65,7 +89,7 @@ async function testIndex(page) {
   out.attendancePage = (await page.title()).includes("출석부");
   out.attendanceDivWithRows = "";
   const divValues = await page.$$eval("#att_div option", (opts) =>
-    opts.map((o) => String(o.value || "").trim()).filter(Boolean)
+    opts.map((o) => String(o.value || "").trim()).filter(Boolean),
   );
   for (const divValue of divValues) {
     await page.selectOption("#att_div", divValue);
@@ -88,7 +112,9 @@ async function testIndex(page) {
     const attCsv = fs.readFileSync(attPath, "utf8").replace(/^\uFEFF/, "");
     const firstLine = (attCsv.split(/\r?\n/)[0] || "").trim();
     out.attendanceHeaderOk = firstLine.split(",").length >= 5;
-    out.attendanceRowCount = attCsv.split(/\r?\n/).filter((x) => x.trim()).length;
+    out.attendanceRowCount = attCsv
+      .split(/\r?\n/)
+      .filter((x) => x.trim()).length;
   } else {
     out.attendanceHeaderOk = false;
     out.attendanceRowCount = 0;
@@ -109,7 +135,9 @@ async function testIndex(page) {
 
 async function testBulkInput(page, sampleFile) {
   const out = {};
-  await page.goto(fileUrl("lec_bulk_input.html"), { waitUntil: "domcontentloaded" });
+  await page.goto(fileUrl("lec_bulk_input.html"), {
+    waitUntil: "domcontentloaded",
+  });
 
   const tplDl = page.waitForEvent("download");
   await page.locator("#btn-template-download").click();
@@ -129,7 +157,9 @@ async function testBulkInput(page, sampleFile) {
 
 async function testBulkModify(page, sampleFile) {
   const out = {};
-  await page.goto(fileUrl("lec_bulk_modify.html"), { waitUntil: "domcontentloaded" });
+  await page.goto(fileUrl("lec_bulk_modify.html"), {
+    waitUntil: "domcontentloaded",
+  });
 
   const tplDl = page.waitForEvent("download");
   await page.locator("#btn-modify-template-download").click();
@@ -150,7 +180,11 @@ async function testBulkModify(page, sampleFile) {
   });
 
   if (firstId) {
-    fs.writeFileSync(sampleFile, "강좌번호,강좌명\n" + String(firstId) + ",수정테스트강좌\n", "utf8");
+    fs.writeFileSync(
+      sampleFile,
+      "강좌번호,강좌명\n" + String(firstId) + ",수정테스트강좌\n",
+      "utf8",
+    );
   }
 
   await page.setInputFiles("#bulk-modify-file", sampleFile);
@@ -169,7 +203,9 @@ async function testCopy(page) {
     await page.selectOption("#copy-from-div", { index: 1 });
   }
   const fromNow = await page.locator("#copy-from-div").inputValue();
-  const options = await page.$$eval("#copy-to-div option", (els) => els.map((e) => e.value).filter(Boolean));
+  const options = await page.$$eval("#copy-to-div option", (els) =>
+    els.map((e) => e.value).filter(Boolean),
+  );
   const toVal = options.find((v) => v !== fromNow);
   if (toVal) {
     await page.selectOption("#copy-to-div", toVal);
@@ -218,7 +254,9 @@ async function testManual(page) {
     out.linkHref = href;
     out.linkHasHttp = /^https?:\/\//.test(href);
 
-    const popupPromise = page.waitForEvent("popup", { timeout: 5000 }).catch(() => null);
+    const popupPromise = page
+      .waitForEvent("popup", { timeout: 5000 })
+      .catch(() => null);
     await btn.click();
     const popup = await popupPromise;
     out.popupOpened = !!popup;
@@ -232,10 +270,14 @@ async function testManual(page) {
 
 async function testApplicants(page) {
   const out = {};
-  await page.goto(fileUrl("applicants.html"), { waitUntil: "domcontentloaded" });
+  await page.goto(fileUrl("applicants.html"), {
+    waitUntil: "domcontentloaded",
+  });
   out.titleOk = (await page.title()).includes("신청");
 
-  const tableRows = page.locator("#fm_list table tbody tr").filter({ has: page.locator("td") });
+  const tableRows = page
+    .locator("#fm_list table tbody tr")
+    .filter({ has: page.locator("td") });
   out.rowCountBefore = await tableRows.count();
 
   const searchDlPromise = page.waitForEvent("download");
@@ -243,9 +285,11 @@ async function testApplicants(page) {
   const searchDl = await searchDlPromise;
   out.searchResultDownload = !!searchDl.suggestedFilename();
 
-  const allResultBtn = page.locator(".applicants-actions-row a.btn.btn-success.btn-sm", {
-    hasText: "신청결과엑셀출력"
-  }).first();
+  const allResultBtn = page
+    .locator(".applicants-actions-row a.btn.btn-success.btn-sm", {
+      hasText: "신청결과엑셀출력",
+    })
+    .first();
   await allResultBtn.waitFor({ state: "visible", timeout: 10000 });
   const allDlPromise = page.waitForEvent("download");
   await allResultBtn.click();
@@ -260,7 +304,10 @@ async function testApplicants(page) {
       const form = document.getElementById("fm_list");
       if (!form) return;
       if (typeof form.requestSubmit === "function") form.requestSubmit();
-      else form.dispatchEvent(new Event("submit", { bubbles: true, cancelable: true }));
+      else
+        form.dispatchEvent(
+          new Event("submit", { bubbles: true, cancelable: true }),
+        );
     });
     const confirmDialog = await confirmPromise;
     out.bulkDeleteConfirmText = confirmDialog.message();
@@ -292,11 +339,15 @@ async function main() {
     stats: await testStats(page),
     write: await testWrite(page),
     manual: await testManual(page),
-    applicants: await testApplicants(page)
+    applicants: await testApplicants(page),
   };
 
   await browser.close();
-  fs.writeFileSync("playwright-smoke-report.json", JSON.stringify(report, null, 2), "utf8");
+  fs.writeFileSync(
+    "playwright-smoke-report.json",
+    JSON.stringify(report, null, 2),
+    "utf8",
+  );
   console.log(JSON.stringify(report, null, 2));
 }
 

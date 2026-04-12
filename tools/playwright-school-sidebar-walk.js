@@ -11,7 +11,9 @@ async function main() {
   fs.mkdirSync(outDir, { recursive: true });
 
   const browser = await chromium.launch({ headless: true });
-  const page = await browser.newPage({ viewport: { width: 1365, height: 900 } });
+  const page = await browser.newPage({
+    viewport: { width: 1365, height: 900 },
+  });
   await page.goto(fileUrl("school.html"), { waitUntil: "domcontentloaded" });
   await page.waitForTimeout(700);
 
@@ -20,7 +22,7 @@ async function main() {
     return els
       .map((a) => ({
         href: (a.getAttribute("href") || "").replace(/^\.\//, ""),
-        text: (a.textContent || "").replace(/\s+/g, " ").trim()
+        text: (a.textContent || "").replace(/\s+/g, " ").trim(),
       }))
       .filter((x) => {
         if (!x.href) return false;
@@ -40,7 +42,7 @@ async function main() {
       title = await page.title();
       await page.screenshot({
         path: path.join(outDir, link.href.replace(/\.html$/i, "") + ".png"),
-        fullPage: true
+        fullPage: true,
       });
       ok = true;
     } catch (err) {
@@ -50,7 +52,11 @@ async function main() {
   }
 
   await browser.close();
-  fs.writeFileSync(path.join(outDir, "summary.json"), JSON.stringify(report, null, 2), "utf8");
+  fs.writeFileSync(
+    path.join(outDir, "summary.json"),
+    JSON.stringify(report, null, 2),
+    "utf8",
+  );
   console.log(JSON.stringify(report, null, 2));
 }
 

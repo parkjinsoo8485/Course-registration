@@ -1,336 +1,570 @@
 ﻿<!doctype html>
 <html lang="ko">
-<head>
-  <meta charset="utf-8" />
-  <meta http-equiv="x-ua-compatible" content="ie=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>강좌 등록 - 강좌관리 - 늘봄학교</title>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>강좌 등록 - 강좌관리 - 늘봄학교</title>
 
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="./assets/css/app.css">
-</head>
-<body>
-
-  <div id="header" class="topbar">
-    <div class="topbar-inner">
-      <div class="topbar-center">
-        <span class="topbar-title">늘봄학교</span>
-        <span class="caret"></span>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="./assets/css/app.css" />
+  </head>
+  <body>
+    <div id="header" class="topbar">
+      <div class="topbar-inner">
+        <div class="topbar-center">
+          <span class="topbar-title">늘봄학교</span>
+          <span class="caret"></span>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div id="container" class="layout">
-    <aside id="left_menu" class="sidebar">
-      <div class="sidebar-school">이천초등학교</div>
-      <div class="sidebar-user">
-        <div class="avatar"><i class="fa fa-user"></i></div>
-        <div class="user-meta">
-          <div class="user-name-row">
-            <span class="user-name">박진선님</span>
-            <span class="user-bell"><i class="fa fa-bell"></i><span class="badge badge-red">24</span></span>
-          </div>
-          <div class="user-role">[로그인중] <span class="muted">[정보수정]</span></div>
-        </div>
-      </div>
-      <div class="sidebar-actions">
-        <a href="index.html" class="btn btn-success btn-sm">로그아웃</a>
-        <a href="./lec_write.html" class="btn btn-danger btn-sm">강좌등록</a>
-      </div>
-
-      <ul class="nav side-nav">
-        <li><a href="./manual.html"><i class="fa fa-download"></i> 매뉴얼</a></li>
-        <li><a href="#"><i class="fa fa-phone"></i> 고객지원 게시판</a></li>
-        <li><a href="#"><i class="fa fa-cog icon-red"></i> 학교관리</a></li>
-        <li class="active"><a href="index.html"><i class="fa fa-globe icon-blue"></i> 강좌관리</a></li>
-        <li><a href="#"><i class="fa fa-user"></i> 신청자관리</a></li>
-        <li><a href="#"><i class="fa fa-user"></i> 대기자관리</a></li>
-        <li><a href="#"><i class="fa fa-user"></i> 환불/취소관리</a></li>
-      </ul>
-    </aside>
-
-    <main id="contents_box" class="content">
-      <div id="contents_title" class="page-title">
-        <div class="title-left">
-          <div class="title-main"><i class="fa fa-plus"></i> 강좌 등록</div>
-          <div class="title-sub">이천초등학교 늘봄학교</div>
-        </div>
-      </div>
-
-      <div id="contents" class="content-inner lec-write-page">
-        <form id="fm_edit" class="lec-write-panel" action="/af/ad_lec/write/sn/2848" method="POST" enctype="multipart/form-data">
-          <div class="lec-write-head">
-            <strong>등록</strong>
-            <div class="lec-write-head-actions">
-              <a href="./manual.html" class="btn btn-default btn-xs"><i class="fa fa-file-text-o"></i> 매뉴얼</a>
-              <button type="submit" class="btn btn-danger btn-xs"><i class="fa fa-play-circle"></i> 강좌등록</button>
+    <div id="container" class="layout">
+      <aside id="left_menu" class="sidebar">
+        <div class="sidebar-school">이천초등학교</div>
+        <div class="sidebar-user">
+          <div class="avatar"><i class="fa fa-user"></i></div>
+          <div class="user-meta">
+            <div class="user-name-row">
+              <span class="user-name">박진선님</span>
+              <span class="user-bell"
+                ><i class="fa fa-bell"></i
+                ><span class="badge badge-red">24</span></span
+              >
+            </div>
+            <div class="user-role">
+              [로그인중] <span class="muted">[정보수정]</span>
             </div>
           </div>
-
-          <div class="lec-write-body">
-            <p class="lec-required-note"><i class="fa fa-check-square"></i> 표시가 있는 항목은 반드시 입력해야 합니다.</p>
-
-            <table class="table table-bordered lec-write-table">
-              <tbody>
-                <tr>
-                  <th>강좌명 <span class="req">☑</span></th>
-                  <td><input type="text" id="lec_name" name="lec_name" class="form-control input-sm" /></td>
-                </tr>
-                <tr>
-                  <th>강좌구분 <span class="req">☑</span></th>
-                  <td>
-                    <select id="lec_div" name="lec_div" class="form-control input-sm lec-short">
-                      <option value="">==선택==</option>
-                      <option value="1">3월</option>
-                      <option value="2">4월</option>
-                      <option value="3">5월</option>
-                      <option value="4">6월</option>
-                      <option value="5">7월</option>
-                      <option value="6">8월</option>
-                      <option value="7">9월</option>
-                      <option value="8">10월</option>
-                      <option value="9">11월</option>
-                      <option value="10">12월</option>
-                      <option value="11">1월</option>
-                      <option value="12">2월</option>
-                    </select>
-                  </td>
-                </tr>
-                <tr>
-                  <th>늘봄과정 <span class="req">☑</span></th>
-                  <td>
-                    <select id="lec_pro_type" name="lec_pro_type" class="form-control input-sm lec-short">
-                      <option value="">==선택==</option>
-                      <option value="1">방과후</option>
-                      <option value="2">맞춤형</option>
-                      <option value="3">돌봄</option>
-                    </select>
-                  </td>
-                </tr>
-                <tr>
-                  <th>강사ID <span class="req">☑</span></th>
-                  <td>
-                    <div class="inline-row">
-                      <input type="text" id="tea_id" class="form-control input-sm lec-mid" />
-                      <a href="./popups/teacher-search.html?target=tea_id" class="search_btn" onclick="openAfTeaWin(this.href); return false;">검색하기</a>
-                    </div>
-                    <label class="inline-check"><input type="checkbox"> 강사 ID가 같은 다른 강좌에 이미 신청되어 있는 경우 중복해서 신청할 수 없음</label>
-                  </td>
-                </tr>
-                <tr>
-                  <th>보조강사ID</th>
-                  <td>
-                    <div class="inline-row">
-                      <input type="text" id="tea_id1" class="form-control input-sm lec-mid" />
-                      <a href="./popups/teacher-search.html?target=tea_id1" class="search_btn" onclick="openAfTeaWin(this.href); return false;">검색하기</a>
-                    </div>
-                    <p class="inline-help">(대표 강사와 똑같은 권한으로 강좌 관련 업무를 보실 수 있습니다)</p>
-                  </td>
-                </tr>
-                <tr>
-                  <th>대상학년 <span class="req">☑</span></th>
-                  <td>
-                    <label class="inline-check"><input type="checkbox"> 전체</label>
-                    <label class="inline-check"><input type="checkbox"> 1학년</label>
-                    <label class="inline-check"><input type="checkbox"> 2학년</label>
-                    <label class="inline-check"><input type="checkbox"> 3학년</label>
-                    <label class="inline-check"><input type="checkbox"> 4학년</label>
-                    <label class="inline-check"><input type="checkbox"> 5학년</label>
-                    <label class="inline-check"><input type="checkbox"> 6학년</label>
-                  </td>
-                </tr>
-                <tr>
-                  <th>강의시간 <span class="req">☑</span></th>
-                  <td>
-                    <div class="inline-row">
-                      <input type="text" id="lec_time_" class="form-control input-sm lec-wide" />
-                      <input type="hidden" id="lec_time" name="lec_time" />
-                      <a href="./popups/time-search.html" class="search_btn" onclick="openLecTimeWin(this.href); return false;">검색하기</a>
-                    </div>
-                    <label class="inline-check"><input type="checkbox"> 강좌 신청 시 다른 강좌와 강의시간이 겹더라도 중복해서 신청할 수 있음</label>
-                  </td>
-                </tr>
-                <tr>
-                  <th>정원 <span class="req">☑</span></th>
-                  <td><input type="text" class="form-control input-sm lec-num" value="0"> 명</td>
-                </tr>
-                <tr>
-                  <th>대기정원 <span class="req">☑</span></th>
-                  <td><input type="text" class="form-control input-sm lec-num" value="0"> 명</td>
-                </tr>
-                <tr>
-                  <th>운영기간 <span class="req">☑</span></th>
-                  <td>
-                    <input type="text" class="form-control input-sm lec-date"> ~
-                    <input type="text" class="form-control input-sm lec-date">
-                  </td>
-                </tr>
-                <tr>
-                  <th>총시수</th>
-                  <td><input type="text" class="form-control input-sm lec-num" value="0"> 시간</td>
-                </tr>
-                <tr>
-                  <th>강의실</th>
-                  <td>
-                    <select class="form-control input-sm lec-mid">
-                      <option>== 선택 ==</option>
-                    </select>
-                    <input type="text" class="form-control input-sm lec-mid" placeholder="신규입력">
-                  </td>
-                </tr>
-                <tr>
-                  <th>수강료</th>
-                  <td>
-                    <input type="text" class="form-control input-sm lec-num" value="0"> 원(강사료 + 수용비)
-                    <div>
-                      <label class="inline-check"><input type="checkbox"> 자유수강권 차감 제외</label>
-                    </div>
-                    <div>
-                      <label class="inline-check"><input type="checkbox"> 1학년(무상) 차감 제외</label>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <th>수용비</th>
-                  <td><input type="text" class="form-control input-sm lec-num" value="0"> 원</td>
-                </tr>
-                <tr>
-                  <th>강사료</th>
-                  <td><input type="text" class="form-control input-sm lec-num" value="0"> 원</td>
-                </tr>
-                <tr>
-                  <th>교재비</th>
-                  <td>
-                    <input type="text" class="form-control input-sm lec-num" value="0"> 원
-                    <div>
-                      <label class="inline-check"><input type="checkbox"> 자유수강권 차감 제외</label>
-                    </div>
-                    <div>
-                      <label class="inline-check"><input type="checkbox"> 1학년(무상) 차감 제외</label>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <th>재료비</th>
-                  <td>
-                    <input type="text" class="form-control input-sm lec-num" value="0"> 원
-                    <div>
-                      <label class="inline-check"><input type="checkbox"> 자유수강권 차감 제외</label>
-                    </div>
-                    <div>
-                      <label class="inline-check"><input type="checkbox"> 1학년(무상) 차감 제외</label>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <th>내용</th>
-                  <td><textarea class="form-control lec-textarea" rows="8"></textarea></td>
-                </tr>
-                <tr>
-                  <th>첨부파일</th>
-                  <td>
-                    <input type="file" class="input-sm">
-                    <div class="inline-help">※ 한 번에 최대 2M 이하만 올릴 수 있습니다.</div>
-                  </td>
-                </tr>
-                <tr>
-                  <th>수강료 출력</th>
-                  <td><label class="inline-check"><input type="checkbox"> 학생의 신청 조회 화면에 수강료, 교재비, 재료비 출력</label></td>
-                </tr>
-                <tr>
-                  <th>강사마감</th>
-                  <td><label class="inline-check"><input type="checkbox"> 강사는 신청자 등록(삭제) 및 수강료 수정 불가</label></td>
-                </tr>
-                <tr>
-                  <th>환불마감</th>
-                  <td><label class="inline-check"><input type="checkbox"> 강사 및 학생은 환불 신청 불가</label></td>
-                </tr>
-                <tr>
-                  <th>상태 <span class="req">☑</span></th>
-                  <td>
-                    <label class="inline-check"><input type="radio" name="lec_status" checked> 출력</label>
-                    <label class="inline-check"><input type="radio" name="lec_status"> 대기</label>
-                    <label class="inline-check"><input type="radio" name="lec_status"> 종료</label>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-
-            <div class="lec-write-actions">
-              <a href="index.html" class="btn btn-default btn-sm">취소</a>
-              <button type="submit" class="btn btn-danger btn-sm">등록</button>
-            </div>
-          </div>
-        </form>
-
-        <div class="lec-write-help">
-          <p>강사ID : 등록된 강사는 지정하지 않은 경우 <span>기명</span>을 입력해도 강좌 등록은 가능합니다.</p>
-          <p>상태(출력) : 학생 신청 화면에 <span>출력</span>됩니다.</p>
-          <p>상태(대기) : 학생 화면에 <span>출력되지 않습니다.</span></p>
-          <p>상태(종료) : 학생 신청 화면에 출력은 하지만 <span>신청은 불가능</span>합니다.</p>
-          <p>신청 제한(강의 시간, 운영 기간) : 운영 기간과 강의 시간이 중복되는 강좌는 1개만 신청 가능합니다.</p>
-          <p>신청 제한(중복제한그룹) : 같은 중복제한그룹에 있는 강좌는 환경 설정에 지정된 개수까지만 신청할 수 있습니다.</p>
         </div>
-      </div>
+        <div class="sidebar-actions">
+          <a href="index.html" class="btn btn-success btn-sm">로그아웃</a>
+          <a href="./lec_write.html" class="btn btn-danger btn-sm">강좌등록</a>
+        </div>
 
-      <div id="footer" class="footer">
-        <span class="muted">짤 DBDB School Clone</span>
-      </div>
-    </main>
-  </div>
+        <ul class="nav side-nav">
+          <li>
+            <a href="./manual.html"><i class="fa fa-download"></i> 매뉴얼</a>
+          </li>
+          <li>
+            <a href="#"><i class="fa fa-phone"></i> 고객지원 게시판</a>
+          </li>
+          <li>
+            <a href="#"><i class="fa fa-cog icon-red"></i> 학교관리</a>
+          </li>
+          <li class="active">
+            <a href="index.html"
+              ><i class="fa fa-globe icon-blue"></i> 강좌관리</a
+            >
+          </li>
+          <li>
+            <a href="#"><i class="fa fa-user"></i> 신청자관리</a>
+          </li>
+          <li>
+            <a href="#"><i class="fa fa-user"></i> 대기자관리</a>
+          </li>
+          <li>
+            <a href="#"><i class="fa fa-user"></i> 환불/취소관리</a>
+          </li>
+        </ul>
+      </aside>
 
-  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <script src="./assets/js/app.js"></script>
-  <script>
-    // 공통 팝업 열기
-    function openPopup(url, name) {
-      window.name = ''; // 동일 name 재사용 문제 방지
-      const win = window.open(
-        url,
-        name,
-        "scrollbars=yes,toolbar=no,width=530,height=500,resizable=no,menubar=no,left=10,top=10"
-      );
-      if (win) win.focus();
-      return false;
-    }
+      <main id="contents_box" class="content">
+        <div id="contents_title" class="page-title">
+          <div class="title-left">
+            <div class="title-main"><i class="fa fa-plus"></i> 강좌 등록</div>
+            <div class="title-sub">이천초등학교 늘봄학교</div>
+          </div>
+        </div>
 
-    function openAfTeaWin(dest) {
-      return openPopup(dest, "afTeaSearchWin");
-    }
+        <div id="contents" class="content-inner lec-write-page">
+          <form
+            id="fm_edit"
+            class="lec-write-panel"
+            action="/af/ad_lec/write/sn/2848"
+            method="POST"
+            enctype="multipart/form-data"
+          >
+            <div class="lec-write-head">
+              <strong>등록</strong>
+              <div class="lec-write-head-actions">
+                <a href="./manual.html" class="btn btn-default btn-xs"
+                  ><i class="fa fa-file-text-o"></i> 매뉴얼</a
+                >
+                <button type="submit" class="btn btn-danger btn-xs">
+                  <i class="fa fa-play-circle"></i> 강좌등록
+                </button>
+              </div>
+            </div>
 
-    function openLecTimeWin(dest) {
-      return openPopup(dest, "lecTimeWin");
-    }
+            <div class="lec-write-body">
+              <p class="lec-required-note">
+                <i class="fa fa-check-square"></i> 표시가 있는 항목은 반드시
+                입력해야 합니다.
+              </p>
 
-    // 팝업에서 호출할 값 채우기 함수
-    window.applyPopupValue = function (targetId, value, label) {
-      const el = document.getElementById(targetId);
-      if (!el) return;
-      el.value = value;
+              <table class="table table-bordered lec-write-table">
+                <tbody>
+                  <tr>
+                    <th>강좌명 <span class="req">☑</span></th>
+                    <td>
+                      <input
+                        type="text"
+                        id="lec_name"
+                        name="lec_name"
+                        class="form-control input-sm"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>강좌구분 <span class="req">☑</span></th>
+                    <td>
+                      <select
+                        id="lec_div"
+                        name="lec_div"
+                        class="form-control input-sm lec-short"
+                      >
+                        <option value="">==선택==</option>
+                        <option value="1">3월</option>
+                        <option value="2">4월</option>
+                        <option value="3">5월</option>
+                        <option value="4">6월</option>
+                        <option value="5">7월</option>
+                        <option value="6">8월</option>
+                        <option value="7">9월</option>
+                        <option value="8">10월</option>
+                        <option value="9">11월</option>
+                        <option value="10">12월</option>
+                        <option value="11">1월</option>
+                        <option value="12">2월</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>늘봄과정 <span class="req">☑</span></th>
+                    <td>
+                      <select
+                        id="lec_pro_type"
+                        name="lec_pro_type"
+                        class="form-control input-sm lec-short"
+                      >
+                        <option value="">==선택==</option>
+                        <option value="1">방과후</option>
+                        <option value="2">맞춤형</option>
+                        <option value="3">돌봄</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>강사ID <span class="req">☑</span></th>
+                    <td>
+                      <div class="inline-row">
+                        <input
+                          type="text"
+                          id="tea_id"
+                          class="form-control input-sm lec-mid"
+                        />
+                        <a
+                          href="./popups/teacher-search.html?target=tea_id"
+                          class="search_btn"
+                          onclick="
+                            openAfTeaWin(this.href);
+                            return false;
+                          "
+                          >검색하기</a
+                        >
+                      </div>
+                      <label class="inline-check"
+                        ><input type="checkbox" /> 강사 ID가 같은 다른 강좌에
+                        이미 신청되어 있는 경우 중복해서 신청할 수 없음</label
+                      >
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>보조강사ID</th>
+                    <td>
+                      <div class="inline-row">
+                        <input
+                          type="text"
+                          id="tea_id1"
+                          class="form-control input-sm lec-mid"
+                        />
+                        <a
+                          href="./popups/teacher-search.html?target=tea_id1"
+                          class="search_btn"
+                          onclick="
+                            openAfTeaWin(this.href);
+                            return false;
+                          "
+                          >검색하기</a
+                        >
+                      </div>
+                      <p class="inline-help">
+                        (대표 강사와 똑같은 권한으로 강좌 관련 업무를 보실 수
+                        있습니다)
+                      </p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>대상학년 <span class="req">☑</span></th>
+                    <td>
+                      <label class="inline-check"
+                        ><input type="checkbox" /> 전체</label
+                      >
+                      <label class="inline-check"
+                        ><input type="checkbox" /> 1학년</label
+                      >
+                      <label class="inline-check"
+                        ><input type="checkbox" /> 2학년</label
+                      >
+                      <label class="inline-check"
+                        ><input type="checkbox" /> 3학년</label
+                      >
+                      <label class="inline-check"
+                        ><input type="checkbox" /> 4학년</label
+                      >
+                      <label class="inline-check"
+                        ><input type="checkbox" /> 5학년</label
+                      >
+                      <label class="inline-check"
+                        ><input type="checkbox" /> 6학년</label
+                      >
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>강의시간 <span class="req">☑</span></th>
+                    <td>
+                      <div class="inline-row">
+                        <input
+                          type="text"
+                          id="lec_time_"
+                          class="form-control input-sm lec-wide"
+                        />
+                        <input type="hidden" id="lec_time" name="lec_time" />
+                        <a
+                          href="./popups/time-search.html"
+                          class="search_btn"
+                          onclick="
+                            openLecTimeWin(this.href);
+                            return false;
+                          "
+                          >검색하기</a
+                        >
+                      </div>
+                      <label class="inline-check"
+                        ><input type="checkbox" /> 강좌 신청 시 다른 강좌와
+                        강의시간이 겹더라도 중복해서 신청할 수 있음</label
+                      >
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>정원 <span class="req">☑</span></th>
+                    <td>
+                      <input
+                        type="text"
+                        class="form-control input-sm lec-num"
+                        value="0"
+                      />
+                      명
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>대기정원 <span class="req">☑</span></th>
+                    <td>
+                      <input
+                        type="text"
+                        class="form-control input-sm lec-num"
+                        value="0"
+                      />
+                      명
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>운영기간 <span class="req">☑</span></th>
+                    <td>
+                      <input
+                        type="text"
+                        class="form-control input-sm lec-date"
+                      />
+                      ~
+                      <input
+                        type="text"
+                        class="form-control input-sm lec-date"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>총시수</th>
+                    <td>
+                      <input
+                        type="text"
+                        class="form-control input-sm lec-num"
+                        value="0"
+                      />
+                      시간
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>강의실</th>
+                    <td>
+                      <select class="form-control input-sm lec-mid">
+                        <option>== 선택 ==</option>
+                      </select>
+                      <input
+                        type="text"
+                        class="form-control input-sm lec-mid"
+                        placeholder="신규입력"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>수강료</th>
+                    <td>
+                      <input
+                        type="text"
+                        class="form-control input-sm lec-num"
+                        value="0"
+                      />
+                      원(강사료 + 수용비)
+                      <div>
+                        <label class="inline-check"
+                          ><input type="checkbox" /> 자유수강권 차감 제외</label
+                        >
+                      </div>
+                      <div>
+                        <label class="inline-check"
+                          ><input type="checkbox" /> 1학년(무상) 차감
+                          제외</label
+                        >
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>수용비</th>
+                    <td>
+                      <input
+                        type="text"
+                        class="form-control input-sm lec-num"
+                        value="0"
+                      />
+                      원
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>강사료</th>
+                    <td>
+                      <input
+                        type="text"
+                        class="form-control input-sm lec-num"
+                        value="0"
+                      />
+                      원
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>교재비</th>
+                    <td>
+                      <input
+                        type="text"
+                        class="form-control input-sm lec-num"
+                        value="0"
+                      />
+                      원
+                      <div>
+                        <label class="inline-check"
+                          ><input type="checkbox" /> 자유수강권 차감 제외</label
+                        >
+                      </div>
+                      <div>
+                        <label class="inline-check"
+                          ><input type="checkbox" /> 1학년(무상) 차감
+                          제외</label
+                        >
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>재료비</th>
+                    <td>
+                      <input
+                        type="text"
+                        class="form-control input-sm lec-num"
+                        value="0"
+                      />
+                      원
+                      <div>
+                        <label class="inline-check"
+                          ><input type="checkbox" /> 자유수강권 차감 제외</label
+                        >
+                      </div>
+                      <div>
+                        <label class="inline-check"
+                          ><input type="checkbox" /> 1학년(무상) 차감
+                          제외</label
+                        >
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>내용</th>
+                    <td>
+                      <textarea
+                        class="form-control lec-textarea"
+                        rows="8"
+                      ></textarea>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>첨부파일</th>
+                    <td>
+                      <input type="file" class="input-sm" />
+                      <div class="inline-help">
+                        ※ 한 번에 최대 2M 이하만 올릴 수 있습니다.
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>수강료 출력</th>
+                    <td>
+                      <label class="inline-check"
+                        ><input type="checkbox" /> 학생의 신청 조회 화면에
+                        수강료, 교재비, 재료비 출력</label
+                      >
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>강사마감</th>
+                    <td>
+                      <label class="inline-check"
+                        ><input type="checkbox" /> 강사는 신청자 등록(삭제) 및
+                        수강료 수정 불가</label
+                      >
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>환불마감</th>
+                    <td>
+                      <label class="inline-check"
+                        ><input type="checkbox" /> 강사 및 학생은 환불 신청
+                        불가</label
+                      >
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>상태 <span class="req">☑</span></th>
+                    <td>
+                      <label class="inline-check"
+                        ><input type="radio" name="lec_status" checked />
+                        출력</label
+                      >
+                      <label class="inline-check"
+                        ><input type="radio" name="lec_status" /> 대기</label
+                      >
+                      <label class="inline-check"
+                        ><input type="radio" name="lec_status" /> 종료</label
+                      >
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
 
-      // label(표시명) 따로 쓰고 싶으면 여기서 처리
-      // 예: document.getElementById(targetId + "_label").textContent = label || value;
-    };
+              <div class="lec-write-actions">
+                <a href="index.html" class="btn btn-default btn-sm">취소</a>
+                <button type="submit" class="btn btn-danger btn-sm">
+                  등록
+                </button>
+              </div>
+            </div>
+          </form>
 
-    window.applyLectureTime = function (timeText, timeRaw) {
-      // HAR 기준: 표시용 input은 lec_time_, 실제 값은 hidden lec_time
-      const display = document.getElementById("lec_time_");
-      const hidden = document.getElementById("lec_time");
-      if (display) display.value = timeText;
-      if (hidden) hidden.value = timeRaw ?? timeText;
-    };
-  </script>
-  <script>
-    (function () {
-      var userRole = document.querySelector(".user-role");
-      if (!userRole) return;
-      userRole.innerHTML = '교직원 운영 계정 <span class="muted">[<a href="./login.html" id="profile-logout">로그아웃</a>] [<a href="./cfg-basic.html">정보수정</a>]</span>';
-    })();
-  </script>
-</body>
+          <div class="lec-write-help">
+            <p>
+              강사ID : 등록된 강사는 지정하지 않은 경우 <span>기명</span>을
+              입력해도 강좌 등록은 가능합니다.
+            </p>
+            <p>상태(출력) : 학생 신청 화면에 <span>출력</span>됩니다.</p>
+            <p>상태(대기) : 학생 화면에 <span>출력되지 않습니다.</span></p>
+            <p>
+              상태(종료) : 학생 신청 화면에 출력은 하지만
+              <span>신청은 불가능</span>합니다.
+            </p>
+            <p>
+              신청 제한(강의 시간, 운영 기간) : 운영 기간과 강의 시간이 중복되는
+              강좌는 1개만 신청 가능합니다.
+            </p>
+            <p>
+              신청 제한(중복제한그룹) : 같은 중복제한그룹에 있는 강좌는 환경
+              설정에 지정된 개수까지만 신청할 수 있습니다.
+            </p>
+          </div>
+        </div>
+
+        <div id="footer" class="footer">
+          <span class="muted">짤 DBDB School Clone</span>
+        </div>
+      </main>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="./assets/js/app.js"></script>
+    <script>
+      // 공통 팝업 열기
+      function openPopup(url, name) {
+        window.name = ""; // 동일 name 재사용 문제 방지
+        const win = window.open(
+          url,
+          name,
+          "scrollbars=yes,toolbar=no,width=530,height=500,resizable=no,menubar=no,left=10,top=10",
+        );
+        if (win) win.focus();
+        return false;
+      }
+
+      function openAfTeaWin(dest) {
+        return openPopup(dest, "afTeaSearchWin");
+      }
+
+      function openLecTimeWin(dest) {
+        return openPopup(dest, "lecTimeWin");
+      }
+
+      // 팝업에서 호출할 값 채우기 함수
+      window.applyPopupValue = function (targetId, value, label) {
+        const el = document.getElementById(targetId);
+        if (!el) return;
+        el.value = value;
+
+        // label(표시명) 따로 쓰고 싶으면 여기서 처리
+        // 예: document.getElementById(targetId + "_label").textContent = label || value;
+      };
+
+      window.applyLectureTime = function (timeText, timeRaw) {
+        // HAR 기준: 표시용 input은 lec_time_, 실제 값은 hidden lec_time
+        const display = document.getElementById("lec_time_");
+        const hidden = document.getElementById("lec_time");
+        if (display) display.value = timeText;
+        if (hidden) hidden.value = timeRaw ?? timeText;
+      };
+    </script>
+    <script>
+      (function () {
+        var userRole = document.querySelector(".user-role");
+        if (!userRole) return;
+        userRole.innerHTML =
+          '교직원 운영 계정 <span class="muted">[<a href="./login.html" id="profile-logout">로그아웃</a>] [<a href="./cfg-basic.html">정보수정</a>]</span>';
+      })();
+    </script>
+  </body>
 </html>
-
-
