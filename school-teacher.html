@@ -9,6 +9,8 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="./assets/css/app.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body class="school-admin-page">
   <div id="header" class="topbar">
@@ -77,22 +79,20 @@
     </div>
 	<div class="panel-heading">목록</div>
 	<div class="panel-search">
-<form action="https://www.dbdbschool.kr/sczigi/teacher/lists/sn/2848" name="fm_list_search" id="fm_list_search" method="get" onsubmit="return fm_list_search_check(this);" accept-charset="utf-8">
+<form action="#" name="fm_list_search" id="fm_list_search" method="get" onsubmit="handleTeacherSearch(event);" accept-charset="utf-8">
 		<ul>
 			<li class="PAD0 select_box_menu_parent">
-				<select name="sct" id="sct" class="form-control input-sm PAD0" onchange="this.form.submit();">
+				<select name="sct" id="sct" class="form-control input-sm PAD0">
 					<option value="">=전체=</option>
 					<option value="1">담임</option>
 				</select>				
 				<select name="st" id="st" class="form-control input-sm PAD0">
-					<option value="mem_id">아이디</option>
-					<option value="mem_name">성명</option>
-					<option value="nice_bunho">나이스번호</option>
-					<option value="mem_birthday">생년월일</option>
+					<option value="loginId">아이디</option>
+					<option value="fullName">성명</option>
 				</select>
 				<input type="text" name="sw" id="s_word" value="" size="15" class="form-control input-sm size43" style="width:30%; ime-mode:active;" placeholder="검색어 입력">
 				<input type="submit" value="검색" class="btn btn-default btn-sm ">
-				<input type="button" value="전체" class="btn btn-default btn-sm " onclick="location.href='https://www.dbdbschool.kr/sczigi/teacher/lists/sn/2848';">
+				<input type="button" value="전체" class="btn btn-default btn-sm " onclick="resetTeacherSearch();">
 			</li>
 		</ul>
 </form>		
@@ -102,11 +102,11 @@
 		<div class="panel-body">
 			<ul class="list-inline">
 				<li class="pull-right PAD0" style="position:relative;">
-					<input type="button" value="교직원 등록" data-loading-text="처리중 .." class="btn btn-danger btn-sm" onclick="location.href='https://www.dbdbschool.kr/sczigi/teacher/write/p/1/sn/2848'"> 
+					<input type="button" value="교직원 등록" data-loading-text="처리중 .." class="btn btn-danger btn-sm" onclick="location.href='./school-teacher-write.html'"> 
 					<a href="#none;" id="main_control_box_btn02" class="main_control_box_btn btn btn-default btn-sm">추가기능..<span class="fa fa-angle-down"></span></a>
 					<span class="main_control_box_module" id="main_control_box_drop">
-						<a href="https://www.dbdbschool.kr/sczigi/teacher/input/p/1/sn/2848" class="btn btn-primary btn-sm">교직원 일괄입력</a>
-						<a href="https://www.dbdbschool.kr/sczigi/teacher/listse/p/1/sn/2848" class="btn btn-success btn-sm">검색결과엑셀출력</a>
+						<a href="./school-teacher-input.html" class="btn btn-primary btn-sm">교직원 일괄입력</a>
+						<a href="#" onclick="alert('검색결과 엑셀 다운로드가 시작됩니다.'); return false;" class="btn btn-success btn-sm">검색결과엑셀출력</a>
 					</span>
 				</li>
 			</ul>
@@ -117,7 +117,7 @@
 		
 	<div class="table-responsive" style="background:#fff;">
 		<table class="table AlignCenter table-hover_sm list" style="margin-top:0px;">
-			<tbody><tr>
+			<tbody id="teacher-list-tbody"><tr>
 				<th width="60"><input type="checkbox" name="check_all" id="check_all" value="" onclick="chk_all(this);" title="전체선택/취소" style="float:none;"></th>
 				<th width="60">연번</th>
 				<th width="60">수정</th>
@@ -134,32 +134,7 @@
 				<th>상태</th>
 				<th width="60">삭제</th>				
 			</tr>
-			<tr>
-				<td><input type="checkbox" name="data_checked[]" value="128295"></td>
-				<td>1</td>
-				<td><a href="https://www.dbdbschool.kr/sczigi/teacher/modify/num/128295/p/1/sn/2848"><i class="fa fa-cog icon_btn" title="수정"></i></a></td>
-				<td>관리자2</td>
-				<td>박진수</td>
-				<td>010-6407-4389</td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td>교직원</td>
-				<td></td>
-				<td>2026-02-21 04:22:34</td>
-				<td>&nbsp;</td>
-				<td width="70">
-					<div class="span04" style="position:relative; width:70px;">
-						<span class="isu_status_1 isu_status_sm" id="view_mem_status_128295">사용</span><span class="isu_check_box"><a href="#none;" class="isu_check"><i class="fa fa-angle-down"></i></a>
-							<ul class="isu_choice teacher_isu">
-								<li><a href="#none;" onclick="chk_mem_status(128295, 0); return false;">대기</a></li>
-								<li class="last"><a href="#none;" onclick="chk_mem_status(128295, 1); return false;">사용</a></li>
-							</ul>
-						</span>
-					</div>				
-				</td>
-				<td width="95"><a href="#none;" onclick="chk_del(128295); return false;"><i class="fa fa-trash-o icon_btn" title="삭제"></i></a></td>				
-			</tr>
+			<!-- Dynamic rows will be appended here -->
 		</tbody></table>
 	</div>
 		<div class="panel-body MAT30" style="text-align:center;">
@@ -201,7 +176,102 @@
 	<input type="hidden" name="num" id="del_num" value="">
  </form>
 <!-- } -->
+<script>
+var allTeachers = [];
 
+function renderTeachers(list) {
+  var $tbody = $('#teacher-list-tbody');
+  // Keep the header row (the first tr)
+  $tbody.find('tr:not(:first)').remove();
+  
+  if (list.length === 0) {
+    $tbody.append('<tr><td colspan="15" style="padding:20px;">등록된 교직원이 없습니다.</td></tr>');
+    return;
+  }
+  
+  list.forEach(function(u, idx) {
+    var dateStr = u.createdAt ? new Date(u.createdAt).toISOString().split('T')[0] : '-';
+    var row = '<tr>' +
+      '<td><input type="checkbox" name="data_checked[]" value="' + u.id + '"></td>' +
+      '<td>' + (idx + 1) + '</td>' +
+      '<td><a href="./school-teacher-write.html?id=' + u.id + '"><i class="fa fa-cog icon_btn" title="수정"></i></a></td>' +
+      '<td>' + (u.loginId || '') + '</td>' +
+      '<td>' + (u.fullName || '') + '</td>' +
+      '<td>' + (u.phone || '') + '</td>' +
+      '<td>' + (u.classNo ? u.grade + '-' + u.classNo : '-') + '</td>' +
+      '<td>' + (u.birthday || '-') + '</td>' +
+      '<td>' + (u.niceBunho || '-') + '</td>' +
+      '<td>' + (u.role === 'staff' ? '운영자' : '교직원') + '</td>' +
+      '<td>' + (u.memo || '') + '</td>' +
+      '<td>' + dateStr + '</td>' +
+      '<td>&nbsp;</td>' +
+      '<td width="70"><span class="isu_status_1 isu_status_sm">사용</span></td>' +
+      '<td width="95"><a href="#" onclick="deleteTeacher(' + u.id + '); return false;"><i class="fa fa-trash-o icon_btn" title="삭제"></i></a></td>' +
+      '</tr>';
+    $tbody.append(row);
+  });
+}
+
+function loadTeachers() {
+  $.ajax({
+    url: '/api/auth/users',
+    method: 'GET',
+    success: function(res) {
+      if (res.ok && res.users) {
+        // Filter for staff and teachers
+        allTeachers = res.users.filter(function(u) { 
+          return u.role === 'teacher' || u.role === 'staff'; 
+        });
+        renderTeachers(allTeachers);
+      }
+    },
+    error: function(err) {
+      console.error('Failed to load teachers', err);
+      $('#teacher-list-tbody').append('<tr><td colspan="15">데이터를 불러오는 데 실패했습니다.</td></tr>');
+    }
+  });
+}
+
+function handleTeacherSearch(e) {
+  if (e) e.preventDefault();
+  var searchType = $('#st').val();
+  var keyword = $('#s_word').val().trim().toLowerCase();
+  var isHomeroomOnly = $('#sct').val() === '1';
+  
+  var filtered = allTeachers.filter(function(u) {
+    var matchesKeyword = true;
+    if (keyword) {
+      var val = String(u[searchType] || "").toLowerCase();
+      matchesKeyword = val.indexOf(keyword) > -1;
+    }
+    
+    var matchesHomeroom = true;
+    if (isHomeroomOnly) {
+      matchesHomeroom = !!u.classNo;
+    }
+    
+    return matchesKeyword && matchesHomeroom;
+  });
+  
+  renderTeachers(filtered);
+}
+
+function resetTeacherSearch() {
+  $('#fm_list_search')[0].reset();
+  renderTeachers(allTeachers);
+}
+
+function deleteTeacher(id) {
+  if (!confirm('정말 삭제하시겠습니까?')) return;
+  // In a real app, call delete API. For now, just filter local list.
+  allTeachers = allTeachers.filter(function(u) { return u.id !== id; });
+  renderTeachers(allTeachers);
+}
+
+$(document).ready(function() {
+  loadTeachers();
+});
+</script>
 
 
 
@@ -212,8 +282,6 @@
       <div id="footer" class="footer"><span class="muted">DBDB School Clone</span></div>
     </main>
   </div>
-  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <script src="./assets/js/app.js"></script>
 </body>
 </html>
