@@ -213,6 +213,12 @@
     window.alert(msg);
   }
 
+  function notifyXlsxMissing() {
+    notify(
+      "엑셀(XLSX) 모듈을 불러오지 못했습니다. assets/vendor/xlsx.full.min.js(SheetJS)를 추가해 주세요.",
+    );
+  }
+
   function escapeCsv(value) {
     var v = value == null ? "" : String(value).replace(/\s+/g, " ").trim();
     return '"' + v.replace(/"/g, '""') + '"';
@@ -282,8 +288,97 @@
   }
 
   function downloadCsv(filename, lines) {
-    var blob = new Blob(["\ufeff" + lines.join("\n")], {
-      type: "text/csv;charset=utf-8;",
+    var csvLines = Array.isArray(lines) ? lines : [];
+    var aoa = csvLines.map(function (line) {
+      return csvSplit(String(line || ""));
+    });
+    var xlsxName = String(filename || "download")
+      .replace(/\.csv$/i, "")
+      .replace(/\.xls$/i, "")
+      .replace(/\.xlsx$/i, "") +
+      ".xlsx";
+
+    ensureXlsx()
+      .then(function () {
+        downloadXlsx(xlsxName, aoa, "Sheet1");
+      })
+      .catch(function () {
+        notifyXlsxMissing();
+      });
+  }
+
+  function loadScriptOnce(url, globalKey) {
+    return new Promise(function (resolve, reject) {
+      if (globalKey && window[globalKey]) {
+        resolve(window[globalKey]);
+        return;
+      }
+
+      var attr = "data-dbdb-src";
+      var scripts = document.querySelectorAll("script[" + attr + "]");
+      for (var i = 0; i < scripts.length; i += 1) {
+        if (scripts[i].getAttribute(attr) === url) {
+          scripts[i].addEventListener("load", function () {
+            resolve(globalKey ? window[globalKey] : true);
+          });
+          scripts[i].addEventListener("error", reject);
+          return;
+        }
+      }
+
+      var script = document.createElement("script");
+      script.async = true;
+      script.src = url;
+      script.setAttribute(attr, url);
+      script.onload = function () {
+        resolve(globalKey ? window[globalKey] : true);
+      };
+      script.onerror = reject;
+      document.head.appendChild(script);
+    });
+  }
+
+  function ensureXlsx() {
+    if (window.XLSX && window.XLSX.utils) return Promise.resolve(window.XLSX);
+
+    var isFile = window.location && window.location.protocol === "file:";
+    var candidates = isFile
+      ? [
+          "./assets/vendor/xlsx.full.min.js",
+          "./node_modules/xlsx/dist/xlsx.full.min.js",
+        ]
+      : [
+          "/assets/vendor/xlsx.full.min.js",
+          "/node_modules/xlsx/dist/xlsx.full.min.js",
+        ];
+
+    candidates.push(
+      "https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js",
+    );
+
+    var p = Promise.reject(new Error("xlsx-not-loaded"));
+    candidates.forEach(function (src) {
+      p = p.catch(function () {
+        return loadScriptOnce(src, "XLSX");
+      });
+    });
+
+    return p.then(function (XLSX) {
+      if (!XLSX || !XLSX.utils) throw new Error("xlsx-invalid");
+      return XLSX;
+    });
+  }
+
+  function downloadXlsx(filename, aoa, sheetName) {
+    if (!window.XLSX || !window.XLSX.utils) throw new Error("xlsx-missing");
+
+    var ws = window.XLSX.utils.aoa_to_sheet(aoa || [[]]);
+    var wb = window.XLSX.utils.book_new();
+    window.XLSX.utils.book_append_sheet(wb, ws, sheetName || "Sheet1");
+
+    var out = window.XLSX.write(wb, { bookType: "xlsx", type: "array" });
+    var blob = new Blob([out], {
+      type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
     });
     downloadBlob(filename, blob);
   }
@@ -293,16 +388,52 @@
     downloadBlob(filename, blob);
   }
 
+  function readTableAsAoa($table, rowSelector) {
+    var aoa = [];
+    var header = [];
+
+    var $headerCells = $table.find("thead th");
+    if (!$headerCells.length) {
+      $headerCells = $table.find("tr").first().find("th");
+    }
+    if ($headerCells.length) {
+      $headerCells.each(function () {
+        header.push(String($(this).text() || "").trim());
+      });
+    }
+    if (header.length) aoa.push(header);
+
+    $table.find(rowSelector).each(function () {
+      if (!$(this).find("td").length) return;
+      var cells = [];
+      $(this)
+        .find("td")
+        .each(function () {
+          cells.push(String($(this).text() || "").trim());
+        });
+      aoa.push(cells);
+    });
+
+    return aoa;
+  }
+
   function readTableAsCsvLines($table, rowSelector) {
     var lines = [];
     var header = [];
 
-    $table.find("thead th").each(function () {
-      header.push(escapeCsv($(this).text()));
-    });
+    var $headerCells = $table.find("thead th");
+    if (!$headerCells.length) {
+      $headerCells = $table.find("tr").first().find("th");
+    }
+    if ($headerCells.length) {
+      $headerCells.each(function () {
+        header.push(escapeCsv($(this).text()));
+      });
+    }
     lines.push(header.join(","));
 
     $table.find(rowSelector).each(function () {
+      if (!$(this).find("td").length) return;
       var cells = [];
       $(this)
         .find("td")
@@ -755,6 +886,52 @@
     return lines;
   }
 
+  function lectureExportAoa(list) {
+    var aoa = [
+      [
+        "연번",
+        "구분",
+        "늘봄과정",
+        "강좌명",
+        "강사ID",
+        "신청/정원",
+        "대기자/정원",
+        "학년",
+        "운영기간",
+        "강의시간",
+        "수강료",
+        "수강료출력",
+        "강사마감",
+        "환불마감",
+        "상태",
+      ],
+    ];
+
+    (list || []).forEach(function (lec) {
+      aoa.push([
+        String(lec.id || ""),
+        String(lec.div || ""),
+        String(lec.proType || ""),
+        String(lec.name || ""),
+        String(lec.teacherId || ""),
+        (Number(lec.applied) || 0) + " / " + (Number(lec.capacity) || 0),
+        (Number(lec.waitApplied) || 0) +
+          " / " +
+          (Number(lec.waitCapacity) || 0),
+        String(lec.grades || ""),
+        String((lec.periodStart || "") + "~" + (lec.periodEnd || "")),
+        String(lec.lectureTime || "").replace(/\n/g, " / "),
+        String(Number(lec.fee) || 0),
+        String(lec.feeVisible || "Y"),
+        String(lec.teacherClosed || "-"),
+        String(lec.refundClosed || "-"),
+        String(statusLabel(lec.status)),
+      ]);
+    });
+
+    return aoa;
+  }
+
   function renderIndexFromStore() {
     var list = loadStore();
     var $tbody = $(".lecture-table tbody");
@@ -1110,14 +1287,22 @@
     });
 
     $("#btn-excel").on("click", function () {
-      var lines = lectureExportLines(
-        getFilteredLectures(getLectureFilterState($form)),
-      );
-      if (lines.length <= 1) {
+      var list = getFilteredLectures(getLectureFilterState($form));
+      if (!list || !list.length) {
         notify("내보낼 강좌가 없습니다.");
         return;
       }
-      downloadCsv("search-result-" + nowStamp() + ".csv", lines);
+      ensureXlsx()
+        .then(function () {
+          downloadXlsx(
+            "search-result-" + nowStamp() + ".xlsx",
+            lectureExportAoa(list),
+            "search-result",
+          );
+        })
+        .catch(function () {
+          notifyXlsxMissing();
+        });
     });
 
     $("#btn-attendance").on("click", function () {
@@ -2494,22 +2679,31 @@
         notify("출력할 신청 데이터가 없습니다.");
         return;
       }
-      var lines = [kind + " 출력", "생성시각," + new Date().toISOString()];
+      var aoa = [
+        [kind + " 출력"],
+        ["생성시각", new Date().toISOString()],
+        ["번호", "강좌", "이름", "연락처"],
+      ];
       rows.each(function () {
         var $td = $(this).find("td");
-        lines.push(
-          [
-            ($td.eq(1).text() || "").trim(),
-            ($td.eq(3).text() || "").replace(/\s+/g, " ").trim(),
-            ($td.eq(7).text() || "").replace(/\s+/g, " ").trim(),
-            ($td.eq(8).text() || "").replace(/\s+/g, " ").trim(),
-          ].join(","),
-        );
+        aoa.push([
+          ($td.eq(1).text() || "").trim(),
+          ($td.eq(3).text() || "").replace(/\s+/g, " ").trim(),
+          ($td.eq(7).text() || "").replace(/\s+/g, " ").trim(),
+          ($td.eq(8).text() || "").replace(/\s+/g, " ").trim(),
+        ]);
       });
-      downloadText(
-        "applicants-" + kind + "-" + nowStamp() + ".txt",
-        lines.join("\n"),
-      );
+      ensureXlsx()
+        .then(function () {
+          downloadXlsx(
+            "applicants-" + kind + "-" + nowStamp() + ".xlsx",
+            aoa,
+            kind,
+          );
+        })
+        .catch(function () {
+          notifyXlsxMissing();
+        });
     }
 
     function handleApplicantsAction(actionKey) {
@@ -2526,10 +2720,20 @@
         return;
       }
       if (actionKey === "input") {
-        downloadText(
-          "applicants-bulk-template-" + nowStamp() + ".csv",
-          "이름,연락처,학년,반,강좌명\n홍길동,010-0000-0000,2,1,신청 강좌",
-        );
+        ensureXlsx()
+          .then(function () {
+            downloadXlsx(
+              "applicants-bulk-template-" + nowStamp() + ".xlsx",
+              [
+                ["이름", "연락처", "학년", "반", "강좌명"],
+                ["홍길동", "010-0000-0000", "2", "1", "신청 강좌"],
+              ],
+              "신청자일괄등록",
+            );
+          })
+          .catch(function () {
+            notifyXlsxMissing();
+          });
         return;
       }
       if (actionKey === "copy") {
@@ -2788,10 +2992,20 @@
         return;
       }
       if (actionKey === "input") {
-        downloadText(
-          "waitlist-bulk-template-" + nowStamp() + ".csv",
-          "이름,연락처,학년,반,강좌명\n홍길동,010-0000-0000,2,1,신청 강좌",
-        );
+        ensureXlsx()
+          .then(function () {
+            downloadXlsx(
+              "waitlist-bulk-template-" + nowStamp() + ".xlsx",
+              [
+                ["이름", "연락처", "학년", "반", "강좌명"],
+                ["홍길동", "010-0000-0000", "2", "1", "신청 강좌"],
+              ],
+              "대기자일괄등록",
+            );
+          })
+          .catch(function () {
+            notifyXlsxMissing();
+          });
         return;
       }
       if (actionKey === "copy") {
@@ -3234,15 +3448,22 @@
         }
       });
       if (!$table.length) return false;
-      var lines = readTableAsCsvLines($table, "tbody tr:visible");
-      if (lines.length <= 1) {
+      var aoa = readTableAsAoa($table, "tbody tr:visible");
+      if (aoa.length <= 1) {
         notify("내보낼 데이터가 없습니다.");
         return false;
       }
-      downloadCsv(
-        (prefix || "search-result") + "-" + nowStamp() + ".csv",
-        lines,
-      );
+      ensureXlsx()
+        .then(function () {
+          downloadXlsx(
+            (prefix || "search-result") + "-" + nowStamp() + ".xlsx",
+            aoa,
+            prefix || "search-result",
+          );
+        })
+        .catch(function () {
+          notifyXlsxMissing();
+        });
       return true;
     }
 
@@ -3655,12 +3876,22 @@
         }
       });
       if (!$table.length) return false;
-      var lines = readTableAsCsvLines($table, "tbody tr:visible");
-      if (lines.length <= 1) {
+      var aoa = readTableAsAoa($table, "tbody tr:visible");
+      if (aoa.length <= 1) {
         notify("내보낼 데이터가 없습니다.");
         return false;
       }
-      downloadCsv("search-result-" + nowStamp() + ".csv", lines);
+      ensureXlsx()
+        .then(function () {
+          downloadXlsx(
+            "search-result-" + nowStamp() + ".xlsx",
+            aoa,
+            "search-result",
+          );
+        })
+        .catch(function () {
+          notifyXlsxMissing();
+        });
       return false;
     });
 
